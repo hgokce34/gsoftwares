@@ -515,6 +515,8 @@
     [data-lang="en"] span.tr { display: none; }
     [data-lang="en"] span.en { display: inline; }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>emailjs.init("Seg3jenh_LMiacX_z");</script>
 </head>
 <body data-theme="dark" data-lang="tr">
 
@@ -1301,21 +1303,40 @@
   // Form - EmailJS ile mail gönder
   function formGonder(e){
     e.preventDefault();
-    const name=document.getElementById('f-name').value;
-    const email=document.getElementById('f-email').value;
-    const phone=document.getElementById('f-phone').value;
-    const service=document.getElementById('f-service').value;
-    const message=document.getElementById('f-message').value;
+    const btn=e.target.querySelector('button[type="submit"]');
+    btn.textContent='Gönderiliyor...';
+    btn.disabled=true;
 
-    // Mailto ile yedek çözüm
-    const mailBody=`Ad Soyad: ${name}%0AE-posta: ${email}%0ATelefon: ${phone}%0AHizmet: ${service}%0A%0AMesaj:%0A${message}`;
-    window.location.href=`mailto:gokcehamza2934@gmail.com?subject=gSoftwares.dev - Proje Talebi (${name})&body=${mailBody}`;
+    const params={
+      from_name: document.getElementById('f-name').value,
+      from_email: document.getElementById('f-email').value,
+      phone: document.getElementById('f-phone').value||'Belirtilmedi',
+      service: document.getElementById('f-service').value||'Belirtilmedi',
+      message: document.getElementById('f-message').value,
+      name: document.getElementById('f-name').value,
+      email: document.getElementById('f-email').value,
+    };
 
-    const form=document.getElementById('contactForm');
-    const success=document.getElementById('formSuccess');
-    form.style.display='none';
-    success.style.display='block';
-    setTimeout(()=>{form.style.display='block';success.style.display='none';form.reset();},5000);
+    emailjs.send('service_ohsr9ht','a6m5uml', params)
+      .then(()=>{
+        const form=document.getElementById('contactForm');
+        const success=document.getElementById('formSuccess');
+        form.style.display='none';
+        success.style.display='block';
+        setTimeout(()=>{
+          form.style.display='block';
+          success.style.display='none';
+          form.reset();
+          btn.innerHTML='<span class="tr">Talebi Gönder →</span><span class="en">Send Request →</span>';
+          btn.disabled=false;
+        },5000);
+      })
+      .catch(err=>{
+        console.error('EmailJS hata:',err);
+        btn.innerHTML='<span class="tr">Talebi Gönder →</span><span class="en">Send Request →</span>';
+        btn.disabled=false;
+        alert('Mail gönderilemedi. Lütfen doğrudan gokcehamza2934@gmail.com adresine yazın.');
+      });
   }
 
   // Navbar scroll
