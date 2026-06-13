@@ -32,14 +32,15 @@
       --radius: 18px;
       --radius-sm: 12px;
       --glow: 0 0 40px rgba(0,229,160,0.15);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     [data-theme="light"] {
-      --bg: #f0f4ff;
+      --bg: #f8fafc;
       --bg2: #ffffff;
-      --bg3: #e8eeff;
-      --bg4: #dde5ff;
-      --border: rgba(0,0,0,0.07);
-      --border2: rgba(0,0,0,0.13);
+      --bg3: #f1f5f9;
+      --bg4: #e2e8f0;
+      --border: rgba(15, 23, 42, 0.08);
+      --border2: rgba(15, 23, 42, 0.15);
       --text: #0f172a;
       --text2: #475569;
       --text3: #94a3b8;
@@ -77,18 +78,18 @@
       display: flex; align-items: center; justify-content: space-between;
       background: rgba(5,8,16,0.8);
       backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
       border-bottom: 1px solid var(--border);
+      transition: var(--transition);
     }
-    [data-theme="light"] nav { background: rgba(240,244,255,0.85); }
+    [data-theme="light"] nav { background: rgba(248,250,252,0.85); }
 
     /* LOGO */
     .nav-logo {
       display: flex; align-items: center; gap: 12px;
       text-decoration: none; color: var(--text);
     }
-    .logo-mark {
-      position: relative; width: 42px; height: 42px;
-    }
+    .logo-mark { position: relative; width: 42px; height: 42px; }
     .logo-mark svg { width: 42px; height: 42px; }
     .logo-text { display: flex; flex-direction: column; }
     .logo-name {
@@ -109,7 +110,7 @@
       text-decoration: none; color: var(--text2);
       font-size: 13px; font-weight: 500;
       padding: 7px 16px; border-radius: 10px;
-      transition: all .2s;
+      transition: var(--transition);
     }
     .nav-links a:hover { color: var(--text); background: var(--bg3); }
 
@@ -118,17 +119,41 @@
       background: var(--bg3); border: 1px solid var(--border2);
       border-radius: 10px; cursor: pointer;
       font-family: var(--font-mono); font-size: 11px; font-weight: 700;
-      color: var(--text2); padding: 7px 12px; transition: all .2s;
+      color: var(--text2); padding: 7px 12px; transition: var(--transition);
     }
     .theme-btn { width: 38px; height: 38px; padding: 0; display: flex; align-items: center; justify-content: center; font-size: 16px; }
     .lang-btn:hover, .theme-btn:hover { color: var(--text); border-color: var(--green); }
+    
     .nav-cta {
       background: var(--grad1); border: none; color: #000;
       font-size: 13px; font-weight: 800; padding: 9px 20px;
-      border-radius: 10px; cursor: pointer; transition: opacity .2s, transform .2s;
+      border-radius: 10px; cursor: pointer; transition: var(--transition);
       text-decoration: none; letter-spacing: -.2px;
     }
-    .nav-cta:hover { opacity: .85; transform: translateY(-1px); }
+    .nav-cta:hover { opacity: .9; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,229,160,0.2); }
+
+    /* HAMBURGER MENU */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      z-index: 1001;
+    }
+    .menu-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    .menu-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .menu-toggle.active span:nth-child(2) { opacity: 0; }
+    .menu-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
     /* HERO */
     .hero {
@@ -142,6 +167,7 @@
         linear-gradient(90deg, rgba(0,229,160,0.03) 1px, transparent 1px);
       background-size: 80px 80px;
       mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
     }
     .hero-glow1 {
       position: absolute; width: 600px; height: 600px; border-radius: 50%;
@@ -192,17 +218,18 @@
       background: var(--grad1); color: #000; border: none;
       padding: 15px 32px; border-radius: var(--radius-sm);
       font-weight: 800; font-size: 14px; cursor: pointer;
-      transition: all .2s; text-decoration: none;
+      transition: var(--transition); text-decoration: none;
       display: inline-flex; align-items: center; gap: 8px;
       box-shadow: 0 8px 32px rgba(0,229,160,0.25);
       letter-spacing: -.2px;
     }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,229,160,0.35); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,229,160,0.4); }
+    
     .btn-secondary {
       background: var(--bg3); color: var(--text); border: 1px solid var(--border2);
       padding: 15px 32px; border-radius: var(--radius-sm);
       font-weight: 600; font-size: 14px; cursor: pointer;
-      transition: all .2s; text-decoration: none;
+      transition: var(--transition); text-decoration: none;
       display: inline-flex; align-items: center; gap: 8px;
     }
     .btn-secondary:hover { border-color: var(--green); color: var(--green); transform: translateY(-2px); }
@@ -257,7 +284,7 @@
     .service-card {
       background: var(--bg2); border: 1px solid var(--border);
       border-radius: var(--radius); padding: 32px;
-      transition: all .3s; cursor: pointer; position: relative; overflow: hidden;
+      transition: var(--transition); cursor: pointer; position: relative; overflow: hidden;
     }
     .service-card::after {
       content: ''; position: absolute; inset: 0; opacity: 0;
@@ -277,23 +304,26 @@
       margin-bottom: 12px; position: relative; z-index: 1;
     }
     .service-card p { font-size: 14px; color: var(--text2); line-height: 1.75; position: relative; z-index: 1; margin-bottom: 20px; }
+    
     .service-arrow {
       display: inline-flex; align-items: center; gap: 6px;
       font-size: 12px; font-weight: 700; color: var(--green);
-      font-family: var(--font-mono); transition: gap .2s; position: relative; z-index: 1;
+      font-family: var(--font-mono); transition: var(--transition); position: relative; z-index: 1;
     }
     .service-card:hover .service-arrow { gap: 10px; }
+    
     .service-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; position: relative; z-index: 1; }
     .stag {
       font-size: 10px; font-family: var(--font-mono); font-weight: 600;
       padding: 3px 10px; border-radius: 100px;
-      background: var(--bg3); border: 1px solid var(--border); color: var(--text3);
+      background: var(--bg3); border: 1px solid var(--border); color: var(--text2);
     }
 
     /* SERVICE MODAL */
     .svc-modal-overlay {
       display: none; position: fixed; inset: 0; z-index: 9999;
       background: rgba(0,0,0,.8); backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       align-items: center; justify-content: center; padding: 24px;
     }
     .svc-modal-overlay.open { display: flex; }
@@ -301,7 +331,7 @@
       background: var(--bg2); border: 1px solid var(--border2);
       border-radius: var(--radius); max-width: 680px; width: 100%;
       max-height: 85vh; overflow-y: auto;
-      animation: modalIn .3s ease;
+      animation: modalIn .3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     @keyframes modalIn { from{opacity:0;transform:scale(.95)} to{opacity:1;transform:scale(1)} }
     .svc-modal-header {
@@ -313,13 +343,14 @@
       width: 36px; height: 36px; border-radius: 10px;
       display: flex; align-items: center; justify-content: center;
       cursor: pointer; font-size: 18px; color: var(--text2);
-      flex-shrink: 0; transition: all .2s;
+      flex-shrink: 0; transition: var(--transition);
     }
-    .svc-modal-close:hover { color: var(--text); border-color: var(--border2); }
+    .svc-modal-close:hover { color: var(--text); border-color: var(--border2); transform: scale(1.05); }
     .svc-modal-body { padding: 24px 32px 32px; }
     .svc-modal-body h2 { font-family: var(--font-display); font-size: 26px; font-weight: 800; margin-bottom: 16px; }
     .svc-modal-body p { font-size: 15px; color: var(--text2); line-height: 1.8; margin-bottom: 20px; }
     .svc-feature-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 24px; }
+    @media(max-width:480px) { .svc-feature-list { grid-template-columns: 1fr; } }
     .svc-feature-list li {
       display: flex; align-items: center; gap: 10px;
       font-size: 13px; color: var(--text2);
@@ -329,9 +360,7 @@
     .svc-feature-list li::before { content: '✓'; color: var(--green); font-weight: 800; flex-shrink: 0; }
     .svc-process { margin-bottom: 24px; }
     .svc-process h4 { font-size: 13px; font-weight: 700; color: var(--text3); font-family: var(--font-mono); letter-spacing: .1em; margin-bottom: 14px; }
-    .svc-process-step {
-      display: flex; gap: 16px; align-items: flex-start; margin-bottom: 12px;
-    }
+    .svc-process-step { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 12px; }
     .svc-step-num {
       width: 28px; height: 28px; border-radius: 50%;
       background: var(--grad1); color: #000;
@@ -348,7 +377,7 @@
     .project-card {
       background: var(--bg2); border: 1px solid var(--border);
       border-radius: var(--radius); overflow: hidden;
-      transition: all .3s;
+      transition: var(--transition);
     }
     .project-card:hover { border-color: rgba(59,130,246,0.35); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,.3); }
     .project-mockup {
@@ -373,7 +402,7 @@
     .project-status-badge { font-size: 10px; font-family: var(--font-mono); font-weight: 700; padding: 4px 12px; border-radius: 100px; }
     .status-live { background: rgba(0,229,160,.12); color: var(--green); border: 1px solid rgba(0,229,160,.25); }
     .status-dev { background: rgba(245,158,11,.12); color: var(--gold); border: 1px solid rgba(245,158,11,.25); }
-    .project-link { font-size: 13px; font-weight: 700; color: var(--blue); text-decoration: none; transition: color .2s; }
+    .project-link { font-size: 13px; font-weight: 700; color: var(--blue); text-decoration: none; transition: var(--transition); }
     .project-link:hover { color: var(--cyan); }
 
     /* TEAM */
@@ -383,11 +412,9 @@
     .team-card {
       background: var(--bg2); border: 1px solid var(--border);
       border-radius: var(--radius); padding: 36px; position: relative; overflow: hidden;
-      transition: all .3s;
+      transition: var(--transition);
     }
-    .team-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-    }
+    .team-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
     .team-card.hamza::before { background: var(--grad1); }
     .team-card.taner::before { background: var(--grad2); }
     .team-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,.3); }
@@ -424,18 +451,14 @@
     .contact-info h2 { font-family: var(--font-display); font-size: 36px; font-weight: 800; letter-spacing: -1px; margin-bottom: 16px; }
     .contact-info p { font-size: 15px; color: var(--text2); line-height: 1.8; margin-bottom: 36px; }
     .contact-channels { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
-    .contact-channel {
-      display: flex; align-items: center; gap: 16px;
-      padding: 16px 20px; border-bottom: 1px solid var(--border);
-      transition: background .2s;
-    }
+    .contact-channel { display: flex; align-items: center; gap: 16px; padding: 16px 20px; border-bottom: 1px solid var(--border); transition: var(--transition); }
     .contact-channel:last-child { border-bottom: none; }
     .contact-channel:hover { background: var(--bg3); }
     .contact-channel-icon { width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
     .contact-channel-info { flex: 1; }
     .contact-channel-label { font-size: 10px; font-family: var(--font-mono); font-weight: 700; color: var(--text3); letter-spacing: .1em; margin-bottom: 2px; }
     .contact-channel-value { font-size: 14px; font-weight: 600; }
-    .contact-channel-value a { color: var(--text); text-decoration: none; transition: color .2s; }
+    .contact-channel-value a { color: var(--text); text-decoration: none; transition: var(--transition); }
     .contact-channel-value a:hover { color: var(--green); }
 
     /* SOCIAL LINKS */
@@ -444,7 +467,7 @@
       width: 42px; height: 42px; border-radius: 12px;
       display: flex; align-items: center; justify-content: center;
       background: var(--bg3); border: 1px solid var(--border);
-      font-size: 18px; text-decoration: none; transition: all .2s;
+      font-size: 18px; text-decoration: none; transition: var(--transition);
       color: var(--text2);
     }
     .social-link:hover { border-color: var(--green); color: var(--green); transform: translateY(-2px); }
@@ -455,11 +478,12 @@
     .contact-form-wrap .sub { font-size: 13px; color: var(--text2); margin-bottom: 28px; }
     .form-group { margin-bottom: 16px; }
     .form-label { display: block; font-size: 11px; font-weight: 700; font-family: var(--font-mono); color: var(--text3); letter-spacing: .1em; margin-bottom: 6px; }
+    
     .form-input, .form-textarea, .form-select {
       width: 100%; background: var(--bg2); border: 1px solid var(--border2);
       border-radius: 12px; padding: 12px 16px;
       color: var(--text); font-size: 14px; font-family: var(--font);
-      transition: border-color .2s, box-shadow .2s; outline: none;
+      transition: var(--transition); outline: none;
     }
     .form-input:focus, .form-textarea:focus, .form-select:focus {
       border-color: var(--green);
@@ -468,11 +492,12 @@
     .form-textarea { height: 120px; resize: vertical; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
     @media(max-width:500px) { .form-row { grid-template-columns: 1fr; } }
+    
     .form-submit {
       width: 100%; background: var(--grad1); color: #000;
       border: none; padding: 14px; border-radius: 12px;
       font-weight: 800; font-size: 14px; cursor: pointer;
-      transition: all .2s; box-shadow: 0 8px 24px rgba(0,229,160,0.2);
+      transition: var(--transition); box-shadow: 0 8px 24px rgba(0,229,160,0.2);
     }
     .form-submit:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,229,160,0.3); }
     .form-success {
@@ -485,7 +510,7 @@
     .footer-inner { max-width: 1140px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
     .footer-copy { font-size: 13px; color: var(--text3); }
     .footer-links { display: flex; gap: 24px; }
-    .footer-links a { font-size: 13px; color: var(--text3); text-decoration: none; transition: color .2s; }
+    .footer-links a { font-size: 13px; color: var(--text3); text-decoration: none; transition: var(--transition); }
     .footer-links a:hover { color: var(--green); }
 
     /* DIVIDER */
@@ -500,41 +525,57 @@
     .reveal-delay2 { transition-delay: .2s; }
     .reveal-delay3 { transition-delay: .3s; }
 
-    /* MOBILE NAV */
+    /* RESPONSIVE NAV & MOBILE DRAWER */
     @media(max-width:768px) {
       nav { padding: 0 20px; }
-      .nav-links { display: none; }
+      .menu-toggle { display: flex; }
+      .nav-links {
+        position: fixed; top: 68px; right: -100%; width: 260px; height: calc(100vh - 68px);
+        background: rgba(10, 15, 30, 0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+        box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+        flex-direction: column; align-items: flex-start; justify-content: flex-start;
+        padding: 40px 24px; gap: 16px; transition: var(--transition);
+        border-left: 1px solid var(--border);
+      }
+      [data-theme="light"] .nav-links { background: rgba(255, 255, 255, 0.95); }
+      .nav-links.active { right: 0; }
+      .nav-links a { width: 100%; font-size: 16px; padding: 12px 16px; display: block; }
+      .nav-actions { margin-left: auto; margin-right: 16px; }
       section { padding: 80px 20px; }
     }
 
-    /* TR/EN */
+    /* TR/EN VISIBILITY RULES */
     .en { display: none; }
     [data-lang="en"] .tr { display: none; }
     [data-lang="en"] .en { display: block; }
     span.en { display: none; }
     [data-lang="en"] span.tr { display: none; }
     [data-lang="en"] span.en { display: inline; }
+    option.en { display: none; }
+    [data-lang="en"] option.tr { display: none; }
+    [data-lang="en"] option.en { display: block; }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>emailjs.init("Seg3jenh_LMiacX_z");</script>
 </head>
 <body data-theme="dark" data-lang="tr">
 
-<!-- CURSOR GLOW -->
 <div class="cursor-glow" id="cursorGlow"></div>
 
-<!-- PARTICLES -->
 <div id="particles"></div>
 
-<!-- SERVICE MODALS -->
 <div class="svc-modal-overlay" id="modal-web">
   <div class="svc-modal">
     <div class="svc-modal-header">
       <div style="display:flex;align-items:center;gap:14px">
         <div style="width:52px;height:52px;border-radius:14px;background:rgba(0,229,160,.12);display:flex;align-items:center;justify-content:center;font-size:24px">💻</div>
         <div>
-          <div style="font-size:11px;color:var(--text3);font-family:var(--font-mono);font-weight:700;letter-spacing:.1em;margin-bottom:4px">HİZMET DETAYI</div>
-          <div style="font-family:var(--font-display);font-size:20px;font-weight:800">Web Geliştirme</div>
+          <div style="font-size:11px;color:var(--text3);font-family:var(--font-mono);font-weight:700;letter-spacing:.1em;margin-bottom:4px">
+            <span class="tr">HİZMET DETAYI</span><span class="en">SERVICE DETAIL</span>
+          </div>
+          <div style="font-family:var(--font-display);font-size:20px;font-weight:800">
+            <span class="tr">Web Geliştirme</span><span class="en">Web Development</span>
+          </div>
         </div>
       </div>
       <button class="svc-modal-close" onclick="closeModal('modal-web')">✕</button>
@@ -543,18 +584,17 @@
       <p class="tr">Modern, hızlı ve ölçeklenebilir web uygulamaları geliştiriyoruz. Firebase ile gerçek zamanlı veri, Cloudinary ile medya yönetimi ve tam mobil uyumlu tasarım. FleetVision 2026 PRO bunun en iyi örneği — 30+ modül, tek HTML dosyası.</p>
       <p class="en">We build modern, fast and scalable web applications. Real-time data with Firebase, media management with Cloudinary, and fully responsive design. FleetVision 2026 PRO is the best example — 30+ modules, single HTML file.</p>
       <ul class="svc-feature-list">
-        <li class="tr">Gerçek zamanlı veritabanı</li><li class="en">Real-time database</li>
-        <li class="tr">Mobil uyumlu tasarım</li><li class="en">Mobile-responsive design</li>
-        <li class="tr">Firebase entegrasyonu</li><li class="en">Firebase integration</li>
-        <li class="tr">Dosya & medya yönetimi</li><li class="en">File & media management</li>
-        <li class="tr">Kullanıcı yönetimi</li><li class="en">User management</li>
-        <li class="tr">Excel/PDF export</li><li class="en">Excel/PDF export</li>
-        <li class="tr">Özel panel & raporlar</li><li class="en">Custom dashboard & reports</li>
-        <li class="tr">API entegrasyonu</li><li class="en">API integration</li>
+        <li><span class="tr">Gerçek zamanlı veritabanı</span><span class="en">Real-time database</span></li>
+        <li><span class="tr">Mobil uyumlu tasarım</span><span class="en">Mobile-responsive design</span></li>
+        <li><span class="tr">Firebase entegrasyonu</span><span class="en">Firebase integration</span></li>
+        <li><span class="tr">Dosya & medya yönetimi</span><span class="en">File & media management</span></li>
+        <li><span class="tr">Kullanıcı yönetimi</span><span class="en">User management</span></li>
+        <li><span class="tr">Excel/PDF export</span><span class="en">Excel/PDF export</span></li>
+        <li><span class="tr">Özel panel & raporlar</span><span class="en">Custom dashboard & reports</span></li>
+        <li><span class="tr">API entegrasyonu</span><span class="en">API integration</span></li>
       </ul>
       <div class="svc-process">
-        <h4 class="tr">ÇALIŞMA SÜRECİMİZ</h4>
-        <h4 class="en">OUR PROCESS</h4>
+        <h4><span class="tr">ÇALIŞMA SÜRECİMİZ</span><span class="en">OUR PROCESS</span></h4>
         <div class="svc-process-step"><div class="svc-step-num">01</div><div class="svc-step-text tr">Keşif toplantısı — ihtiyaçlarınızı ve hedeflerinizi anlıyoruz</div><div class="svc-step-text en">Discovery meeting — understanding your needs and goals</div></div>
         <div class="svc-process-step"><div class="svc-step-num">02</div><div class="svc-step-text tr">Prototip & tasarım — görsel wireframe ve UI tasarımı</div><div class="svc-step-text en">Prototype & design — visual wireframe and UI design</div></div>
         <div class="svc-process-step"><div class="svc-step-num">03</div><div class="svc-step-text tr">Geliştirme — iteratif, şeffaf süreç</div><div class="svc-step-text en">Development — iterative, transparent process</div></div>
@@ -573,8 +613,12 @@
       <div style="display:flex;align-items:center;gap:14px">
         <div style="width:52px;height:52px;border-radius:14px;background:rgba(59,130,246,.12);display:flex;align-items:center;justify-content:center;font-size:24px">🎨</div>
         <div>
-          <div style="font-size:11px;color:var(--text3);font-family:var(--font-mono);font-weight:700;letter-spacing:.1em;margin-bottom:4px">HİZMET DETAYI</div>
-          <div style="font-family:var(--font-display);font-size:20px;font-weight:800">Web Tasarım & UI/UX</div>
+          <div style="font-size:11px;color:var(--text3);font-family:var(--font-mono);font-weight:700;letter-spacing:.1em;margin-bottom:4px">
+            <span class="tr">HİZMET DETAYI</span><span class="en">SERVICE DETAIL</span>
+          </div>
+          <div style="font-family:var(--font-display);font-size:20px;font-weight:800">
+            <span class="tr">Web Tasarım & UI/UX</span><span class="en">Web Design & UI/UX</span>
+          </div>
         </div>
       </div>
       <button class="svc-modal-close" onclick="closeModal('modal-design')">✕</button>
@@ -583,12 +627,12 @@
       <p class="tr">Kullanıcı deneyimini ön planda tutan, markanıza özgü profesyonel web tasarımı. Figma'dan koda, piksel mükemmelliğinde çıktılar üretiyoruz.</p>
       <p class="en">Professional web design tailored to your brand with user experience at the forefront. From Figma to code, pixel-perfect outputs.</p>
       <ul class="svc-feature-list">
-        <li class="tr">Figma prototip tasarımı</li><li class="en">Figma prototype design</li>
-        <li class="tr">Marka kimliği & logo</li><li class="en">Brand identity & logo</li>
-        <li class="tr">Landing page tasarımı</li><li class="en">Landing page design</li>
-        <li class="tr">E-ticaret UI/UX</li><li class="en">E-commerce UI/UX</li>
-        <li class="tr">Animasyon & micro-interaction</li><li class="en">Animation & micro-interaction</li>
-        <li class="tr">Dark/Light tema</li><li class="en">Dark/Light theme</li>
+        <li><span class="tr">Figma prototip tasarımı</span><span class="en">Figma prototype design</span></li>
+        <li><span class="tr">Marka kimliği & logo</span><span class="en">Brand identity & logo</span></li>
+        <li><span class="tr">Landing page tasarımı</span><span class="en">Landing page design</span></li>
+        <li><span class="tr">E-ticaret UI/UX</span><span class="en">E-commerce UI/UX</span></li>
+        <li><span class="tr">Animasyon & micro-interaction</span><span class="en">Animation & micro-interaction</span></li>
+        <li><span class="tr">Dark/Light tema</span><span class="en">Dark/Light theme</span></li>
       </ul>
       <a href="#contact" class="btn-primary" onclick="closeModal('modal-design')" style="display:inline-flex">
         <span class="tr">Teklif Al →</span><span class="en">Get Quote →</span>
@@ -603,22 +647,26 @@
       <div style="display:flex;align-items:center;gap:14px">
         <div style="width:52px;height:52px;border-radius:14px;background:rgba(139,92,246,.12);display:flex;align-items:center;justify-content:center;font-size:24px">📱</div>
         <div>
-          <div style="font-size:11px;color:var(--text3);font-family:var(--font-mono);font-weight:700;letter-spacing:.1em;margin-bottom:4px">HİZMET DETAYI</div>
-          <div style="font-family:var(--font-display);font-size:20px;font-weight:800">Sosyal Medya Yönetimi</div>
+          <div style="font-size:11px;color:var(--text3);font-family:var(--font-mono);font-weight:700;letter-spacing:.1em;margin-bottom:4px">
+            <span class="tr">HİZMET DETAYI</span><span class="en">SERVICE DETAIL</span>
+          </div>
+          <div style="font-family:var(--font-display);font-size:20px;font-weight:800">
+            <span class="tr">Sosyal Medya Yönetimi</span><span class="en">Social Media Management</span>
+          </div>
         </div>
       </div>
       <button class="svc-modal-close" onclick="closeModal('modal-social')">✕</button>
     </div>
     <div class="svc-modal-body">
-      <p class="tr">Instagram, Facebook ve LinkedIn için strateji odaklı içerik üretimi ve hesap yönetimi. Organik büyüme, etkileşim artışı ve marka bilinirliği.</p>
+      <p class="tr">Instagram, Facebook ve LinkedIn için strateji odaklı içerik üretimi og hesap yönetimi. Organik büyüme, etkileşim artışı ve marka bilinirliği.</p>
       <p class="en">Strategy-focused content creation and account management for Instagram, Facebook and LinkedIn. Organic growth, engagement increase and brand awareness.</p>
       <ul class="svc-feature-list">
-        <li class="tr">Aylık içerik planı</li><li class="en">Monthly content plan</li>
-        <li class="tr">Görsel & video üretimi</li><li class="en">Visual & video production</li>
-        <li class="tr">Hashtag stratejisi</li><li class="en">Hashtag strategy</li>
-        <li class="tr">Topluluk yönetimi</li><li class="en">Community management</li>
-        <li class="tr">Analitik raporlama</li><li class="en">Analytics reporting</li>
-        <li class="tr">Influencer iş birlikleri</li><li class="en">Influencer partnerships</li>
+        <li><span class="tr">Aylık içerik planı</span><span class="en">Monthly content plan</span></li>
+        <li><span class="tr">Görsel & video üretimi</span><span class="en">Visual & video production</span></li>
+        <li><span class="tr">Hashtag stratejisi</span><span class="en">Hashtag strategy</span></li>
+        <li><span class="tr">Topluluk yönetimi</span><span class="en">Community management</span></li>
+        <li><span class="tr">Analitik raporlama</span><span class="en">Analytics reporting</span></li>
+        <li><span class="tr">Influencer iş birlikleri</span><span class="en">Influencer partnerships</span></li>
       </ul>
       <a href="#contact" class="btn-primary" onclick="closeModal('modal-social')" style="display:inline-flex">
         <span class="tr">Teklif Al →</span><span class="en">Get Quote →</span>
@@ -633,8 +681,12 @@
       <div style="display:flex;align-items:center;gap:14px">
         <div style="width:52px;height:52px;border-radius:14px;background:rgba(245,158,11,.12);display:flex;align-items:center;justify-content:center;font-size:24px">📊</div>
         <div>
-          <div style="font-size:11px;color:var(--text3);font-family:var(--font-mono);font-weight:700;letter-spacing:.1em;margin-bottom:4px">HİZMET DETAYI</div>
-          <div style="font-family:var(--font-display);font-size:20px;font-weight:800">Meta Reklam Yönetimi</div>
+          <div style="font-size:11px;color:var(--text3);font-family:var(--font-mono);font-weight:700;letter-spacing:.1em;margin-bottom:4px">
+            <span class="tr">HİZMET DETAYI</span><span class="en">SERVICE DETAIL</span>
+          </div>
+          <div style="font-family:var(--font-display);font-size:20px;font-weight:800">
+            <span class="tr">Meta Reklam Yönetimi</span><span class="en">Meta Ads Management</span>
+          </div>
         </div>
       </div>
       <button class="svc-modal-close" onclick="closeModal('modal-ads')">✕</button>
@@ -643,12 +695,12 @@
       <p class="tr">Facebook ve Instagram reklamlarında maksimum ROI için hedef kitle analizi, kreatif üretim ve sürekli optimizasyon yapıyoruz.</p>
       <p class="en">We do audience analysis, creative production and continuous optimization for maximum ROI on Facebook and Instagram ads.</p>
       <ul class="svc-feature-list">
-        <li class="tr">Hedef kitle analizi</li><li class="en">Audience analysis</li>
-        <li class="tr">Reklam kreatif üretimi</li><li class="en">Ad creative production</li>
-        <li class="tr">A/B test optimizasyonu</li><li class="en">A/B test optimization</li>
-        <li class="tr">Retargeting kampanyaları</li><li class="en">Retargeting campaigns</li>
-        <li class="tr">Haftalık performans raporu</li><li class="en">Weekly performance report</li>
-        <li class="tr">Bütçe optimizasyonu</li><li class="en">Budget optimization</li>
+        <li><span class="tr">Hedef kitle analizi</span><span class="en">Audience analysis</span></li>
+        <li><span class="tr">Reklam kreatif üretimi</span><span class="en">Ad creative production</span></li>
+        <li><span class="tr">A/B test optimizasyonu</span><span class="en">A/B test optimization</span></li>
+        <li><span class="tr">Retargeting kampanyaları</span><span class="en">Retargeting campaigns</span></li>
+        <li><span class="tr">Haftalık performans raporu</span><span class="en">Weekly performance report</span></li>
+        <li><span class="tr">Bütçe optimizasyonu</span><span class="en">Budget optimization</span></li>
       </ul>
       <a href="#contact" class="btn-primary" onclick="closeModal('modal-ads')" style="display:inline-flex">
         <span class="tr">Kampanya Başlat →</span><span class="en">Start Campaign →</span>
@@ -663,8 +715,12 @@
       <div style="display:flex;align-items:center;gap:14px">
         <div style="width:52px;height:52px;border-radius:14px;background:rgba(0,229,160,.12);display:flex;align-items:center;justify-content:center;font-size:24px">🤖</div>
         <div>
-          <div style="font-size:11px;color:var(--text3);font-family:var(--font-mono);font-weight:700;letter-spacing:.1em;margin-bottom:4px">HİZMET DETAYI</div>
-          <div style="font-family:var(--font-display);font-size:20px;font-weight:800">Otomasyon & AI Entegrasyonu</div>
+          <div style="font-size:11px;color:var(--text3);font-family:var(--font-mono);font-weight:700;letter-spacing:.1em;margin-bottom:4px">
+            <span class="tr">HİZMET DETAYI</span><span class="en">SERVICE DETAIL</span>
+          </div>
+          <div style="font-family:var(--font-display);font-size:20px;font-weight:800">
+            <span class="tr">Otomasyon & AI Entegrasyonu</span><span class="en">Automation & AI Integration</span>
+          </div>
         </div>
       </div>
       <button class="svc-modal-close" onclick="closeModal('modal-ai')">✕</button>
@@ -673,12 +729,12 @@
       <p class="tr">İş süreçlerinizi yapay zeka ve otomasyon ile hızlandırın. Tekrarlayan görevleri otomatikleştirin, veri analizini AI ile güçlendirin.</p>
       <p class="en">Accelerate your business processes with AI and automation. Automate repetitive tasks, power data analysis with AI.</p>
       <ul class="svc-feature-list">
-        <li class="tr">Claude / GPT entegrasyonu</li><li class="en">Claude / GPT integration</li>
-        <li class="tr">İş akışı otomasyonu</li><li class="en">Workflow automation</li>
-        <li class="tr">Veri analizi & raporlama</li><li class="en">Data analysis & reporting</li>
-        <li class="tr">Chatbot geliştirme</li><li class="en">Chatbot development</li>
-        <li class="tr">API entegrasyonu</li><li class="en">API integration</li>
-        <li class="tr">Özel AI çözümleri</li><li class="en">Custom AI solutions</li>
+        <li><span class="tr">Claude / GPT entegrasyonu</span><span class="en">Claude / GPT integration</span></li>
+        <li><span class="tr">İş akışı otomasyonu</span><span class="en">Workflow automation</span></li>
+        <li><span class="tr">Veri analizi & raporlama</span><span class="en">Data analysis & reporting</span></li>
+        <li><span class="tr">Chatbot geliştirme</span><span class="en">Chatbot development</span></li>
+        <li><span class="tr">API entegrasyonu</span><span class="en">API integration</span></li>
+        <li><span class="tr">Özel AI çözümleri</span><span class="en">Custom AI solutions</span></li>
       </ul>
       <a href="#contact" class="btn-primary" onclick="closeModal('modal-ai')" style="display:inline-flex">
         <span class="tr">Demo İste →</span><span class="en">Request Demo →</span>
@@ -693,8 +749,12 @@
       <div style="display:flex;align-items:center;gap:14px">
         <div style="width:52px;height:52px;border-radius:14px;background:rgba(59,130,246,.12);display:flex;align-items:center;justify-content:center;font-size:24px">🛡️</div>
         <div>
-          <div style="font-size:11px;color:var(--text3);font-family:var(--font-mono);font-weight:700;letter-spacing:.1em;margin-bottom:4px">HİZMET DETAYI</div>
-          <div style="font-family:var(--font-display);font-size:20px;font-weight:800">IT Danışmanlık</div>
+          <div style="font-size:11px;color:var(--text3);font-family:var(--font-mono);font-weight:700;letter-spacing:.1em;margin-bottom:4px">
+            <span class="tr">HİZMET DETAYI</span><span class="en">SERVICE DETAIL</span>
+          </div>
+          <div style="font-family:var(--font-display);font-size:20px;font-weight:800">
+            <span class="tr">IT Danışmanlık</span><span class="en">IT Consulting</span>
+          </div>
         </div>
       </div>
       <button class="svc-modal-close" onclick="closeModal('modal-consult')">✕</button>
@@ -703,12 +763,12 @@
       <p class="tr">Dijital dönüşüm yolculuğunuzda yanınızdayız. Doğru teknoloji seçimi, mimari tasarım ve uzun vadeli strateji için danışmanlık hizmetleri.</p>
       <p class="en">We're with you on your digital transformation journey. Consulting services for the right technology selection, architectural design and long-term strategy.</p>
       <ul class="svc-feature-list">
-        <li class="tr">Teknoloji seçimi</li><li class="en">Technology selection</li>
-        <li class="tr">Yazılım mimarisi</li><li class="en">Software architecture</li>
-        <li class="tr">Dijital dönüşüm planı</li><li class="en">Digital transformation plan</li>
-        <li class="tr">Güvenlik danışmanlığı</li><li class="en">Security consulting</li>
-        <li class="tr">Bulut migrasyonu</li><li class="en">Cloud migration</li>
-        <li class="tr">Performans optimizasyonu</li><li class="en">Performance optimization</li>
+        <li><span class="tr">Teknoloji seçimi</span><span class="en">Technology selection</span></li>
+        <li><span class="tr">Yazılım mimarisi</span><span class="en">Software architecture</span></li>
+        <li><span class="tr">Dijital dönüşüm planı</span><span class="en">Digital transformation plan</span></li>
+        <li><span class="tr">Güvenlik danışmanlığı</span><span class="en">Security consulting</span></li>
+        <li><span class="tr">Bulut migrasyonu</span><span class="en">Cloud migration</span></li>
+        <li><span class="tr">Performans optimizasyonu</span><span class="en">Performance optimization</span></li>
       </ul>
       <a href="#contact" class="btn-primary" onclick="closeModal('modal-consult')" style="display:inline-flex">
         <span class="tr">Görüşme Ayarla →</span><span class="en">Schedule Meeting →</span>
@@ -717,8 +777,7 @@
   </div>
 </div>
 
-<!-- NAVBAR -->
-<nav>
+<nav id="navbar">
   <a href="#" class="nav-logo">
     <div class="logo-mark">
       <svg viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -737,12 +796,20 @@
       <div class="logo-domain">.dev</div>
     </div>
   </a>
-  <ul class="nav-links">
-    <li><a href="#services"><span class="tr">Hizmetler</span><span class="en">Services</span></a></li>
-    <li><a href="#projects"><span class="tr">Projeler</span><span class="en">Projects</span></a></li>
-    <li><a href="#team"><span class="tr">Ekip</span><span class="en">Team</span></a></li>
-    <li><a href="#contact"><span class="tr">İletişim</span><span class="en">Contact</span></a></li>
+
+  <button class="menu-toggle" id="menuToggle" aria-label="Menüyü Aç">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#services" onclick="closeMobileMenu()"><span class="tr">Hizmetler</span><span class="en">Services</span></a></li>
+    <li><a href="#projects" onclick="closeMobileMenu()"><span class="tr">Projeler</span><span class="en">Projects</span></a></li>
+    <li><a href="#team" onclick="closeMobileMenu()"><span class="tr">Ekip</span><span class="en">Team</span></a></li>
+    <li><a href="#contact" onclick="closeMobileMenu()"><span class="tr">İletişim</span><span class="en">Contact</span></a></li>
   </ul>
+  
   <div class="nav-actions">
     <button class="lang-btn" onclick="toggleLang()" id="langBtn">EN</button>
     <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
@@ -750,7 +817,6 @@
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-bg-grid"></div>
   <div class="hero-glow1"></div>
@@ -768,8 +834,8 @@
       <span class="grad-text en"> Digital Growth</span>
     </h1>
     <p class="hero-sub">
-      <span class="tr">gsoftwares olarak; web geliştirme, UI/UX tasarım, sosyal medya ve Meta reklam yönetimi ile işinizi dijitalde büyütüyoruz.</span>
-      <span class="en">As Hamza & Taner; we grow your business digitally with web development, UI/UX design, social media and Meta ad management.</span>
+      <span class="tr">gSoftwares olarak; web geliştirme, UI/UX tasarım, sosyal medya ve Meta reklam yönetimi ile işinizi dijitalde büyütüyoruz.</span>
+      <span class="en">As gSoftwares; we grow your business digitally with web development, UI/UX design, social media and Meta ad management.</span>
     </p>
     <div class="hero-btns">
       <a href="#services" class="btn-primary">
@@ -802,29 +868,28 @@
   </div>
 </section>
 
-<!-- MARQUEE -->
 <div class="marquee-wrap">
   <div class="marquee">
-    <span class="marquee-item"><span class="marquee-dot"></span>Web Geliştirme</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>UI/UX Tasarım</span>
+    <span class="marquee-item"><span class="marquee-dot"></span><span class="tr">Web Geliştirme</span><span class="en">Web Development</span></span>
+    <span class="marquee-item"><span class="marquee-dot"></span><span class="tr">UI/UX Tasarım</span><span class="en">UI/UX Design</span></span>
     <span class="marquee-item"><span class="marquee-dot"></span>Meta Ads</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Sosyal Medya</span>
+    <span class="marquee-item"><span class="marquee-dot"></span><span class="tr">Sosyal Medya</span><span class="en">Social Media</span></span>
     <span class="marquee-item"><span class="marquee-dot"></span>Firebase</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>AI Entegrasyonu</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>IT Danışmanlık</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Otomasyon</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Web Geliştirme</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>UI/UX Tasarım</span>
+    <span class="marquee-item"><span class="marquee-dot"></span><span class="tr">AI Entegrasyonu</span><span class="en">AI Integration</span></span>
+    <span class="marquee-item"><span class="marquee-dot"></span><span class="tr">IT Danışmanlık</span><span class="en">IT Consulting</span></span>
+    <span class="marquee-item"><span class="marquee-dot"></span><span class="tr">Otomasyon</span><span class="en">Automation</span></span>
+    
+    <span class="marquee-item"><span class="marquee-dot"></span><span class="tr">Web Geliştirme</span><span class="en">Web Development</span></span>
+    <span class="marquee-item"><span class="marquee-dot"></span><span class="tr">UI/UX Tasarım</span><span class="en">UI/UX Design</span></span>
     <span class="marquee-item"><span class="marquee-dot"></span>Meta Ads</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Sosyal Medya</span>
+    <span class="marquee-item"><span class="marquee-dot"></span><span class="tr">Sosyal Medya</span><span class="en">Social Media</span></span>
     <span class="marquee-item"><span class="marquee-dot"></span>Firebase</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>AI Entegrasyonu</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>IT Danışmanlık</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Otomasyon</span>
+    <span class="marquee-item"><span class="marquee-dot"></span><span class="tr">AI Entegrasyonu</span><span class="en">AI Integration</span></span>
+    <span class="marquee-item"><span class="marquee-dot"></span><span class="tr">IT Danışmanlık</span><span class="en">IT Consulting</span></span>
+    <span class="marquee-item"><span class="marquee-dot"></span><span class="tr">Otomasyon</span><span class="en">Automation</span></span>
   </div>
 </div>
 
-<!-- SERVICES -->
 <section id="services">
   <div class="container">
     <div class="section-header reveal">
@@ -914,7 +979,6 @@
 
 <div class="divider"></div>
 
-<!-- PROJECTS -->
 <section id="projects">
   <div class="container">
     <div class="section-header reveal">
@@ -1006,7 +1070,6 @@
 
 <div class="divider"></div>
 
-<!-- TEAM -->
 <section id="team">
   <div class="container">
     <div class="section-header reveal">
@@ -1027,7 +1090,7 @@
             <div class="team-role en">Software Developer & Co-Founder</div>
           </div>
         </div>
-        <p class="team-bio tr">Web uygulamaları, otomasyon ve AI entegrasyonu konusunda uzman. 30+ modüllü FleetVision 2026 PRO'nun yapımcısı. Karmaşık problemlere sade, ölçeklenebilir çözümler üretir.</p>
+        <p class="team-bio tr">Web uygulamaları, otomasyon og AI entegrasyonu konusunda uzman. 30+ modüllü FleetVision 2026 PRO'nun yapımcısı. Karmaşık problemlere sade, ölçeklenebilir çözümler üretir.</p>
         <p class="team-bio en">Expert in web applications, automation and AI integration. Creator of FleetVision 2026 PRO with 30+ modules. Produces simple, scalable solutions to complex problems.</p>
         <div class="team-skills">
           <span class="skill-tag">JavaScript</span>
@@ -1070,14 +1133,13 @@
 
 <div class="divider"></div>
 
-<!-- CONTACT -->
 <section id="contact" class="contact-section">
   <div class="container">
     <div class="contact-grid">
       <div class="reveal">
         <div class="section-label tr">İletişim</div>
         <div class="section-label en">Contact</div>
-        <h2 class="contact-info" style="font-family:var(--font-display);font-size:36px;font-weight:800;letter-spacing:-1px;margin-bottom:16px;line-height:1.1">
+        <h2 style="font-family:var(--font-display);font-size:36px;font-weight:800;letter-spacing:-1px;margin-bottom:16px;line-height:1.1">
           <span class="tr">Birlikte<br><span style="background:var(--grad1);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Çalışalım</span></span>
           <span class="en">Let's Work<br><span style="background:var(--grad1);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Together</span></span>
         </h2>
@@ -1132,17 +1194,9 @@
           <a href="https://instagram.com" target="_blank" class="social-link" title="Instagram">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
           </a>
-          <a href="https://facebook.com" target="_blank" class="social-link" title="Facebook">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-          </a>
-          <a href="https://twitter.com" target="_blank" class="social-link" title="Twitter / X">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          </a>
-          <a href="https://wa.me/905441994540" target="_blank" class="social-link" title="WhatsApp">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          </a>
         </div>
       </div>
+      
       <div class="reveal reveal-delay1">
         <div class="contact-form-wrap">
           <h3 class="tr">Proje Talebi Gönder</h3>
@@ -1164,7 +1218,7 @@
             </div>
             <div class="form-group">
               <label class="form-label tr">TELEFON</label>
-              <label class="form-label en">PHONE</label>
+                <label class="form-label en">PHONE</label>
               <input type="tel" class="form-input" id="f-phone" placeholder="0XXX XXX XX XX">
             </div>
             <div class="form-group">
@@ -1192,9 +1246,9 @@
             <div class="form-group">
               <label class="form-label tr">MESAJINIZ</label>
               <label class="form-label en">YOUR MESSAGE</label>
-              <textarea class="form-textarea" id="f-message" placeholder="Projenizi anlatın, bütçenizden ve zaman çizelgenizden bahsedin..." required></textarea>
+              <textarea class="form-textarea" id="f-message" placeholder="Projenizi anlatın..." required></textarea>
             </div>
-            <button type="submit" class="form-submit">
+            <button type="submit" class="form-submit" id="submitBtn">
               <span class="tr">Talebi Gönder →</span>
               <span class="en">Send Request →</span>
             </button>
@@ -1209,7 +1263,8 @@
   </div>
 </section>
 
-<!-- FOOTER -->
+<div class="divider"></div>
+
 <footer>
   <div class="footer-inner">
     <div>
@@ -1231,7 +1286,29 @@
 </footer>
 
 <script>
-  // Particles
+  // Mobile Hamburger & Drawer Controls
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+
+  menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('active');
+    navLinks.classList.toggle('active');
+  });
+
+  function closeMobileMenu() {
+    menuToggle.classList.remove('active');
+    navLinks.classList.remove('remove'); // Reset drawer
+    navLinks.classList.remove('active');
+  }
+
+  // Close menu if clicked outside
+  document.addEventListener('click', (e) => {
+    if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+      closeMobileMenu();
+    }
+  });
+
+  // Particles Array Builder
   function createParticles(){
     const container=document.getElementById('particles');
     for(let i=0;i<25;i++){
@@ -1251,13 +1328,13 @@
   }
   createParticles();
 
-  // Cursor glow
+  // Mouse Radial Follower
   document.addEventListener('mousemove',e=>{
     const glow=document.getElementById('cursorGlow');
     if(glow){glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px';}
   });
 
-  // Theme
+  // Dynamic Theme Management
   function toggleTheme(){
     const body=document.body;
     const btn=document.getElementById('themeBtn');
@@ -1265,7 +1342,7 @@
     else{body.dataset.theme='dark';btn.textContent='🌙';}
   }
 
-  // Language
+  // Multi-Language Core Switching Engine
   function toggleLang(){
     const body=document.body;
     const btn=document.getElementById('langBtn');
@@ -1273,7 +1350,7 @@
     else{body.dataset.lang='tr';btn.textContent='EN';}
   }
 
-  // Modals
+  // Modals Framework
   function openModal(id){
     document.getElementById(id).classList.add('open');
     document.body.style.overflow='hidden';
@@ -1294,17 +1371,19 @@
     }
   });
 
-  // Scroll reveal
+  // Native Scroll Reveal Engine
   const observer=new IntersectionObserver(entries=>{
     entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
   },{threshold:0.1});
   document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
-  // Form - EmailJS ile mail gönder
+  // EmailJS API Controller with Multi-language runtime feedback
   function formGonder(e){
     e.preventDefault();
-    const btn=e.target.querySelector('button[type="submit"]');
-    btn.textContent='Gönderiliyor...';
+    const btn=document.getElementById('submitBtn');
+    const currentLang = document.body.dataset.lang;
+    
+    btn.textContent = currentLang === 'tr' ? 'Gönderiliyor...' : 'Sending...';
     btn.disabled=true;
 
     const params={
@@ -1327,21 +1406,26 @@
           form.style.display='block';
           success.style.display='none';
           form.reset();
-          btn.innerHTML='<span class="tr">Talebi Gönder →</span><span class="en">Send Request →</span>';
+          btn.innerHTML= currentLang === 'tr' ? '<span class="tr">Talebi Gönder →</span>' : '<span class="en">Send Request →</span>';
           btn.disabled=false;
         },5000);
       })
       .catch(err=>{
-        console.error('EmailJS hata:',err);
-        btn.innerHTML='<span class="tr">Talebi Gönder →</span><span class="en">Send Request →</span>';
+        console.error('EmailJS hatası:',err);
+        btn.innerHTML= currentLang === 'tr' ? '<span class="tr">Talebi Gönder →</span>' : '<span class="en">Send Request →</span>';
         btn.disabled=false;
-        alert('Mail gönderilemedi. Lütfen doğrudan gokcehamza2934@gmail.com adresine yazın.');
+        
+        if(currentLang === 'tr') {
+            alert('Mail gönderilemedi. Lütfen doğrudan gokcehamza2934@gmail.com adresine yazın.');
+        } else {
+            alert('Failed to send mail. Please write directly to gokcehamza2934@gmail.com.');
+        }
       });
   }
 
-  // Navbar scroll
+  // Navbar Scroll Shadows
   window.addEventListener('scroll',()=>{
-    const nav=document.querySelector('nav');
+    const nav=document.getElementById('navbar');
     nav.style.boxShadow=window.scrollY>50?'0 4px 40px rgba(0,0,0,.4)':'none';
   });
 </script>
