@@ -1,671 +1,1349 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>gSoftwares.dev — Premium Software & UI/UX Studio</title>
-  <meta name="description" content="Hamza Gökçe & Taner Aydoğan — Web geliştirme, tasarım, sosyal medya ve yapay zeka otomasyonları.">
+  <title>gSoftwares.dev — Yazılım & Dijital Çözümler</title>
+  <meta name="description" content="Hamza Gökçe & Taner Aydoğan — Web geliştirme, tasarım, sosyal medya ve yazılım çözümleri.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #030712;
-      --bg2: #0b0f19;
-      --bg3: #111827;
-      --bg4: #1f2937;
-      --border: rgba(255, 255, 255, 0.05);
-      --border2: rgba(255, 255, 255, 0.1);
-      --text: #f3f4f6;
-      --text2: #9ca3af;
-      --text3: #4b5563;
-      --green: #00f2fe;
+      --bg: #050810;
+      --bg2: #0a0f1e;
+      --bg3: #0f1628;
+      --bg4: #141d35;
+      --border: rgba(255,255,255,0.06);
+      --border2: rgba(255,255,255,0.12);
+      --text: #e8edf8;
+      --text2: #7a8499;
+      --text3: #3d4558;
+      --green: #00e5a0;
       --blue: #3b82f6;
-      --purple: #7c3aed;
+      --purple: #8b5cf6;
       --gold: #f59e0b;
       --cyan: #06b6d4;
-      --grad1: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
-      --grad2: linear-gradient(135deg, #7c3aed 0%, #3b82f6 100%);
-      --grad3: linear-gradient(90deg, #00f2fe, #7c3aed, #00f2fe);
-      --font: 'Plus Jakarta Sans', sans-serif;
+      --grad1: linear-gradient(135deg, #00e5a0 0%, #3b82f6 100%);
+      --grad2: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+      --grad3: linear-gradient(135deg, #00e5a0 0%, #06b6d4 50%, #8b5cf6 100%);
+      --font: 'Inter', sans-serif;
       --font-display: 'Space Grotesk', sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
-      --radius: 24px;
-      --radius-sm: 14px;
-      --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      --radius: 18px;
+      --radius-sm: 12px;
+      --glow: 0 0 40px rgba(0,229,160,0.15);
     }
     [data-theme="light"] {
-      --bg: #f8fafc;
+      --bg: #f0f4ff;
       --bg2: #ffffff;
-      --bg3: #f1f5f9;
-      --bg4: #e2e8f0;
-      --border: rgba(15, 23, 42, 0.06);
-      --border2: rgba(15, 23, 42, 0.12);
+      --bg3: #e8eeff;
+      --bg4: #dde5ff;
+      --border: rgba(0,0,0,0.07);
+      --border2: rgba(0,0,0,0.13);
       --text: #0f172a;
-      --text2: #64748b;
+      --text2: #475569;
       --text3: #94a3b8;
     }
-    
-    * { margin: 0; padding: 0; box-sizing: border-box; selection-background: var(--green); }
-    ::selection { background: var(--green); color: #000; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { font-family: var(--font); background: var(--bg); color: var(--text); overflow-x: hidden; transition: background .5s, color .5s; letter-spacing: -0.01em; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); overflow-x: hidden; transition: background .3s, color .3s; }
 
-    /* BG ANIMATED GRID */
-    .grid-lines {
-      position: fixed; inset: 0; z-index: 0; pointer-events: none;
-      background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
-      background-size: 50px 50px;
-      mask-image: radial-gradient(circle at 50% 50%, white, transparent 85%);
-      -webkit-mask-image: radial-gradient(circle at 50% 50%, white, transparent 85%);
-      opacity: 0.7;
+    /* PARTICLES */
+    #particles { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+    .particle {
+      position: absolute; border-radius: 50%;
+      animation: particleFloat linear infinite;
+    }
+    @keyframes particleFloat {
+      0% { transform: translateY(100vh) scale(0); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
     }
 
     /* CURSOR GLOW */
     .cursor-glow {
-      position: fixed; width: 600px; height: 600px;
+      position: fixed; width: 400px; height: 400px;
       border-radius: 50%; pointer-events: none; z-index: 0;
-      background: radial-gradient(circle, rgba(0, 242, 254, 0.03) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(0,229,160,0.04) 0%, transparent 70%);
       transform: translate(-50%, -50%);
-      transition: left 0.15s cubic-bezier(0.1, 1, 0.1, 1), top 0.15s cubic-bezier(0.1, 1, 0.1, 1);
+      transition: left .1s, top .1s;
     }
 
     /* NAVBAR */
     nav {
-      position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 1000;
-      width: calc(100% - 40px); max-width: 1200px; height: 64px; padding: 0 24px;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 0 40px; height: 68px;
       display: flex; align-items: center; justify-content: space-between;
-      background: rgba(11, 15, 25, 0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--border); border-radius: 100px;
-      transition: var(--transition);
+      background: rgba(5,8,16,0.8);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
     }
-    [data-theme="light"] nav { background: rgba(255, 255, 255, 0.75); }
-    nav.scrolled { top: 0; width: 100%; border-radius: 0; border-top: none; border-left: none; border-right: none; background: rgba(3, 7, 18, 0.85); }
+    [data-theme="light"] nav { background: rgba(240,244,255,0.85); }
 
-    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); }
-    .logo-name { font-family: var(--font-display); font-size: 20px; font-weight: 700; letter-spacing: -1px; }
-    .logo-name span { color: var(--green); }
+    /* LOGO */
+    .nav-logo {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: var(--text);
+    }
+    .logo-mark {
+      position: relative; width: 42px; height: 42px;
+    }
+    .logo-mark svg { width: 42px; height: 42px; }
+    .logo-text { display: flex; flex-direction: column; }
+    .logo-name {
+      font-family: var(--font-display);
+      font-size: 18px; font-weight: 800;
+      letter-spacing: -0.5px; line-height: 1;
+    }
+    .logo-name .g { color: var(--green); }
+    .logo-name .s { color: var(--blue); }
+    .logo-domain {
+      font-family: var(--font-mono);
+      font-size: 9px; color: var(--text3);
+      letter-spacing: .1em; margin-top: 2px;
+    }
 
-    .nav-links { display: flex; align-items: center; gap: 8px; list-style: none; }
+    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
     .nav-links a {
-      text-decoration: none; color: var(--text2); font-size: 14px; font-weight: 500;
-      padding: 8px 16px; border-radius: 100px; transition: var(--transition);
+      text-decoration: none; color: var(--text2);
+      font-size: 13px; font-weight: 500;
+      padding: 7px 16px; border-radius: 10px;
+      transition: all .2s;
     }
-    .nav-links a:hover { color: var(--text); background: var(--border); }
+    .nav-links a:hover { color: var(--text); background: var(--bg3); }
 
-    .nav-actions { display: flex; align-items: center; gap: 8px; }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
     .lang-btn, .theme-btn {
-      background: transparent; border: 1px solid var(--border); width: 40px; height: 40px;
-      border-radius: 50%; cursor: pointer; color: var(--text2); display: flex; align-items: center; justify-content: center; font-size: 14px; transition: var(--transition);
+      background: var(--bg3); border: 1px solid var(--border2);
+      border-radius: 10px; cursor: pointer;
+      font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+      color: var(--text2); padding: 7px 12px; transition: all .2s;
     }
-    .lang-btn { font-family: var(--font-mono); font-size: 11px; font-weight: 600; }
-    .lang-btn:hover, .theme-btn:hover { color: var(--text); border-color: var(--text2); background: var(--border); }
-    
+    .theme-btn { width: 38px; height: 38px; padding: 0; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .lang-btn:hover, .theme-btn:hover { color: var(--text); border-color: var(--green); }
     .nav-cta {
-      background: var(--text); color: var(--bg); font-size: 13px; font-weight: 600; padding: 10px 20px;
-      border-radius: 100px; cursor: pointer; transition: var(--transition); text-decoration: none;
+      background: var(--grad1); border: none; color: #000;
+      font-size: 13px; font-weight: 800; padding: 9px 20px;
+      border-radius: 10px; cursor: pointer; transition: opacity .2s, transform .2s;
+      text-decoration: none; letter-spacing: -.2px;
     }
-    .nav-cta:hover { background: var(--green); transform: translateY(-1px); box-shadow: 0 10px 25px rgba(0, 242, 254, 0.2); }
-
-    /* HAMBURGER */
-    .menu-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; z-index: 1001; }
-    .menu-toggle span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: var(--transition); }
-    .menu-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .menu-toggle.active span:nth-child(2) { opacity: 0; }
-    .menu-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-cta:hover { opacity: .85; transform: translateY(-1px); }
 
     /* HERO */
-    .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 140px 20px 80px; position: relative; }
-    .hero-content { max-width: 1000px; text-align: center; z-index: 2; }
-    
-    .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--bg2); border: 1px solid var(--border2); padding: 6px 16px; border-radius: 100px; margin-bottom: 24px;
+    .hero {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden; padding: 100px 40px 80px;
     }
-    .hero-eyebrow-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); position: relative; }
-    .hero-eyebrow-dot::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
-    @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(3); opacity: 0; } }
-    .hero-eyebrow span { font-size: 12px; font-weight: 600; font-family: var(--font-mono); color: var(--text2); text-transform: uppercase; letter-spacing: 0.05em; }
+    .hero-bg-grid {
+      position: absolute; inset: 0; z-index: 1;
+      background-image:
+        linear-gradient(rgba(0,229,160,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,229,160,0.03) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+    }
+    .hero-glow1 {
+      position: absolute; width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,229,160,0.12) 0%, transparent 70%);
+      top: 20%; left: 10%; z-index: 1; animation: glowPulse 4s ease-in-out infinite;
+    }
+    .hero-glow2 {
+      position: absolute; width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 70%);
+      bottom: 10%; right: 10%; z-index: 1; animation: glowPulse 4s ease-in-out infinite reverse;
+    }
+    @keyframes glowPulse { 0%,100%{opacity:.6;transform:scale(1)} 50%{opacity:1;transform:scale(1.1)} }
+
+    .hero-content { position: relative; z-index: 2; max-width: 900px; text-align: center; }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(0,229,160,0.08); border: 1px solid rgba(0,229,160,0.2);
+      padding: 8px 20px; border-radius: 100px; margin-bottom: 32px;
+      animation: fadeDown .6s ease;
+    }
+    .hero-eyebrow-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+    .hero-eyebrow span { font-size: 12px; font-weight: 600; color: var(--green); font-family: var(--font-mono); }
+    @keyframes pulse { 0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(0,229,160,.4)} 50%{opacity:.5;box-shadow:0 0 0 6px rgba(0,229,160,0)} }
 
     .hero-title {
-      font-family: var(--font-display); font-size: clamp(48px, 7vw, 96px); font-weight: 700; line-height: 0.95; letter-spacing: -0.04em; margin-bottom: 32px; color: var(--text);
+      font-family: var(--font-display);
+      font-size: clamp(44px, 8vw, 88px);
+      font-weight: 800; line-height: 1.02;
+      letter-spacing: -3px; margin-bottom: 28px;
+      animation: fadeUp .7s ease;
     }
-    .hero-title span.grad-text {
-      background: var(--grad3); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-      animation: shine 4s linear infinite;
+    .hero-title .line1 { display: block; }
+    .hero-title .grad-text {
+      background: var(--grad3);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
-    @keyframes shine { to { background-position: 200% center; } }
 
-    .hero-sub { font-size: 18px; color: var(--text2); line-height: 1.6; max-width: 640px; margin: 0 auto 48px; font-weight: 400; }
-    .hero-btns { display: flex; gap: 16px; justify-content: center; }
+    .hero-sub {
+      font-size: 18px; color: var(--text2); line-height: 1.75;
+      max-width: 600px; margin: 0 auto 44px;
+      animation: fadeUp .8s ease;
+    }
 
-    /* BENTO BARS & CARDS */
-    .bento-container { max-width: 1200px; margin: 60px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 0 20px; }
-    .bento-item { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; display: flex; flex-direction: column; justify-content: center; transition: var(--transition); }
-    .bento-item:hover { border-color: var(--border2); background: var(--bg3); transform: translateY(-2px); }
-    .bento-item.large { grid-column: span 2; display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 40px; }
-    .bento-stat { font-family: var(--font-display); font-size: 54px; font-weight: 700; color: var(--green); line-height: 1; margin-bottom: 8px; }
-    .bento-label { font-size: 12px; font-family: var(--font-mono); color: var(--text3); font-weight: 600; letter-spacing: 0.05em; }
-    .bento-text h3 { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
-    .bento-text p { font-size: 14px; color: var(--text2); line-height: 1.5; }
+    .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; animation: fadeUp .9s ease; }
+    .btn-primary {
+      background: var(--grad1); color: #000; border: none;
+      padding: 15px 32px; border-radius: var(--radius-sm);
+      font-weight: 800; font-size: 14px; cursor: pointer;
+      transition: all .2s; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      box-shadow: 0 8px 32px rgba(0,229,160,0.25);
+      letter-spacing: -.2px;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,229,160,0.35); }
+    .btn-secondary {
+      background: var(--bg3); color: var(--text); border: 1px solid var(--border2);
+      padding: 15px 32px; border-radius: var(--radius-sm);
+      font-weight: 600; font-size: 14px; cursor: pointer;
+      transition: all .2s; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-secondary:hover { border-color: var(--green); color: var(--green); transform: translateY(-2px); }
+
+    /* STATS BAR */
+    .stats-bar {
+      position: relative; z-index: 2;
+      display: flex; gap: 0; justify-content: center;
+      margin-top: 72px; flex-wrap: wrap;
+      background: var(--bg2); border: 1px solid var(--border2);
+      border-radius: var(--radius); padding: 28px 40px;
+      max-width: 700px; margin: 72px auto 0;
+      animation: fadeUp 1s ease;
+    }
+    .stat-item { flex: 1; min-width: 120px; text-align: center; padding: 0 20px; }
+    .stat-item + .stat-item { border-left: 1px solid var(--border); }
+    .stat-num {
+      font-family: var(--font-display); font-size: 36px; font-weight: 800;
+      background: var(--grad1); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; line-height: 1;
+    }
+    .stat-label { font-size: 11px; color: var(--text3); font-family: var(--font-mono); margin-top: 6px; }
 
     /* MARQUEE */
-    .marquee-wrap { overflow: hidden; padding: 30px 0; background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin: 60px 0; }
-    .marquee { display: flex; gap: 60px; animation: marqueeScroll 25s linear infinite; white-space: nowrap; width: max-content; }
-    .marquee-item { font-size: 14px; font-weight: 600; color: var(--text2); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em; display: flex; align-items: center; gap: 12px; }
-    .marquee-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--purple); }
-    @keyframes marqueeScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .marquee-wrap { overflow: hidden; padding: 40px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); position: relative; z-index: 2; }
+    .marquee { display: flex; gap: 40px; animation: marqueeScroll 20s linear infinite; white-space: nowrap; }
+    .marquee-item { font-size: 13px; font-weight: 600; color: var(--text3); font-family: var(--font-mono); display: flex; align-items: center; gap: 12px; }
+    .marquee-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--green); }
+    @keyframes marqueeScroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
     /* SECTIONS */
-    section { padding: 140px 20px; position: relative; max-width: 1240px; margin: 0 auto; }
-    .section-label { font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--purple); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; display: block; }
-    .section-title { font-family: var(--font-display); font-size: clamp(32px, 5vw, 56px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 24px; }
-    .section-sub { font-size: 16px; color: var(--text2); max-width: 600px; line-height: 1.6; margin-bottom: 60px; }
-
-    /* SERVICES GRID (NEO GLASSMORPHISM) */
-    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .service-card {
-      background: rgba(11, 15, 25, 0.4); border: 1px solid var(--border); border-radius: var(--radius); padding: 40px;
-      transition: var(--transition); cursor: pointer; position: relative; display: flex; flex-direction: column;
+    section { padding: 110px 40px; position: relative; z-index: 2; }
+    .container { max-width: 1140px; margin: 0 auto; }
+    .section-header { margin-bottom: 64px; }
+    .section-label {
+      font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+      color: var(--green); letter-spacing: .2em; text-transform: uppercase; margin-bottom: 16px;
+      display: flex; align-items: center; gap: 10px;
     }
-    .service-card:hover { background: var(--bg2); border-color: rgba(0, 242, 254, 0.2); transform: translateY(-4px); box-shadow: 0 30px 60px rgba(0,0,0,0.4); }
-    .service-icon { font-size: 32px; margin-bottom: 28px; width: 64px; height: 64px; background: var(--bg3); border-radius: 16px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border); }
-    .service-card h3 { font-family: var(--font-display); font-size: 22px; font-weight: 600; margin-bottom: 12px; }
-    .service-card p { font-size: 15px; color: var(--text2); line-height: 1.6; margin-bottom: 32px; flex-grow: 1; }
-    .service-arrow { font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--green); display: flex; align-items: center; gap: 6px; transition: var(--transition); }
-    .service-card:hover .service-arrow { gap: 12px; }
-    .service-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+    .section-label::before { content: '//'; opacity: .5; }
+    .section-title {
+      font-family: var(--font-display); font-size: clamp(30px, 4vw, 48px);
+      font-weight: 800; letter-spacing: -1.5px; line-height: 1.08; margin-bottom: 18px;
+    }
+    .section-sub { font-size: 16px; color: var(--text2); max-width: 560px; line-height: 1.8; }
 
-    /* PROJECTS PREMIUM BENTO BLOCK */
-    .projects-bento { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; }
-    .project-bento-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; transition: var(--transition); }
-    .project-bento-card:hover { border-color: rgba(59, 130, 246, 0.3); transform: translateY(-4px); }
-    .project-bento-card.featured { grid-column: span 7; }
-    .project-bento-card.regular { grid-column: span 5; }
-    
-    .project-display { height: 260px; background: #070b12; display: flex; align-items: center; justify-content: center; position: relative; border-bottom: 1px solid var(--border); padding: 30px; overflow: hidden; }
-    .project-display-glow { position: absolute; width: 300px; height: 300px; background: radial-gradient(circle, rgba(0,242,254,0.08), transparent 70%); top: -50px; right: -50px; }
-    
-    .window-mockup { width: 100%; height: 100%; background: var(--bg); border: 1px solid var(--border2); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
-    .window-header { display: flex; gap: 6px; }
-    .window-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border2); }
-    .window-dot.red { background: #ef4444; } .window-dot.yellow { background: #f59e0b; } .window-dot.green { background: #10b981; }
-    .window-line { height: 8px; background: var(--bg2); border-radius: 4px; width: 50%; }
-    .window-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; height: 100%; }
-    .window-box { background: var(--bg2); border-radius: 6px; border: 1px solid var(--border); }
+    /* SERVICES */
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    @media(max-width:900px) { .services-grid { grid-template-columns: repeat(2,1fr); } }
+    @media(max-width:600px) { .services-grid { grid-template-columns: 1fr; } }
 
-    .project-info-block { padding: 40px; display: flex; flex-direction: column; flex-grow: 1; }
-    .project-info-block h3 { font-family: var(--font-display); font-size: 26px; font-weight: 700; margin-bottom: 12px; }
-    .project-info-block p { font-size: 15px; color: var(--text2); line-height: 1.6; margin-bottom: 32px; }
-    .project-meta { display: flex; justify-content: space-between; align-items: center; margin-top: auto; border-top: 1px solid var(--border); padding-top: 24px; }
+    .service-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 32px;
+      transition: all .3s; cursor: pointer; position: relative; overflow: hidden;
+    }
+    .service-card::after {
+      content: ''; position: absolute; inset: 0; opacity: 0;
+      transition: opacity .3s; border-radius: var(--radius);
+      background: radial-gradient(circle at top left, rgba(0,229,160,0.06), transparent 60%);
+    }
+    .service-card:hover { border-color: rgba(0,229,160,0.3); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,.3); }
+    .service-card:hover::after { opacity: 1; }
 
-    /* TEAM GRID DESIGN */
-    .team-deck { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-    .profile-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 48px; position: relative; overflow: hidden; transition: var(--transition); }
-    .profile-card:hover { border-color: var(--border2); transform: translateY(-4px); }
-    .profile-header { display: flex; align-items: center; gap: 24px; margin-bottom: 28px; }
-    .profile-avatar { width: 80px; height: 80px; border-radius: 24px; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 28px; font-weight: 700; border: 1px solid var(--border2); }
-    .profile-avatar.hamza { background: linear-gradient(135deg, rgba(0,242,254,0.1), rgba(59,130,246,0.1)); color: var(--green); }
-    .profile-avatar.taner { background: linear-gradient(135deg, rgba(124,58,237,0.1), rgba(59,130,246,0.1)); color: var(--purple); }
-    .profile-title h3 { font-family: var(--font-display); font-size: 24px; font-weight: 700; margin-bottom: 4px; }
-    .profile-role { font-family: var(--font-mono); font-size: 12px; color: var(--green); font-weight: 600; }
-    .profile-card.taner-card .profile-role { color: var(--purple); }
-    .profile-bio { font-size: 15px; color: var(--text2); line-height: 1.65; margin-bottom: 32px; }
+    .service-icon-wrap {
+      width: 52px; height: 52px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; margin-bottom: 20px; position: relative; z-index: 1;
+    }
+    .service-card h3 {
+      font-family: var(--font-display); font-size: 18px; font-weight: 700;
+      margin-bottom: 12px; position: relative; z-index: 1;
+    }
+    .service-card p { font-size: 14px; color: var(--text2); line-height: 1.75; position: relative; z-index: 1; margin-bottom: 20px; }
+    .service-arrow {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 700; color: var(--green);
+      font-family: var(--font-mono); transition: gap .2s; position: relative; z-index: 1;
+    }
+    .service-card:hover .service-arrow { gap: 10px; }
+    .service-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; position: relative; z-index: 1; }
+    .stag {
+      font-size: 10px; font-family: var(--font-mono); font-weight: 600;
+      padding: 3px 10px; border-radius: 100px;
+      background: var(--bg3); border: 1px solid var(--border); color: var(--text3);
+    }
 
-    /* CONTACT PREMIUM WRAP */
-    .contact-wrapper { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 60px; }
-    .contact-form-premium { display: flex; flex-direction: column; gap: 20px; }
-
-    /* PREMIUM MODALS FRAMEWORK */
+    /* SERVICE MODAL */
     .svc-modal-overlay {
       display: none; position: fixed; inset: 0; z-index: 9999;
-      background: rgba(3, 7, 18, 0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      align-items: center; justify-content: center; padding: 20px;
+      background: rgba(0,0,0,.8); backdrop-filter: blur(8px);
+      align-items: center; justify-content: center; padding: 24px;
     }
     .svc-modal-overlay.open { display: flex; }
     .svc-modal {
-      background: var(--bg2); border: 1px solid var(--border2); border-radius: var(--radius);
-      max-width: 640px; width: 100%; max-height: 85vh; overflow-y: auto; padding: 40px;
+      background: var(--bg2); border: 1px solid var(--border2);
+      border-radius: var(--radius); max-width: 680px; width: 100%;
+      max-height: 85vh; overflow-y: auto;
+      animation: modalIn .3s ease;
+    }
+    @keyframes modalIn { from{opacity:0;transform:scale(.95)} to{opacity:1;transform:scale(1)} }
+    .svc-modal-header {
+      padding: 32px 32px 0;
+      display: flex; justify-content: space-between; align-items: flex-start;
+    }
+    .svc-modal-close {
+      background: var(--bg3); border: 1px solid var(--border);
+      width: 36px; height: 36px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 18px; color: var(--text2);
+      flex-shrink: 0; transition: all .2s;
+    }
+    .svc-modal-close:hover { color: var(--text); border-color: var(--border2); }
+    .svc-modal-body { padding: 24px 32px 32px; }
+    .svc-modal-body h2 { font-family: var(--font-display); font-size: 26px; font-weight: 800; margin-bottom: 16px; }
+    .svc-modal-body p { font-size: 15px; color: var(--text2); line-height: 1.8; margin-bottom: 20px; }
+    .svc-feature-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 24px; }
+    .svc-feature-list li {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13px; color: var(--text2);
+      background: var(--bg3); padding: 10px 14px; border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+    .svc-feature-list li::before { content: '✓'; color: var(--green); font-weight: 800; flex-shrink: 0; }
+    .svc-process { margin-bottom: 24px; }
+    .svc-process h4 { font-size: 13px; font-weight: 700; color: var(--text3); font-family: var(--font-mono); letter-spacing: .1em; margin-bottom: 14px; }
+    .svc-process-step {
+      display: flex; gap: 16px; align-items: flex-start; margin-bottom: 12px;
+    }
+    .svc-step-num {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--grad1); color: #000;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 800; flex-shrink: 0;
+      font-family: var(--font-mono);
+    }
+    .svc-step-text { font-size: 13px; color: var(--text2); line-height: 1.6; padding-top: 4px; }
+
+    /* PROJECTS */
+    .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    @media(max-width:700px) { .projects-grid { grid-template-columns: 1fr; } }
+
+    .project-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+      transition: all .3s;
+    }
+    .project-card:hover { border-color: rgba(59,130,246,0.35); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,.3); }
+    .project-mockup {
+      height: 220px; position: relative; overflow: hidden;
+      background: var(--bg3);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .project-mockup-inner {
+      width: 85%; background: var(--bg4); border-radius: 10px;
+      border: 1px solid var(--border2); padding: 14px;
+      font-family: var(--font-mono); font-size: 9px; color: var(--text3);
+    }
+    .mock-bar { height: 6px; border-radius: 3px; margin-bottom: 8px; }
+    .mock-row { display: flex; gap: 6px; margin-bottom: 6px; }
+    .mock-col { height: 4px; border-radius: 2px; flex: 1; }
+    .project-body { padding: 24px; }
+    .project-body h3 { font-family: var(--font-display); font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+    .project-body p { font-size: 14px; color: var(--text2); line-height: 1.7; margin-bottom: 16px; }
+    .project-tech { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+    .tech-tag { font-size: 10px; font-family: var(--font-mono); padding: 3px 10px; border-radius: 100px; background: var(--bg3); border: 1px solid var(--border); color: var(--text3); }
+    .project-footer { display: flex; justify-content: space-between; align-items: center; }
+    .project-status-badge { font-size: 10px; font-family: var(--font-mono); font-weight: 700; padding: 4px 12px; border-radius: 100px; }
+    .status-live { background: rgba(0,229,160,.12); color: var(--green); border: 1px solid rgba(0,229,160,.25); }
+    .status-dev { background: rgba(245,158,11,.12); color: var(--gold); border: 1px solid rgba(245,158,11,.25); }
+    .project-link { font-size: 13px; font-weight: 700; color: var(--blue); text-decoration: none; transition: color .2s; }
+    .project-link:hover { color: var(--cyan); }
+
+    /* TEAM */
+    .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    @media(max-width:700px) { .team-grid { grid-template-columns: 1fr; } }
+
+    .team-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 36px; position: relative; overflow: hidden;
+      transition: all .3s;
+    }
+    .team-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    }
+    .team-card.hamza::before { background: var(--grad1); }
+    .team-card.taner::before { background: var(--grad2); }
+    .team-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,.3); }
+    .team-card.hamza:hover { border-color: rgba(0,229,160,.3); }
+    .team-card.taner:hover { border-color: rgba(139,92,246,.3); }
+
+    .team-avatar-wrap { display: flex; align-items: center; gap: 18px; margin-bottom: 20px; }
+    .team-avatar {
+      width: 68px; height: 68px; border-radius: 20px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; font-weight: 900; font-family: var(--font-display);
+      flex-shrink: 0;
+    }
+    .team-avatar.hg { background: linear-gradient(135deg, rgba(0,229,160,.2), rgba(59,130,246,.2)); color: var(--green); border: 1px solid rgba(0,229,160,.3); }
+    .team-avatar.ta { background: linear-gradient(135deg, rgba(139,92,246,.2), rgba(59,130,246,.2)); color: var(--purple); border: 1px solid rgba(139,92,246,.3); }
+    .team-info h3 { font-family: var(--font-display); font-size: 20px; font-weight: 800; margin-bottom: 4px; }
+    .team-role { font-size: 12px; font-family: var(--font-mono); font-weight: 600; color: var(--green); letter-spacing: .05em; }
+    .team-card.taner .team-role { color: var(--purple); }
+    .team-bio { font-size: 14px; color: var(--text2); line-height: 1.75; margin-bottom: 20px; }
+    .team-skills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+    .skill-tag { font-size: 10px; font-family: var(--font-mono); font-weight: 600; padding: 4px 12px; border-radius: 100px; background: var(--bg3); border: 1px solid var(--border); color: var(--text2); }
+    .team-contact {
+      display: flex; align-items: center; gap: 10px;
+      padding: 12px 16px; background: var(--bg3); border-radius: 12px;
+      border: 1px solid var(--border); font-size: 13px; color: var(--text2);
+    }
+    .team-contact a { color: var(--green); text-decoration: none; font-weight: 700; font-family: var(--font-mono); }
+
+    /* CONTACT */
+    .contact-section { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 80px; align-items: start; }
+    @media(max-width:800px) { .contact-grid { grid-template-columns: 1fr; gap: 48px; } }
+
+    .contact-info h2 { font-family: var(--font-display); font-size: 36px; font-weight: 800; letter-spacing: -1px; margin-bottom: 16px; }
+    .contact-info p { font-size: 15px; color: var(--text2); line-height: 1.8; margin-bottom: 36px; }
+    .contact-channels { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .contact-channel {
+      display: flex; align-items: center; gap: 16px;
+      padding: 16px 20px; border-bottom: 1px solid var(--border);
+      transition: background .2s;
+    }
+    .contact-channel:last-child { border-bottom: none; }
+    .contact-channel:hover { background: var(--bg3); }
+    .contact-channel-icon { width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .contact-channel-info { flex: 1; }
+    .contact-channel-label { font-size: 10px; font-family: var(--font-mono); font-weight: 700; color: var(--text3); letter-spacing: .1em; margin-bottom: 2px; }
+    .contact-channel-value { font-size: 14px; font-weight: 600; }
+    .contact-channel-value a { color: var(--text); text-decoration: none; transition: color .2s; }
+    .contact-channel-value a:hover { color: var(--green); }
+
+    /* SOCIAL LINKS */
+    .social-links { display: flex; gap: 10px; margin-top: 28px; flex-wrap: wrap; }
+    .social-link {
+      width: 42px; height: 42px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--bg3); border: 1px solid var(--border);
+      font-size: 18px; text-decoration: none; transition: all .2s;
+      color: var(--text2);
+    }
+    .social-link:hover { border-color: var(--green); color: var(--green); transform: translateY(-2px); }
+
+    /* CONTACT FORM */
+    .contact-form-wrap { background: var(--bg3); border-radius: var(--radius); padding: 36px; border: 1px solid var(--border); }
+    .contact-form-wrap h3 { font-family: var(--font-display); font-size: 22px; font-weight: 800; margin-bottom: 6px; }
+    .contact-form-wrap .sub { font-size: 13px; color: var(--text2); margin-bottom: 28px; }
+    .form-group { margin-bottom: 16px; }
+    .form-label { display: block; font-size: 11px; font-weight: 700; font-family: var(--font-mono); color: var(--text3); letter-spacing: .1em; margin-bottom: 6px; }
+    .form-input, .form-textarea, .form-select {
+      width: 100%; background: var(--bg2); border: 1px solid var(--border2);
+      border-radius: 12px; padding: 12px 16px;
+      color: var(--text); font-size: 14px; font-family: var(--font);
+      transition: border-color .2s, box-shadow .2s; outline: none;
+    }
+    .form-input:focus, .form-textarea:focus, .form-select:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(0,229,160,0.1);
+    }
+    .form-textarea { height: 120px; resize: vertical; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media(max-width:500px) { .form-row { grid-template-columns: 1fr; } }
+    .form-submit {
+      width: 100%; background: var(--grad1); color: #000;
+      border: none; padding: 14px; border-radius: 12px;
+      font-weight: 800; font-size: 14px; cursor: pointer;
+      transition: all .2s; box-shadow: 0 8px 24px rgba(0,229,160,0.2);
+    }
+    .form-submit:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,229,160,0.3); }
+    .form-success {
+      display: none; text-align: center; padding: 24px;
+      color: var(--green); font-weight: 700; font-size: 16px;
     }
 
-    /* FOOTER & LEGAL */
-    footer { border-top: 1px solid var(--border); background: #02050c; padding: 80px 20px 40px; position: relative; z-index: 2; }
-    .footer-container { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 48px; }
-    .footer-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 32px; }
-    .footer-bottom { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 32px; flex-wrap: wrap; gap: 20px; }
-    .legal-links { display: flex; gap: 24px; }
-    .legal-links a { font-size: 13px; color: var(--text3); text-decoration: none; transition: var(--transition); cursor: pointer; }
-    .legal-links a:hover { color: var(--text2); }
+    /* FOOTER */
+    footer { padding: 40px; border-top: 1px solid var(--border); position: relative; z-index: 2; }
+    .footer-inner { max-width: 1140px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-copy { font-size: 13px; color: var(--text3); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 13px; color: var(--text3); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--green); }
 
-    /* RESPONSIVE DESIGN */
-    @media(max-width:1024px) {
-      .services-grid { grid-template-columns: repeat(2, 1fr); }
-      .projects-bento { grid-template-columns: 1fr; }
-      .project-bento-card.featured, .project-bento-card.regular { grid-column: span 12; }
-    }
+    /* DIVIDER */
+    .divider { height: 1px; background: var(--border); max-width: 1140px; margin: 0 auto; }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes fadeDown { from{opacity:0;transform:translateY(-14px)} to{opacity:1;transform:translateY(0)} }
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay1 { transition-delay: .1s; }
+    .reveal-delay2 { transition-delay: .2s; }
+    .reveal-delay3 { transition-delay: .3s; }
+
+    /* MOBILE NAV */
     @media(max-width:768px) {
-      nav { width: calc(100% - 24px); }
-      .nav-links {
-        position: fixed; top: 84px; right: -100%; width: 280px; height: calc(100vh - 100px);
-        background: rgba(11, 15, 25, 0.98); border-radius: var(--radius); padding: 40px 24px;
-        flex-direction: column; align-items: flex-start; gap: 20px; transition: var(--transition); border: 1px solid var(--border);
-      }
-      .nav-links.active { right: 12px; }
-      .menu-toggle { display: flex; }
-      .bento-container { grid-template-columns: 1fr; }
-      .bento-item.large { grid-column: span 1; flex-direction: column; align-items: flex-start; }
-      .services-grid, .team-deck, .contact-wrapper { grid-template-columns: 1fr; }
-      .contact-wrapper { padding: 32px; }
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      section { padding: 80px 20px; }
     }
+
+    /* TR/EN */
+    .en { display: none; }
+    [data-lang="en"] .tr { display: none; }
+    [data-lang="en"] .en { display: block; }
+    span.en { display: none; }
+    [data-lang="en"] span.tr { display: none; }
+    [data-lang="en"] span.en { display: inline; }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>emailjs.init("Seg3jenh_LMiacX_z");</script>
 </head>
 <body data-theme="dark" data-lang="tr">
 
-<div class="grid-lines"></div>
+<!-- CURSOR GLOW -->
 <div class="cursor-glow" id="cursorGlow"></div>
 
-<nav id="navbar">
+<!-- PARTICLES -->
+<div id="particles"></div>
+
+<!-- SERVICE MODALS -->
+<div class="svc-modal-overlay" id="modal-web">
+  <div class="svc-modal">
+    <div class="svc-modal-header">
+      <div style="display:flex;align-items:center;gap:14px">
+        <div style="width:52px;height:52px;border-radius:14px;background:rgba(0,229,160,.12);display:flex;align-items:center;justify-content:center;font-size:24px">💻</div>
+        <div>
+          <div style="font-size:11px;color:var(--text3);font-family:var(--font-mono);font-weight:700;letter-spacing:.1em;margin-bottom:4px">HİZMET DETAYI</div>
+          <div style="font-family:var(--font-display);font-size:20px;font-weight:800">Web Geliştirme</div>
+        </div>
+      </div>
+      <button class="svc-modal-close" onclick="closeModal('modal-web')">✕</button>
+    </div>
+    <div class="svc-modal-body">
+      <p class="tr">Modern, hızlı ve ölçeklenebilir web uygulamaları geliştiriyoruz. Firebase ile gerçek zamanlı veri, Cloudinary ile medya yönetimi ve tam mobil uyumlu tasarım. FleetVision 2026 PRO bunun en iyi örneği — 30+ modül, tek HTML dosyası.</p>
+      <p class="en">We build modern, fast and scalable web applications. Real-time data with Firebase, media management with Cloudinary, and fully responsive design. FleetVision 2026 PRO is the best example — 30+ modules, single HTML file.</p>
+      <ul class="svc-feature-list">
+        <li class="tr">Gerçek zamanlı veritabanı</li><li class="en">Real-time database</li>
+        <li class="tr">Mobil uyumlu tasarım</li><li class="en">Mobile-responsive design</li>
+        <li class="tr">Firebase entegrasyonu</li><li class="en">Firebase integration</li>
+        <li class="tr">Dosya & medya yönetimi</li><li class="en">File & media management</li>
+        <li class="tr">Kullanıcı yönetimi</li><li class="en">User management</li>
+        <li class="tr">Excel/PDF export</li><li class="en">Excel/PDF export</li>
+        <li class="tr">Özel panel & raporlar</li><li class="en">Custom dashboard & reports</li>
+        <li class="tr">API entegrasyonu</li><li class="en">API integration</li>
+      </ul>
+      <div class="svc-process">
+        <h4 class="tr">ÇALIŞMA SÜRECİMİZ</h4>
+        <h4 class="en">OUR PROCESS</h4>
+        <div class="svc-process-step"><div class="svc-step-num">01</div><div class="svc-step-text tr">Keşif toplantısı — ihtiyaçlarınızı ve hedeflerinizi anlıyoruz</div><div class="svc-step-text en">Discovery meeting — understanding your needs and goals</div></div>
+        <div class="svc-process-step"><div class="svc-step-num">02</div><div class="svc-step-text tr">Prototip & tasarım — görsel wireframe ve UI tasarımı</div><div class="svc-step-text en">Prototype & design — visual wireframe and UI design</div></div>
+        <div class="svc-process-step"><div class="svc-step-num">03</div><div class="svc-step-text tr">Geliştirme — iteratif, şeffaf süreç</div><div class="svc-step-text en">Development — iterative, transparent process</div></div>
+        <div class="svc-process-step"><div class="svc-step-num">04</div><div class="svc-step-text tr">Test & teslim — kapsamlı test, eğitim ve destek</div><div class="svc-step-text en">Test & delivery — comprehensive testing, training and support</div></div>
+      </div>
+      <a href="#contact" class="btn-primary" onclick="closeModal('modal-web')" style="display:inline-flex">
+        <span class="tr">Proje Başlat →</span><span class="en">Start Project →</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="svc-modal-overlay" id="modal-design">
+  <div class="svc-modal">
+    <div class="svc-modal-header">
+      <div style="display:flex;align-items:center;gap:14px">
+        <div style="width:52px;height:52px;border-radius:14px;background:rgba(59,130,246,.12);display:flex;align-items:center;justify-content:center;font-size:24px">🎨</div>
+        <div>
+          <div style="font-size:11px;color:var(--text3);font-family:var(--font-mono);font-weight:700;letter-spacing:.1em;margin-bottom:4px">HİZMET DETAYI</div>
+          <div style="font-family:var(--font-display);font-size:20px;font-weight:800">Web Tasarım & UI/UX</div>
+        </div>
+      </div>
+      <button class="svc-modal-close" onclick="closeModal('modal-design')">✕</button>
+    </div>
+    <div class="svc-modal-body">
+      <p class="tr">Kullanıcı deneyimini ön planda tutan, markanıza özgü profesyonel web tasarımı. Figma'dan koda, piksel mükemmelliğinde çıktılar üretiyoruz.</p>
+      <p class="en">Professional web design tailored to your brand with user experience at the forefront. From Figma to code, pixel-perfect outputs.</p>
+      <ul class="svc-feature-list">
+        <li class="tr">Figma prototip tasarımı</li><li class="en">Figma prototype design</li>
+        <li class="tr">Marka kimliği & logo</li><li class="en">Brand identity & logo</li>
+        <li class="tr">Landing page tasarımı</li><li class="en">Landing page design</li>
+        <li class="tr">E-ticaret UI/UX</li><li class="en">E-commerce UI/UX</li>
+        <li class="tr">Animasyon & micro-interaction</li><li class="en">Animation & micro-interaction</li>
+        <li class="tr">Dark/Light tema</li><li class="en">Dark/Light theme</li>
+      </ul>
+      <a href="#contact" class="btn-primary" onclick="closeModal('modal-design')" style="display:inline-flex">
+        <span class="tr">Teklif Al →</span><span class="en">Get Quote →</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="svc-modal-overlay" id="modal-social">
+  <div class="svc-modal">
+    <div class="svc-modal-header">
+      <div style="display:flex;align-items:center;gap:14px">
+        <div style="width:52px;height:52px;border-radius:14px;background:rgba(139,92,246,.12);display:flex;align-items:center;justify-content:center;font-size:24px">📱</div>
+        <div>
+          <div style="font-size:11px;color:var(--text3);font-family:var(--font-mono);font-weight:700;letter-spacing:.1em;margin-bottom:4px">HİZMET DETAYI</div>
+          <div style="font-family:var(--font-display);font-size:20px;font-weight:800">Sosyal Medya Yönetimi</div>
+        </div>
+      </div>
+      <button class="svc-modal-close" onclick="closeModal('modal-social')">✕</button>
+    </div>
+    <div class="svc-modal-body">
+      <p class="tr">Instagram, Facebook ve LinkedIn için strateji odaklı içerik üretimi ve hesap yönetimi. Organik büyüme, etkileşim artışı ve marka bilinirliği.</p>
+      <p class="en">Strategy-focused content creation and account management for Instagram, Facebook and LinkedIn. Organic growth, engagement increase and brand awareness.</p>
+      <ul class="svc-feature-list">
+        <li class="tr">Aylık içerik planı</li><li class="en">Monthly content plan</li>
+        <li class="tr">Görsel & video üretimi</li><li class="en">Visual & video production</li>
+        <li class="tr">Hashtag stratejisi</li><li class="en">Hashtag strategy</li>
+        <li class="tr">Topluluk yönetimi</li><li class="en">Community management</li>
+        <li class="tr">Analitik raporlama</li><li class="en">Analytics reporting</li>
+        <li class="tr">Influencer iş birlikleri</li><li class="en">Influencer partnerships</li>
+      </ul>
+      <a href="#contact" class="btn-primary" onclick="closeModal('modal-social')" style="display:inline-flex">
+        <span class="tr">Teklif Al →</span><span class="en">Get Quote →</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="svc-modal-overlay" id="modal-ads">
+  <div class="svc-modal">
+    <div class="svc-modal-header">
+      <div style="display:flex;align-items:center;gap:14px">
+        <div style="width:52px;height:52px;border-radius:14px;background:rgba(245,158,11,.12);display:flex;align-items:center;justify-content:center;font-size:24px">📊</div>
+        <div>
+          <div style="font-size:11px;color:var(--text3);font-family:var(--font-mono);font-weight:700;letter-spacing:.1em;margin-bottom:4px">HİZMET DETAYI</div>
+          <div style="font-family:var(--font-display);font-size:20px;font-weight:800">Meta Reklam Yönetimi</div>
+        </div>
+      </div>
+      <button class="svc-modal-close" onclick="closeModal('modal-ads')">✕</button>
+    </div>
+    <div class="svc-modal-body">
+      <p class="tr">Facebook ve Instagram reklamlarında maksimum ROI için hedef kitle analizi, kreatif üretim ve sürekli optimizasyon yapıyoruz.</p>
+      <p class="en">We do audience analysis, creative production and continuous optimization for maximum ROI on Facebook and Instagram ads.</p>
+      <ul class="svc-feature-list">
+        <li class="tr">Hedef kitle analizi</li><li class="en">Audience analysis</li>
+        <li class="tr">Reklam kreatif üretimi</li><li class="en">Ad creative production</li>
+        <li class="tr">A/B test optimizasyonu</li><li class="en">A/B test optimization</li>
+        <li class="tr">Retargeting kampanyaları</li><li class="en">Retargeting campaigns</li>
+        <li class="tr">Haftalık performans raporu</li><li class="en">Weekly performance report</li>
+        <li class="tr">Bütçe optimizasyonu</li><li class="en">Budget optimization</li>
+      </ul>
+      <a href="#contact" class="btn-primary" onclick="closeModal('modal-ads')" style="display:inline-flex">
+        <span class="tr">Kampanya Başlat →</span><span class="en">Start Campaign →</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="svc-modal-overlay" id="modal-ai">
+  <div class="svc-modal">
+    <div class="svc-modal-header">
+      <div style="display:flex;align-items:center;gap:14px">
+        <div style="width:52px;height:52px;border-radius:14px;background:rgba(0,229,160,.12);display:flex;align-items:center;justify-content:center;font-size:24px">🤖</div>
+        <div>
+          <div style="font-size:11px;color:var(--text3);font-family:var(--font-mono);font-weight:700;letter-spacing:.1em;margin-bottom:4px">HİZMET DETAYI</div>
+          <div style="font-family:var(--font-display);font-size:20px;font-weight:800">Otomasyon & AI Entegrasyonu</div>
+        </div>
+      </div>
+      <button class="svc-modal-close" onclick="closeModal('modal-ai')">✕</button>
+    </div>
+    <div class="svc-modal-body">
+      <p class="tr">İş süreçlerinizi yapay zeka ve otomasyon ile hızlandırın. Tekrarlayan görevleri otomatikleştirin, veri analizini AI ile güçlendirin.</p>
+      <p class="en">Accelerate your business processes with AI and automation. Automate repetitive tasks, power data analysis with AI.</p>
+      <ul class="svc-feature-list">
+        <li class="tr">Claude / GPT entegrasyonu</li><li class="en">Claude / GPT integration</li>
+        <li class="tr">İş akışı otomasyonu</li><li class="en">Workflow automation</li>
+        <li class="tr">Veri analizi & raporlama</li><li class="en">Data analysis & reporting</li>
+        <li class="tr">Chatbot geliştirme</li><li class="en">Chatbot development</li>
+        <li class="tr">API entegrasyonu</li><li class="en">API integration</li>
+        <li class="tr">Özel AI çözümleri</li><li class="en">Custom AI solutions</li>
+      </ul>
+      <a href="#contact" class="btn-primary" onclick="closeModal('modal-ai')" style="display:inline-flex">
+        <span class="tr">Demo İste →</span><span class="en">Request Demo →</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="svc-modal-overlay" id="modal-consult">
+  <div class="svc-modal">
+    <div class="svc-modal-header">
+      <div style="display:flex;align-items:center;gap:14px">
+        <div style="width:52px;height:52px;border-radius:14px;background:rgba(59,130,246,.12);display:flex;align-items:center;justify-content:center;font-size:24px">🛡️</div>
+        <div>
+          <div style="font-size:11px;color:var(--text3);font-family:var(--font-mono);font-weight:700;letter-spacing:.1em;margin-bottom:4px">HİZMET DETAYI</div>
+          <div style="font-family:var(--font-display);font-size:20px;font-weight:800">IT Danışmanlık</div>
+        </div>
+      </div>
+      <button class="svc-modal-close" onclick="closeModal('modal-consult')">✕</button>
+    </div>
+    <div class="svc-modal-body">
+      <p class="tr">Dijital dönüşüm yolculuğunuzda yanınızdayız. Doğru teknoloji seçimi, mimari tasarım ve uzun vadeli strateji için danışmanlık hizmetleri.</p>
+      <p class="en">We're with you on your digital transformation journey. Consulting services for the right technology selection, architectural design and long-term strategy.</p>
+      <ul class="svc-feature-list">
+        <li class="tr">Teknoloji seçimi</li><li class="en">Technology selection</li>
+        <li class="tr">Yazılım mimarisi</li><li class="en">Software architecture</li>
+        <li class="tr">Dijital dönüşüm planı</li><li class="en">Digital transformation plan</li>
+        <li class="tr">Güvenlik danışmanlığı</li><li class="en">Security consulting</li>
+        <li class="tr">Bulut migrasyonu</li><li class="en">Cloud migration</li>
+        <li class="tr">Performans optimizasyonu</li><li class="en">Performance optimization</li>
+      </ul>
+      <a href="#contact" class="btn-primary" onclick="closeModal('modal-consult')" style="display:inline-flex">
+        <span class="tr">Görüşme Ayarla →</span><span class="en">Schedule Meeting →</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav>
   <a href="#" class="nav-logo">
-    <div class="logo-name">gSoftwares<span>.dev</span></div>
+    <div class="logo-mark">
+      <svg viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="42" height="42" rx="12" fill="url(#logoGrad)"/>
+        <text x="21" y="27" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-weight="800" font-size="16" fill="#000">gS</text>
+        <defs>
+          <linearGradient id="logoGrad" x1="0" y1="0" x2="42" y2="42">
+            <stop offset="0%" stop-color="#00e5a0"/>
+            <stop offset="100%" stop-color="#3b82f6"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+    <div class="logo-text">
+      <div class="logo-name"><span class="g">g</span><span class="s">Softwares</span></div>
+      <div class="logo-domain">.dev</div>
+    </div>
   </a>
-
-  <button class="menu-toggle" id="menuToggle" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#services" onclick="closeMobileMenu()"><span class="tr">Hizmetler</span><span class="en">Services</span></a></li>
-    <li><a href="#projects" onclick="closeMobileMenu()"><span class="tr">Projeler</span><span class="en">Projects</span></a></li>
-    <li><a href="#team" onclick="closeMobileMenu()"><span class="tr">Ekip</span><span class="en">Team</span></a></li>
-    <li><a href="#contact" onclick="closeMobileMenu()"><span class="tr">İletişim</span><span class="en">Contact</span></a></li>
+  <ul class="nav-links">
+    <li><a href="#services"><span class="tr">Hizmetler</span><span class="en">Services</span></a></li>
+    <li><a href="#projects"><span class="tr">Projeler</span><span class="en">Projects</span></a></li>
+    <li><a href="#team"><span class="tr">Ekip</span><span class="en">Team</span></a></li>
+    <li><a href="#contact"><span class="tr">İletişim</span><span class="en">Contact</span></a></li>
   </ul>
-  
   <div class="nav-actions">
     <button class="lang-btn" onclick="toggleLang()" id="langBtn">EN</button>
     <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
-    <a href="#contact" class="nav-cta"><span class="tr">Stüdyo ile Tanış</span><span class="en">Meet Studio</span> →</a>
+    <a href="#contact" class="nav-cta"><span class="tr">Proje Başlat</span><span class="en">Start Project</span> →</a>
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-glow1"></div>
+  <div class="hero-glow2"></div>
   <div class="hero-content">
     <div class="hero-eyebrow">
       <div class="hero-eyebrow-dot"></div>
-      <span><span class="tr">Dijital Dönüşüm Stüdyosu</span><span class="en">Digital Transformation Studio</span></span>
+      <span class="tr">Yeni Projeler İçin Müsaitiz</span>
+      <span class="en">Available for New Projects</span>
     </div>
     <h1 class="hero-title">
-      <span class="tr">Fikirleri Dehasal<br><span class="grad-text">Yazılımlara</span> Dönüştürün</span>
-      <span class="en">Transform Ideas Into<br><span class="grad-text">Elite Software</span></span>
+      <span class="line1 tr">Yazılım, Tasarım &</span>
+      <span class="line1 en">Software, Design &</span>
+      <span class="grad-text tr"> Dijital Büyüme</span>
+      <span class="grad-text en"> Digital Growth</span>
     </h1>
     <p class="hero-sub">
-      <span class="tr">Yüksek performanslı web uygulamaları, ödüllü UI/UX tasarımları ve yapay zeka entegrasyonlarıyla geleceğin dijital ürünlerini bugünden kodluyoruz.</span>
-      <span class="en">We engineer high-performance web applications, premium UI/UX interfaces, and custom AI automations to step up your digital game.</span>
+      <span class="tr">gsoftwares olarak; web geliştirme, UI/UX tasarım, sosyal medya ve Meta reklam yönetimi ile işinizi dijitalde büyütüyoruz.</span>
+      <span class="en">As Hamza & Taner; we grow your business digitally with web development, UI/UX design, social media and Meta ad management.</span>
     </p>
     <div class="hero-btns">
-      <a href="#contact" class="btn-primary"><span class="tr">Proje Başlat</span><span class="en">Start Project</span> →</a>
-      <a href="#services" class="btn-secondary" style="background:var(--bg2); border:1px solid var(--border); padding:15px 32px; border-radius:var(--radius-sm); font-weight:600; text-decoration:none; color:var(--text);"><span class="tr">Keşfet</span><span class="en">Explore</span></a>
+      <a href="#services" class="btn-primary">
+        <span class="tr">Hizmetlerimizi Keşfet</span>
+        <span class="en">Explore Services</span>
+        →
+      </a>
+      <a href="#contact" class="btn-secondary">
+        <span class="tr">Ücretsiz Danışma</span>
+        <span class="en">Free Consultation</span>
+      </a>
+    </div>
+    <div class="stats-bar">
+      <div class="stat-item">
+        <div class="stat-num">30+</div>
+        <div class="stat-label tr">YAZILIM MODÜLÜ</div>
+        <div class="stat-label en">SOFTWARE MODULES</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">2</div>
+        <div class="stat-label tr">UZMAN</div>
+        <div class="stat-label en">EXPERTS</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">100%</div>
+        <div class="stat-label tr">MÜŞTERİ MEMNUNİYETİ</div>
+        <div class="stat-label en">CLIENT SATISFACTION</div>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="bento-container">
-  <div class="bento-item large">
-    <div class="bento-text">
-      <h3><span class="tr">Geleceği Vibe Coding ile İnşa Ediyoruz</span><span class="en">Building Future with Vibe Coding</span></h3>
-      <p class="tr">Geleneksel geliştirme süreçlerini yapay zeka hızlandırıcısıyla birleştirerek haftalar süren işleri günlere indirgiyoruz.</p>
-      <p class="en">We combine structural coding principles with cutting-edge AI acceleration to deliver software in record-breaking timelines.</p>
-    </div>
-  </div>
-  <div class="bento-item">
-    <div class="bento-stat">30+</div>
-    <div class="bento-label"><span class="tr">YAZILIM MODÜLÜ</span><span class="en">PRODUCTION MODULES</span></div>
-  </div>
-  <div class="bento-item">
-    <div class="bento-stat">100%</div>
-    <div class="bento-label"><span class="tr">BAŞARI & TESLİMAT</span><span class="en">DELIVERY RATE</span></div>
-  </div>
-  <div class="bento-item large">
-    <div class="bento-text">
-      <h3><span class="tr">Hamza & Taner Ortaklığı</span><span class="en">Hamza & Taner Partnership</span></h3>
-      <p class="tr">Mühendislik ve estetiğin mükemmel birleşimi. Arka uçtaki güçlü kod yapısı, ön uçtaki piksel kusursuz tasarımla buluşuyor.</p>
-      <p class="en">The perfect alignment of architectural engineering and elite visual design interfaces.</p>
-    </div>
-  </div>
-</div>
-
+<!-- MARQUEE -->
 <div class="marquee-wrap">
   <div class="marquee">
-    <span class="marquee-item"><span class="marquee-dot"></span><span class="tr">Web Geliştirme</span><span class="en">Web Development</span></span>
-    <span class="marquee-item"><span class="marquee-dot"></span>UI/UX DESIGN</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>AUTOMATION & AI</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>META ADS OPTIMIZATION</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>FIREBASE ARCHITECTURE</span>
-    <span class="marquee-item"><span class="marquee-dot"></span><span class="tr">Web Geliştirme</span><span class="en">Web Development</span></span>
-    <span class="marquee-item"><span class="marquee-dot"></span>UI/UX DESIGN</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>AUTOMATION & AI</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>META ADS OPTIMIZATION</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Web Geliştirme</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>UI/UX Tasarım</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Meta Ads</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Sosyal Medya</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Firebase</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>AI Entegrasyonu</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>IT Danışmanlık</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Otomasyon</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Web Geliştirme</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>UI/UX Tasarım</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Meta Ads</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Sosyal Medya</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Firebase</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>AI Entegrasyonu</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>IT Danışmanlık</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Otomasyon</span>
   </div>
 </div>
 
+<!-- SERVICES -->
 <section id="services">
-  <span class="section-label">01 / expertises</span>
-  <h2 class="section-title tr">Dijital Cephaneliğimiz</h2>
-  <h2 class="section-title en">Our Digital Arsenal</h2>
-  <p class="section-sub tr">Sıradan sistemleri değil, şirketinize değer katacak üst düzey mühendislik ve tasarım çözümlerini hayata geçiriyoruz.</p>
-  <p class="section-sub en">We don't build basic platforms. We design high-tier engineered ecosystem architectures tailored to scale your brand.</p>
-  
-  <div class="services-grid">
-    <div class="service-card reveal" onclick="openModal('modal-web')">
-      <div class="service-icon">💻</div>
-      <h3><span class="tr">Web Geliştirme</span><span class="en">Web Development</span></h3>
-      <p class="tr">Firebase mimarili, ultra hızlı, gerçek zamanlı veritabanı altyapılarına sahip modern SaaS ve web uygulamaları.</p>
-      <p class="en">Ultra-fast, real-time database apps designed on clean scalable reactive structural system models.</p>
-      <div class="service-arrow"><span class="tr">Göz At</span><span class="en">Inspect</span> →</div>
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label tr">Hizmetlerimiz</div>
+      <div class="section-label en">Our Services</div>
+      <h2 class="section-title tr">Ne Yapıyoruz?</h2>
+      <h2 class="section-title en">What We Do</h2>
+      <p class="section-sub tr">Her hizmete tıklayarak detaylı bilgi alabilirsiniz.</p>
+      <p class="section-sub en">Click on each service to get detailed information.</p>
     </div>
-
-    <div class="service-card reveal reveal-delay1" onclick="openModal('modal-design')">
-      <div class="service-icon">🎨</div>
-      <h3><span class="tr">Web Tasarım & UI/UX</span><span class="en">UI/UX Interface Design</span></h3>
-      <p class="tr">Figma üstünde hayat bulan, kullanıcıyı dönüştüren premium lüks dijital deneyim tasarımları.</p>
-      <p class="en">High-end micro-interactive design ecosystems mapped to elevate absolute user retention rates.</p>
-      <div class="service-arrow"><span class="tr">Göz At</span><span class="en">Inspect</span> →</div>
-    </div>
-
-    <div class="service-card reveal reveal-delay2" onclick="openModal('modal-ai')">
-      <div class="service-icon">🤖</div>
-      <h3><span class="tr">Otomasyon & AI</span><span class="en">Automation & AI</span></h3>
-      <p class="tr">Tekrarlayan operasyonel iş yüklerini sıfıra indiren Claude ve GPT tabanlı özel akıllı botlar.</p>
-      <p class="en">Custom AI integrations using top language engines to completely automate company manual workflows.</p>
-      <div class="service-arrow"><span class="tr">Göz At</span><span class="en">Inspect</span> →</div>
+    <div class="services-grid">
+      <div class="service-card reveal" onclick="openModal('modal-web')">
+        <div class="service-icon-wrap" style="background:rgba(0,229,160,.1)">💻</div>
+        <h3 class="tr">Web Geliştirme</h3>
+        <h3 class="en">Web Development</h3>
+        <p class="tr">Modern, hızlı ve ölçeklenebilir web uygulamaları. Firebase, gerçek zamanlı veri ve mobil uyumlu tasarım.</p>
+        <p class="en">Modern, fast and scalable web applications. Firebase, real-time data and mobile-responsive design.</p>
+        <div class="service-tags">
+          <span class="stag">JavaScript</span><span class="stag">Firebase</span><span class="stag">React</span>
+        </div>
+        <div class="service-arrow tr">Detayları Gör →</div>
+        <div class="service-arrow en">See Details →</div>
+      </div>
+      <div class="service-card reveal reveal-delay1" onclick="openModal('modal-design')">
+        <div class="service-icon-wrap" style="background:rgba(59,130,246,.1)">🎨</div>
+        <h3 class="tr">Web Tasarım & UI/UX</h3>
+        <h3 class="en">Web Design & UI/UX</h3>
+        <p class="tr">Kullanıcı deneyimini ön planda tutan, markanıza özel profesyonel tasarım.</p>
+        <p class="en">Professional design tailored to your brand with user experience at the forefront.</p>
+        <div class="service-tags">
+          <span class="stag">Figma</span><span class="stag">UI/UX</span><span class="stag">Branding</span>
+        </div>
+        <div class="service-arrow tr">Detayları Gör →</div>
+        <div class="service-arrow en">See Details →</div>
+      </div>
+      <div class="service-card reveal reveal-delay2" onclick="openModal('modal-social')">
+        <div class="service-icon-wrap" style="background:rgba(139,92,246,.1)">📱</div>
+        <h3 class="tr">Sosyal Medya Yönetimi</h3>
+        <h3 class="en">Social Media Management</h3>
+        <p class="tr">Instagram, Facebook ve LinkedIn için içerik üretimi, yönetim ve büyüme stratejileri.</p>
+        <p class="en">Content creation, management and growth strategies for Instagram, Facebook and LinkedIn.</p>
+        <div class="service-tags">
+          <span class="stag">Instagram</span><span class="stag">Facebook</span><span class="stag">LinkedIn</span>
+        </div>
+        <div class="service-arrow tr">Detayları Gör →</div>
+        <div class="service-arrow en">See Details →</div>
+      </div>
+      <div class="service-card reveal" onclick="openModal('modal-ads')">
+        <div class="service-icon-wrap" style="background:rgba(245,158,11,.1)">📊</div>
+        <h3 class="tr">Meta Reklam Yönetimi</h3>
+        <h3 class="en">Meta Ads Management</h3>
+        <p class="tr">Facebook ve Instagram reklamlarında hedef kitleye ulaşma, bütçe optimizasyonu ve ROI artışı.</p>
+        <p class="en">Reach target audiences, optimize budgets and increase ROI on Facebook and Instagram.</p>
+        <div class="service-tags">
+          <span class="stag">Meta Ads</span><span class="stag">ROI</span><span class="stag">Analytics</span>
+        </div>
+        <div class="service-arrow tr">Detayları Gör →</div>
+        <div class="service-arrow en">See Details →</div>
+      </div>
+      <div class="service-card reveal reveal-delay1" onclick="openModal('modal-ai')">
+        <div class="service-icon-wrap" style="background:rgba(0,229,160,.1)">🤖</div>
+        <h3 class="tr">Otomasyon & AI</h3>
+        <h3 class="en">Automation & AI</h3>
+        <p class="tr">İş süreçlerinizi otomatikleştirin. API entegrasyonları, yapay zeka destekli çözümler.</p>
+        <p class="en">Automate your business processes. API integrations and AI-powered solutions.</p>
+        <div class="service-tags">
+          <span class="stag">Claude AI</span><span class="stag">API</span><span class="stag">Automation</span>
+        </div>
+        <div class="service-arrow tr">Detayları Gör →</div>
+        <div class="service-arrow en">See Details →</div>
+      </div>
+      <div class="service-card reveal reveal-delay2" onclick="openModal('modal-consult')">
+        <div class="service-icon-wrap" style="background:rgba(59,130,246,.1)">🛡️</div>
+        <h3 class="tr">IT Danışmanlık</h3>
+        <h3 class="en">IT Consulting</h3>
+        <p class="tr">Dijital dönüşüm, yazılım mimarisi ve teknoloji yol haritası için danışmanlık.</p>
+        <p class="en">Consulting for digital transformation, software architecture and technology roadmap.</p>
+        <div class="service-tags">
+          <span class="stag">Strategy</span><span class="stag">Architecture</span><span class="stag">Cloud</span>
+        </div>
+        <div class="service-arrow tr">Detayları Gör →</div>
+        <div class="service-arrow en">See Details →</div>
+      </div>
     </div>
   </div>
 </section>
 
+<div class="divider"></div>
+
+<!-- PROJECTS -->
 <section id="projects">
-  <span class="section-label">02 / selected works</span>
-  <h2 class="section-title tr">Öne Çıkan Projeler</h2>
-  <h2 class="section-title en">Featured Masterpieces</h2>
-  
-  <div class="projects-bento">
-    <div class="project-bento-card featured reveal">
-      <div class="project-display">
-        <div class="project-display-glow"></div>
-        <div class="window-mockup">
-          <div class="window-header">
-            <div class="window-dot red"></div><div class="window-dot yellow"></div><div class="window-dot green"></div>
-            <div class="window-line"></div>
-          </div>
-          <div class="window-grid">
-            <div class="window-box" style="background:rgba(0, 242, 254, 0.05); border-color:var(--green);"></div>
-            <div class="window-box"></div>
-            <div class="window-box"></div>
-          </div>
-        </div>
-      </div>
-      <div class="project-info-block">
-        <h3>FleetVision 2026 PRO</h3>
-        <p class="tr">47+ ağır vasıtalı ve iş makinalı karmaşık lojistik filolarını tek bir panelden yöneten; yakıt, lastik, parça ve İş Kanunu izin süreçlerini yapay zeka ile optimize eden devasa kurumsal operasyon platformu.</p>
-        <p class="en">A high-tier fleet asset automation system managing fuel, dynamic tire analytics, mechanical parts, and automated labor scheduling loops with deep data tables.</p>
-        <div class="project-meta">
-          <span class="project-status-badge status-live">ENTERPRISE PRODUCTION LIVE</span>
-          <a href="https://fleetvision.online" target="_blank" class="project-link">fleetvision.online ↗</a>
-        </div>
-      </div>
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label tr">Projelerimiz</div>
+      <div class="section-label en">Our Projects</div>
+      <h2 class="section-title tr">Yaptıklarımız</h2>
+      <h2 class="section-title en">What We've Built</h2>
+      <p class="section-sub tr">Gerçek sorunlara, gerçek çözümler. Kodun arkasındaki hikaye.</p>
+      <p class="section-sub en">Real solutions to real problems. The story behind the code.</p>
     </div>
-
-    <div class="project-bento-card regular reveal reveal-delay1">
-      <div class="project-display">
-        <div class="window-mockup">
-          <div class="window-header"><div class="window-dot"></div><div class="window-dot"></div></div>
-          <div style="display:flex; flex-direction:column; gap:10px; height:100%; justify-content:center; align-items:center;">
-            <div style="font-size:32px">✨</div>
-            <div style="width:40%; height:4px; background:var(--border2); border-radius:2px"></div>
+    <div class="projects-grid">
+      <div class="project-card reveal">
+        <div class="project-mockup" style="background:linear-gradient(135deg,#050810,#0a1220)">
+          <div class="project-mockup-inner">
+            <div class="mock-bar" style="background:linear-gradient(90deg,#00e5a0,#3b82f6);width:60%"></div>
+            <div class="mock-row">
+              <div class="mock-col" style="background:rgba(0,229,160,.3)"></div>
+              <div class="mock-col" style="background:rgba(59,130,246,.3)"></div>
+              <div class="mock-col" style="background:rgba(139,92,246,.3)"></div>
+            </div>
+            <div class="mock-row">
+              <div class="mock-col" style="background:rgba(255,255,255,.06);flex:2"></div>
+              <div class="mock-col" style="background:rgba(255,255,255,.04)"></div>
+            </div>
+            <div class="mock-row">
+              <div class="mock-col" style="background:rgba(255,255,255,.04)"></div>
+              <div class="mock-col" style="background:rgba(0,229,160,.15);flex:2"></div>
+            </div>
+            <div style="margin-top:8px;font-size:8px;color:rgba(0,229,160,.6)">FleetVision 2026 PRO — Filo Yönetim Sistemi</div>
+          </div>
+        </div>
+        <div class="project-body">
+          <h3>FleetVision 2026 PRO</h3>
+          <p class="tr">47 araçlık filoyu Excel'de yöneten bir arkadaşımı görünce başladım. Bugün 30+ modüllü, Firebase entegrasyonlu, İş Kanunu izin hesaplayan tam bir filo yönetim platformu.</p>
+          <p class="en">Started when I saw a friend managing a 47-vehicle fleet in Excel. Today it's a full fleet management platform with 30+ modules, Firebase integration, and Labor Law leave calculation.</p>
+          <div class="project-tech">
+            <span class="tech-tag">Vanilla JS</span>
+            <span class="tech-tag">Firebase</span>
+            <span class="tech-tag">Cloudinary</span>
+            <span class="tech-tag">SheetJS</span>
+          </div>
+          <div class="project-footer">
+            <span class="project-status-badge status-live">● LIVE</span>
+            <a href="https://fleetvision.online" target="_blank" class="project-link">fleetvision.online ↗</a>
           </div>
         </div>
       </div>
-      <div class="project-info-block">
-        <h3><span class="tr">Sıradaki Sizin Projeniz</span><span class="en">Your Next Venture</span></h3>
-        <p class="tr">Yüksek dönüştürücülü landing page tasarımlarından, ölçeklenebilir karmaşık yazılımlara kadar markanızı dijital çağın zirvesine taşımaya hazırız.</p>
-        <p class="en">From dynamic conversion layouts to mission-critical infrastructure applications. We build what scales.</p>
-        <div class="project-meta">
-          <span class="project-status-badge status-dev">READY TO START</span>
-          <a href="#contact" class="project-link"><span class="tr">Bize Yazın</span><span class="en">Let's Talk</span> →</a>
+      <div class="project-card reveal reveal-delay1">
+        <div class="project-mockup" style="background:linear-gradient(135deg,#0a0f1e,#141d35)">
+          <div class="project-mockup-inner">
+            <div class="mock-bar" style="background:linear-gradient(90deg,#8b5cf6,#3b82f6);width:80%"></div>
+            <div style="margin:8px 0;display:flex;gap:4px">
+              <div style="width:8px;height:8px;border-radius:50%;background:rgba(139,92,246,.5)"></div>
+              <div style="width:8px;height:8px;border-radius:50%;background:rgba(59,130,246,.5)"></div>
+              <div style="width:8px;height:8px;border-radius:50%;background:rgba(0,229,160,.5)"></div>
+            </div>
+            <div class="mock-row">
+              <div class="mock-col" style="background:rgba(139,92,246,.2);flex:3"></div>
+              <div class="mock-col" style="background:rgba(59,130,246,.15)"></div>
+            </div>
+            <div class="mock-row">
+              <div class="mock-col" style="background:rgba(255,255,255,.05)"></div>
+              <div class="mock-col" style="background:rgba(255,255,255,.05);flex:2"></div>
+            </div>
+            <div style="margin-top:8px;font-size:8px;color:rgba(139,92,246,.6)">gSoftwares.dev — Yeni Projeler</div>
+          </div>
+        </div>
+        <div class="project-body">
+          <h3 class="tr">Müşteri Projeleri</h3>
+          <h3 class="en">Client Projects</h3>
+          <p class="tr">Web tasarım, kurumsal yazılım, sosyal medya ve dijital pazarlama projeleriniz için buradayız. Her ölçekte, her sektörde.</p>
+          <p class="en">We're here for your web design, enterprise software, social media and digital marketing projects. Every scale, every sector.</p>
+          <div class="project-tech">
+            <span class="tech-tag">Web Design</span>
+            <span class="tech-tag">Software</span>
+            <span class="tech-tag">Marketing</span>
+            <span class="tech-tag">Meta Ads</span>
+          </div>
+          <div class="project-footer">
+            <span class="project-status-badge status-dev">⚙ UPCOMING</span>
+            <a href="#contact" class="project-link tr">Proje Başlat →</a>
+            <a href="#contact" class="project-link en">Start Project →</a>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<div class="divider"></div>
+
+<!-- TEAM -->
 <section id="team">
-  <span class="section-label">03 / operators</span>
-  <h2 class="section-title tr">Stüdyonun Beyin Takımı</h2>
-  <h2 class="section-title en">The Founders</h2>
-  
-  <div class="team-deck">
-    <div class="profile-card reveal">
-      <div class="profile-header">
-        <div class="profile-avatar hamza">HG</div>
-        <div class="profile-title">
-          <h3>Hamza Gökçe</h3>
-          <div class="profile-role">CORE SOFTWARE ENGINEER & ARCHITECT</div>
-        </div>
-      </div>
-      <p class="profile-bio tr">Gerçek zamanlı veritabanları, bulut sistem mimarileri ve otomasyon algoritmaları üzerinde uzman. FleetVision altyapısının kurucusu. Karmaşık backend problemlerini optimize etmeyi sever.</p>
-      <p class="profile-bio en">Specializes in deep system integrations, fast reactive database paradigms and operational algorithm automations. Drives absolute code sustainability.</p>
-      <div class="service-tags"><span class="stag">JavaScript</span><span class="stag">Firebase</span><span class="stag">Node.js</span><span class="stag">AI Integrations</span></div>
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label tr">Ekibimiz</div>
+      <div class="section-label en">Our Team</div>
+      <h2 class="section-title tr">Arkasındaki İnsanlar</h2>
+      <h2 class="section-title en">The People Behind It</h2>
+      <p class="section-sub tr">İki farklı uzmanlık, tek bir hedef — dijital dünyada sizi öne çıkarmak.</p>
+      <p class="section-sub en">Two different expertises, one goal — putting you ahead in the digital world.</p>
     </div>
-
-    <div class="profile-card taner-card reveal reveal-delay1">
-      <div class="profile-header">
-        <div class="profile-avatar taner">TA</div>
-        <div class="profile-title">
-          <h3>Taner Aydoğan</h3>
-          <div class="profile-role">UI/UX DIRECTOR & DİJİTAL PAZARLAMA</div>
+    <div class="team-grid">
+      <div class="team-card hamza reveal">
+        <div class="team-avatar-wrap">
+          <div class="team-avatar hg">HG</div>
+          <div class="team-info">
+            <h3>Hamza Gökçe</h3>
+            <div class="team-role tr">Yazılım Geliştirici & Kurucu</div>
+            <div class="team-role en">Software Developer & Co-Founder</div>
+          </div>
+        </div>
+        <p class="team-bio tr">Web uygulamaları, otomasyon ve AI entegrasyonu konusunda uzman. 30+ modüllü FleetVision 2026 PRO'nun yapımcısı. Karmaşık problemlere sade, ölçeklenebilir çözümler üretir.</p>
+        <p class="team-bio en">Expert in web applications, automation and AI integration. Creator of FleetVision 2026 PRO with 30+ modules. Produces simple, scalable solutions to complex problems.</p>
+        <div class="team-skills">
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">Firebase</span>
+          <span class="skill-tag">AI/ML</span>
+          <span class="skill-tag">API Integration</span>
+          <span class="skill-tag">Automation</span>
+          <span class="skill-tag">Node.js</span>
+        </div>
+        <div class="team-contact">
+          📞 <a href="tel:+905441994540">0544 199 45 40</a>
         </div>
       </div>
-      <p class="profile-bio tr">Kullanıcı arayüz tasarımları, marka kimlik yapılandırılması ve Meta/Instagram akıllı reklam optimizasyonları uzmanı. Ürünlerin sadece çalışmasını değil, büyüleyici görünmesini sağlar.</p>
-      <p class="profile-bio en">Ecosystem conversion designer and high-performance lead acquisition manager. Converts layout interactions into scalable customer acquisition flywheels.</p>
-      <div class="service-tags"><span class="stag">Figma UX</span><span class="stag">Branding</span><span class="stag">Meta Ads</span><span class="stag">Growth Trajectory</span></div>
+      <div class="team-card taner reveal reveal-delay1">
+        <div class="team-avatar-wrap">
+          <div class="team-avatar ta">TA</div>
+          <div class="team-info">
+            <h3>Taner Aydoğan</h3>
+            <div class="team-role tr">Tasarımcı & Dijital Pazarlama Uzmanı</div>
+            <div class="team-role en">Designer & Digital Marketing Expert</div>
+          </div>
+        </div>
+        <p class="team-bio tr">Web tasarım, sosyal medya yönetimi ve Meta reklam konularında deneyimli. Markaları dijitalde büyütür, hedef kitleyle buluşturur. Yaratıcı ve veri odaklı yaklaşımıyla fark yaratır.</p>
+        <p class="team-bio en">Experienced in web design, social media management and Meta advertising. Grows brands digitally and connects them with their target audience. Makes a difference with his creative and data-driven approach.</p>
+        <div class="team-skills">
+          <span class="skill-tag">Web Design</span>
+          <span class="skill-tag">Meta Ads</span>
+          <span class="skill-tag">Social Media</span>
+          <span class="skill-tag">UI/UX</span>
+          <span class="skill-tag">Branding</span>
+          <span class="skill-tag">Figma</span>
+        </div>
+        <div class="team-contact">
+          📞 <a href="tel:+905334603374">0533 460 33 74</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="contact">
-  <div class="contact-wrapper">
-    <div>
-      <span class="section-label">04 / Briefing</span>
-      <h2 style="font-family:var(--font-display); font-size:42px; font-weight:700; letter-spacing:-1.5px; line-height:1.1; margin-bottom:20px;">
-        <span class="tr">Geleceği Beraber<br><span style="background:var(--grad1); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">Kodlayalım</span></span>
-        <span class="en">Let's Code The<br><span style="background:var(--grad1); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">Next Big Thing</span></span>
-      </h2>
-      <p style="color:var(--text2); font-size:15px; line-height:1.6; margin-bottom:40px;" class="tr">Fikrinizi, bütçenizi ve hedeflerinizi bize anlatın. En geç 24 saat içinde üst düzey bir stratejik planlama ile kapınızı çalalım.</p>
-      <p style="color:var(--text2); font-size:15px; line-height:1.6; margin-bottom:40px;" class="en">Drop your business goals. We will step back to you within 24 hours with a comprehensive layout structure document.</p>
-      
-      <div style="display:flex; flex-direction:column; gap:12px; font-family:var(--font-mono); font-size:13px; color:var(--text2)">
-        <div>✉️ <a href="mailto:gokcehamza2934@gmail.com" style="color:var(--text); text-decoration:none">gokcehamza2934@gmail.com</a></div>
-        <div>💬 WhatsApp: <a href="https://wa.me/905441994540" target="_blank" style="color:var(--green); text-decoration:none">+90 544 199 45 40</a></div>
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="section-label tr">İletişim</div>
+        <div class="section-label en">Contact</div>
+        <h2 class="contact-info" style="font-family:var(--font-display);font-size:36px;font-weight:800;letter-spacing:-1px;margin-bottom:16px;line-height:1.1">
+          <span class="tr">Birlikte<br><span style="background:var(--grad1);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Çalışalım</span></span>
+          <span class="en">Let's Work<br><span style="background:var(--grad1);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Together</span></span>
+        </h2>
+        <p style="font-size:15px;color:var(--text2);line-height:1.8;margin-bottom:32px">
+          <span class="tr">Projeniz için ücretsiz danışma alın. 24 saat içinde size dönüş yapıyoruz.</span>
+          <span class="en">Get a free consultation for your project. We get back to you within 24 hours.</span>
+        </p>
+        <div class="contact-channels">
+          <div class="contact-channel">
+            <div class="contact-channel-icon" style="background:rgba(0,229,160,.1)">📞</div>
+            <div class="contact-channel-info">
+              <div class="contact-channel-label">HAMZA GÖKÇE</div>
+              <div class="contact-channel-value"><a href="tel:+905441994540">0544 199 45 40</a></div>
+            </div>
+          </div>
+          <div class="contact-channel">
+            <div class="contact-channel-icon" style="background:rgba(139,92,246,.1)">📞</div>
+            <div class="contact-channel-info">
+              <div class="contact-channel-label">TANER AYDOĞAN</div>
+              <div class="contact-channel-value"><a href="tel:+905334603374">0533 460 33 74</a></div>
+            </div>
+          </div>
+          <div class="contact-channel">
+            <div class="contact-channel-icon" style="background:rgba(59,130,246,.1)">✉️</div>
+            <div class="contact-channel-info">
+              <div class="contact-channel-label">E-POSTA</div>
+              <div class="contact-channel-value"><a href="mailto:gokcehamza2934@gmail.com">gokcehamza2934@gmail.com</a></div>
+            </div>
+          </div>
+          <div class="contact-channel">
+            <div class="contact-channel-icon" style="background:rgba(37,211,102,.1)">💬</div>
+            <div class="contact-channel-info">
+              <div class="contact-channel-label">WHATSAPP</div>
+              <div class="contact-channel-value"><a href="https://wa.me/905441994540" target="_blank"><span class="tr">WhatsApp'tan Yaz</span><span class="en">Message on WhatsApp</span></a></div>
+            </div>
+          </div>
+          <div class="contact-channel">
+            <div class="contact-channel-icon" style="background:rgba(59,130,246,.1)">🌐</div>
+            <div class="contact-channel-info">
+              <div class="contact-channel-label">FLEETVISION</div>
+              <div class="contact-channel-value"><a href="https://fleetvision.online" target="_blank">fleetvision.online</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/hamza-gokce-1997b81b2/" target="_blank" class="social-link" title="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://github.com/hgokce34" target="_blank" class="social-link" title="GitHub">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+          <a href="https://instagram.com" target="_blank" class="social-link" title="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="https://facebook.com" target="_blank" class="social-link" title="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="https://twitter.com" target="_blank" class="social-link" title="Twitter / X">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://wa.me/905441994540" target="_blank" class="social-link" title="WhatsApp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+        </div>
       </div>
-    </div>
-
-    <form class="contact-form-premium" id="contactForm" onsubmit="formGonder(event)">
-      <div class="form-row">
-        <input type="text" class="form-input" id="f-name" placeholder="Adınız Soyadınız / Full Name" required>
-        <input type="email" class="form-input" id="f-email" placeholder="E-Posta / Email" required>
-      </div>
-      <input type="tel" class="form-input" id="f-phone" placeholder="Telefon / Phone Number">
-      <select class="form-select" id="f-service">
-        <option value="" class="tr">İlgilenilen Alan / Service Option...</option>
-        <option value="" class="en">Service Option...</option>
-        <option>Web Geliştirme (SaaS / Web App)</option>
-        <option>UI/UX Tasarım (Figma Proto)</option>
-        <option>AI & İş Akış Otomasyonları</option>
-        <option>Meta Reklam & Dijital Büyüme</option>
-      </select>
-      <textarea class="form-textarea" id="f-message" placeholder="Projenizin kapsamından kısaca bahsedin..." required></textarea>
-      <button type="submit" class="form-submit" id="submitBtn" style="padding:16px; border-radius:var(--radius-sm); font-weight:700">
-        <span class="tr">Talebi İlet →</span><span class="en">Send Briefing →</span>
-      </button>
-    </form>
-    <div class="form-success" id="formSuccess" style="grid-column: span 2; font-family:var(--font-mono); font-size:14px; text-align:center">
-      ✓ <span class="tr">Brief başarıyla iletildi. Mühendislerimiz incelemeye başladı!</span><span class="en">Brief compiled successfully. Our engine is inspecting your submission!</span>
-    </div>
-  </div>
-</section>
-
-<div class="svc-modal-overlay" id="modal-web">
-  <div class="svc-modal">
-    <h2>Web Application Architecture</h2>
-    <p style="margin:20px 0; color:var(--text2); line-height:1.6">Firebase altyapılı, sunucusuz (serverless) çalışan, kesintisuz WebSocket bağlantılarıyla milisaniyeler içinde veri senkronizasyonu sağlayan sistemler tasarlıyoruz. Excel ve PDF entegrasyonları, anlık bildirim motorları ve üst düzey güvenlik protokolleri dahildir.</p>
-    <button class="svc-modal-close" onclick="closeModal('modal-web')">✕ Close</button>
-  </div>
-</div>
-<div class="svc-modal-overlay" id="modal-design">
-  <div class="svc-modal">
-    <h2>Premium UI/UX System</h2>
-    <p style="margin:20px 0; color:var(--text2); line-height:1.6">Kullanıcıyı yormayan, dönüşüm oranlarını (CR) maksimize eden, özel tasarım kütüphaneleri (Design System). Tam responsive mobil uyumluluk ve benzersiz micro-interaction animasyonları.</p>
-    <button class="svc-modal-close" onclick="closeModal('modal-design')">✕ Close</button>
-  </div>
-</div>
-<div class="svc-modal-overlay" id="modal-ai">
-  <div class="svc-modal">
-    <h2>AI Custom Agent Models</h2>
-    <p style="margin:20px 0; color:var(--text2); line-height:1.6">İşletmenizin API verilerini büyük dil modelleriyle konuşturuyoruz. Otomatik faturalandırma, müşteri destek yapay zekaları ve şirket içi veri analiz raporlama sistemleri.</p>
-    <button class="svc-modal-close" onclick="closeModal('modal-ai')">✕ Close</button>
-  </div>
-</div>
-
-<div class="svc-modal-overlay" id="modal-privacy">
-  <div class="svc-modal">
-    <h2>Privacy Policy (Gizlilik Sözleşmesi)</h2>
-    <p style="margin:20px 0; color:var(--text2); font-size:14px; line-height:1.6" class="tr">gSoftwares.dev olarak, kullanıcılarımızın verilerinin güvenliği en büyük önceliğimizdir. İletişim formları üzerinden paylaştığınız ad, e-posta ve telefon bilgileri sadece sizinle iletişim kurmak ve proje değerlendirmesi yapmak amacıyla stüdyo bünyesinde saklanır. Verileriniz asla üçüncü şahıslarla paylaşılmaz veya satılmaz.</p>
-    <p style="margin:20px 0; color:var(--text2); font-size:14px; line-height:1.6" class="en">At gSoftwares.dev, data safety is paramount. The information captured within contact frameworks is strictly processed internal-only to audit potential client briefs. We deploy zero telemetry sharing mechanisms.</p>
-    <button class="svc-modal-close" onclick="closeModal('modal-privacy')">✕ Close</button>
-  </div>
-</div>
-<div class="svc-modal-overlay" id="modal-terms">
-  <div class="svc-modal">
-    <h2>Terms of Service (Kullanım Şartları)</h2>
-    <p style="margin:20px 0; color:var(--text2); font-size:14px; line-height:1.6" class="tr">Bu web sitesinde yer alan tüm tasarım bileşenleri, kaynak kodları ve görsel şablonlar gSoftwares.dev mülkiyetindedir. Yazılı izin alınmaksızın kopyalanması, klonlanması veya ticari amaçla başka platformlarda kullanılması yasaktır. Sunulan tüm hizmetlerin teslimat şartları ikili sözleşmelerle belirlenir.</p>
-    <p style="margin:20px 0; color:var(--text2); font-size:14px; line-height:1.6" class="en">All digital assets, UI patterns, and structural source code items featured on gSoftwares.dev remain proprietary to the creators. Unauthorized deployment or structural cloning is heavily guarded.</p>
-    <button class="svc-modal-close" onclick="closeModal('modal-terms')">✕ Close</button>
-  </div>
-</div>
-
-<footer>
-  <div class="footer-container">
-    <div class="footer-top">
-      <div>
-        <div style="font-family:var(--font-display); font-size:24px; font-weight:700; margin-bottom:12px;">gSoftwares<span style="color:var(--green)">.dev</span></div>
-        <p style="color:var(--text2); font-size:14px; max-width:320px;" class="tr">Mühendislik standartlarını estetik tasarım diliyle birleştiren bağımsız dijital ürün stüdyosu.</p>
-        <p style="color:var(--text2); font-size:14px; max-width:320px;" class="en">An elite digital design and structural web engineering house modeling future scale pipelines.</p>
-      </div>
-      <div style="display:flex; gap:60px">
-        <div>
-          <div style="font-size:12px; font-family:var(--font-mono); color:var(--text3); font-weight:700; margin-bottom:16px; text-transform:uppercase;">Ecosystem</div>
-          <div style="display:flex; flex-direction:column; gap:10px; font-size:14px;">
-            <a href="https://fleetvision.online" target="_blank" style="color:var(--text2); text-decoration:none">FleetVision PRO</a>
-            <a href="https://github.com/hgokce34" target="_blank" style="color:var(--text2); text-decoration:none">GitHub Laboratory</a>
+      <div class="reveal reveal-delay1">
+        <div class="contact-form-wrap">
+          <h3 class="tr">Proje Talebi Gönder</h3>
+          <h3 class="en">Send Project Request</h3>
+          <p class="sub tr">24 saat içinde size dönüş yapıyoruz.</p>
+          <p class="sub en">We'll get back to you within 24 hours.</p>
+          <form id="contactForm" onsubmit="formGonder(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label tr">ADI SOYADI</label>
+                <label class="form-label en">FULL NAME</label>
+                <input type="text" class="form-input" id="f-name" placeholder="Adınız Soyadınız" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label tr">E-POSTA</label>
+                <label class="form-label en">EMAIL</label>
+                <input type="email" class="form-input" id="f-email" placeholder="email@domain.com" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label tr">TELEFON</label>
+              <label class="form-label en">PHONE</label>
+              <input type="tel" class="form-input" id="f-phone" placeholder="0XXX XXX XX XX">
+            </div>
+            <div class="form-group">
+              <label class="form-label tr">İLGİLENDİĞİNİZ HİZMET</label>
+              <label class="form-label en">SERVICE INTERESTED IN</label>
+              <select class="form-select form-input" id="f-service">
+                <option value="" class="tr">Seçin...</option>
+                <option value="" class="en">Select...</option>
+                <option class="tr">Web Geliştirme</option>
+                <option class="en">Web Development</option>
+                <option class="tr">Web Tasarım & UI/UX</option>
+                <option class="en">Web Design & UI/UX</option>
+                <option class="tr">Sosyal Medya Yönetimi</option>
+                <option class="en">Social Media Management</option>
+                <option class="tr">Meta Reklam Yönetimi</option>
+                <option class="en">Meta Ads Management</option>
+                <option class="tr">Otomasyon & AI</option>
+                <option class="en">Automation & AI</option>
+                <option class="tr">IT Danışmanlık</option>
+                <option class="en">IT Consulting</option>
+                <option class="tr">Birden Fazla Hizmet</option>
+                <option class="en">Multiple Services</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label tr">MESAJINIZ</label>
+              <label class="form-label en">YOUR MESSAGE</label>
+              <textarea class="form-textarea" id="f-message" placeholder="Projenizi anlatın, bütçenizden ve zaman çizelgenizden bahsedin..." required></textarea>
+            </div>
+            <button type="submit" class="form-submit">
+              <span class="tr">Talebi Gönder →</span>
+              <span class="en">Send Request →</span>
+            </button>
+          </form>
+          <div class="form-success" id="formSuccess">
+            ✓ <span class="tr">Mesajınız alındı! 24 saat içinde size dönüş yapacağız.</span>
+            <span class="en">Your message received! We'll get back to you within 24 hours.</span>
           </div>
         </div>
       </div>
     </div>
-    
-    <div class="footer-bottom">
-      <div class="footer-copy" style="font-size:13px; color:var(--text3)">© 2026 gSoftwares.dev — Engineered by Hamza Gökçe & Taner Aydoğan.</div>
-      <div class="legal-links">
-        <a onclick="openModal('modal-privacy')"><span class="tr">Gizlilik Politikası</span><span class="en">Privacy Policy</span></a>
-        <a onclick="openModal('modal-terms')"><span class="tr">Kullanım Şartları</span><span class="en">Terms of Service</span></a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+        <svg width="28" height="28" viewBox="0 0 42 42" fill="none"><rect width="42" height="42" rx="12" fill="url(#fLogoGrad)"/><text x="21" y="27" text-anchor="middle" font-family="Space Grotesk" font-weight="800" font-size="16" fill="#000">gS</text><defs><linearGradient id="fLogoGrad" x1="0" y1="0" x2="42" y2="42"><stop offset="0%" stop-color="#00e5a0"/><stop offset="100%" stop-color="#3b82f6"/></linearGradient></defs></svg>
+        <span style="font-family:var(--font-display);font-weight:700;font-size:16px">gSoftwares<span style="color:var(--green)">.dev</span></span>
       </div>
+      <div class="footer-copy">© 2026 gSoftwares.dev — Hamza Gökçe & Taner Aydoğan</div>
+    </div>
+    <div class="footer-links">
+      <a href="#services" class="tr">Hizmetler</a>
+      <a href="#services" class="en">Services</a>
+      <a href="#projects" class="tr">Projeler</a>
+      <a href="#projects" class="en">Projects</a>
+      <a href="https://fleetvision.online" target="_blank">FleetVision</a>
+      <a href="https://github.com/hgokce34" target="_blank">GitHub</a>
     </div>
   </div>
 </footer>
 
 <script>
-  // Navbar Sticky Scroll Animation Engine
-  window.addEventListener('scroll', () => {
-    const nav = document.getElementById('navbar');
-    if(window.scrollY > 40) { nav.classList.add('scrolled'); } 
-    else { nav.classList.remove('scrolled'); }
-  });
-
-  // Mobile Drawer Toggle Interface
-  const menuToggle = document.getElementById('menuToggle');
-  const navLinks = document.getElementById('navLinks');
-  menuToggle.addEventListener('click', () => {
-    menuToggle.classList.toggle('active');
-    navLinks.classList.toggle('active');
-  });
-  function closeMobileMenu() {
-    menuToggle.classList.remove('active');
-    navLinks.classList.remove('active');
+  // Particles
+  function createParticles(){
+    const container=document.getElementById('particles');
+    for(let i=0;i<25;i++){
+      const p=document.createElement('div');
+      p.className='particle';
+      const size=Math.random()*3+1;
+      const colors=['rgba(0,229,160,0.4)','rgba(59,130,246,0.4)','rgba(139,92,246,0.3)','rgba(6,182,212,0.3)'];
+      p.style.cssText=`
+        width:${size}px;height:${size}px;
+        left:${Math.random()*100}%;
+        background:${colors[Math.floor(Math.random()*colors.length)]};
+        animation-duration:${Math.random()*15+10}s;
+        animation-delay:${Math.random()*10}s;
+      `;
+      container.appendChild(p);
+    }
   }
+  createParticles();
 
-  // Radial Mouse Follower Glowing Engine
-  document.addEventListener('mousemove', e => {
-    const glow = document.getElementById('cursorGlow');
-    if(glow) { glow.style.left = e.clientX + 'px'; glow.style.top = e.clientY + 'px'; }
+  // Cursor glow
+  document.addEventListener('mousemove',e=>{
+    const glow=document.getElementById('cursorGlow');
+    if(glow){glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px';}
   });
 
-  // Structural Core Multi-language Switching Loop
-  function toggleLang(){
-    const body = document.body;
-    const btn = document.getElementById('langBtn');
-    if(body.dataset.lang === 'tr') { body.dataset.lang = 'en'; btn.textContent = 'TR'; }
-    else { body.dataset.lang = 'tr'; btn.textContent = 'EN'; }
-  }
-
-  // Adaptive Dark/Light State Manager
+  // Theme
   function toggleTheme(){
-    const body = document.body;
-    const btn = document.getElementById('themeBtn');
-    if(body.dataset.theme === 'dark') { body.dataset.theme = 'light'; btn.textContent = '☀️'; }
-    else { body.dataset.theme = 'dark'; btn.textContent = '🌙'; }
+    const body=document.body;
+    const btn=document.getElementById('themeBtn');
+    if(body.dataset.theme==='dark'){body.dataset.theme='light';btn.textContent='☀️';}
+    else{body.dataset.theme='dark';btn.textContent='🌙';}
   }
 
-  // Modals Controller Architecture
-  function openModal(id) { document.getElementById(id).classList.add('open'); document.body.style.overflow = 'hidden'; }
-  function closeModal(id) { document.getElementById(id).classList.remove('open'); document.body.style.overflow = ''; }
-  
-  document.querySelectorAll('.svc-modal-overlay').forEach(overlay => {
-    overlay.addEventListener('click', e => { if(e.target === overlay) { overlay.classList.remove('open'); document.body.style.overflow = ''; } });
+  // Language
+  function toggleLang(){
+    const body=document.body;
+    const btn=document.getElementById('langBtn');
+    if(body.dataset.lang==='tr'){body.dataset.lang='en';btn.textContent='TR';}
+    else{body.dataset.lang='tr';btn.textContent='EN';}
+  }
+
+  // Modals
+  function openModal(id){
+    document.getElementById(id).classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+  function closeModal(id){
+    document.getElementById(id).classList.remove('open');
+    document.body.style.overflow='';
+  }
+  document.querySelectorAll('.svc-modal-overlay').forEach(overlay=>{
+    overlay.addEventListener('click',e=>{
+      if(e.target===overlay)overlay.classList.remove('open'),document.body.style.overflow='';
+    });
+  });
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape'){
+      document.querySelectorAll('.svc-modal-overlay.open').forEach(m=>m.classList.remove('open'));
+      document.body.style.overflow='';
+    }
   });
 
-  // Native Viewport Observer for Fluid Animations
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.05 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  // Scroll reveal
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+  },{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
-  // EmailJS Client Submission Module
+  // Form - EmailJS ile mail gönder
   function formGonder(e){
     e.preventDefault();
-    const btn = document.getElementById('submitBtn');
-    const currentLang = document.body.dataset.lang;
-    btn.textContent = currentLang === 'tr' ? 'Veri İşleniyor...' : 'Processing...';
-    btn.disabled = true;
+    const btn=e.target.querySelector('button[type="submit"]');
+    btn.textContent='Gönderiliyor...';
+    btn.disabled=true;
 
-    const params = {
+    const params={
       from_name: document.getElementById('f-name').value,
       from_email: document.getElementById('f-email').value,
-      phone: document.getElementById('f-phone').value || 'N/A',
-      service: document.getElementById('f-service').value || 'Unselected',
+      phone: document.getElementById('f-phone').value||'Belirtilmedi',
+      service: document.getElementById('f-service').value||'Belirtilmedi',
       message: document.getElementById('f-message').value,
       name: document.getElementById('f-name').value,
-      email: document.getElementById('f-email').value
+      email: document.getElementById('f-email').value,
     };
 
     emailjs.send('service_ohsr9ht','template_l6nulph', params)
-      .then(() => {
-        document.getElementById('contactForm').style.display = 'none';
-        document.getElementById('formSuccess').style.display = 'block';
+      .then(()=>{
+        const form=document.getElementById('contactForm');
+        const success=document.getElementById('formSuccess');
+        form.style.display='none';
+        success.style.display='block';
+        setTimeout(()=>{
+          form.style.display='block';
+          success.style.display='none';
+          form.reset();
+          btn.innerHTML='<span class="tr">Talebi Gönder →</span><span class="en">Send Request →</span>';
+          btn.disabled=false;
+        },5000);
       })
-      .catch(err => {
-        console.error('API Error:', err);
-        btn.textContent = 'Error';
-        btn.disabled = false;
+      .catch(err=>{
+        console.error('EmailJS hata:',err);
+        btn.innerHTML='<span class="tr">Talebi Gönder →</span><span class="en">Send Request →</span>';
+        btn.disabled=false;
+        alert('Mail gönderilemedi. Lütfen doğrudan gokcehamza2934@gmail.com adresine yazın.');
       });
   }
-</script>
 
+  // Navbar scroll
+  window.addEventListener('scroll',()=>{
+    const nav=document.querySelector('nav');
+    nav.style.boxShadow=window.scrollY>50?'0 4px 40px rgba(0,0,0,.4)':'none';
+  });
+</script>
 </body>
 </html>
