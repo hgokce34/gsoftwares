@@ -958,6 +958,78 @@
     .footer-links a:hover { color: var(--accent2) !important; }
 
 </style>
+  <!-- Tailwind CSS CDN - utility-first styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind custom config - design system tokens
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            // Primary backgrounds - deep dark
+            'gs-bg':     '#0B0F19',
+            'gs-bg2':    '#0F1422',
+            'gs-bg3':    '#141929',
+            'gs-bg4':    '#1A2035',
+            // Accent - modern indigo
+            'gs-accent':  '#6366F1',
+            'gs-accent2': '#818CF8',
+            'gs-accent3': '#4F46E5',
+            // Text hierarchy
+            'gs-text':  '#F0F2FA',
+            'gs-text2': '#8892A4',
+            'gs-text3': '#4A5568',
+            // Semantic
+            'gs-green':  '#10B981',
+            'gs-green2': '#34D399',
+            'gs-blue':   '#3B82F6',
+            'gs-purple': '#8B5CF6',
+          },
+          fontFamily: {
+            'sans':    ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            'display': ['Space Grotesk', 'Inter', 'sans-serif'],
+            'mono':    ['JetBrains Mono', 'Fira Code', 'monospace'],
+          },
+          borderRadius: {
+            'xs':  '6px',
+            'sm':  '10px',
+            'md':  '14px',
+            'lg':  '18px',
+            'xl':  '24px',
+            '2xl': '32px',
+          },
+          animation: {
+            'fade-up':     'fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) forwards',
+            'fade-down':   'fadeDown 0.6s cubic-bezier(0.16,1,0.3,1) forwards',
+            'shimmer':     'shimmer 4s linear infinite',
+            'pulse-dot':   'pulseDot 2s ease-in-out infinite',
+            'float':       'float 6s ease-in-out infinite',
+            'marquee':     'marquee 20s linear infinite',
+          },
+          keyframes: {
+            fadeUp:    { '0%': {opacity:'0', transform:'translateY(28px)'}, '100%': {opacity:'1', transform:'translateY(0)'} },
+            fadeDown:  { '0%': {opacity:'0', transform:'translateY(-14px)'}, '100%': {opacity:'1', transform:'translateY(0)'} },
+            shimmer:   { '0%': {'background-position':'0% center'}, '100%': {'background-position':'200% center'} },
+            pulseDot:  { '0%,100%': {opacity:'1', 'box-shadow':'0 0 0 0 rgba(99,102,241,0.4)'}, '50%': {opacity:'0.5', 'box-shadow':'0 0 0 6px rgba(99,102,241,0)'} },
+            float:     { '0%,100%': {transform:'translateY(0)'}, '50%': {transform:'translateY(-12px)'} },
+            marquee:   { '0%': {transform:'translateX(0)'}, '100%': {transform:'translateX(-50%)'} },
+          },
+          backdropBlur: {
+            'xs': '4px',
+            'nav': '24px',
+          },
+          boxShadow: {
+            'card':    '0 0 0 1px rgba(255,255,255,0.055), 0 8px 32px rgba(0,0,0,0.4)',
+            'card-hover': '0 0 0 1px rgba(99,102,241,0.20), 0 20px 60px rgba(0,0,0,0.45), 0 0 40px rgba(99,102,241,0.08)',
+            'btn-accent': '0 8px 32px rgba(99,102,241,0.30)',
+            'btn-hover':  '0 16px 48px rgba(99,102,241,0.35)',
+            'glow-accent':'0 0 30px rgba(99,102,241,0.20)',
+          },
+        }
+      }
+    }
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>emailjs.init("Seg3jenh_LMiacX_z");</script>
 </head>
@@ -1160,38 +1232,209 @@
   </div>
 </div>
 
-<!-- NAVBAR -->
-<nav>
-  <a href="#" class="nav-logo">
-    <div class="logo-mark">
-      <svg viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="42" height="42" rx="12" fill="url(#logoGrad)"/>
-        <text x="21" y="27" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-weight="800" font-size="16" fill="#000">gS</text>
-        <defs>
-          <linearGradient id="logoGrad" x1="0" y1="0" x2="42" y2="42">
-            <stop offset="0%" stop-color="#00e5a0"/>
-            <stop offset="100%" stop-color="#3b82f6"/>
-          </linearGradient>
-        </defs>
-      </svg>
+<!-- ============================================================
+  HEADER / NAVIGATION
+  - Semantic: <header> + <nav> + <ul> landmark rolleri
+  - Glassmorphism: backdrop-blur + yarı saydam bg
+  - Sticky: fixed top-0 z-[--z-modal]
+  - Responsive: mobile hamburger + desktop links
+  - ARIA: aria-label, aria-current, aria-expanded
+============================================================ -->
+<header
+  id="site-header"
+  role="banner"
+  class="fixed top-0 left-0 right-0 z-[1000] transition-all duration-300"
+  style="
+    /* GLASSMORPHISM EFEKT
+       - background: yarı saydam koyu zemin
+       - backdrop-filter: arkayı bulanıklaştır (blur)
+       - border-bottom: ince cam kenarı hissi
+    */
+    background: rgba(11, 15, 25, 0.75);
+    backdrop-filter: blur(24px) saturate(1.8);
+    -webkit-backdrop-filter: blur(24px) saturate(1.8);
+    border-bottom: 1px solid rgba(255,255,255,0.055);
+  "
+>
+  <div class="max-w-[1140px] mx-auto px-6 h-[68px] flex items-center justify-between gap-6">
+
+    <!-- LOGO GRUBU
+         Semantic: <a> ile ana sayfaya bağlı, aria-label ile erişilebilir -->
+    <a
+      href="#"
+      class="nav-logo flex items-center gap-3 no-underline group"
+      aria-label="gSoftwares.dev - Ana Sayfa"
+    >
+      <!-- SVG Logo Mark - gradient indigo/yeşil -->
+      <div class="logo-mark relative w-[42px] h-[42px] flex-shrink-0 transition-all duration-200 group-hover:drop-shadow-[0_0_12px_rgba(99,102,241,0.5)]">
+        <svg viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg" width="42" height="42" aria-hidden="true">
+          <rect width="42" height="42" rx="12" fill="url(#logoGradV2)"/>
+          <text x="21" y="27" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-weight="800" font-size="15" fill="#000">gS</text>
+          <defs>
+            <linearGradient id="logoGradV2" x1="0" y1="0" x2="42" y2="42">
+              <stop offset="0%" stop-color="#6366F1"/>
+              <stop offset="100%" stop-color="#8B5CF6"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+      <!-- Logo Metin Grubu -->
+      <div class="logo-text flex flex-col" aria-hidden="true">
+        <!-- Marka Adı: g indigo, Softwares violet -->
+        <span class="font-display font-extrabold text-[18px] leading-none tracking-[-0.02em]">
+          <span style="color:#818CF8">g</span><span style="color:#A5B4FC">Softwares</span>
+        </span>
+        <!-- TLD - mono font, subtle -->
+        <span class="font-mono text-[9px] tracking-[0.1em] mt-[3px]" style="color:var(--text3)">.dev</span>
+      </div>
+    </a>
+
+    <!-- DESKTOP NAV LINKS
+         Semantic: <nav> landmark + <ul>/<li> listesi
+         ARIA: aria-label ile bölge tanımı -->
+    <nav aria-label="Ana navigasyon" class="hidden md:block">
+      <ul class="nav-links flex items-center gap-1 list-none m-0 p-0" role="list">
+        <!-- Nav Item Template:
+             - aria-current="page" aktif sayfada eklenir (JS ile)
+             - rel="noopener" dış linkler için
+        -->
+        <li role="listitem">
+          <a href="#services"
+             class="nav-link relative px-4 py-2 rounded-[10px] text-[13px] font-medium no-underline transition-all duration-200 hover:bg-white/[0.06]"
+             style="color:var(--text2)"
+             onmouseover="this.style.color='var(--text)'"
+             onmouseout="this.style.color='var(--text2)'">
+            <span class="tr">Hizmetler</span><span class="en">Services</span>
+          </a>
+        </li>
+        <li role="listitem">
+          <a href="#projects"
+             class="nav-link relative px-4 py-2 rounded-[10px] text-[13px] font-medium no-underline transition-all duration-200 hover:bg-white/[0.06]"
+             style="color:var(--text2)"
+             onmouseover="this.style.color='var(--text)'"
+             onmouseout="this.style.color='var(--text2)'">
+            <span class="tr">Projeler</span><span class="en">Projects</span>
+          </a>
+        </li>
+        <li role="listitem">
+          <a href="#team"
+             class="nav-link relative px-4 py-2 rounded-[10px] text-[13px] font-medium no-underline transition-all duration-200 hover:bg-white/[0.06]"
+             style="color:var(--text2)"
+             onmouseover="this.style.color='var(--text)'"
+             onmouseout="this.style.color='var(--text2)'">
+            <span class="tr">Ekip</span><span class="en">Team</span>
+          </a>
+        </li>
+        <li role="listitem">
+          <a href="#contact"
+             class="nav-link relative px-4 py-2 rounded-[10px] text-[13px] font-medium no-underline transition-all duration-200 hover:bg-white/[0.06]"
+             style="color:var(--text2)"
+             onmouseover="this.style.color='var(--text)'"
+             onmouseout="this.style.color='var(--text2)'">
+            <span class="tr">İletişim</span><span class="en">Contact</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- NAV ACTIONS: Dil, Tema, CTA -->
+    <div class="nav-actions flex items-center gap-2" role="group" aria-label="Sayfa kontrolleri">
+
+      <!-- Dil Değiştirici -->
+      <button
+        id="langBtn"
+        onclick="toggleLang()"
+        class="lang-btn font-mono text-[11px] font-bold px-3 py-[7px] rounded-[10px] border cursor-pointer transition-all duration-200"
+        style="background:var(--bg3); border-color:var(--border2); color:var(--text2);"
+        aria-label="Dili değiştir"
+        onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent2)'"
+        onmouseout="this.style.borderColor='var(--border2)';this.style.color='var(--text2)'"
+      >EN</button>
+
+      <!-- Tema Değiştirici -->
+      <button
+        id="themeBtn"
+        onclick="toggleTheme()"
+        class="theme-btn w-[38px] h-[38px] flex items-center justify-center text-[16px] rounded-[10px] border cursor-pointer transition-all duration-200"
+        style="background:var(--bg3); border-color:var(--border2);"
+        aria-label="Temayı değiştir"
+        onmouseover="this.style.borderColor='var(--accent)'"
+        onmouseout="this.style.borderColor='var(--border2)'"
+      >🌙</button>
+
+      <!-- PRIMARY CTA BUTTON
+           - gradient background
+           - hover: yukarı kayma + glow shadow
+           - Sadece desktop'ta tam metin, mobilde ikon
+      -->
+      <a
+        href="#contact"
+        class="nav-cta hidden sm:inline-flex items-center gap-2 font-extrabold text-[13px] px-5 py-[9px] rounded-[10px] no-underline transition-all duration-200 cursor-pointer select-none"
+        style="
+          background: linear-gradient(135deg, #6366F1, #8B5CF6);
+          color: #fff;
+          letter-spacing: -0.01em;
+        "
+        onmouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 12px 32px rgba(99,102,241,0.35)'"
+        onmouseout="this.style.transform='';this.style.boxShadow=''"
+        aria-label="Ücretsiz proje değerlendirmesi için iletişime geç"
+      >
+        <span class="tr">Ücretsiz Değerlendirme</span>
+        <span class="en">Free Assessment</span>
+        <span aria-hidden="true">→</span>
+      </a>
+
+      <!-- MOBİL HAMBURGER MENU BUTONU
+           - Sadece md altında görünür
+           - aria-expanded ile ekran okuyucu uyumu
+           - aria-controls ile ilgili menüyü işaret eder
+      -->
+      <button
+        id="mobileMenuBtn"
+        class="md:hidden flex flex-col justify-center items-center w-[38px] h-[38px] rounded-[10px] border cursor-pointer transition-all duration-200 gap-[5px]"
+        style="background:var(--bg3); border-color:var(--border2);"
+        aria-label="Mobil menüyü aç/kapat"
+        aria-expanded="false"
+        aria-controls="mobileMenu"
+        onclick="toggleMobileMenu()"
+      >
+        <!-- Hamburger çizgileri - JS ile X'e dönüşür -->
+        <span id="hb1" class="block w-[18px] h-[1.5px] rounded-full transition-all duration-300" style="background:var(--text2)"></span>
+        <span id="hb2" class="block w-[18px] h-[1.5px] rounded-full transition-all duration-300" style="background:var(--text2)"></span>
+        <span id="hb3" class="block w-[18px] h-[1.5px] rounded-full transition-all duration-300" style="background:var(--text2)"></span>
+      </button>
     </div>
-    <div class="logo-text">
-      <div class="logo-name"><span class="g">g</span><span class="s">Softwares</span></div>
-      <div class="logo-domain">.dev</div>
-    </div>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#services"><span class="tr">Hizmetler</span><span class="en">Services</span></a></li>
-    <li><a href="#projects"><span class="tr">Projeler</span><span class="en">Projects</span></a></li>
-    <li><a href="#team"><span class="tr">Ekip</span><span class="en">Team</span></a></li>
-    <li><a href="#contact"><span class="tr">İletişim</span><span class="en">Contact</span></a></li>
-  </ul>
-  <div class="nav-actions">
-    <button class="lang-btn" onclick="toggleLang()" id="langBtn">EN</button>
-    <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
-    <a href="#contact" class="nav-cta"><span class="tr">Ücretsiz Değerlendirme</span><span class="en">Free Assessment</span> →</a>
   </div>
-</nav>
+
+  <!-- MOBİL DROPDOWN MENU
+       - id="mobileMenu" ile hamburger aria-controls eşleşir
+       - JS ile open/close toggle
+       - Glassmorphism devam ediyor
+  -->
+  <div
+    id="mobileMenu"
+    class="hidden md:hidden border-t"
+    style="background:rgba(11,15,25,0.95); border-color:var(--border);"
+    role="navigation"
+    aria-label="Mobil navigasyon"
+  >
+    <ul class="list-none m-0 p-4 flex flex-col gap-1" role="list">
+      <li><a href="#services" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-[10px] text-[14px] font-medium no-underline transition-all duration-200" style="color:var(--text2)" onmouseover="this.style.background='var(--bg3)';this.style.color='var(--text)'" onmouseout="this.style.background='';this.style.color='var(--text2)'"><span class="tr">Hizmetler</span><span class="en">Services</span></a></li>
+      <li><a href="#projects" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-[10px] text-[14px] font-medium no-underline transition-all duration-200" style="color:var(--text2)" onmouseover="this.style.background='var(--bg3)';this.style.color='var(--text)'" onmouseout="this.style.background='';this.style.color='var(--text2)'"><span class="tr">Projeler</span><span class="en">Projects</span></a></li>
+      <li><a href="#team" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-[10px] text-[14px] font-medium no-underline transition-all duration-200" style="color:var(--text2)" onmouseover="this.style.background='var(--bg3)';this.style.color='var(--text)'" onmouseout="this.style.background='';this.style.color='var(--text2)'"><span class="tr">Ekip</span><span class="en">Team</span></a></li>
+      <li><a href="#contact" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-[10px] text-[14px] font-medium no-underline transition-all duration-200" style="color:var(--text2)" onmouseover="this.style.background='var(--bg3)';this.style.color='var(--text)'" onmouseout="this.style.background='';this.style.color='var(--text2)'"><span class="tr">İletişim</span><span class="en">Contact</span></a></li>
+      <li class="mt-2 pt-2" style="border-top:1px solid var(--border)">
+        <a href="#contact" onclick="toggleMobileMenu()"
+           class="flex items-center justify-center gap-2 py-3 rounded-[10px] text-[14px] font-bold no-underline"
+           style="background:linear-gradient(135deg,#6366F1,#8B5CF6);color:#fff">
+          <span class="tr">Ücretsiz Değerlendirme →</span>
+          <span class="en">Free Assessment →</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
 
 <!-- HERO -->
 <section class="hero">
@@ -1698,6 +1941,110 @@
   document.addEventListener('mousemove',e=>{
     const glow=document.getElementById('cursorGlow');
     if(glow){glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px';}
+  });
+
+  // ============================================================
+  // HEADER SCROLL BEHAVIOR
+  // - Scroll edilince shadow + biraz daha opak
+  // - IntersectionObserver yerine scroll event (daha basit)
+  // ============================================================
+  const siteHeader = document.getElementById('site-header');
+  let lastScrollY = 0;
+
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+
+    if (scrollY > 60) {
+      // Scroll edildi: daha opak + shadow
+      siteHeader.style.background = 'rgba(11,15,25,0.92)';
+      siteHeader.style.boxShadow = '0 4px 32px rgba(0,0,0,0.4)';
+      siteHeader.style.borderBottomColor = 'rgba(255,255,255,0.08)';
+    } else {
+      // Tepede: yarı saydam cam efekti
+      siteHeader.style.background = 'rgba(11,15,25,0.75)';
+      siteHeader.style.boxShadow = 'none';
+      siteHeader.style.borderBottomColor = 'rgba(255,255,255,0.055)';
+    }
+
+    // Active nav link highlight - scroll pozisyonuna göre
+    const sections = ['services','projects','team','contact'];
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const links = document.querySelectorAll(`.nav-link[href="#${id}"]`);
+      links.forEach(link => {
+        if (rect.top <= 100 && rect.bottom >= 100) {
+          link.style.color = 'var(--accent2)';
+          link.style.background = 'rgba(99,102,241,0.08)';
+        } else {
+          link.style.color = 'var(--text2)';
+          link.style.background = '';
+        }
+      });
+    });
+
+    lastScrollY = scrollY;
+  }, { passive: true });
+
+  // ============================================================
+  // MOBILE MENU TOGGLE
+  // - Hamburger → X animasyonu
+  // - aria-expanded güncelleme
+  // ============================================================
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const btn = document.getElementById('mobileMenuBtn');
+    const hb1 = document.getElementById('hb1');
+    const hb2 = document.getElementById('hb2');
+    const hb3 = document.getElementById('hb3');
+    const isOpen = !menu.classList.contains('hidden');
+
+    if (isOpen) {
+      // Kapat
+      menu.classList.add('hidden');
+      btn.setAttribute('aria-expanded', 'false');
+      // Hamburger'a dön
+      hb1.style.transform = '';
+      hb2.style.opacity = '1';
+      hb3.style.transform = '';
+    } else {
+      // Aç
+      menu.classList.remove('hidden');
+      btn.setAttribute('aria-expanded', 'true');
+      // X'e dönüştür
+      hb1.style.transform = 'rotate(45deg) translate(4.5px, 4.5px)';
+      hb2.style.opacity = '0';
+      hb3.style.transform = 'rotate(-45deg) translate(4.5px, -4.5px)';
+    }
+  }
+
+  // Dışarı tıklayınca mobil menü kapansın
+  document.addEventListener('click', (e) => {
+    const menu = document.getElementById('mobileMenu');
+    const btn = document.getElementById('mobileMenuBtn');
+    if (!menu.classList.contains('hidden') &&
+        !menu.contains(e.target) &&
+        !btn.contains(e.target)) {
+      toggleMobileMenu();
+    }
+  });
+
+  // ============================================================
+  // SMOOTH SCROLL - anchor linkleri için
+  // ============================================================
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', (e) => {
+      const href = anchor.getAttribute('href');
+      if (href === '#') return;
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        const headerH = 68;
+        const top = target.getBoundingClientRect().top + window.scrollY - headerH;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
   });
 
   // Theme
