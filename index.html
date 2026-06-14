@@ -420,8 +420,13 @@
       display: none; position: fixed; inset: 0; z-index: 9999;
       background: rgba(0,0,0,.8); backdrop-filter: blur(8px);
       align-items: center; justify-content: center; padding: 24px;
+      overflow-y: auto;
     }
-    .svc-modal-overlay.open { display: flex; }
+    .svc-modal-overlay.open {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
     .svc-modal {
       background: var(--bg2); border: 1px solid var(--border2);
       border-radius: var(--radius); max-width: 680px; width: 100%;
@@ -580,10 +585,16 @@
     .contact-form-wrap .sub { font-size: 13px; color: var(--text2); margin-bottom: 28px; }
     .form-group { margin-bottom: 16px; }
     .form-label { display: block; font-size: 11px; font-weight: 700; font-family: var(--font-mono); color: var(--text3); letter-spacing: .1em; margin-bottom: 6px; }
+    .form-select option { background: var(--bg2) !important; color: var(--text) !important; }
     .form-input, .form-textarea, .form-select {
       width: 100%; background: var(--bg2); border: 1px solid var(--border2);
       border-radius: 12px; padding: 12px 16px;
       color: var(--text); font-size: 14px; font-family: var(--font);
+      -webkit-appearance: none; appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238892A4' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px !important; /* eski valfont);
       transition: border-color .2s, box-shadow .2s; outline: none;
     }
     .form-input:focus, .form-textarea:focus, .form-select:focus {
@@ -1359,11 +1370,11 @@
          Semantic: <a> ile ana sayfaya bağlı, aria-label ile erişilebilir -->
     <a
       href="#"
-      class="nav-logo flex items-center gap-3 no-underline group"
+      class="nav-logo"
+      style="display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0;"
       aria-label="gSoftwares.dev - Ana Sayfa"
     >
-      <!-- SVG Logo Mark - gradient indigo/yeşil -->
-      <div class="logo-mark relative w-[42px] h-[42px] flex-shrink-0 transition-all duration-200 group-hover:drop-shadow-[0_0_12px_rgba(99,102,241,0.5)]">
+      <div style="width:42px;height:42px;flex-shrink:0;transition:filter .2s;">
         <svg viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg" width="42" height="42" aria-hidden="true">
           <rect width="42" height="42" rx="12" fill="url(#logoGradV2)"/>
           <text x="21" y="27" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-weight="800" font-size="15" fill="#000">gS</text>
@@ -1376,14 +1387,11 @@
         </svg>
       </div>
 
-      <!-- Logo Metin Grubu -->
-      <div class="logo-text flex flex-col" aria-hidden="true">
-        <!-- Marka Adı: g indigo, Softwares violet -->
-        <span class="font-display font-extrabold text-[18px] leading-none tracking-[-0.02em]">
+      <div style="display:flex;flex-direction:column;" aria-hidden="true">
+        <span style="font-family:var(--font-display);font-weight:800;font-size:18px;letter-spacing:-.02em;line-height:1;">
           <span style="color:#818CF8">g</span><span style="color:#A5B4FC">Softwares</span>
         </span>
-        <!-- TLD - mono font, subtle -->
-        <span class="font-mono text-[9px] tracking-[0.1em] mt-[3px]" style="color:var(--text3)">.dev</span>
+        <span style="font-family:var(--font-mono);font-size:9px;letter-spacing:.1em;margin-top:3px;color:var(--text3);">.dev</span>
       </div>
     </a>
 
