@@ -957,6 +957,83 @@
     }
     .footer-links a:hover { color: var(--accent2) !important; }
 
+
+    /* ═══════════════════════════════════════
+       PAGE TRANSITION SYSTEM
+       Linear.app / Apple inspired
+    ═══════════════════════════════════════ */
+
+    /* TRANSITION OVERLAY - tam ekran örtü */
+    #page-transition-overlay {
+      position: fixed; inset: 0; z-index: 9999;
+      pointer-events: none;
+      background: #0B0F19;
+      opacity: 0;
+      transform: translateY(0);
+    }
+
+    /* EXIT: mevcut sayfa yukarı kayarak solar */
+    @keyframes pageExitUp {
+      0%   { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+      100% { opacity: 0; transform: translateY(-40px) scale(0.98); filter: blur(4px); }
+    }
+
+    /* ENTER: yeni sayfa aşağıdan yumuşakça gelir */
+    @keyframes pageEnterUp {
+      0%   { opacity: 0; transform: translateY(32px) scale(0.99); filter: blur(4px); }
+      100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+    }
+
+    /* CURTAIN: koyu perde aşağıdan yukarı silinir */
+    @keyframes curtainReveal {
+      0%   { transform: scaleY(1); transform-origin: top; }
+      100% { transform: scaleY(0); transform-origin: top; }
+    }
+
+    /* CURTAIN IN: perde aşağıdan kapanır */
+    @keyframes curtainClose {
+      0%   { transform: scaleY(0); transform-origin: bottom; }
+      100% { transform: scaleY(1); transform-origin: bottom; }
+    }
+
+    /* Sayfa içeriği wrapper */
+    #page-content {
+      animation: pageEnterUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    #page-content.page-exit {
+      animation: pageExitUp 0.4s cubic-bezier(0.4, 0, 1, 1) forwards;
+      pointer-events: none;
+    }
+
+    /* CURTAIN OVERLAY - Linear.app stili */
+    #page-curtain {
+      position: fixed; inset: 0; z-index: 9998;
+      background: linear-gradient(180deg, #0B0F19 0%, #141929 100%);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      pointer-events: none;
+    }
+    #page-curtain.closing {
+      animation: curtainClose 0.45s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+    }
+    #page-curtain.opening {
+      animation: curtainReveal 0.5s cubic-bezier(0.76, 0, 0.24, 1) 0.1s forwards;
+    }
+
+    /* Loading indicator - ince progress bar */
+    #page-progress {
+      position: fixed; top: 0; left: 0; z-index: 10000;
+      height: 2px; width: 0%;
+      background: linear-gradient(90deg, #6366F1, #8B5CF6, #06B6D4);
+      transition: width 0.3s ease;
+      box-shadow: 0 0 8px rgba(99,102,241,0.6);
+      pointer-events: none;
+    }
+
+    /* Sub-page body animasyonu */
+    body.sub-page #page-content {
+      animation: pageEnterUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+    }
 </style>
   <!-- Tailwind CSS CDN - utility-first styling -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -1035,11 +1112,31 @@
 </head>
 <body data-theme="dark" data-lang="tr">
 
+<!-- ============================================================
+  PAGE TRANSITION ELEMENTLERI
+  - #page-curtain: koyu perde (aşağıdan yukarı açılır/kapanır)
+  - #page-progress: ince yükleme progress bar
+  - #page-content: tüm sayfa içeriği wrapper
+============================================================ -->
+
+<!-- Progress bar: sayfa geçişinde üstte ince çizgi -->
+<div id="page-progress" role="progressbar" aria-hidden="true"></div>
+
+<!-- Curtain overlay: Linear.app stili perde efekti -->
+<div id="page-curtain" aria-hidden="true"></div>
+
 <!-- CURSOR GLOW -->
 <div class="cursor-glow" id="cursorGlow"></div>
 
 <!-- PARTICLES -->
 <div id="particles"></div>
+
+<!-- ============================================================
+  PAGE CONTENT WRAPPER
+  - id="page-content": Router bu elementi günceller
+  - Tüm görünür sayfa içeriği burada
+============================================================ -->
+<main id="page-content" role="main">
 
 <!-- SERVICE MODALS -->
 <div class="svc-modal-overlay" id="modal-web">
@@ -1910,11 +2007,19 @@
       <a href="#services" class="en">Services</a>
       <a href="#projects" class="tr">Projeler</a>
       <a href="#projects" class="en">Projects</a>
+      <a href="about.html" class="page-link tr">Hakkımızda</a>
+      <a href="about.html" class="page-link en">About</a>
+      <a href="blog.html" class="page-link tr">Blog</a>
+      <a href="blog.html" class="page-link en">Blog</a>
+      <a href="legal.html" class="page-link tr">Gizlilik</a>
+      <a href="legal.html" class="page-link en">Legal</a>
       <a href="https://fleetvision.online" target="_blank">FleetVision</a>
       <a href="https://github.com/hgokce34" target="_blank">GitHub</a>
     </div>
   </div>
 </footer>
+
+</main>
 
 <script>
   // Particles
@@ -1942,6 +2047,179 @@
     const glow=document.getElementById('cursorGlow');
     if(glow){glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px';}
   });
+
+  // ============================================================
+  // PAGE TRANSITION ROUTER
+  // Linear.app / Apple inspired smooth transitions
+  // ============================================================
+
+  const Router = {
+    curtain: null,
+    progress: null,
+    isTransitioning: false,
+
+    init() {
+      this.curtain = document.getElementById('page-curtain');
+      this.progress = document.getElementById('page-progress');
+
+      // Tüm .page-link sınıflı linkleri yakala
+      this.bindLinks();
+
+      // Sayfa ilk yüklenince enter animasyonu
+      this.enterPage();
+
+      // Browser back/forward
+      window.addEventListener('popstate', (e) => {
+        if (e.state?.url) this.navigate(e.state.url, false);
+      });
+    },
+
+    bindLinks() {
+      // Mevcut ve dinamik eklenen linkleri dinle
+      document.addEventListener('click', (e) => {
+        const link = e.target.closest('a.page-link');
+        if (!link) return;
+
+        const href = link.getAttribute('href');
+        if (!href || href.startsWith('http') || href.startsWith('#')) return;
+
+        e.preventDefault();
+        if (this.isTransitioning) return;
+
+        this.navigate(href);
+      });
+    },
+
+    // Progress bar animasyonu
+    setProgress(pct) {
+      if (!this.progress) return;
+      this.progress.style.width = pct + '%';
+      if (pct >= 100) {
+        setTimeout(() => {
+          this.progress.style.opacity = '0';
+          setTimeout(() => {
+            this.progress.style.width = '0%';
+            this.progress.style.opacity = '1';
+          }, 300);
+        }, 200);
+      }
+    },
+
+    // Mevcut sayfayı kapat
+    async exitPage() {
+      return new Promise(resolve => {
+        this.isTransitioning = true;
+
+        // Progress başlat
+        this.setProgress(20);
+
+        // Perde kapat (aşağıdan yukarı kapanır)
+        if (this.curtain) {
+          this.curtain.classList.remove('opening');
+          this.curtain.classList.add('closing');
+        }
+
+        // Sayfa içeriğini exit animasyonuna al
+        const content = document.getElementById('page-content');
+        if (content) content.classList.add('page-exit');
+
+        // Exit animasyonu bitti → resolve
+        setTimeout(() => {
+          this.setProgress(60);
+          resolve();
+        }, 420);
+      });
+    },
+
+    // Yeni sayfayı aç
+    enterPage() {
+      const content = document.getElementById('page-content');
+      if (!content) return;
+
+      // Perde kaldır (yukarıdan aşağı açılır)
+      if (this.curtain) {
+        this.curtain.classList.remove('closing');
+        this.curtain.classList.add('opening');
+      }
+
+      content.classList.remove('page-exit');
+      this.setProgress(100);
+
+      setTimeout(() => {
+        this.isTransitioning = false;
+        if (this.curtain) this.curtain.classList.remove('opening');
+      }, 700);
+    },
+
+    // Sayfa navigasyonu
+    async navigate(url, pushState = true) {
+      try {
+        // Çıkış animasyonu
+        await this.exitPage();
+
+        this.setProgress(75);
+
+        // Sayfayı fetch et
+        const res = await fetch(url);
+        if (!res.ok) throw new Error('Sayfa yüklenemedi');
+        const html = await res.text();
+
+        // DOM'u güncelle
+        const parser = new DOMParser();
+        const newDoc = parser.parseFromString(html, 'text/html');
+
+        // Başlık güncelle
+        document.title = newDoc.title;
+
+        // Sayfa içeriğini değiştir (varsa page-content, yoksa body)
+        const newContent = newDoc.getElementById('page-content');
+        const currentContent = document.getElementById('page-content');
+
+        if (newContent && currentContent) {
+          currentContent.innerHTML = newContent.innerHTML;
+        } else {
+          // Fallback: tam sayfa değiştir
+          document.open();
+          document.write(html);
+          document.close();
+          return;
+        }
+
+        // History güncelle
+        if (pushState) {
+          history.pushState({ url }, newDoc.title, url);
+        }
+
+        // Scroll tepesine git
+        window.scrollTo({ top: 0 });
+
+        // Giriş animasyonu
+        this.enterPage();
+
+        // Yeni sayfa linklerini bağla
+        this.bindLinks();
+
+        // Reveal animasyonlarını yeniden başlat
+        setTimeout(() => initReveal(), 100);
+
+      } catch (err) {
+        console.error('Router hatası:', err);
+        // Fallback: normal navigasyon
+        window.location.href = url;
+      }
+    }
+  };
+
+  // Reveal observer (router yeniden çağırabilmek için)
+  function initReveal() {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal:not(.visible)').forEach(el => observer.observe(el));
+  }
+
+  // Router başlat
+  Router.init();
 
   // ============================================================
   // HEADER SCROLL BEHAVIOR
@@ -2129,11 +2407,84 @@
       });
   }
 
-  // Navbar scroll
-  window.addEventListener('scroll',()=>{
-    const nav=document.querySelector('nav');
-    nav.style.boxShadow=window.scrollY>50?'0 4px 40px rgba(0,0,0,.4)':'none';
+  // Navbar scroll (eski - korunuyor)
+  // Yeni scroll kodu site-header ID'si ile çalışıyor
+
+  // ============================================================
+  // PAGE TRANSITION ROUTER
+  // Linear.app / Apple stili akıcı geçişler
+  // ============================================================
+  const _curtain = document.getElementById('page-curtain');
+  const _progress = document.getElementById('page-progress');
+  let _isTransitioning = false;
+
+  function _setProgress(pct) {
+    if (!_progress) return;
+    _progress.style.width = pct + '%';
+    _progress.style.opacity = '1';
+    if (pct >= 100) {
+      setTimeout(() => { _progress.style.opacity = '0'; setTimeout(() => { _progress.style.width='0%'; _progress.style.opacity='1'; }, 350); }, 250);
+    }
+  }
+
+  function _enterPage() {
+    const content = document.getElementById('page-content');
+    if (content) content.classList.remove('page-exit');
+    if (_curtain) { _curtain.classList.remove('closing'); void _curtain.offsetWidth; _curtain.classList.add('opening'); }
+    _setProgress(100);
+    setTimeout(() => { _isTransitioning = false; if (_curtain) _curtain.classList.remove('opening'); }, 700);
+  }
+
+  async function _navigate(url) {
+    if (_isTransitioning) return;
+    _isTransitioning = true;
+    _setProgress(15);
+
+    // EXIT: sayfa yukarı kayarak solar
+    const content = document.getElementById('page-content');
+    if (content) content.classList.add('page-exit');
+
+    // Perde kapat
+    if (_curtain) { _curtain.classList.remove('opening'); void _curtain.offsetWidth; _curtain.classList.add('closing'); }
+
+    _setProgress(45);
+    await new Promise(r => setTimeout(r, 440));
+    _setProgress(75);
+
+    // Yeni sayfaya git
+    window.location.href = url;
+  }
+
+  // Tüm .page-link sınıflı linkleri yakala
+  document.addEventListener('click', e => {
+    const link = e.target.closest('a.page-link');
+    if (!link) return;
+    const href = link.getAttribute('href');
+    // Sadece sayfa linkleri (http dışı, # dışı)
+    if (!href || href.startsWith('http') || href.startsWith('mailto') || href === '#') return;
+    // Anchor linkleri geç (#contact gibi)
+    if (href.includes('#') && !href.startsWith('#')) {
+      // Örn: index.html#contact - navigate et
+      e.preventDefault();
+      _navigate(href);
+      return;
+    }
+    if (href.startsWith('#')) return;
+    e.preventDefault();
+    _navigate(href);
   });
+
+  // Sayfa yüklenince enter animasyonu
+  _enterPage();
+
+  // Reveal observer
+  function _initReveal() {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal:not(.visible)').forEach(el => obs.observe(el));
+  }
+  _initReveal();
 </script>
 </body>
 </html>
