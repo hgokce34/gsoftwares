@@ -4,10 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog — gSoftwares.dev</title>
-  <meta name="description" content="Web geliştirme, UI/UX tasarım, dijital pazarlama ve yapay zeka hakkında yazılar.">
+  <meta name="description" content="Web geliştirme, tasarım ve AI üzerine yazılar.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root {
       /* ═══════════════════════════════════════
@@ -1036,287 +1035,263 @@
       animation: pageEnterUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
     }
 </style>
+  
+<style>
+/* Sub-page ek stiller */
+#page-progress{position:fixed;top:0;left:0;z-index:10000;height:2px;width:0%;background:linear-gradient(90deg,#6366F1,#8B5CF6,#06B6D4);box-shadow:0 0 8px rgba(99,102,241,0.6);pointer-events:none;opacity:1;transition:width .3s,opacity .3s;}
+#page-curtain{position:fixed;inset:0;z-index:9998;background:linear-gradient(180deg,#0B0F19,#141929);transform:scaleY(0);transform-origin:bottom;pointer-events:none;}
+#page-curtain.gs-closing{animation:gsCurtainClose .45s cubic-bezier(.76,0,.24,1) forwards;}
+#page-curtain.gs-opening{animation:gsCurtainOpen .5s cubic-bezier(.76,0,.24,1) .05s forwards;}
+@keyframes gsCurtainClose{0%{transform:scaleY(0);transform-origin:bottom}100%{transform:scaleY(1);transform-origin:bottom}}
+@keyframes gsCurtainOpen{0%{transform:scaleY(1);transform-origin:top}100%{transform:scaleY(0);transform-origin:top}}
+@keyframes gsPageEnter{0%{opacity:0;transform:translateY(24px);filter:blur(3px)}100%{opacity:1;transform:translateY(0);filter:blur(0)}}
+@keyframes gsPageExit{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(-32px);filter:blur(4px)}}
+#page-content{animation:gsPageEnter .6s cubic-bezier(.16,1,.3,1) .1s both;}
+#page-content.gs-exit{animation:gsPageExit .4s cubic-bezier(.4,0,1,1) forwards;pointer-events:none;}
+
+/* Grid bg */
+.gs-grid-bg{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(99,102,241,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(99,102,241,0.03) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse at center,black 20%,transparent 80%);}
+
+/* Header */
+#gs-header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(11,15,25,0.75);backdrop-filter:blur(24px) saturate(1.8);-webkit-backdrop-filter:blur(24px) saturate(1.8);border-bottom:1px solid rgba(255,255,255,0.055);transition:background .3s,box-shadow .3s;}
+
+/* Nav */
+.gs-nav-link{padding:7px 16px;border-radius:10px;font-size:13px;font-weight:500;color:var(--text2);text-decoration:none;transition:all .15s;display:inline-block;}
+.gs-nav-link:hover{color:var(--text);background:rgba(255,255,255,0.06);}
+.gs-nav-link.active{color:var(--accent2);background:rgba(99,102,241,0.08);}
+
+/* Btn */
+.gs-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#6366F1,#8B5CF6);color:#fff;font-weight:800;font-size:13px;padding:9px 20px;border-radius:10px;text-decoration:none;transition:transform .2s,box-shadow .2s;}
+.gs-btn:hover{transform:translateY(-1px);box-shadow:0 12px 32px rgba(99,102,241,0.35);}
+
+/* Card */
+.gs-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:transform .3s cubic-bezier(.34,1.56,.64,1),border-color .2s,box-shadow .3s;}
+.gs-card:hover{transform:translateY(-5px);border-color:rgba(99,102,241,0.25);box-shadow:0 20px 60px rgba(0,0,0,.4);}
+
+/* Reveal */
+.gs-reveal{opacity:0;transform:translateY(24px);transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1);}
+.gs-reveal.visible{opacity:1;transform:translateY(0);}
+.gs-reveal.d1{transition-delay:.1s;}.gs-reveal.d2{transition-delay:.2s;}.gs-reveal.d3{transition-delay:.3s;}
+
+/* Typography */
+.gs-label{font-family:var(--font-mono);font-size:11px;font-weight:700;color:var(--accent2);letter-spacing:.2em;text-transform:uppercase;display:flex;align-items:center;gap:8px;margin-bottom:14px;}
+.gs-label::before{content:'//';opacity:.5;}
+.gs-h1{font-family:var(--font-display);font-size:clamp(36px,6vw,72px);font-weight:800;letter-spacing:-.04em;line-height:1.05;}
+.gs-h2{font-family:var(--font-display);font-size:clamp(26px,4vw,48px);font-weight:800;letter-spacing:-.03em;line-height:1.08;}
+.gs-h3{font-family:var(--font-display);font-size:17px;font-weight:700;letter-spacing:-.01em;}
+.gs-body{font-size:15px;color:var(--text2);line-height:1.8;}
+.gs-body-sm{font-size:13px;color:var(--text2);line-height:1.7;}
+.gs-grad{background:linear-gradient(135deg,#6366F1,#8B5CF6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+
+/* Mobile hamburger */
+.gs-hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:38px;height:38px;border-radius:10px;background:var(--bg3);border:1px solid var(--border2);cursor:pointer;}
+.gs-hamburger span{display:block;width:18px;height:1.5px;border-radius:99px;background:var(--text2);}
+.gs-mob-menu{display:none;background:rgba(11,15,25,0.96);border-top:1px solid var(--border);padding:12px 16px;}
+.gs-mob-menu a{display:block;padding:11px 16px;border-radius:10px;font-size:14px;font-weight:500;color:var(--text2);text-decoration:none;transition:all .15s;margin-bottom:3px;}
+.gs-mob-menu a:hover{background:var(--bg3);color:var(--text);}
+
+/* Footer */
+.gs-footer{border-top:1px solid var(--border);padding:32px 40px;position:relative;z-index:2;}
+
+/* TR/EN */
+.en{display:none;}[data-lang="en"] .tr{display:none;}[data-lang="en"] .en{display:block;}
+span.en{display:none;}[data-lang="en"] span.tr{display:none;}[data-lang="en"] span.en{display:inline;}
+
+/* Scrollbar */
+::-webkit-scrollbar{width:6px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:99px;}
+::selection{background:rgba(99,102,241,.25);color:var(--text);}
+
+@media(max-width:768px){.gs-hamburger{display:flex!important;}.gs-nav-desktop{display:none!important;}.gs-cta-desktop{display:none!important;}.gs-footer{padding:28px 20px;}}
+</style>
+
   <style>
-    section { padding:100px 40px; position:relative; z-index:2; }
-    .container { max-width:1140px; margin:0 auto; }
-    .blog-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:24px; }
-    .blog-card { background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; transition:all .3s; cursor:pointer; }
-    .blog-card:hover { border-color:rgba(99,102,241,0.25); transform:translateY(-5px); box-shadow:0 20px 60px rgba(0,0,0,.4); }
-    .blog-thumb { height:180px; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; }
-    .blog-body { padding:24px; }
-    .blog-tag { font-family:var(--font-mono); font-size:10px; font-weight:700; padding:3px 10px; border-radius:9999px; background:rgba(99,102,241,.1); border:1px solid rgba(99,102,241,.2); color:var(--accent2); display:inline-block; margin-bottom:12px; }
-    .blog-title { font-family:var(--font-display); font-size:18px; font-weight:700; margin-bottom:10px; line-height:1.35; }
-    .blog-excerpt { font-size:13px; color:var(--text2); line-height:1.7; margin-bottom:16px; }
-    .blog-meta { display:flex; align-items:center; justify-content:space-between; font-size:11px; color:var(--text3); font-family:var(--font-mono); }
-    .tag-filter { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:40px; }
-    .tag-btn { font-family:var(--font-mono); font-size:11px; font-weight:600; padding:6px 16px; border-radius:9999px; border:1px solid var(--border2); background:transparent; color:var(--text2); cursor:pointer; transition:all .2s; }
-    .tag-btn:hover, .tag-btn.active { background:rgba(99,102,241,.1); border-color:var(--accent); color:var(--accent2); }
-    @media(max-width:768px) { section { padding:80px 20px; } .blog-grid { grid-template-columns:1fr; } }
-  </style>
+.tag-f{font-family:var(--font-mono);font-size:11px;font-weight:600;padding:6px 16px;border-radius:9999px;border:1px solid var(--border2);background:transparent;color:var(--text2);cursor:pointer;transition:all .2s;}
+.tag-f:hover,.tag-f.active{background:rgba(99,102,241,.1);border-color:var(--accent);color:var(--accent2);}
+@media(max-width:768px){section{padding-left:20px!important;padding-right:20px!important;}}
+</style>
 </head>
 <body>
 
-<!-- PROGRESS + CURTAIN -->
 <div id="page-progress" role="progressbar" aria-hidden="true"></div>
 <div id="page-curtain" aria-hidden="true"></div>
-
-<!-- GRID BG -->
 <div class="gs-grid-bg" aria-hidden="true"></div>
 
-<!-- HEADER -->
-<header class="gs-header" role="banner" id="gs-header">
-  <div class="gs-header-inner">
-
-    <!-- LOGO -->
-    <a href="index.html" class="gs-logo page-link" aria-label="gSoftwares.dev Ana Sayfa">
-      <svg class="gs-logo-svg" width="40" height="40" viewBox="0 0 42 42" fill="none" aria-hidden="true">
-        <rect width="42" height="42" rx="12" fill="url(#gsLogoG)"/>
+<header id="gs-header" role="banner">
+  <div style="max-width:1140px;margin:0 auto;padding:0 24px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:16px;">
+    <a href="index.html" class="gs-logo page-link" style="display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;" aria-label="gSoftwares.dev">
+      <svg width="38" height="38" viewBox="0 0 42 42" fill="none" aria-hidden="true">
+        <rect width="42" height="42" rx="12" fill="url(#gLgblog)"/>
         <text x="21" y="27" text-anchor="middle" font-family="Space Grotesk" font-weight="800" font-size="15" fill="#000">gS</text>
-        <defs>
-          <linearGradient id="gsLogoG" x1="0" y1="0" x2="42" y2="42">
-            <stop offset="0%" stop-color="#6366F1"/>
-            <stop offset="100%" stop-color="#8B5CF6"/>
-          </linearGradient>
-        </defs>
+        <defs><linearGradient id="gLgblog" x1="0" y1="0" x2="42" y2="42"><stop offset="0%" stop-color="#6366F1"/><stop offset="100%" stop-color="#8B5CF6"/></linearGradient></defs>
       </svg>
       <div>
-        <div class="gs-logo-name"><span style="color:#818CF8">g</span><span style="color:#A5B4FC">Softwares</span></div>
-        <div class="gs-logo-tld">.dev</div>
+        <div style="font-family:var(--font-display);font-weight:800;font-size:17px;letter-spacing:-.02em;line-height:1;"><span style="color:#818CF8">g</span><span style="color:#A5B4FC">Softwares</span></div>
+        <div style="font-family:var(--font-mono);font-size:9px;color:var(--text3);letter-spacing:.1em;margin-top:2px;">.dev</div>
       </div>
     </a>
+    <nav class="gs-nav-desktop" style="display:flex;gap:2px;" aria-label="Ana navigasyon">
+      <a href="index.html" class="gs-nav-link page-link "><span class="tr">Ana Sayfa</span><span class="en">Home</span></a>
+<a href="index.html#services" class="gs-nav-link "><span class="tr">Hizmetler</span><span class="en">Services</span></a>
+<a href="about.html" class="gs-nav-link page-link "><span class="tr">Hakkımızda</span><span class="en">About</span></a>
+<a href="blog.html" class="gs-nav-link page-link active">Blog</a>
+<a href="legal.html" class="gs-nav-link page-link "><span class="tr">Gizlilik</span><span class="en">Legal</span></a>
 
-    <!-- DESKTOP NAV -->
-    <nav class="gs-nav-desktop" style="display:flex;gap:4px;" aria-label="Site navigasyonu">
-      <a href="index.html" class="gs-nav-link page-link ">
-        <span class="tr">Ana Sayfa</span><span class="en">Home</span>
-      </a>
-      <a href="index.html#services" class="gs-nav-link">
-        <span class="tr">Hizmetler</span><span class="en">Services</span>
-      </a>
-      <a href="about.html" class="gs-nav-link page-link ">
-        <span class="tr">Hakkımızda</span><span class="en">About</span>
-      </a>
-      <a href="blog.html" class="gs-nav-link page-link active">Blog</a>
-      <a href="legal.html" class="gs-nav-link page-link ">
-        <span class="tr">Gizlilik</span><span class="en">Legal</span>
-      </a>
     </nav>
-
-    <!-- ACTIONS -->
-    <div style="display:flex;align-items:center;gap:10px;">
-      <button id="langBtn" onclick="toggleLang()" class="gs-nav-link" style="font-family:var(--font-mono);font-size:11px;font-weight:700;border:1px solid var(--border2);background:var(--bg3);cursor:pointer;" aria-label="Dil değiştir">EN</button>
-      <button id="themeBtn" onclick="toggleTheme()" class="gs-nav-link" style="width:38px;height:38px;padding:0;display:flex;align-items:center;justify-content:center;font-size:16px;border:1px solid var(--border2);background:var(--bg3);cursor:pointer;" aria-label="Tema değiştir">🌙</button>
-      <a href="index.html#contact" class="gs-btn-primary gs-cta-desktop page-link">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <button id="langBtn" onclick="toggleLang()" style="font-family:var(--font-mono);font-size:11px;font-weight:700;padding:6px 12px;border-radius:9px;border:1px solid var(--border2);background:var(--bg3);color:var(--text2);cursor:pointer;transition:all .2s;" aria-label="Dil değiştir">EN</button>
+      <button id="themeBtn" onclick="toggleTheme()" style="width:36px;height:36px;border-radius:9px;border:1px solid var(--border2);background:var(--bg3);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;" aria-label="Tema">🌙</button>
+      <a href="index.html#contact" class="gs-btn gs-cta-desktop page-link" style="font-size:12px;padding:8px 16px;">
         <span class="tr">Proje Başlat</span><span class="en">Start Project</span> →
       </a>
-      <!-- Hamburger -->
-      <button id="gs-hbtn" class="gs-hamburger" aria-label="Menü" aria-expanded="false" aria-controls="gs-mmenu">
+      <button id="gs-hbtn" class="gs-hamburger" aria-label="Menü" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
   </div>
-
-  <!-- MOBİL MENÜ -->
-  <div id="gs-mmenu" class="gs-mobile-menu" role="navigation" aria-label="Mobil menü">
+  <div id="gs-mmenu" class="gs-mob-menu">
     <a href="index.html" class="page-link "><span class="tr">Ana Sayfa</span><span class="en">Home</span></a>
-    <a href="index.html#services"><span class="tr">Hizmetler</span><span class="en">Services</span></a>
-    <a href="about.html" class="page-link "><span class="tr">Hakkımızda</span><span class="en">About</span></a>
-    <a href="blog.html" class="page-link active">Blog</a>
-    <a href="legal.html" class="page-link "><span class="tr">Gizlilik</span><span class="en">Legal</span></a>
-    <a href="index.html#contact" class="page-link" style="background:var(--grad1);color:#fff;font-weight:800;margin-top:8px;border-radius:10px;"><span class="tr">Proje Başlat →</span><span class="en">Start Project →</span></a>
+<a href="index.html#services" class=""><span class="tr">Hizmetler</span><span class="en">Services</span></a>
+<a href="about.html" class="page-link "><span class="tr">Hakkımızda</span><span class="en">About</span></a>
+<a href="blog.html" class="page-link ">Blog</a>
+<a href="legal.html" class="page-link "><span class="tr">Gizlilik</span><span class="en">Legal</span></a>
+
+    <a href="index.html#contact" class="page-link" style="background:linear-gradient(135deg,#6366F1,#8B5CF6);color:#fff;font-weight:800;margin-top:8px;border-radius:10px;text-align:center;"><span class="tr">Proje Başlat →</span><span class="en">Start Project →</span></a>
   </div>
 </header>
 
 <main id="page-content" role="main">
 
-  <!-- HERO -->
-  <section style="padding-top:120px;padding-bottom:60px;text-align:center;">
-    <div style="max-width:680px;margin:0 auto;">
-      <div class="gs-label" style="justify-content:center;" >
-        <span class="tr">Yazılar & Fikirler</span>
-        <span class="en">Articles & Ideas</span>
-      </div>
-      <h1 class="gs-h1 gs-reveal" style="margin-bottom:20px;font-size:clamp(36px,5vw,64px);">
-        Blog
-      </h1>
-      <p class="gs-body gs-reveal" style="font-size:17px;max-width:480px;margin:0 auto;">
-        <span class="tr">Web geliştirme, tasarım, yapay zeka ve dijital pazarlama üzerine pratik yazılar.</span>
-        <span class="en">Practical articles on web development, design, AI and digital marketing.</span>
-      </p>
+<section style="padding:120px 40px 60px;text-align:center;position:relative;z-index:2;">
+  <div style="max-width:660px;margin:0 auto;">
+    <div class="gs-label gs-reveal" style="justify-content:center;"><span class="tr">Yazılar & Fikirler</span><span class="en">Articles & Ideas</span></div>
+    <h1 class="gs-h1 gs-reveal" style="margin-bottom:20px;">Blog</h1>
+    <p class="gs-body gs-reveal" style="font-size:17px;max-width:480px;margin:0 auto;">
+      <span class="tr">Web geliştirme, tasarım, yapay zeka ve dijital pazarlama üzerine pratik yazılar.</span>
+      <span class="en">Practical articles on web development, design, AI and digital marketing.</span>
+    </p>
+  </div>
+</section>
+
+<section style="padding:20px 40px 80px;position:relative;z-index:2;">
+  <div style="max-width:1140px;margin:0 auto;">
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:40px;" class="gs-reveal">
+      <button class="tag-f active" onclick="filterBlog(this,'all')"><span class="tr">Tümü</span><span class="en">All</span></button>
+      <button class="tag-f" onclick="filterBlog(this,'dev')"><span class="tr">Geliştirme</span><span class="en">Development</span></button>
+      <button class="tag-f" onclick="filterBlog(this,'design')"><span class="tr">Tasarım</span><span class="en">Design</span></button>
+      <button class="tag-f" onclick="filterBlog(this,'ai')">AI & Otomasyon</button>
+      <button class="tag-f" onclick="filterBlog(this,'marketing')"><span class="tr">Pazarlama</span><span class="en">Marketing</span></button>
     </div>
-  </section>
-
-  <!-- BLOG İÇERİK -->
-  <section style="padding-top:40px;">
-    <div class="container">
-
-      <!-- Filtreler -->
-      <div class="tag-filter gs-reveal">
-        <button class="tag-btn active" onclick="filterBlog(this,'all')"><span class="tr">Tümü</span><span class="en">All</span></button>
-        <button class="tag-btn" onclick="filterBlog(this,'dev')"><span class="tr">Geliştirme</span><span class="en">Development</span></button>
-        <button class="tag-btn" onclick="filterBlog(this,'design')"><span class="tr">Tasarım</span><span class="en">Design</span></button>
-        <button class="tag-btn" onclick="filterBlog(this,'ai')">AI & Otomasyon</button>
-        <button class="tag-btn" onclick="filterBlog(this,'marketing')"><span class="tr">Pazarlama</span><span class="en">Marketing</span></button>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;" id="blogGrid">
+      
+    <article class="gs-card gs-reveal " data-tag="dev" style="overflow:hidden;padding:0;">
+      <div style="height:160px;background:linear-gradient(135deg,#0B0F19, #1A2035);display:flex;align-items:center;justify-content:center;font-size:36px;">💻</div>
+      <div style="padding:22px;">
+        <span style="font-family:var(--font-mono);font-size:10px;font-weight:700;padding:3px 10px;border-radius:9999px;background:#6366F118;border:1px solid #6366F130;color:#6366F1;display:inline-block;margin-bottom:12px;" class="tr">Geliştirme</span>
+        <span style="font-family:var(--font-mono);font-size:10px;font-weight:700;padding:3px 10px;border-radius:9999px;background:#6366F118;border:1px solid #6366F130;color:#6366F1;display:inline-block;margin-bottom:12px;" class="en">Development</span>
+        <h2 style="font-family:var(--font-display);font-size:16px;font-weight:700;margin-bottom:10px;line-height:1.4;" class="tr">30+ Modül, Tek Dosya: FleetVision Mimari Hikayesi</h2>
+        <h2 style="font-family:var(--font-display);font-size:16px;font-weight:700;margin-bottom:10px;line-height:1.4;" class="en">30+ Modules, One File: FleetVision Architecture Story</h2>
+        <p style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:16px;" class="tr">Framework kullanmadan, vanilla JS ve Firebase ile kurumsal SaaS nasıl inşa edilir?</p>
+        <p style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:16px;" class="en">How to build enterprise SaaS without a framework, using vanilla JS and Firebase?</p>
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text3);font-family:var(--font-mono);">
+          <span>Hamza Gökçe</span><span>2026 · 8 dk</span>
+        </div>
       </div>
-
-      <div class="blog-grid" id="blogGrid">
-
-        <!-- POST 1 -->
-        <article class="blog-card gs-reveal" data-tag="dev">
-          <div class="blog-thumb" style="background:linear-gradient(135deg,#0B0F19,#1A2035);">
-            <div style="font-family:var(--font-mono);font-size:11px;color:var(--accent2);text-align:center;padding:16px;">
-              <div style="font-size:32px;margin-bottom:8px;">💻</div>
-              <div>Firebase + Vanilla JS</div>
-            </div>
-          </div>
-          <div class="blog-body">
-            <span class="blog-tag tr">Geliştirme</span>
-            <span class="blog-tag en">Development</span>
-            <h2 class="blog-title tr">30+ Modül, Tek Dosya: FleetVision'ın Mimari Hikayesi</h2>
-            <h2 class="blog-title en">30+ Modules, One File: The Architecture Story of FleetVision</h2>
-            <p class="blog-excerpt tr">Framework kullanmadan, vanilla JS ve Firebase ile nasıl kurumsal düzeyde bir SaaS uygulaması inşa edilir? Gerçek deneyimden pratik dersler.</p>
-            <p class="blog-excerpt en">How to build an enterprise-level SaaS application without a framework, using vanilla JS and Firebase? Practical lessons from real experience.</p>
-            <div class="blog-meta">
-              <span>Hamza Gökçe</span>
-              <span>2026 · 8 dk okuma</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- POST 2 -->
-        <article class="blog-card gs-reveal d1" data-tag="design">
-          <div class="blog-thumb" style="background:linear-gradient(135deg,#0F0B1E,#1A1035);">
-            <div style="font-family:var(--font-mono);font-size:11px;color:var(--purple);text-align:center;padding:16px;">
-              <div style="font-size:32px;margin-bottom:8px;">🎨</div>
-              <div>Design System</div>
-            </div>
-          </div>
-          <div class="blog-body">
-            <span class="blog-tag" style="background:rgba(139,92,246,.1);border-color:rgba(139,92,246,.2);color:var(--purple);" class="tr">Tasarım</span>
-            <span class="blog-tag" style="background:rgba(139,92,246,.1);border-color:rgba(139,92,246,.2);color:var(--purple);" class="en">Design</span>
-            <h2 class="blog-title tr">Dönüşüm Optimize Tasarım: Güzel Görünen Her Şey Satmaz</h2>
-            <h2 class="blog-title en">Conversion-Optimized Design: Not Everything Beautiful Sells</h2>
-            <p class="blog-excerpt tr">UI/UX tasarımında estetik ile dönüşüm arasındaki hassas denge. A/B testlerinden çıkan kontra-intuitif sonuçlar.</p>
-            <p class="blog-excerpt en">The delicate balance between aesthetics and conversion in UI/UX design. Counter-intuitive results from A/B tests.</p>
-            <div class="blog-meta">
-              <span>Taner Aydoğan</span>
-              <span>2026 · 6 dk okuma</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- POST 3 -->
-        <article class="blog-card gs-reveal d2" data-tag="ai">
-          <div class="blog-thumb" style="background:linear-gradient(135deg,#0B1219,#0F2035);">
-            <div style="font-family:var(--font-mono);font-size:11px;color:var(--green);text-align:center;padding:16px;">
-              <div style="font-size:32px;margin-bottom:8px;">🤖</div>
-              <div>AI Integration</div>
-            </div>
-          </div>
-          <div class="blog-body">
-            <span class="blog-tag" style="background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.2);color:var(--green);">AI & Otomasyon</span>
-            <h2 class="blog-title tr">Claude API ile Gerçek Dünya Entegrasyonu: Prompt Engineering'den Üretime</h2>
-            <h2 class="blog-title en">Real-World Claude API Integration: From Prompt Engineering to Production</h2>
-            <p class="blog-excerpt tr">Yapay zekayı projeye entegre etmek teoride kolay, pratikte başka. Token maliyetleri, streaming ve hata yönetimi üzerine notlar.</p>
-            <p class="blog-excerpt en">Integrating AI into a project is easy in theory, different in practice. Notes on token costs, streaming and error handling.</p>
-            <div class="blog-meta">
-              <span>Hamza Gökçe</span>
-              <span>2026 · 10 dk okuma</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- POST 4 -->
-        <article class="blog-card gs-reveal" data-tag="marketing">
-          <div class="blog-thumb" style="background:linear-gradient(135deg,#190B0B,#352010);">
-            <div style="font-family:var(--font-mono);font-size:11px;color:var(--gold);text-align:center;padding:16px;">
-              <div style="font-size:32px;margin-bottom:8px;">📊</div>
-              <div>Meta Ads</div>
-            </div>
-          </div>
-          <div class="blog-body">
-            <span class="blog-tag" style="background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.2);color:var(--gold);" class="tr">Pazarlama</span>
-            <span class="blog-tag" style="background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.2);color:var(--gold);" class="en">Marketing</span>
-            <h2 class="blog-title tr">Meta Reklam Bütçenizi Boşa Harcatan 5 Hata</h2>
-            <h2 class="blog-title en">5 Mistakes Wasting Your Meta Ad Budget</h2>
-            <p class="blog-excerpt tr">Yüzlerce kampanya analizinden çıkan ortak hatalar ve bunları önlemenin pratik yolları. ROAS'ınızı artıracak somut adımlar.</p>
-            <p class="blog-excerpt en">Common mistakes from hundreds of campaign analyses and practical ways to avoid them. Concrete steps to increase your ROAS.</p>
-            <div class="blog-meta">
-              <span>Taner Aydoğan</span>
-              <span>2026 · 7 dk okuma</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- POST 5 -->
-        <article class="blog-card gs-reveal d1" data-tag="dev">
-          <div class="blog-thumb" style="background:linear-gradient(135deg,#0B1419,#102035);">
-            <div style="font-family:var(--font-mono);font-size:11px;color:var(--blue);text-align:center;padding:16px;">
-              <div style="font-size:32px;margin-bottom:8px;">🔐</div>
-              <div>Firebase Security</div>
-            </div>
-          </div>
-          <div class="blog-body">
-            <span class="blog-tag" style="background:rgba(59,130,246,.1);border-color:rgba(59,130,246,.2);color:var(--blue);" class="tr">Geliştirme</span>
-            <span class="blog-tag" style="background:rgba(59,130,246,.1);border-color:rgba(59,130,246,.2);color:var(--blue);" class="en">Development</span>
-            <h2 class="blog-title tr">Firebase Güvenlik Kuralları: Ücretsiz Tier'da Production-Ready Uygulama</h2>
-            <h2 class="blog-title en">Firebase Security Rules: Production-Ready App on Free Tier</h2>
-            <p class="blog-excerpt tr">Firestore güvenlik kurallarını doğru yazmak, authentication akışı ve ücretsiz planda kalmak için pratik optimizasyonlar.</p>
-            <p class="blog-excerpt en">Writing Firestore security rules correctly, authentication flow and practical optimizations to stay on the free plan.</p>
-            <div class="blog-meta">
-              <span>Hamza Gökçe</span>
-              <span>2026 · 9 dk okuma</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- POST 6 -->
-        <article class="blog-card gs-reveal d2" data-tag="design">
-          <div class="blog-thumb" style="background:linear-gradient(135deg,#0F0B19,#1A0F35);">
-            <div style="font-family:var(--font-mono);font-size:11px;color:var(--accent2);text-align:center;padding:16px;">
-              <div style="font-size:32px;margin-bottom:8px;">✨</div>
-              <div>Glassmorphism</div>
-            </div>
-          </div>
-          <div class="blog-body">
-            <span class="blog-tag" class="tr">Tasarım</span>
-            <span class="blog-tag" class="en">Design</span>
-            <h2 class="blog-title tr">2026'da Dark Mode: Trendden Standarda Geçiş</h2>
-            <h2 class="blog-title en">Dark Mode in 2026: Transition from Trend to Standard</h2>
-            <p class="blog-excerpt tr">Glassmorphism, micro-interactions ve premium dark UI tasarımında renk teorisi. gSoftwares design system'inin arkasındaki kararlar.</p>
-            <p class="blog-excerpt en">Color theory in glassmorphism, micro-interactions and premium dark UI design. The decisions behind the gSoftwares design system.</p>
-            <div class="blog-meta">
-              <span>Taner Aydoğan</span>
-              <span>2026 · 5 dk okuma</span>
-            </div>
-          </div>
-        </article>
-
+    </article>
+      
+    <article class="gs-card gs-reveal d1" data-tag="design" style="overflow:hidden;padding:0;">
+      <div style="height:160px;background:linear-gradient(135deg,#0F0B1E, #1A1035);display:flex;align-items:center;justify-content:center;font-size:36px;">🎨</div>
+      <div style="padding:22px;">
+        <span style="font-family:var(--font-mono);font-size:10px;font-weight:700;padding:3px 10px;border-radius:9999px;background:#8B5CF618;border:1px solid #8B5CF630;color:#8B5CF6;display:inline-block;margin-bottom:12px;" class="tr">Tasarım</span>
+        <span style="font-family:var(--font-mono);font-size:10px;font-weight:700;padding:3px 10px;border-radius:9999px;background:#8B5CF618;border:1px solid #8B5CF630;color:#8B5CF6;display:inline-block;margin-bottom:12px;" class="en">Design</span>
+        <h2 style="font-family:var(--font-display);font-size:16px;font-weight:700;margin-bottom:10px;line-height:1.4;" class="tr">Dönüşüm Optimize Tasarım: Güzel Görünen Her Şey Satmaz</h2>
+        <h2 style="font-family:var(--font-display);font-size:16px;font-weight:700;margin-bottom:10px;line-height:1.4;" class="en">Conversion Design: Not Everything Beautiful Sells</h2>
+        <p style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:16px;" class="tr">UI/UX tasarımında estetik ile dönüşüm arasındaki hassas denge.</p>
+        <p style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:16px;" class="en">The delicate balance between aesthetics and conversion in UI/UX design.</p>
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text3);font-family:var(--font-mono);">
+          <span>Taner Aydoğan</span><span>2026 · 6 dk</span>
+        </div>
       </div>
-
-      <!-- Daha fazla - placeholder -->
-      <div class="gs-reveal" style="text-align:center;margin-top:60px;">
-        <p class="gs-body" style="margin-bottom:24px;" class="tr">Yakında daha fazla yazı geliyor.</p>
-        <p class="gs-body" style="margin-bottom:24px;" class="en">More articles coming soon.</p>
-        <a href="index.html#contact" class="gs-btn-primary page-link">
-          <span class="tr">Yeni yazılardan haberdar ol →</span>
-          <span class="en">Get notified of new posts →</span>
-        </a>
+    </article>
+      
+    <article class="gs-card gs-reveal d2" data-tag="ai" style="overflow:hidden;padding:0;">
+      <div style="height:160px;background:linear-gradient(135deg,#0B1219, #0F2035);display:flex;align-items:center;justify-content:center;font-size:36px;">🤖</div>
+      <div style="padding:22px;">
+        <span style="font-family:var(--font-mono);font-size:10px;font-weight:700;padding:3px 10px;border-radius:9999px;background:#10B98118;border:1px solid #10B98130;color:#10B981;display:inline-block;margin-bottom:12px;" class="tr">AI & Otomasyon</span>
+        <span style="font-family:var(--font-mono);font-size:10px;font-weight:700;padding:3px 10px;border-radius:9999px;background:#10B98118;border:1px solid #10B98130;color:#10B981;display:inline-block;margin-bottom:12px;" class="en">AI & Automation</span>
+        <h2 style="font-family:var(--font-display);font-size:16px;font-weight:700;margin-bottom:10px;line-height:1.4;" class="tr">Claude API ile Gerçek Dünya Entegrasyonu</h2>
+        <h2 style="font-family:var(--font-display);font-size:16px;font-weight:700;margin-bottom:10px;line-height:1.4;" class="en">Real-World Claude API Integration</h2>
+        <p style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:16px;" class="tr">Yapay zekayı projeye entegre etmek teoride kolay, pratikte başka.</p>
+        <p style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:16px;" class="en">Integrating AI into a project is easy in theory, different in practice.</p>
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text3);font-family:var(--font-mono);">
+          <span>Hamza Gökçe</span><span>2026 · 10 dk</span>
+        </div>
       </div>
+    </article>
+      
+    <article class="gs-card gs-reveal " data-tag="marketing" style="overflow:hidden;padding:0;">
+      <div style="height:160px;background:linear-gradient(135deg,#190B0B, #352010);display:flex;align-items:center;justify-content:center;font-size:36px;">📊</div>
+      <div style="padding:22px;">
+        <span style="font-family:var(--font-mono);font-size:10px;font-weight:700;padding:3px 10px;border-radius:9999px;background:#F59E0B18;border:1px solid #F59E0B30;color:#F59E0B;display:inline-block;margin-bottom:12px;" class="tr">Pazarlama</span>
+        <span style="font-family:var(--font-mono);font-size:10px;font-weight:700;padding:3px 10px;border-radius:9999px;background:#F59E0B18;border:1px solid #F59E0B30;color:#F59E0B;display:inline-block;margin-bottom:12px;" class="en">Marketing</span>
+        <h2 style="font-family:var(--font-display);font-size:16px;font-weight:700;margin-bottom:10px;line-height:1.4;" class="tr">Meta Reklam Bütçenizi Boşa Harcatan 5 Hata</h2>
+        <h2 style="font-family:var(--font-display);font-size:16px;font-weight:700;margin-bottom:10px;line-height:1.4;" class="en">5 Mistakes Wasting Your Meta Ad Budget</h2>
+        <p style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:16px;" class="tr">Yüzlerce kampanya analizinden çıkan ortak hatalar ve ROAS artış yolları.</p>
+        <p style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:16px;" class="en">Common mistakes from hundreds of campaigns and ways to increase ROAS.</p>
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text3);font-family:var(--font-mono);">
+          <span>Taner Aydoğan</span><span>2026 · 7 dk</span>
+        </div>
+      </div>
+    </article>
+      
+    <article class="gs-card gs-reveal d1" data-tag="dev" style="overflow:hidden;padding:0;">
+      <div style="height:160px;background:linear-gradient(135deg,#0B1419, #102035);display:flex;align-items:center;justify-content:center;font-size:36px;">🔐</div>
+      <div style="padding:22px;">
+        <span style="font-family:var(--font-mono);font-size:10px;font-weight:700;padding:3px 10px;border-radius:9999px;background:#3B82F618;border:1px solid #3B82F630;color:#3B82F6;display:inline-block;margin-bottom:12px;" class="tr">Geliştirme</span>
+        <span style="font-family:var(--font-mono);font-size:10px;font-weight:700;padding:3px 10px;border-radius:9999px;background:#3B82F618;border:1px solid #3B82F630;color:#3B82F6;display:inline-block;margin-bottom:12px;" class="en">Development</span>
+        <h2 style="font-family:var(--font-display);font-size:16px;font-weight:700;margin-bottom:10px;line-height:1.4;" class="tr">Firebase Güvenlik Kuralları: Production-Ready Uygulama</h2>
+        <h2 style="font-family:var(--font-display);font-size:16px;font-weight:700;margin-bottom:10px;line-height:1.4;" class="en">Firebase Security Rules: Production-Ready App</h2>
+        <p style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:16px;" class="tr">Firestore güvenlik kurallarını doğru yazmak ve ücretsiz planda kalmak.</p>
+        <p style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:16px;" class="en">Writing Firestore security rules correctly while staying on the free plan.</p>
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text3);font-family:var(--font-mono);">
+          <span>Hamza Gökçe</span><span>2026 · 9 dk</span>
+        </div>
+      </div>
+    </article>
+      
+    <article class="gs-card gs-reveal d2" data-tag="design" style="overflow:hidden;padding:0;">
+      <div style="height:160px;background:linear-gradient(135deg,#0F0B19, #1A0F35);display:flex;align-items:center;justify-content:center;font-size:36px;">✨</div>
+      <div style="padding:22px;">
+        <span style="font-family:var(--font-mono);font-size:10px;font-weight:700;padding:3px 10px;border-radius:9999px;background:#6366F118;border:1px solid #6366F130;color:#6366F1;display:inline-block;margin-bottom:12px;" class="tr">Tasarım</span>
+        <span style="font-family:var(--font-mono);font-size:10px;font-weight:700;padding:3px 10px;border-radius:9999px;background:#6366F118;border:1px solid #6366F130;color:#6366F1;display:inline-block;margin-bottom:12px;" class="en">Design</span>
+        <h2 style="font-family:var(--font-display);font-size:16px;font-weight:700;margin-bottom:10px;line-height:1.4;" class="tr">2026'da Dark Mode: Trendden Standarda</h2>
+        <h2 style="font-family:var(--font-display);font-size:16px;font-weight:700;margin-bottom:10px;line-height:1.4;" class="en">Dark Mode in 2026: Trend to Standard</h2>
+        <p style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:16px;" class="tr">Glassmorphism, micro-interactions ve premium dark UI tasarımında renk teorisi.</p>
+        <p style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:16px;" class="en">Color theory in glassmorphism, micro-interactions and premium dark UI.</p>
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text3);font-family:var(--font-mono);">
+          <span>Taner Aydoğan</span><span>2026 · 5 dk</span>
+        </div>
+      </div>
+    </article>
     </div>
-  </section>
+    <div class="gs-reveal" style="text-align:center;margin-top:56px;">
+      <p class="gs-body" style="margin-bottom:22px;" class="tr">Yakında daha fazla yazı geliyor.</p>
+      <p class="gs-body" style="margin-bottom:22px;" class="en">More articles coming soon.</p>
+      <a href="index.html#contact" class="gs-btn page-link"><span class="tr">Haberdar Ol →</span><span class="en">Get Notified →</span></a>
+    </div>
+  </div>
+</section>
 
-  
+
 <footer class="gs-footer">
-  <div class="gs-footer-inner">
+  <div style="max-width:1140px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
     <div>
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
-        <svg width="26" height="26" viewBox="0 0 42 42" fill="none"><rect width="42" height="42" rx="12" fill="url(#gsfG)"/><text x="21" y="27" text-anchor="middle" font-family="Space Grotesk" font-weight="800" font-size="15" fill="#000">gS</text><defs><linearGradient id="gsfG" x1="0" y1="0" x2="42" y2="42"><stop offset="0%" stop-color="#6366F1"/><stop offset="100%" stop-color="#8B5CF6"/></linearGradient></defs></svg>
-        <span style="font-family:var(--font-display);font-weight:700;font-size:15px;"><span style="color:#818CF8">g</span><span style="color:#A5B4FC">Softwares</span><span style="color:var(--accent2)">.dev</span></span>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+        <svg width="24" height="24" viewBox="0 0 42 42" fill="none"><rect width="42" height="42" rx="12" fill="url(#gFt)"/><text x="21" y="27" text-anchor="middle" font-family="Space Grotesk" font-weight="800" font-size="15" fill="#000">gS</text><defs><linearGradient id="gFt" x1="0" y1="0" x2="42" y2="42"><stop offset="0%" stop-color="#6366F1"/><stop offset="100%" stop-color="#8B5CF6"/></linearGradient></defs></svg>
+        <span style="font-family:var(--font-display);font-weight:700;font-size:14px;"><span style="color:#818CF8">g</span><span style="color:#A5B4FC">Softwares</span><span style="color:var(--accent2)">.dev</span></span>
       </div>
       <div style="font-size:12px;color:var(--text3);">© 2026 gSoftwares.dev — Hamza Gökçe & Taner Aydoğan</div>
     </div>
-    <nav style="display:flex;gap:20px;flex-wrap:wrap;" aria-label="Footer navigasyonu">
+    <nav style="display:flex;gap:20px;flex-wrap:wrap;" aria-label="Footer">
       <a href="index.html" class="page-link" style="font-size:13px;color:var(--text3);text-decoration:none;transition:color .15s;" onmouseover="this.style.color='var(--accent2)'" onmouseout="this.style.color='var(--text3)'"><span class="tr">Ana Sayfa</span><span class="en">Home</span></a>
       <a href="about.html" class="page-link" style="font-size:13px;color:var(--text3);text-decoration:none;transition:color .15s;" onmouseover="this.style.color='var(--accent2)'" onmouseout="this.style.color='var(--text3)'"><span class="tr">Hakkımızda</span><span class="en">About</span></a>
       <a href="blog.html" class="page-link" style="font-size:13px;color:var(--text3);text-decoration:none;transition:color .15s;" onmouseover="this.style.color='var(--accent2)'" onmouseout="this.style.color='var(--text3)'">Blog</a>
@@ -1329,120 +1304,101 @@
 </main>
 <script>
 
-  // ══════════════════════════════════════════════════════
-  // gSoftwares Page Transition Engine v2.0
-  // Tüm alt sayfalarda aynı kod kullanılır
-  // ══════════════════════════════════════════════════════
-  (function() {
-    const curtain = document.getElementById('page-curtain');
-    const progress = document.getElementById('page-progress');
-    let busy = false;
+(function() {
+  const curtain = document.getElementById('page-curtain');
+  const progress = document.getElementById('page-progress');
+  let busy = false;
 
-    // Progress bar
-    function pct(n) {
-      if (!progress) return;
-      progress.style.width = n + '%';
-      if (n >= 100) setTimeout(() => { progress.style.opacity='0'; setTimeout(()=>{progress.style.width='0';progress.style.opacity='1';},350); }, 250);
-    }
+  function pct(n) {
+    if (!progress) return;
+    progress.style.width = n + '%';
+    if (n >= 100) setTimeout(() => { progress.style.opacity='0'; setTimeout(()=>{progress.style.width='0';progress.style.opacity='1';},350); }, 250);
+  }
 
-    // Enter animasyonu - sayfa açılırken
-    function enterPage() {
-      if (curtain) { curtain.classList.remove('gs-closing'); void curtain.offsetWidth; curtain.classList.add('gs-opening'); }
-      pct(100);
-      setTimeout(() => { busy=false; if(curtain) curtain.classList.remove('gs-opening'); }, 700);
-    }
+  function enterPage() {
+    if (curtain) { curtain.classList.remove('gs-closing'); void curtain.offsetWidth; curtain.classList.add('gs-opening'); }
+    pct(100);
+    setTimeout(() => { busy=false; if(curtain) curtain.classList.remove('gs-opening'); }, 700);
+  }
 
-    // Exit animasyonu - sayfa kapanırken
-    async function exitPage() {
-      busy = true;
-      pct(20);
-      const content = document.getElementById('page-content');
-      if (content) content.classList.add('gs-exit');
-      if (curtain) { curtain.classList.remove('gs-opening'); void curtain.offsetWidth; curtain.classList.add('gs-closing'); }
-      pct(55);
-      await new Promise(r => setTimeout(r, 450));
-      pct(80);
-    }
+  async function exitPage() {
+    busy = true; pct(20);
+    const content = document.getElementById('page-content');
+    if (content) content.classList.add('gs-exit');
+    if (curtain) { curtain.classList.remove('gs-opening'); void curtain.offsetWidth; curtain.classList.add('gs-closing'); }
+    pct(55);
+    await new Promise(r => setTimeout(r, 450));
+    pct(80);
+  }
 
-    // Navigate
-    async function goTo(url) {
-      if (busy) return;
-      await exitPage();
-      window.location.href = url;
-    }
+  async function goTo(url) {
+    if (busy) return;
+    await exitPage();
+    window.location.href = url;
+  }
 
-    // Link interceptor
-    document.addEventListener('click', e => {
-      const a = e.target.closest('a.page-link');
-      if (!a) return;
-      const href = a.getAttribute('href');
-      if (!href || href.startsWith('http') || href.startsWith('mailto') || href === '#') return;
-      e.preventDefault();
-      goTo(href);
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a.page-link');
+    if (!a) return;
+    const href = a.getAttribute('href');
+    if (!href || href.startsWith('http') || href.startsWith('mailto') || href === '#') return;
+    e.preventDefault();
+    goTo(href);
+  });
+
+  enterPage();
+
+  const header = document.getElementById('gs-header');
+  if (header) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) {
+        header.style.background = 'rgba(11,15,25,0.92)';
+        header.style.boxShadow = '0 4px 32px rgba(0,0,0,0.4)';
+      } else {
+        header.style.background = 'rgba(11,15,25,0.75)';
+        header.style.boxShadow = 'none';
+      }
+    }, { passive: true });
+  }
+
+  const hBtn = document.getElementById('gs-hbtn');
+  const mMenu = document.getElementById('gs-mmenu');
+  if (hBtn && mMenu) {
+    hBtn.addEventListener('click', () => {
+      const open = mMenu.style.display === 'block';
+      mMenu.style.display = open ? 'none' : 'block';
+      hBtn.setAttribute('aria-expanded', !open);
     });
+  }
 
-    // Sayfa yüklenince enter çalıştır
-    enterPage();
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.gs-reveal').forEach(el => obs.observe(el));
 
-    // Header scroll
-    const header = document.querySelector('.gs-header');
-    if (header) {
-      window.addEventListener('scroll', () => {
-        header.classList.toggle('scrolled', window.scrollY > 60);
-      }, { passive: true });
-    }
-
-    // Hamburger
-    const hBtn = document.getElementById('gs-hbtn');
-    const mMenu = document.getElementById('gs-mmenu');
-    if (hBtn && mMenu) {
-      hBtn.addEventListener('click', () => {
-        hBtn.classList.toggle('open');
-        mMenu.classList.toggle('open');
-        hBtn.setAttribute('aria-expanded', hBtn.classList.contains('open'));
-      });
-      document.addEventListener('click', e => {
-        if (!hBtn.contains(e.target) && !mMenu.contains(e.target)) {
-          hBtn.classList.remove('open'); mMenu.classList.remove('open');
-        }
-      });
-    }
-
-    // Reveal observer
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.08 });
-    document.querySelectorAll('.gs-reveal').forEach(el => obs.observe(el));
-
-    // Theme & Lang
-    window.toggleTheme = function() {
-      const body = document.body;
-      const btn = document.getElementById('themeBtn');
-      if (body.dataset.theme === 'dark') { body.dataset.theme='light'; if(btn) btn.textContent='☀️'; }
-      else { body.dataset.theme='dark'; if(btn) btn.textContent='🌙'; }
-    };
-    window.toggleLang = function() {
-      const body = document.body;
-      const btn = document.getElementById('langBtn');
-      if (body.dataset.lang === 'tr') { body.dataset.lang='en'; if(btn) btn.textContent='TR'; }
-      else { body.dataset.lang='tr'; if(btn) btn.textContent='EN'; }
-    };
-
-  })();
+  window.toggleTheme = function() {
+    const b = document.body;
+    const btn = document.getElementById('themeBtn');
+    if (b.dataset.theme === 'dark') { b.dataset.theme='light'; if(btn) btn.textContent='☀️'; }
+    else { b.dataset.theme='dark'; if(btn) btn.textContent='🌙'; }
+  };
+  window.toggleLang = function() {
+    const b = document.body;
+    const btn = document.getElementById('langBtn');
+    if (b.dataset.lang === 'tr') { b.dataset.lang='en'; if(btn) btn.textContent='TR'; }
+    else { b.dataset.lang='tr'; if(btn) btn.textContent='EN'; }
+  };
+})();
 
 
-// Blog filtre
 function filterBlog(btn, tag) {
-  document.querySelectorAll('.tag-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tag-f').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  document.querySelectorAll('.blog-card').forEach(card => {
-    if (tag === 'all' || card.dataset.tag === tag) {
-      card.style.display = '';
-    } else {
-      card.style.display = 'none';
-    }
+  document.querySelectorAll('#blogGrid article').forEach(card => {
+    card.style.display = (tag === 'all' || card.dataset.tag === tag) ? '' : 'none';
   });
 }
+
 </script>
 </body>
 </html>
