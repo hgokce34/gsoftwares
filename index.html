@@ -644,22 +644,10 @@
     }
 
     /* TR/EN */
-    .en { display: none; }
-    [data-lang="en"] .tr { display: none; }
-    [data-lang="en"] .en { display: block; }
-    span.en { display: none; }
-    [data-lang="en"] span.tr { display: none; }
-    [data-lang="en"] span.en { display: inline; }
-  
-    /* ═══════════════════════════════════════
-       PREMIUM MICRO-INTERACTIONS
-       gSoftwares Design System v2.0
-    ═══════════════════════════════════════ */
-
-    /* GLOBAL TRANSITIONS */
-    *, *::before, *::after {
-      transition-timing-function: var(--ease-out);
-    }
+    
+    
+    
+    
 
     /* BUTTON SYSTEM */
     .btn-primary {
@@ -1184,7 +1172,7 @@
         <div class="svc-process-step"><div class="svc-step-num">04</div><div class="svc-step-text tr">Test & teslim — kapsamlı test, eğitim ve destek</div><div class="svc-step-text en">Test & delivery — comprehensive testing, training and support</div></div>
       </div>
       <a href="#contact" class="btn-primary" onclick="closeModal('modal-web')" style="display:inline-flex">
-        <span class="tr">Proje Başlat →</span><span class="en">Start Project →</span>
+        Proje Başlat →
       </a>
     </div>
   </div>
@@ -1214,7 +1202,7 @@
         <li class="tr">Dark/Light tema</li><li class="en">Dark/Light theme</li>
       </ul>
       <a href="#contact" class="btn-primary" onclick="closeModal('modal-design')" style="display:inline-flex">
-        <span class="tr">Teklif Al →</span><span class="en">Get Quote →</span>
+        Teklif Al →
       </a>
     </div>
   </div>
@@ -1244,7 +1232,7 @@
         <li class="tr">Influencer iş birlikleri</li><li class="en">Influencer partnerships</li>
       </ul>
       <a href="#contact" class="btn-primary" onclick="closeModal('modal-social')" style="display:inline-flex">
-        <span class="tr">Teklif Al →</span><span class="en">Get Quote →</span>
+        Teklif Al →
       </a>
     </div>
   </div>
@@ -1274,7 +1262,7 @@
         <li class="tr">Bütçe optimizasyonu</li><li class="en">Budget optimization</li>
       </ul>
       <a href="#contact" class="btn-primary" onclick="closeModal('modal-ads')" style="display:inline-flex">
-        <span class="tr">Kampanya Başlat →</span><span class="en">Start Campaign →</span>
+        Kampanya Başlat →
       </a>
     </div>
   </div>
@@ -1304,7 +1292,7 @@
         <li class="tr">Özel AI çözümleri</li><li class="en">Custom AI solutions</li>
       </ul>
       <a href="#contact" class="btn-primary" onclick="closeModal('modal-ai')" style="display:inline-flex">
-        <span class="tr">Demo İste →</span><span class="en">Request Demo →</span>
+        Demo İste →
       </a>
     </div>
   </div>
@@ -1334,7 +1322,7 @@
         <li class="tr">Performans optimizasyonu</li><li class="en">Performance optimization</li>
       </ul>
       <a href="#contact" class="btn-primary" onclick="closeModal('modal-consult')" style="display:inline-flex">
-        <span class="tr">Görüşme Ayarla →</span><span class="en">Schedule Meeting →</span>
+        Görüşme Ayarla →
       </a>
     </div>
   </div>
@@ -1348,209 +1336,91 @@
   - Responsive: mobile hamburger + desktop links
   - ARIA: aria-label, aria-current, aria-expanded
 ============================================================ -->
-<header
-  id="site-header"
-  role="banner"
-  class="fixed top-0 left-0 right-0 z-[1000] transition-all duration-300"
-  style="
-    /* GLASSMORPHISM EFEKT
-       - background: yarı saydam koyu zemin
-       - backdrop-filter: arkayı bulanıklaştır (blur)
-       - border-bottom: ince cam kenarı hissi
-    */
-    background: rgba(11, 15, 25, 0.75);
-    backdrop-filter: blur(24px) saturate(1.8);
-    -webkit-backdrop-filter: blur(24px) saturate(1.8);
-    border-bottom: 1px solid rgba(255,255,255,0.055);
-  "
->
-  <div class="max-w-[1140px] mx-auto px-6 h-[68px] flex items-center justify-between gap-6">
+<!-- NAVBAR -->
+<header id="site-header" role="banner" style="
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:rgba(11,15,25,0.80);
+  backdrop-filter:blur(24px) saturate(1.8);
+  -webkit-backdrop-filter:blur(24px) saturate(1.8);
+  border-bottom:1px solid rgba(255,255,255,0.07);
+  transition:background .3s, box-shadow .3s;
+">
+  <div style="max-width:1140px;margin:0 auto;padding:0 24px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:16px;">
 
-    <!-- LOGO GRUBU
-         Semantic: <a> ile ana sayfaya bağlı, aria-label ile erişilebilir -->
-    <a
-      href="#"
-      class="nav-logo"
-      style="display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0;"
-      aria-label="gSoftwares.dev - Ana Sayfa"
-    >
-      <div style="width:42px;height:42px;flex-shrink:0;transition:filter .2s;">
-        <svg viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg" width="42" height="42" aria-hidden="true">
-          <rect width="42" height="42" rx="12" fill="url(#logoGradV2)"/>
-          <text x="21" y="27" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-weight="800" font-size="15" fill="#000">gS</text>
-          <defs>
-            <linearGradient id="logoGradV2" x1="0" y1="0" x2="42" y2="42">
-              <stop offset="0%" stop-color="#6366F1"/>
-              <stop offset="100%" stop-color="#8B5CF6"/>
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
-
-      <div style="display:flex;flex-direction:column;" aria-hidden="true">
-        <span style="font-family:var(--font-display);font-weight:800;font-size:18px;letter-spacing:-.02em;line-height:1;">
+    <!-- LOGO -->
+    <a href="#" style="display:flex;align-items:center;gap:11px;text-decoration:none;flex-shrink:0;" aria-label="gSoftwares.dev">
+      <svg width="40" height="40" viewBox="0 0 42 42" fill="none" aria-hidden="true">
+        <rect width="42" height="42" rx="12" fill="url(#navLg)"/>
+        <text x="21" y="27" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-weight="800" font-size="15" fill="#000">gS</text>
+        <defs><linearGradient id="navLg" x1="0" y1="0" x2="42" y2="42"><stop offset="0%" stop-color="#6366F1"/><stop offset="100%" stop-color="#8B5CF6"/></linearGradient></defs>
+      </svg>
+      <div>
+        <div style="font-family:var(--font-display);font-weight:800;font-size:18px;letter-spacing:-.02em;line-height:1;">
           <span style="color:#818CF8">g</span><span style="color:#A5B4FC">Softwares</span>
-        </span>
-        <span style="font-family:var(--font-mono);font-size:9px;letter-spacing:.1em;margin-top:3px;color:var(--text3);">.dev</span>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:9px;color:var(--text3);letter-spacing:.1em;margin-top:2px;">.dev</div>
       </div>
     </a>
 
-    <!-- DESKTOP NAV LINKS
-         Semantic: <nav> landmark + <ul>/<li> listesi
-         ARIA: aria-label ile bölge tanımı -->
-    <nav aria-label="Ana navigasyon" class="hidden md:block">
-      <ul class="nav-links flex items-center gap-1 list-none m-0 p-0" role="list">
-        <!-- Nav Item Template:
-             - aria-current="page" aktif sayfada eklenir (JS ile)
-             - rel="noopener" dış linkler için
-        -->
-        <li role="listitem">
-          <a href="#services"
-             class="nav-link relative px-4 py-2 rounded-[10px] text-[13px] font-medium no-underline transition-all duration-200 hover:bg-white/[0.06]"
-             style="color:var(--text2)"
-             onmouseover="this.style.color='var(--text)'"
-             onmouseout="this.style.color='var(--text2)'">
-            <span class="tr">Hizmetler</span><span class="en">Services</span>
-          </a>
-        </li>
-        <li role="listitem">
-          <a href="#projects"
-             class="nav-link relative px-4 py-2 rounded-[10px] text-[13px] font-medium no-underline transition-all duration-200 hover:bg-white/[0.06]"
-             style="color:var(--text2)"
-             onmouseover="this.style.color='var(--text)'"
-             onmouseout="this.style.color='var(--text2)'">
-            <span class="tr">Projeler</span><span class="en">Projects</span>
-          </a>
-        </li>
-        <li role="listitem">
-          <a href="#team"
-             class="nav-link relative px-4 py-2 rounded-[10px] text-[13px] font-medium no-underline transition-all duration-200 hover:bg-white/[0.06]"
-             style="color:var(--text2)"
-             onmouseover="this.style.color='var(--text)'"
-             onmouseout="this.style.color='var(--text2)'">
-            <span class="tr">Ekip</span><span class="en">Team</span>
-          </a>
-        </li>
-        <li role="listitem">
-          <a href="#contact"
-             class="nav-link relative px-4 py-2 rounded-[10px] text-[13px] font-medium no-underline transition-all duration-200 hover:bg-white/[0.06]"
-             style="color:var(--text2)"
-             onmouseover="this.style.color='var(--text)'"
-             onmouseout="this.style.color='var(--text2)'">
-            <span class="tr">İletişim</span><span class="en">Contact</span>
-          </a>
-        </li>
-      </ul>
+    <!-- DESKTOP NAV -->
+    <nav id="desktop-nav" style="display:flex;gap:2px;" aria-label="Ana navigasyon">
+      <a href="#services" class="nav-item">Hizmetler</a>
+      <a href="#projects" class="nav-item">Projeler</a>
+      <a href="#team" class="nav-item">Ekip</a>
+      <a href="blog.html" class="nav-item page-link">Blog</a>
+      <a href="#contact" class="nav-item">İletişim</a>
     </nav>
 
-    <!-- NAV ACTIONS: Dil, Tema, CTA -->
-    <div class="nav-actions flex items-center gap-2" role="group" aria-label="Sayfa kontrolleri">
-
-      <!-- Dil Değiştirici -->
-      <button
-        id="langBtn"
-        onclick="toggleLang()"
-        class="lang-btn font-mono text-[11px] font-bold px-3 py-[7px] rounded-[10px] border cursor-pointer transition-all duration-200"
-        style="background:var(--bg3); border-color:var(--border2); color:var(--text2);"
-        aria-label="Dili değiştir"
-        onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent2)'"
-        onmouseout="this.style.borderColor='var(--border2)';this.style.color='var(--text2)'"
-      >EN</button>
-
-      <!-- Tema Değiştirici -->
-      <button
-        id="themeBtn"
-        onclick="toggleTheme()"
-        class="theme-btn w-[38px] h-[38px] flex items-center justify-center text-[16px] rounded-[10px] border cursor-pointer transition-all duration-200"
-        style="background:var(--bg3); border-color:var(--border2);"
-        aria-label="Temayı değiştir"
-        onmouseover="this.style.borderColor='var(--accent)'"
-        onmouseout="this.style.borderColor='var(--border2)'"
-      >🌙</button>
-
-      <!-- PRIMARY CTA BUTTON
-           - gradient background
-           - hover: yukarı kayma + glow shadow
-           - Sadece desktop'ta tam metin, mobilde ikon
-      -->
-      <a
-        href="#contact"
-        class="nav-cta hidden sm:inline-flex items-center gap-2 font-extrabold text-[13px] px-5 py-[9px] rounded-[10px] no-underline transition-all duration-200 cursor-pointer select-none"
-        style="
-          background: linear-gradient(135deg, #6366F1, #8B5CF6);
-          color: #fff;
-          letter-spacing: -0.01em;
-        "
-        onmouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 12px 32px rgba(99,102,241,0.35)'"
-        onmouseout="this.style.transform='';this.style.boxShadow=''"
-        aria-label="Ücretsiz proje değerlendirmesi için iletişime geç"
-      >
-        <span class="tr">Ücretsiz Değerlendirme</span>
-        <span class="en">Free Assessment</span>
-        <span aria-hidden="true">→</span>
+    <!-- ACTIONS -->
+    <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
+      <button id="themeBtn" onclick="toggleTheme()" aria-label="Tema" style="width:36px;height:36px;border-radius:9px;border:1px solid var(--border2);background:var(--bg3);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;">🌙</button>
+      <a href="#contact" id="nav-cta" style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#6366F1,#8B5CF6);color:#fff;font-weight:800;font-size:13px;padding:8px 16px;border-radius:10px;text-decoration:none;white-space:nowrap;flex-shrink:0;">
+        Proje Başlat →
       </a>
-
-      <!-- MOBİL HAMBURGER MENU BUTONU
-           - Sadece md altında görünür
-           - aria-expanded ile ekran okuyucu uyumu
-           - aria-controls ile ilgili menüyü işaret eder
-      -->
-      <button
-        id="mobileMenuBtn"
-        class="md:hidden flex flex-col justify-center items-center w-[38px] h-[38px] rounded-[10px] border cursor-pointer transition-all duration-200 gap-[5px]"
-        style="background:var(--bg3); border-color:var(--border2);"
-        aria-label="Mobil menüyü aç/kapat"
-        aria-expanded="false"
-        aria-controls="mobileMenu"
-        onclick="toggleMobileMenu()"
-      >
-        <!-- Hamburger çizgileri - JS ile X'e dönüşür -->
-        <span id="hb1" class="block w-[18px] h-[1.5px] rounded-full transition-all duration-300" style="background:var(--text2)"></span>
-        <span id="hb2" class="block w-[18px] h-[1.5px] rounded-full transition-all duration-300" style="background:var(--text2)"></span>
-        <span id="hb3" class="block w-[18px] h-[1.5px] rounded-full transition-all duration-300" style="background:var(--text2)"></span>
+      <!-- Hamburger -->
+      <button id="hamburger" onclick="toggleMob()" aria-label="Menü" style="display:none;flex-direction:column;gap:5px;width:38px;height:38px;border-radius:9px;border:1px solid var(--border2);background:var(--bg3);cursor:pointer;align-items:center;justify-content:center;flex-shrink:0;">
+        <span style="width:18px;height:1.5px;background:var(--text2);border-radius:2px;display:block;transition:all .3s;" id="hb1"></span>
+        <span style="width:18px;height:1.5px;background:var(--text2);border-radius:2px;display:block;transition:all .3s;" id="hb2"></span>
+        <span style="width:18px;height:1.5px;background:var(--text2);border-radius:2px;display:block;transition:all .3s;" id="hb3"></span>
       </button>
     </div>
   </div>
 
-  <!-- MOBİL DROPDOWN MENU
-       - id="mobileMenu" ile hamburger aria-controls eşleşir
-       - JS ile open/close toggle
-       - Glassmorphism devam ediyor
-  -->
-  <div
-    id="mobileMenu"
-    class="hidden md:hidden border-t"
-    style="background:rgba(11,15,25,0.95); border-color:var(--border);"
-    role="navigation"
-    aria-label="Mobil navigasyon"
-  >
-    <ul class="list-none m-0 p-4 flex flex-col gap-1" role="list">
-      <li><a href="#services" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-[10px] text-[14px] font-medium no-underline transition-all duration-200" style="color:var(--text2)" onmouseover="this.style.background='var(--bg3)';this.style.color='var(--text)'" onmouseout="this.style.background='';this.style.color='var(--text2)'"><span class="tr">Hizmetler</span><span class="en">Services</span></a></li>
-      <li><a href="#projects" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-[10px] text-[14px] font-medium no-underline transition-all duration-200" style="color:var(--text2)" onmouseover="this.style.background='var(--bg3)';this.style.color='var(--text)'" onmouseout="this.style.background='';this.style.color='var(--text2)'"><span class="tr">Projeler</span><span class="en">Projects</span></a></li>
-      <li><a href="#team" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-[10px] text-[14px] font-medium no-underline transition-all duration-200" style="color:var(--text2)" onmouseover="this.style.background='var(--bg3)';this.style.color='var(--text)'" onmouseout="this.style.background='';this.style.color='var(--text2)'"><span class="tr">Ekip</span><span class="en">Team</span></a></li>
-      <li><a href="#contact" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-[10px] text-[14px] font-medium no-underline transition-all duration-200" style="color:var(--text2)" onmouseover="this.style.background='var(--bg3)';this.style.color='var(--text)'" onmouseout="this.style.background='';this.style.color='var(--text2)'"><span class="tr">İletişim</span><span class="en">Contact</span></a></li>
-      <li class="mt-2 pt-2" style="border-top:1px solid var(--border)">
-        <a href="#contact" onclick="toggleMobileMenu()"
-           class="flex items-center justify-center gap-2 py-3 rounded-[10px] text-[14px] font-bold no-underline"
-           style="background:linear-gradient(135deg,#6366F1,#8B5CF6);color:#fff">
-          <span class="tr">Ücretsiz Değerlendirme →</span>
-          <span class="en">Free Assessment →</span>
-        </a>
-      </li>
-    </ul>
+  <!-- MOBİL MENÜ -->
+  <div id="mob-menu" style="display:none;background:rgba(11,15,25,0.97);border-top:1px solid var(--border);padding:12px 16px;">
+    <a href="#services" onclick="toggleMob()" style="display:block;padding:11px 16px;border-radius:10px;color:var(--text2);text-decoration:none;font-size:14px;font-weight:500;margin-bottom:3px;">Hizmetler</a>
+    <a href="#projects" onclick="toggleMob()" style="display:block;padding:11px 16px;border-radius:10px;color:var(--text2);text-decoration:none;font-size:14px;font-weight:500;margin-bottom:3px;">Projeler</a>
+    <a href="#team" onclick="toggleMob()" style="display:block;padding:11px 16px;border-radius:10px;color:var(--text2);text-decoration:none;font-size:14px;font-weight:500;margin-bottom:3px;">Ekip</a>
+    <a href="blog.html" onclick="toggleMob()" class="page-link" style="display:block;padding:11px 16px;border-radius:10px;color:var(--text2);text-decoration:none;font-size:14px;font-weight:500;margin-bottom:3px;">Blog</a>
+    <a href="#contact" onclick="toggleMob()" style="display:block;padding:11px 16px;border-radius:10px;color:var(--text2);text-decoration:none;font-size:14px;font-weight:500;margin-bottom:3px;">İletişim</a>
+    <a href="#contact" onclick="toggleMob()" style="display:block;padding:12px 16px;border-radius:10px;background:linear-gradient(135deg,#6366F1,#8B5CF6);color:#fff;text-decoration:none;font-size:14px;font-weight:800;text-align:center;margin-top:8px;">Proje Başlat →</a>
   </div>
 </header>
 
+<!-- NAV ITEM CSS -->
+<style>
+.nav-item{padding:7px 14px;border-radius:9px;font-size:13px;font-weight:500;color:var(--text2);text-decoration:none;transition:color .15s,background .15s;white-space:nowrap;}
+.nav-item:hover{color:var(--text);background:rgba(255,255,255,.06);}
+@media(max-width:768px){
+  #desktop-nav{display:none!important;}
+  #nav-cta{display:none!important;}
+  #hamburger{display:flex!important;}
+}
+</style>
+
+
 <!-- HERO -->
 <section class="hero">
+  <!-- NASA APOD uzay arka planı -->
+  <div id="space-bg" aria-hidden="true"></div>
   <div class="hero-bg-grid"></div>
   <div class="hero-glow1"></div>
   <div class="hero-glow2"></div>
   <div class="hero-content">
     <div class="hero-eyebrow">
       <div class="hero-eyebrow-dot"></div>
-      <span class="tr">Seçili Projeler Kabul Ediliyor</span>
-      <span class="en">Accepting Selected Projects</span>
+      Seçili Projeler Kabul Ediliyor
+      
     </div>
     <h1 class="hero-title">
       <span class="line1 tr">Kod Yazan Değil,</span>
@@ -1559,18 +1429,18 @@
       <span class="grad-text en"> Result Builders.</span>
     </h1>
     <p class="hero-sub">
-      <span class="tr">Ürününüzün pazardaki ilk izlenimini biz kuruyoruz. Performans odaklı yazılım, dönüşüm optimize edilmiş tasarım ve hedef kitleye ulaşan dijital pazarlama — tek çatı altında.</span>
-      <span class="en">We engineer your product's first impression in the market. Performance-first software, conversion-optimized design, and targeted digital marketing — all under one roof.</span>
+      Ürününüzün pazardaki ilk izlenimini biz kuruyoruz. Performans odaklı yazılım, dönüşüm optimize edilmiş tasarım ve hedef kitleye ulaşan dijital pazarlama — tek çatı altında.
+      
     </p>
     <div class="hero-btns">
       <a href="#services" class="btn-primary">
-        <span class="tr">Neler Yapıyoruz?</span>
-        <span class="en">Explore Services</span>
+        Neler Yapıyoruz?
+        
         →
       </a>
       <a href="#contact" class="btn-secondary">
-        <span class="tr">Projenizi Değerlendirelim</span>
-        <span class="en">Let's Discuss</span>
+        Projenizi Değerlendirelim
+        
       </a>
     </div>
     <div class="stats-bar">
@@ -1869,12 +1739,12 @@
         <div class="section-label tr">İletişim</div>
         <div class="section-label en">Contact</div>
         <h2 class="contact-info" style="font-family:var(--font-display);font-size:36px;font-weight:800;letter-spacing:-1px;margin-bottom:16px;line-height:1.1">
-          <span class="tr">Projenizi<br><span style="background:var(--grad1);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Değerlendirelim</span></span>
-          <span class="en">Let's Assess<br><span style="background:var(--grad1);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Your Project</span></span>
+          Projenizi<br><span style="background:var(--grad1);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Değerlendirelim</span>
+          </span>
         </h2>
         <p style="font-size:15px;color:var(--text2);line-height:1.8;margin-bottom:32px">
-          <span class="tr">Kapsam ne olursa olsun, ilk görüşme taahhütsüz ve ücretsizdir. Projenizi dinliyor, uygulanabilirliğini değerlendiriyor ve size dürüst bir yol haritası sunuyoruz.</span>
-          <span class="en">Get a free consultation for your project. We get back to you within 24 hours.</span>
+          Kapsam ne olursa olsun, ilk görüşme taahhütsüz ve ücretsizdir. Projenizi dinliyor, uygulanabilirliğini değerlendiriyor ve size dürüst bir yol haritası sunuyoruz.
+          
         </p>
         <div class="contact-channels">
           <div class="contact-channel">
@@ -1902,7 +1772,7 @@
             <div class="contact-channel-icon" style="background:rgba(37,211,102,.1)">💬</div>
             <div class="contact-channel-info">
               <div class="contact-channel-label">WHATSAPP</div>
-              <div class="contact-channel-value"><a href="https://wa.me/905441994540" target="_blank"><span class="tr">WhatsApp'tan Yaz</span><span class="en">Message on WhatsApp</span></a></div>
+              <div class="contact-channel-value"><a href="https://wa.me/905441994540" target="_blank">WhatsApp'tan Yaz</a></div>
             </div>
           </div>
           <div class="contact-channel">
@@ -1986,13 +1856,13 @@
               <textarea class="form-textarea" id="f-message" placeholder="Projenizi anlatın, bütçenizden ve zaman çizelgenizden bahsedin..." required></textarea>
             </div>
             <button type="submit" class="form-submit">
-              <span class="tr">Değerlendirme Talebi Gönder →</span>
-              <span class="en">Request Assessment →</span>
+              Değerlendirme Talebi Gönder →
+              
             </button>
           </form>
           <div class="form-success" id="formSuccess">
-            ✓ <span class="tr">Talebiniz alındı. 48 saat içinde projenize ait değerlendirme notunu size iletiyoruz.</span>
-            <span class="en">Your message received! We'll get back to you within 24 hours.</span>
+            ✓ Talebiniz alındı. 48 saat içinde projenize ait değerlendirme notunu size iletiyoruz.
+            
           </div>
         </div>
       </div>
@@ -2230,6 +2100,91 @@
   Router.init();
 
   // ============================================================
+  // NASA APOD — UZAY ARKA PLANI
+  // Yedek fotoğraflar (API çalışmazsa)
+  // ============================================================
+  const SPACE_FALLBACKS = [
+    'https://images.unsplash.com/photo-1462332420958-a05d1e002413?w=1920&q=80',
+    'https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=1920&q=80',
+    'https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=1920&q=80',
+    'https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?w=1920&q=80',
+    'https://images.unsplash.com/photo-1543722530-d2c3201371e7?w=1920&q=80',
+  ];
+
+  async function loadSpaceBg() {
+    const bg = document.getElementById('space-bg');
+    if (!bg) return;
+
+    // Önce günün tarihine göre Unsplash uzay fotoğrafı yükle (hızlı)
+    const today = new Date().toISOString().split('T')[0];
+    const seed = today.replace(/-/g,'');
+    const idx = parseInt(seed) % SPACE_FALLBACKS.length;
+    const url = SPACE_FALLBACKS[idx];
+
+    const img = new Image();
+    img.onload = () => {
+      bg.style.backgroundImage = `url('${url}')`;
+      bg.classList.add('loaded');
+    };
+    img.onerror = () => {
+      // Fallback gradient
+      bg.style.background = 'radial-gradient(ellipse at 30% 50%, #0d1b2e 0%, #050810 100%)';
+      bg.classList.add('loaded');
+    };
+    img.src = url;
+
+    // Arka planda NASA APOD dene
+    try {
+      const NASA_KEY = 'DEMO_KEY'; // Ücretsiz demo key
+      const res = await fetch(
+        `https://api.nasa.gov/planetary/apod?api_key=${NASA_KEY}&date=${today}`,
+        { signal: AbortSignal.timeout(4000) }
+      );
+      if (res.ok) {
+        const data = await res.json();
+        if (data.media_type === 'image' && data.url) {
+          const nasaImg = new Image();
+          nasaImg.onload = () => {
+            bg.style.backgroundImage = `url('${data.url}')`;
+            bg.title = data.title || '';
+          };
+          nasaImg.src = data.url;
+        }
+      }
+    } catch(e) {
+      // NASA API çalışmazsa Unsplash yeterli
+      console.log('NASA APOD:', e.message);
+    }
+  }
+
+  loadSpaceBg();
+
+  // ============================================================
+  // MOBİL MENÜ
+  // ============================================================
+  function toggleMob() {
+    const menu = document.getElementById('mob-menu');
+    const h1 = document.getElementById('hb1');
+    const h2 = document.getElementById('hb2');
+    const h3 = document.getElementById('hb3');
+    const open = menu.style.display === 'block';
+    menu.style.display = open ? 'none' : 'block';
+    if (h1) h1.style.transform = open ? '' : 'rotate(45deg) translate(4.5px,4.5px)';
+    if (h2) h2.style.opacity = open ? '1' : '0';
+    if (h3) h3.style.transform = open ? '' : 'rotate(-45deg) translate(4.5px,-4.5px)';
+    document.addEventListener('click', function closeMob(e) {
+      if (!document.getElementById('mob-menu')?.contains(e.target) &&
+          !document.getElementById('hamburger')?.contains(e.target)) {
+        document.getElementById('mob-menu').style.display = 'none';
+        if (h1) h1.style.transform = '';
+        if (h2) h2.style.opacity = '1';
+        if (h3) h3.style.transform = '';
+        document.removeEventListener('click', closeMob);
+      }
+    });
+  }
+
+  // ============================================================
   // HEADER SCROLL BEHAVIOR
   // - Scroll edilince shadow + biraz daha opak
   // - IntersectionObserver yerine scroll event (daha basit)
@@ -2403,13 +2358,13 @@
           form.style.display='block';
           success.style.display='none';
           form.reset();
-          btn.innerHTML='<span class="tr">Değerlendirme Talebi Gönder →</span><span class="en">Request Assessment →</span>';
+          btn.innerHTML='Değerlendirme Talebi Gönder →';
           btn.disabled=false;
         },5000);
       })
       .catch(err=>{
         console.error('EmailJS hata:',err);
-        btn.innerHTML='<span class="tr">Değerlendirme Talebi Gönder →</span><span class="en">Request Assessment →</span>';
+        btn.innerHTML='Değerlendirme Talebi Gönder →';
         btn.disabled=false;
         alert('Mail gönderilemedi. Lütfen doğrudan gokcehamza2934@gmail.com adresine yazın.');
       });
