@@ -1322,35 +1322,62 @@
 
 <!-- HEADER -->
 <header id="gs-header" role="banner">
-  <div style="max-width:1140px;margin:0 auto;padding:0 24px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:16px;">
+  <div style="max-width:1140px;margin:0 auto;padding:0 20px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:10px;">
+    <!-- LOGO -->
     <a href="index.html" class="page-link" style="display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;">
-      <svg width="38" height="38" viewBox="0 0 42 42" fill="none"><rect width="42" height="42" rx="12" fill="url(#bLg)"/><text x="21" y="27" text-anchor="middle" font-family="Space Grotesk" font-weight="800" font-size="15" fill="#000">gS</text><defs><linearGradient id="bLg" x1="0" y1="0" x2="42" y2="42"><stop offset="0%" stop-color="#6366F1"/><stop offset="100%" stop-color="#8B5CF6"/></linearGradient></defs></svg>
-      <div>
-        <div style="font-family:var(--font-display);font-weight:800;font-size:17px;letter-spacing:-.02em;line-height:1;"><span style="color:#818CF8">g</span><span style="color:#A5B4FC">Softwares</span></div>
-        <div style="font-family:var(--font-mono);font-size:9px;color:var(--text3);letter-spacing:.1em;margin-top:2px;">.dev</div>
-      </div>
+      <svg width="38" height="38" viewBox="0 0 42 42" fill="none" aria-hidden="true" style="flex-shrink:0;filter:drop-shadow(0 0 6px rgba(99,102,241,0.4));">
+        <rect width="42" height="42" rx="11" fill="#12163A"/>
+        <rect x="1" y="1" width="40" height="40" rx="10" stroke="url(#blgBrd)" stroke-width="1.5"/>
+        <text x="21" y="27" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-weight="900" font-size="17" letter-spacing="-1" fill="url(#blgTxt)">gS</text>
+        <defs>
+          <linearGradient id="blgBrd" x1="0" y1="0" x2="42" y2="42"><stop offset="0%" stop-color="#818CF8" stop-opacity="0.8"/><stop offset="100%" stop-color="#4F46E5" stop-opacity="0.4"/></linearGradient>
+          <linearGradient id="blgTxt" x1="0" y1="8" x2="42" y2="34"><stop offset="0%" stop-color="#E0E7FF"/><stop offset="100%" stop-color="#818CF8"/></linearGradient>
+        </defs>
+      </svg>
+      <span style="font-family:var(--font-display);font-weight:800;font-size:17px;letter-spacing:-.025em;white-space:nowrap;">
+        <span style="color:#818CF8">g</span><span style="color:#C7D2FE">Softwares</span><span style="color:var(--accent2);font-size:13px;font-weight:600;">.dev</span>
+      </span>
     </a>
-    <nav class="gs-nav-desktop" style="display:flex;gap:2px;" aria-label="Ana navigasyon">
-      <a href="index.html" class="gs-nav-link page-link">Ana Sayfa</a>
-      <a href="index.html#services" class="gs-nav-link">Hizmetler</a>
-      <a href="about.html" class="gs-nav-link page-link">Hakkımızda</a>
-      <a href="blog.html" class="gs-nav-link active" aria-current="page">Blog</a>
-      <a href="works-detail.html" class="gs-nav-link page-link">Projeler</a>
+
+    <!-- DESKTOP NAV -->
+    <nav id="desktop-nav" style="display:flex;gap:2px;" aria-label="Navigasyon">
+      <a href="index.html" class="page-link" style="padding:6px 11px;border-radius:9px;font-size:12px;font-weight:500;color:var(--text2);text-decoration:none;white-space:nowrap;">Ana Sayfa</a>
+      <a href="index.html#services" style="padding:6px 11px;border-radius:9px;font-size:12px;font-weight:500;color:var(--text2);text-decoration:none;white-space:nowrap;">Hizmetler</a>
+      <a href="about.html" class="page-link" style="padding:6px 11px;border-radius:9px;font-size:12px;font-weight:500;color:var(--text2);text-decoration:none;white-space:nowrap;">Hakkımızda</a>
+      <a href="blog.html" style="padding:6px 11px;border-radius:9px;font-size:12px;font-weight:500;color:var(--accent2);background:rgba(99,102,241,.08);text-decoration:none;white-space:nowrap;">Blog</a>
+      <a href="works-detail.html" class="page-link" style="padding:6px 11px;border-radius:9px;font-size:12px;font-weight:500;color:var(--text2);text-decoration:none;white-space:nowrap;">Projeler</a>
     </nav>
-    <div style="display:flex;align-items:center;gap:8px;">
-      <button id="langBtn" onclick="toggleLang()" style="font-family:var(--font-mono);font-size:11px;font-weight:700;padding:6px 12px;border-radius:9px;border:1px solid var(--border2);background:var(--bg3);color:var(--text2);cursor:pointer;">EN</button>
-      <button id="themeBtn" onclick="toggleTheme()" style="width:36px;height:36px;border-radius:9px;border:1px solid var(--border2);background:var(--bg3);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;">🌙</button>
-      <a href="index.html#contact" class="gs-btn gs-cta-desktop page-link" style="font-size:12px;padding:8px 16px;">Proje Başlat →</a>
-      <button id="gs-hbtn" class="gs-hamburger" aria-label="Menü"><span></span><span></span><span></span></button>
+
+    <!-- ACTIONS -->
+    <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
+      <button onclick="toggleLang()" aria-label="Dil" style="font-family:var(--font-mono);font-size:10px;font-weight:700;padding:5px 9px;border-radius:8px;border:1px solid var(--border2);background:var(--bg3);color:var(--text2);cursor:pointer;">TR/EN</button>
+      <button onclick="toggleTheme()" aria-label="Tema" style="width:32px;height:32px;border-radius:8px;border:1px solid var(--border2);background:var(--bg3);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;">🌙</button>
+      <a href="index.html#contact" id="bnav-cta" class="page-link" style="display:inline-flex;align-items:center;gap:5px;background:linear-gradient(135deg,#6366F1,#8B5CF6);color:#fff;font-weight:800;font-size:11px;padding:7px 13px;border-radius:9px;text-decoration:none;white-space:nowrap;">
+        Proje Başlat →
+      </a>
+      <button id="bhamburger" onclick="toggleBMob()" aria-label="Menü" style="display:none;flex-direction:column;gap:5px;width:34px;height:34px;border-radius:8px;border:1px solid var(--border2);background:var(--bg3);cursor:pointer;align-items:center;justify-content:center;flex-shrink:0;">
+        <span style="width:16px;height:1.5px;background:var(--text2);border-radius:2px;"></span>
+        <span style="width:16px;height:1.5px;background:var(--text2);border-radius:2px;"></span>
+        <span style="width:16px;height:1.5px;background:var(--text2);border-radius:2px;"></span>
+      </button>
     </div>
   </div>
-  <div id="gs-mmenu" class="gs-mob-menu">
-    <a href="index.html" class="page-link">Ana Sayfa</a>
-    <a href="about.html" class="page-link">Hakkımızda</a>
-    <a href="works-detail.html" class="page-link">Projeler</a>
-    <a href="index.html#contact" class="page-link" style="background:linear-gradient(135deg,#6366F1,#8B5CF6);color:#fff;font-weight:800;margin-top:8px;border-radius:10px;text-align:center;">Proje Başlat →</a>
+  <div id="bmob-menu" style="display:none;background:rgba(11,15,25,0.97);border-top:1px solid var(--border);padding:12px 16px;">
+    <a href="index.html" class="page-link" style="display:block;padding:11px 16px;color:var(--text2);text-decoration:none;font-size:14px;margin-bottom:3px;">Ana Sayfa</a>
+    <a href="about.html" class="page-link" style="display:block;padding:11px 16px;color:var(--text2);text-decoration:none;font-size:14px;margin-bottom:3px;">Hakkımızda</a>
+    <a href="blog.html" style="display:block;padding:11px 16px;color:var(--accent2);text-decoration:none;font-size:14px;margin-bottom:3px;">Blog</a>
+    <a href="works-detail.html" class="page-link" style="display:block;padding:11px 16px;color:var(--text2);text-decoration:none;font-size:14px;margin-bottom:3px;">Projeler</a>
+    <a href="index.html#contact" class="page-link" style="display:block;padding:11px 16px;background:linear-gradient(135deg,#6366F1,#8B5CF6);color:#fff;text-decoration:none;font-size:14px;font-weight:800;text-align:center;border-radius:10px;margin-top:8px;">Proje Başlat →</a>
   </div>
 </header>
+
+<style>
+@media(max-width:860px) {
+  #desktop-nav { display:none !important; }
+  #bnav-cta { display:none !important; }
+  #bhamburger { display:flex !important; }
+}
+</style>
 
 <!-- ═══════════════════════════════════════════
      ARTICLE PANEL OVERLAY
@@ -2242,6 +2269,11 @@ function handleEsc(e) {
 /* ══════════════════════════════════════════
    FILTER
 ══════════════════════════════════════════ */
+function toggleBMob() {
+  const m = document.getElementById('bmob-menu');
+  m.style.display = m.style.display === 'block' ? 'none' : 'block';
+}
+
 function filterPosts(btn, tag) {
   document.querySelectorAll('.ftab').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
@@ -2253,10 +2285,24 @@ function filterPosts(btn, tag) {
 /* ══════════════════════════════════════════
    REVEAL
 ══════════════════════════════════════════ */
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.06 });
-document.querySelectorAll('.gs-reveal').forEach(el => observer.observe(el));
+// Reveal animasyonu - garantili çalışsın
+function initReveal() {
+  const els = document.querySelectorAll('.gs-reveal');
+  // Önce hepsini görünür yap (fallback)
+  setTimeout(() => {
+    els.forEach(el => el.classList.add('visible'));
+  }, 100);
+  // Sonra observer ile staggered reveal
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      });
+    }, { threshold: 0.01, rootMargin: '0px 0px -50px 0px' });
+    els.forEach(el => obs.observe(el));
+  }
+}
+initReveal();
 
 /* ══════════════════════════════════════════
    HEADER SCROLL
