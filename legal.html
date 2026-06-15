@@ -1091,7 +1091,23 @@
 .gs-mob-menu a:hover{background:var(--bg3);color:var(--text);}
 
 /* Footer */
-.gs-footer{border-top:1px solid var(--border);padding:32px 40px;position:relative;z-index:2;}
+.gs-footer{border-top:1px solid var(--border);position:relative;z-index:2;}
+.gs-footer .footer-top{max-width:1140px;margin:0 auto;padding:60px 24px 48px;display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:48px;}
+.gs-footer .footer-brand-desc{font-size:14px;color:var(--text3);line-height:1.65;margin:14px 0 24px;max-width:260px;}
+.gs-footer .footer-social{display:flex;gap:10px;}
+.gs-footer .footer-social a{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;border:1px solid var(--border);color:var(--text3);text-decoration:none;transition:color .2s,border-color .2s;}
+.gs-footer .footer-social a:hover{color:var(--accent);border-color:var(--accent);}
+.gs-footer .footer-col h4{font-size:13px;font-weight:700;color:var(--text);margin:0 0 18px;font-family:var(--font-display);}
+.gs-footer .footer-col a{display:block;font-size:14px;color:var(--text3);text-decoration:none;margin-bottom:11px;transition:color .2s;}
+.gs-footer .footer-col a:hover{color:var(--accent2);}
+.gs-footer .footer-contact-item{display:block;font-size:14px;color:var(--text3);margin-bottom:11px;}
+.gs-footer .footer-bottom{border-top:1px solid var(--border);}
+.gs-footer .footer-bottom-inner{max-width:1140px;margin:0 auto;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.gs-footer .footer-copy{font-size:13px;color:var(--text3);}
+.gs-footer .footer-legal{display:flex;flex-wrap:wrap;}
+.gs-footer .footer-legal a{font-size:13px;color:var(--text3);text-decoration:none;padding:0 16px;border-right:1px solid var(--border);transition:color .2s;}
+.gs-footer .footer-legal a:last-child{border-right:none;padding-right:0;}
+.gs-footer .footer-legal a:hover{color:var(--accent2);}
 
 /* TR/EN */
 .en{display:none;}[data-lang="en"] .tr{display:none;}[data-lang="en"] .en{display:block;}
@@ -1101,7 +1117,8 @@ span.en{display:none;}[data-lang="en"] span.tr{display:none;}[data-lang="en"] sp
 ::-webkit-scrollbar{width:6px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:99px;}
 ::selection{background:rgba(99,102,241,.25);color:var(--text);}
 
-@media(max-width:768px){.gs-hamburger{display:flex!important;}.gs-nav-desktop{display:none!important;}.gs-cta-desktop{display:none!important;}.gs-footer{padding:28px 20px;}}
+@media(max-width:900px){.gs-footer .footer-top{grid-template-columns:1fr 1fr;gap:36px;}}
+@media(max-width:768px){.gs-hamburger{display:flex!important;}.gs-nav-desktop{display:none!important;}.gs-cta-desktop{display:none!important;}.gs-footer .footer-top{grid-template-columns:1fr;gap:28px;padding:40px 24px 32px;}.gs-footer .footer-bottom-inner{flex-direction:column;align-items:flex-start;}.gs-footer .footer-legal a:first-child{padding-left:0;}}
 </style>
 
   <style>
@@ -1239,24 +1256,51 @@ span.en{display:none;}[data-lang="en"] span.tr{display:none;}[data-lang="en"] sp
 
 
 <footer class="gs-footer">
-  <div style="max-width:1140px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
-    <div>
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
-        <svg width="24" height="24" viewBox="0 0 42 42" fill="none"><rect width="42" height="42" rx="12" fill="url(#gFt)"/><text x="21" y="27" text-anchor="middle" font-family="Space Grotesk" font-weight="800" font-size="15" fill="#000">gS</text><defs><linearGradient id="gFt" x1="0" y1="0" x2="42" y2="42"><stop offset="0%" stop-color="#6366F1"/><stop offset="100%" stop-color="#8B5CF6"/></linearGradient></defs></svg>
-        <span style="font-family:var(--font-display);font-weight:700;font-size:14px;"><span style="color:#818CF8">g</span><span style="color:#A5B4FC">Softwares</span><span style="color:var(--accent2)">.dev</span></span>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div style="display:flex;align-items:center;gap:9px;">
+        <svg width="28" height="28" viewBox="0 0 42 42" fill="none"><rect width="42" height="42" rx="11" fill="url(#lgFtLg)"/><rect x="0.75" y="0.75" width="40.5" height="40.5" rx="10.25" stroke="rgba(129,140,248,0.5)" stroke-width="1.5"/><text x="21" y="26" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-weight="800" font-size="14" fill="url(#lgFtTxt)">gS</text><defs><linearGradient id="lgFtLg" x1="0" y1="0" x2="42" y2="42"><stop offset="0%" stop-color="#1a1f35"/><stop offset="100%" stop-color="#0d1128"/></linearGradient><linearGradient id="lgFtTxt" x1="0" y1="0" x2="42" y2="42"><stop offset="0%" stop-color="#C7D2FE"/><stop offset="100%" stop-color="#818CF8"/></linearGradient></defs></svg>
+        <span style="font-family:var(--font-display);font-weight:700;font-size:15px;"><span style="color:#A5B4FC">gSoftwares</span><span style="color:var(--accent2)">.dev</span></span>
       </div>
-      <div style="font-size:12px;color:var(--text3);">© 2026 gSoftwares.dev — Hamza Gökçe & Taner Aydoğan</div>
+      <p class="footer-brand-desc">Yazılım ve dijital çözümler alanında profesyonel hizmet sunan bir tasarım ve geliştirme stüdyosu.</p>
+      <div class="footer-social">
+        <a href="https://x.com" target="_blank" rel="noopener" aria-label="X (Twitter)"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.73-8.835L1.254 2.25H8.08l4.259 5.63L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg></a>
+        <a href="https://github.com/hgokce34" target="_blank" rel="noopener" aria-label="GitHub"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        <a href="mailto:info@gsoftwares.dev" aria-label="E-posta"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+      </div>
     </div>
-    <nav style="display:flex;gap:20px;flex-wrap:wrap;" aria-label="Footer">
-      <a href="index.html" class="page-link" style="font-size:13px;color:var(--text3);text-decoration:none;transition:color .15s;" onmouseover="this.style.color='var(--accent2)'" onmouseout="this.style.color='var(--text3)'">Ana Sayfa</a>
-      <a href="index.html#services" style="font-size:13px;color:var(--text3);text-decoration:none;transition:color .15s;" onmouseover="this.style.color='var(--accent2)'" onmouseout="this.style.color='var(--text3)'">Hizmetler</a>
-      <a href="index.html#team" style="font-size:13px;color:var(--text3);text-decoration:none;transition:color .15s;" onmouseover="this.style.color='var(--accent2)'" onmouseout="this.style.color='var(--text3)'">Ekip</a>
-      <a href="index.html#contact" style="font-size:13px;color:var(--text3);text-decoration:none;transition:color .15s;" onmouseover="this.style.color='var(--accent2)'" onmouseout="this.style.color='var(--text3)'">İletişim</a>
-      <a href="about.html" class="page-link" style="font-size:13px;color:var(--text3);text-decoration:none;transition:color .15s;" onmouseover="this.style.color='var(--accent2)'" onmouseout="this.style.color='var(--text3)'">Hakkımızda</a>
-      <a href="blog.html" class="page-link" style="font-size:13px;color:var(--text3);text-decoration:none;transition:color .15s;" onmouseover="this.style.color='var(--accent2)'" onmouseout="this.style.color='var(--text3)'">Blog</a>
-      <a href="works-detail.html" class="page-link" style="font-size:13px;color:var(--text3);text-decoration:none;transition:color .15s;" onmouseover="this.style.color='var(--accent2)'" onmouseout="this.style.color='var(--text3)'">Projeler</a>
-      <a href="legal.html" class="page-link" style="font-size:13px;color:var(--text3);text-decoration:none;transition:color .15s;" onmouseover="this.style.color='var(--accent2)'" onmouseout="this.style.color='var(--text3)'">Gizlilik</a>
-    </nav>
+    <div class="footer-col">
+      <h4>Hizmetler</h4>
+      <a href="index.html#services" class="page-link">Web Geliştirme</a>
+      <a href="index.html#services" class="page-link">UI/UX Tasarım</a>
+      <a href="index.html#services" class="page-link">Mobil Uygulamalar</a>
+      <a href="index.html#services" class="page-link">SEO Optimizasyon</a>
+    </div>
+    <div class="footer-col">
+      <h4>Şirket</h4>
+      <a href="about.html" class="page-link">Hakkımızda</a>
+      <a href="index.html#team" class="page-link">Ekip</a>
+      <a href="works-detail.html" class="page-link">Projeler</a>
+      <a href="blog.html" class="page-link">Blog</a>
+    </div>
+    <div class="footer-col">
+      <h4>İletişim</h4>
+      <span class="footer-contact-item">info@gsoftwares.dev</span>
+      <span class="footer-contact-item">+90 555 123 4567</span>
+      <span class="footer-contact-item">İstanbul, Türkiye</span>
+      <a href="index.html#contact" class="page-link">Bize Yazın</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <div class="footer-copy">© 2026 gSoftwares.dev. Tüm hakları saklıdır.</div>
+      <nav class="footer-legal" aria-label="Yasal linkler">
+        <a href="legal.html" class="page-link">Gizlilik Politikası</a>
+        <a href="legal.html" class="page-link">Kullanım Koşulları</a>
+        <a href="legal.html" class="page-link">Çerez Politikası</a>
+      </nav>
+    </div>
   </div>
 </footer>
 
