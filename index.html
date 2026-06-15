@@ -13,7 +13,6 @@
       --bg2:   #0F1422;
       --bg3:   #141929;
       --bg4:   #1A2035;
-      --bg5:   #1E2640;
       --border:   rgba(255,255,255,0.055);
       --border2:  rgba(255,255,255,0.10);
       --text:   #F0F2FA;
@@ -65,9 +64,10 @@
       text-decoration: none; color: var(--text);
       font-weight: 800;
       font-family: var(--font-display);
+      font-size: 18px;
     }
-    .logo-g { color: var(--accent2); font-size: 24px; }
-    .logo-s { color: var(--blue); font-size: 20px; }
+    .logo-g { color: var(--accent2); }
+    .logo-s { color: var(--blue); }
 
     .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; }
     .nav-links a {
@@ -170,6 +170,47 @@
       font-weight: 800; letter-spacing: -1px; line-height: 1.1; margin-bottom: 20px;
     }
     .section-sub { font-size: 16px; color: var(--text2); max-width: 600px; margin: 0 auto; }
+
+    /* SERVICES GRID */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .service-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 30px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .service-card:hover {
+      border-color: var(--accent2);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    .service-icon {
+      font-size: 36px;
+      margin-bottom: 16px;
+    }
+
+    .service-card h3 {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      font-size: 14px;
+      color: var(--text2);
+      line-height: 1.6;
+    }
 
     /* FOOTER */
     footer {
@@ -280,6 +321,7 @@
       footer { padding: 60px 20px 30px; }
       .footer-content { grid-template-columns: 1fr; gap: 30px; }
       .footer-bottom { flex-direction: column; align-items: flex-start; }
+      section { padding: 60px 20px; }
     }
 
     /* UTILITIES */
@@ -294,14 +336,14 @@
 <body>
   <!-- NAVBAR -->
   <nav>
-    <a href="/" class="nav-logo">
-      <span class="logo-g">g</span><span class="logo-s">Softwares</span>
+    <a href="index.html" class="nav-logo">
+      <span class="logo-g">g</span>Softwares
     </a>
     <ul class="nav-links">
-      <li><a href="#hakkimizda">Hakkımızda</a></li>
-      <li><a href="#hizmetler">Hizmetler</a></li>
-      <li><a href="#projeler">Projeler</a></li>
-      <li><a href="#blog">Blog</a></li>
+      <li><a href="index.html">Ana Sayfa</a></li>
+      <li><a href="about.html">Hakkımızda</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="#iletisim">İletişim</a></li>
     </ul>
     <div class="nav-actions">
       <button class="theme-btn" onclick="toggleTheme()">🌙</button>
@@ -320,19 +362,88 @@
         Modern tasarım, güçlü kod ve yaratıcı düşüncenin birleşimiyle markanızı dijital dünyada öne çıkarıyoruz.
       </p>
       <div class="hero-btns">
-        <button class="btn-primary">Proje Başlat</button>
-        <button class="btn-secondary">Daha Fazla Bilgi</button>
+        <a href="#iletisim" class="btn-primary">Proje Başlat</a>
+        <a href="about.html" class="btn-secondary">Daha Fazla Bilgi</a>
       </div>
     </div>
   </section>
 
   <!-- HIZMETLER SEKSİYONU -->
-  <section id="hizmetler">
+  <section id="hizmetler" style="background: var(--bg2);">
     <div class="container">
       <div class="section-header">
         <span class="section-label">Hizmetlerimiz</span>
         <h2 class="section-title">Neler Yapıyoruz?</h2>
         <p class="section-sub">Web geliştirme, tasarım ve dijital pazarlamada uzman ekip</p>
+      </div>
+      
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">💻</div>
+          <h3>Web Geliştirme</h3>
+          <p>Modern, hızlı ve güvenli web uygulamaları geliştiriyoruz. React, Node.js ve cloud teknolojileri ile.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🎨</div>
+          <h3>UI/UX Tasarım</h3>
+          <p>Kullanıcı deneyimi odaklı tasarımlar yaratıyoruz. Figma ile profesyonel mockup ve prototyping.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">📱</div>
+          <h3>Mobil Uygulamalar</h3>
+          <p>iOS ve Android için native ve cross-platform mobil uygulamalar geliştiriyoruz.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🔍</div>
+          <h3>SEO Optimizasyon</h3>
+          <p>Sitenizi arama motorlarında öne çıkartmak için kapsamlı SEO stratejileri uyguluyoruz.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🎯</div>
+          <h3>Dijital Pazarlama</h3>
+          <p>Sosyal medya, email marketing ve content strategy ile markanızı büyütüyoruz.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">📊</div>
+          <h3>Danışmanlık</h3>
+          <p>Dijital dönüşüm yolculuğunda sizin yanınızda yer alıyor, stratejik rehberlik sağlıyoruz.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- İLETİŞİM SEKSİYONU -->
+  <section id="iletisim">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">İletişim</span>
+        <h2 class="section-title">Bize Ulaşın</h2>
+        <p class="section-sub">Sizin projeniz hakkında konuşmaya hazırız</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 900px; margin: 0 auto;">
+        <div style="background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 30px; text-align: center;">
+          <div style="font-size: 32px; margin-bottom: 16px;">📧</div>
+          <h3 style="font-family: var(--font-display); font-size: 18px; font-weight: 700; margin-bottom: 12px;">Email</h3>
+          <a href="mailto:info@gsoftwares.dev" style="color: var(--accent2); text-decoration: none; font-size: 14px;">info@gsoftwares.dev</a>
+        </div>
+
+        <div style="background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 30px; text-align: center;">
+          <div style="font-size: 32px; margin-bottom: 16px;">📞</div>
+          <h3 style="font-family: var(--font-display); font-size: 18px; font-weight: 700; margin-bottom: 12px;">Telefon</h3>
+          <a href="tel:+905551234567" style="color: var(--accent2); text-decoration: none; font-size: 14px;">+90 555 123 4567</a>
+        </div>
+
+        <div style="background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 30px; text-align: center;">
+          <div style="font-size: 32px; margin-bottom: 16px;">📍</div>
+          <h3 style="font-family: var(--font-display); font-size: 18px; font-weight: 700; margin-bottom: 12px;">Lokasyon</h3>
+          <p style="color: var(--text2); font-size: 14px;">İstanbul, Türkiye</p>
+        </div>
       </div>
     </div>
   </section>
@@ -347,43 +458,42 @@
           Yazılım ve dijital çözümler alanında profesyonel hizmet sunan bir tasarım ve geliştirme stüdyosu.
         </p>
         <div class="footer-social">
-          <a href="https://twitter.com" class="social-icon" title="Twitter">𝕏</a>
-          <a href="https://instagram.com" class="social-icon" title="Instagram">📷</a>
-          <a href="https://linkedin.com" class="social-icon" title="LinkedIn">in</a>
-          <a href="https://github.com" class="social-icon" title="GitHub">⚙️</a>
+          <a href="https://twitter.com" class="social-icon" title="Twitter" target="_blank" rel="noopener noreferrer">𝕏</a>
+          <a href="https://instagram.com" class="social-icon" title="Instagram" target="_blank" rel="noopener noreferrer">📷</a>
+          <a href="https://linkedin.com" class="social-icon" title="LinkedIn" target="_blank" rel="noopener noreferrer">in</a>
+          <a href="https://github.com" class="social-icon" title="GitHub" target="_blank" rel="noopener noreferrer">⚙️</a>
         </div>
       </div>
 
-      <!-- SERVICES -->
+      <!-- SAYFALAR -->
+      <div class="footer-section">
+        <h3>Sayfalar</h3>
+        <ul>
+          <li><a href="index.html">Ana Sayfa</a></li>
+          <li><a href="about.html">Hakkımızda</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="#iletisim">İletişim</a></li>
+        </ul>
+      </div>
+
+      <!-- HİZMETLER -->
       <div class="footer-section">
         <h3>Hizmetler</h3>
         <ul>
-          <li><a href="#web">Web Geliştirme</a></li>
-          <li><a href="#design">UI/UX Tasarım</a></li>
-          <li><a href="#mobile">Mobil Uygulamalar</a></li>
-          <li><a href="#seo">SEO Optimizasyon</a></li>
+          <li><a href="#hizmetler">Web Geliştirme</a></li>
+          <li><a href="#hizmetler">UI/UX Tasarım</a></li>
+          <li><a href="#hizmetler">Mobil Uygulamalar</a></li>
+          <li><a href="#hizmetler">SEO Optimizasyon</a></li>
         </ul>
       </div>
 
-      <!-- COMPANY -->
-      <div class="footer-section">
-        <h3>Şirket</h3>
-        <ul>
-          <li><a href="#about">Hakkımızda</a></li>
-          <li><a href="#team">Ekip</a></li>
-          <li><a href="#projects">Projeler</a></li>
-          <li><a href="#blog">Blog</a></li>
-        </ul>
-      </div>
-
-      <!-- CONTACT -->
+      <!-- İLETİŞİM -->
       <div class="footer-section">
         <h3>İletişim</h3>
         <ul>
           <li><a href="mailto:info@gsoftwares.dev">info@gsoftwares.dev</a></li>
           <li><a href="tel:+905551234567">+90 555 123 4567</a></li>
-          <li><a href="#location">İstanbul, Türkiye</a></li>
-          <li><a href="#contact">Bize Yazın</a></li>
+          <li><a href="#iletisim">İstanbul, Türkiye</a></li>
         </ul>
       </div>
     </div>
