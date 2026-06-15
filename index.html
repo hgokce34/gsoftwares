@@ -1512,29 +1512,28 @@
 
     <!-- LOGO -->
     <a href="#" style="display:flex;align-items:center;gap:11px;text-decoration:none;flex-shrink:0;" aria-label="gSoftwares.dev">
-      <svg width="42" height="42" viewBox="0 0 42 42" fill="none" aria-hidden="true" style="filter:drop-shadow(0 0 8px rgba(99,102,241,0.4));">
-        <rect width="42" height="42" rx="13" fill="#0B0F19"/>
-        <rect x="0.5" y="0.5" width="41" height="41" rx="12.5" stroke="url(#navBorder)" stroke-opacity="0.6"/>
-        <!-- G harf - köşeli premium -->
-        <path d="M10 14 C10 10 13 8 18 8 L26 8 L26 12 L18 12 C16 12 14 13 14 15 L14 27 C14 29 16 30 18 30 L24 30 L24 23 L20 23 L20 19 L28 19 L28 34 L18 34 C13 34 10 32 10 28 Z" fill="url(#navG)"/>
-        <!-- S harf -->
-        <path d="M30 8 L22 8 C19 8 17.5 9.5 17.5 12 C17.5 13.5 18.5 15 20 15.5 L26 17.5 C28 18.2 29 19.5 29 21.5 C29 24 27.5 25.5 25 25.5 L17 25.5 L17 29.5 L25.5 29.5 C29.5 29.5 33 27 33 22.5 C33 19.5 31.5 17.5 29 16.5 L23.5 14.5 C22.5 14.1 22 13.3 22 12.3 C22 11 23 10.5 24.5 10.5 L32 10.5 Z" fill="url(#navS)"/>
+      <svg width="42" height="42" viewBox="0 0 42 42" fill="none" aria-hidden="true" style="filter:drop-shadow(0 0 8px rgba(99,102,241,0.35));flex-shrink:0;">
+        <rect width="42" height="42" rx="12" fill="url(#nLgBg)"/>
+        <rect x="0.75" y="0.75" width="40.5" height="40.5" rx="11.25" stroke="url(#nLgBrd)" stroke-width="1.5" stroke-opacity="0.7"/>
+        <!-- Hexagon shape background -->
+        <path d="M21 6 L33 13 L33 29 L21 36 L9 29 L9 13 Z" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+        <!-- gS text -->
+        <text x="21" y="26" text-anchor="middle"
+          font-family="Space Grotesk, system-ui, sans-serif"
+          font-weight="800" font-size="16" letter-spacing="-0.5"
+          fill="url(#nLgTxt)">gS</text>
         <defs>
-          <linearGradient id="navLg" x1="0" y1="0" x2="42" y2="42">
-            <stop offset="0%" stop-color="#6366F1"/>
-            <stop offset="100%" stop-color="#8B5CF6"/>
+          <linearGradient id="nLgBg" x1="0" y1="0" x2="42" y2="42">
+            <stop offset="0%" stop-color="#1a1f35"/>
+            <stop offset="100%" stop-color="#0d1128"/>
           </linearGradient>
-          <linearGradient id="navG" x1="0" y1="0" x2="42" y2="42">
+          <linearGradient id="nLgBrd" x1="0" y1="0" x2="42" y2="42">
             <stop offset="0%" stop-color="#818CF8"/>
             <stop offset="100%" stop-color="#6366F1"/>
           </linearGradient>
-          <linearGradient id="navS" x1="42" y1="0" x2="0" y2="42">
-            <stop offset="0%" stop-color="#A5B4FC"/>
-            <stop offset="100%" stop-color="#8B5CF6"/>
-          </linearGradient>
-          <linearGradient id="navBorder" x1="0" y1="0" x2="42" y2="42">
-            <stop offset="0%" stop-color="#818CF8"/>
-            <stop offset="100%" stop-color="#4F46E5"/>
+          <linearGradient id="nLgTxt" x1="0" y1="0" x2="42" y2="42">
+            <stop offset="0%" stop-color="#C7D2FE"/>
+            <stop offset="100%" stop-color="#818CF8"/>
           </linearGradient>
         </defs>
       </svg>
@@ -1563,12 +1562,13 @@
 
     <!-- ACTIONS -->
     <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
-      <button id="themeBtn" onclick="toggleTheme()" aria-label="Tema" style="width:36px;height:36px;border-radius:9px;border:1px solid var(--border2);background:var(--bg3);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;">🌙</button>
-      <a href="#contact" id="nav-cta" style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#6366F1,#8B5CF6);color:#fff;font-weight:800;font-size:13px;padding:8px 16px;border-radius:10px;text-decoration:none;white-space:nowrap;flex-shrink:0;">
+      <button id="langBtn" onclick="toggleLang()" aria-label="Dil" style="font-family:var(--font-mono);font-size:11px;font-weight:700;padding:6px 10px;border-radius:9px;border:1px solid var(--border2);background:var(--bg3);color:var(--text2);cursor:pointer;flex-shrink:0;transition:all .2s;">TR/EN</button>
+      <button id="themeBtn" onclick="toggleTheme()" aria-label="Tema" style="width:34px;height:34px;border-radius:9px;border:1px solid var(--border2);background:var(--bg3);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;">🌙</button>
+      <a href="#contact" id="nav-cta" style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#6366F1,#8B5CF6);color:#fff;font-weight:800;font-size:12px;padding:8px 14px;border-radius:10px;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:all .2s;">
         Proje Başlat →
       </a>
       <!-- Hamburger -->
-      <button id="hamburger" onclick="toggleMob()" aria-label="Menü" style="display:none;flex-direction:column;gap:5px;width:38px;height:38px;border-radius:9px;border:1px solid var(--border2);background:var(--bg3);cursor:pointer;align-items:center;justify-content:center;flex-shrink:0;">
+      <button id="hamburger" onclick="toggleMob()" aria-label="Menü" style="display:none;flex-direction:column;gap:5px;width:36px;height:36px;border-radius:9px;border:1px solid var(--border2);background:var(--bg3);cursor:pointer;align-items:center;justify-content:center;flex-shrink:0;">
         <span style="width:18px;height:1.5px;background:var(--text2);border-radius:2px;display:block;transition:all .3s;" id="hb1"></span>
         <span style="width:18px;height:1.5px;background:var(--text2);border-radius:2px;display:block;transition:all .3s;" id="hb2"></span>
         <span style="width:18px;height:1.5px;background:var(--text2);border-radius:2px;display:block;transition:all .3s;" id="hb3"></span>
@@ -1589,18 +1589,32 @@
 
 <!-- NAV ITEM CSS -->
 <style>
-.nav-item{padding:7px 12px;border-radius:9px;font-size:12px;font-weight:500;color:var(--text2);text-decoration:none;transition:color .15s,background .15s;white-space:nowrap;}
-.nav-item:hover{color:var(--text);background:rgba(255,255,255,.06);}
-#live-clock { display:flex; }
-@media(max-width:900px){
-  #desktop-nav{display:none!important;}
-  #nav-cta{display:none!important;}
-  #hamburger{display:flex!important;}
-  #live-clock{display:none!important;}
+.nav-item{
+  padding:6px 11px;border-radius:9px;font-size:12px;font-weight:500;
+  color:var(--text2);text-decoration:none;
+  transition:color .15s,background .15s;white-space:nowrap;
 }
-@media(min-width:901px) and (max-width:1100px) {
-  .nav-item { padding:6px 8px; font-size:11px; }
-  #live-clock { display:none; }
+.nav-item:hover{color:var(--text);background:rgba(255,255,255,.06);}
+
+/* Desktop tam — nav + saat + butonlar görünür */
+#desktop-nav { display:flex; }
+#nav-cta    { display:inline-flex; }
+#hamburger  { display:none; }
+#live-clock { display:flex; }
+
+/* 1100px altı — saat gizle, nav kalsın */
+@media(max-width:1100px){
+  #live-clock { display:none !important; }
+  .nav-item { padding:5px 8px; font-size:11px; }
+  #nav-cta { font-size:11px !important; padding:7px 12px !important; }
+}
+
+/* 768px altı — hamburger */
+@media(max-width:768px){
+  #desktop-nav { display:none !important; }
+  #nav-cta     { display:none !important; }
+  #hamburger   { display:flex !important; }
+  #live-clock  { display:none !important; }
 }
 </style>
 
