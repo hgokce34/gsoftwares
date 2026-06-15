@@ -548,10 +548,10 @@
 
     /* CONTACT */
     .contact-section { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 80px; align-items: start; }
-    @media(max-width:800px) { .contact-grid { grid-template-columns: 1fr; gap: 48px; } }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; align-items: start; }
+    @media(max-width:800px) { .contact-grid { grid-template-columns: 1fr; gap: 32px; } }
 
-    .contact-info h2 { font-family: var(--font-display); font-size: 36px; font-weight: 800; letter-spacing: -1px; margin-bottom: 16px; }
+    .contact-info h2 { font-family: var(--font-display); font-size: 28px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 16px; }
     .contact-info p { font-size: 15px; color: var(--text2); line-height: 1.8; margin-bottom: 36px; }
     .contact-channels { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
     .contact-channel {
@@ -1033,7 +1033,170 @@
     body.sub-page #page-content {
       animation: pageEnterUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
     }
-</style>
+
+    /* ═══════════════════════════════════════════════════════
+       PREMIUM ANIMATIONS — gSoftwares Design System
+    ═══════════════════════════════════════════════════════ */
+
+    /* HERO başlık gradient animasyonu */
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    .hero-title .grad-text {
+      background-size: 200% 200%;
+      animation: gradientShift 5s ease infinite;
+    }
+
+    /* Kart hover glow yayılma */
+    @keyframes glowPulse {
+      0%, 100% { box-shadow: 0 0 20px rgba(99,102,241,0.1); }
+      50% { box-shadow: 0 0 40px rgba(99,102,241,0.25); }
+    }
+
+    /* Servis kartları staggered reveal */
+    .service-card:nth-child(1) { transition-delay: 0s; }
+    .service-card:nth-child(2) { transition-delay: 0.06s; }
+    .service-card:nth-child(3) { transition-delay: 0.12s; }
+    .service-card:nth-child(4) { transition-delay: 0.18s; }
+    .service-card:nth-child(5) { transition-delay: 0.24s; }
+    .service-card:nth-child(6) { transition-delay: 0.30s; }
+
+    /* Logo glow animasyonu */
+    @keyframes logoGlow {
+      0%, 100% { filter: drop-shadow(0 0 6px rgba(99,102,241,0.35)); }
+      50% { filter: drop-shadow(0 0 14px rgba(99,102,241,0.7)); }
+    }
+    #site-header svg:first-of-type { animation: logoGlow 3s ease-in-out infinite; }
+
+    /* Saat widget pulse */
+    @keyframes clockPulse {
+      0%, 100% { border-color: var(--border2); }
+      50% { border-color: rgba(99,102,241,0.4); }
+    }
+    #live-clock { animation: clockPulse 2s ease-in-out infinite; }
+
+    /* Hero eyebrow badge */
+    @keyframes badgePulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(99,102,241,0.3); }
+      50% { box-shadow: 0 0 0 6px rgba(99,102,241,0); }
+    }
+    .hero-eyebrow-dot { animation: badgePulse 2s ease-in-out infinite; }
+
+    /* Floating particles ek animasyon */
+    @keyframes floatY {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      33% { transform: translateY(-12px) rotate(1deg); }
+      66% { transform: translateY(-6px) rotate(-1deg); }
+    }
+
+    /* Stats bar counter reveal */
+    .stat-item { transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1); }
+    .stat-item:hover { transform: translateY(-4px) scale(1.04); }
+
+    /* Marquee band shimmer */
+    .marquee-band::before {
+      content: '';
+      position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
+      animation: bandShimmer 3s linear infinite;
+    }
+    @keyframes bandShimmer {
+      0% { left: -60%; }
+      100% { left: 110%; }
+    }
+
+    /* Proje kartı hover */
+    .project-card {
+      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1),
+                  border-color 0.2s, box-shadow 0.35s;
+    }
+    .project-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(99,102,241,0.3);
+      box-shadow: 0 28px 70px rgba(0,0,0,0.45), 0 0 40px rgba(99,102,241,0.1);
+    }
+
+    /* Team card */
+    .team-card {
+      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1),
+                  box-shadow 0.35s, border-color 0.2s;
+    }
+    .team-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+    }
+
+    /* Form input focus animation */
+    .form-input:focus, .form-textarea:focus {
+      animation: inputFocus 0.3s ease forwards;
+    }
+    @keyframes inputFocus {
+      0% { box-shadow: 0 0 0 0 rgba(99,102,241,0); }
+      100% { box-shadow: 0 0 0 3px rgba(99,102,241,0.15), 0 0 0 1px var(--accent); }
+    }
+
+    /* Scroll reveal upgrade */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1),
+                  transform 0.7s cubic-bezier(0.16,1,0.3,1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay1.visible { transition-delay: 0.1s; }
+    .reveal-delay2.visible { transition-delay: 0.2s; }
+    .reveal-delay3.visible { transition-delay: 0.3s; }
+
+    /* Page load fade */
+    @keyframes pageFadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    body { animation: pageFadeIn 0.5s ease forwards; }
+
+    /* Contact kanalları hover */
+    .contact-channel {
+      transition: background 0.15s, border-left-color 0.2s, padding-left 0.2s;
+      border-left: 2px solid transparent;
+      padding-left: 12px;
+    }
+    .contact-channel:hover {
+      background: rgba(99,102,241,0.05);
+      border-left-color: var(--accent);
+      padding-left: 16px;
+    }
+
+    /* Sosyal link hover */
+    .social-link {
+      transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1),
+                  color 0.15s, border-color 0.15s, background 0.15s;
+    }
+    .social-link:hover {
+      transform: translateY(-3px) scale(1.1);
+      color: var(--accent2) !important;
+      border-color: var(--accent) !important;
+      background: rgba(99,102,241,0.1) !important;
+    }
+
+    /* CTA buton parlama */
+    .btn-primary {
+      position: relative; overflow: hidden;
+    }
+    .btn-primary::after {
+      content: '';
+      position: absolute; top: -50%; left: -60%;
+      width: 30%; height: 200%;
+      background: rgba(255,255,255,0.15);
+      transform: skewX(-20deg);
+      animation: btnShine 4s ease-in-out infinite;
+    }
+    @keyframes btnShine {
+      0%, 70%, 100% { left: -60%; opacity: 0; }
+      40% { left: 130%; opacity: 1; }
+    }
+
+  </style>
   <!-- Tailwind CSS CDN - utility-first styling -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -1151,21 +1314,21 @@
       <button class="svc-modal-close" onclick="closeModal('modal-web')">✕</button>
     </div>
     <div class="svc-modal-body">
-      <p class="tr">Modern, hızlı ve ölçeklenebilir web uygulamaları geliştiriyoruz. Firebase ile gerçek zamanlı veri, Cloudinary ile medya yönetimi ve tam mobil uyumlu tasarım. FleetVision 2026 PRO bunun en iyi örneği — 30+ modül, tek HTML dosyası.</p>
-      <p class="en">We build modern, fast and scalable web applications. Real-time data with Firebase, media management with Cloudinary, and fully responsive design. FleetVision 2026 PRO is the best example — 30+ modules, single HTML file.</p>
+      <p>Modern, hızlı ve ölçeklenebilir web uygulamaları geliştiriyoruz. Firebase ile gerçek zamanlı veri, Cloudinary ile medya yönetimi ve tam mobil uyumlu tasarım. FleetVision 2026 PRO bunun en iyi örneği — 30+ modül, tek HTML dosyası.</p>
+      <p>We build modern, fast and scalable web applications. Real-time data with Firebase, media management with Cloudinary, and fully responsive design. FleetVision 2026 PRO is the best example — 30+ modules, single HTML file.</p>
       <ul class="svc-feature-list">
-        <li class="tr">Gerçek zamanlı veritabanı</li><li class="en">Real-time database</li>
-        <li class="tr">Mobil uyumlu tasarım</li><li class="en">Mobile-responsive design</li>
-        <li class="tr">Firebase entegrasyonu</li><li class="en">Firebase integration</li>
-        <li class="tr">Dosya & medya yönetimi</li><li class="en">File & media management</li>
-        <li class="tr">Kullanıcı yönetimi</li><li class="en">User management</li>
-        <li class="tr">Excel/PDF export</li><li class="en">Excel/PDF export</li>
-        <li class="tr">Özel panel & raporlar</li><li class="en">Custom dashboard & reports</li>
-        <li class="tr">API entegrasyonu</li><li class="en">API integration</li>
+        <li>Gerçek zamanlı veritabanı</li><li>Real-time database</li>
+        <li>Mobil uyumlu tasarım</li><li>Mobile-responsive design</li>
+        <li>Firebase entegrasyonu</li><li>Firebase integration</li>
+        <li>Dosya & medya yönetimi</li><li>File & media management</li>
+        <li>Kullanıcı yönetimi</li><li>User management</li>
+        <li>Excel/PDF export</li><li>Excel/PDF export</li>
+        <li>Özel panel & raporlar</li><li>Custom dashboard & reports</li>
+        <li>API entegrasyonu</li><li>API integration</li>
       </ul>
       <div class="svc-process">
-        <h4 class="tr">ÇALIŞMA SÜRECİMİZ</h4>
-        <h4 class="en">OUR PROCESS</h4>
+        <h4>ÇALIŞMA SÜRECİMİZ</h4>
+        <h4>OUR PROCESS</h4>
         <div class="svc-process-step"><div class="svc-step-num">01</div><div class="svc-step-text tr">Keşif toplantısı — ihtiyaçlarınızı ve hedeflerinizi anlıyoruz</div><div class="svc-step-text en">Discovery meeting — understanding your needs and goals</div></div>
         <div class="svc-process-step"><div class="svc-step-num">02</div><div class="svc-step-text tr">Prototip & tasarım — görsel wireframe ve UI tasarımı</div><div class="svc-step-text en">Prototype & design — visual wireframe and UI design</div></div>
         <div class="svc-process-step"><div class="svc-step-num">03</div><div class="svc-step-text tr">Geliştirme — iteratif, şeffaf süreç</div><div class="svc-step-text en">Development — iterative, transparent process</div></div>
@@ -1191,15 +1354,15 @@
       <button class="svc-modal-close" onclick="closeModal('modal-design')">✕</button>
     </div>
     <div class="svc-modal-body">
-      <p class="tr">Kullanıcı deneyimini ön planda tutan, markanıza özgü profesyonel web tasarımı. Figma'dan koda, piksel mükemmelliğinde çıktılar üretiyoruz.</p>
-      <p class="en">Professional web design tailored to your brand with user experience at the forefront. From Figma to code, pixel-perfect outputs.</p>
+      <p>Kullanıcı deneyimini ön planda tutan, markanıza özgü profesyonel web tasarımı. Figma'dan koda, piksel mükemmelliğinde çıktılar üretiyoruz.</p>
+      <p>Professional web design tailored to your brand with user experience at the forefront. From Figma to code, pixel-perfect outputs.</p>
       <ul class="svc-feature-list">
-        <li class="tr">Figma prototip tasarımı</li><li class="en">Figma prototype design</li>
-        <li class="tr">Marka kimliği & logo</li><li class="en">Brand identity & logo</li>
-        <li class="tr">Landing page tasarımı</li><li class="en">Landing page design</li>
-        <li class="tr">E-ticaret UI/UX</li><li class="en">E-commerce UI/UX</li>
-        <li class="tr">Animasyon & micro-interaction</li><li class="en">Animation & micro-interaction</li>
-        <li class="tr">Dark/Light tema</li><li class="en">Dark/Light theme</li>
+        <li>Figma prototip tasarımı</li><li>Figma prototype design</li>
+        <li>Marka kimliği & logo</li><li>Brand identity & logo</li>
+        <li>Landing page tasarımı</li><li>Landing page design</li>
+        <li>E-ticaret UI/UX</li><li>E-commerce UI/UX</li>
+        <li>Animasyon & micro-interaction</li><li>Animation & micro-interaction</li>
+        <li>Dark/Light tema</li><li>Dark/Light theme</li>
       </ul>
       <a href="#contact" class="btn-primary" onclick="closeModal('modal-design')" style="display:inline-flex">
         Teklif Al →
@@ -1221,15 +1384,15 @@
       <button class="svc-modal-close" onclick="closeModal('modal-social')">✕</button>
     </div>
     <div class="svc-modal-body">
-      <p class="tr">Instagram, Facebook ve LinkedIn için strateji odaklı içerik üretimi ve hesap yönetimi. Organik büyüme, etkileşim artışı ve marka bilinirliği.</p>
-      <p class="en">Strategy-focused content creation and account management for Instagram, Facebook and LinkedIn. Organic growth, engagement increase and brand awareness.</p>
+      <p>Instagram, Facebook ve LinkedIn için strateji odaklı içerik üretimi ve hesap yönetimi. Organik büyüme, etkileşim artışı ve marka bilinirliği.</p>
+      <p>Strategy-focused content creation and account management for Instagram, Facebook and LinkedIn. Organic growth, engagement increase and brand awareness.</p>
       <ul class="svc-feature-list">
-        <li class="tr">Aylık içerik planı</li><li class="en">Monthly content plan</li>
-        <li class="tr">Görsel & video üretimi</li><li class="en">Visual & video production</li>
-        <li class="tr">Hashtag stratejisi</li><li class="en">Hashtag strategy</li>
-        <li class="tr">Topluluk yönetimi</li><li class="en">Community management</li>
-        <li class="tr">Analitik raporlama</li><li class="en">Analytics reporting</li>
-        <li class="tr">Influencer iş birlikleri</li><li class="en">Influencer partnerships</li>
+        <li>Aylık içerik planı</li><li>Monthly content plan</li>
+        <li>Görsel & video üretimi</li><li>Visual & video production</li>
+        <li>Hashtag stratejisi</li><li>Hashtag strategy</li>
+        <li>Topluluk yönetimi</li><li>Community management</li>
+        <li>Analitik raporlama</li><li>Analytics reporting</li>
+        <li>Influencer iş birlikleri</li><li>Influencer partnerships</li>
       </ul>
       <a href="#contact" class="btn-primary" onclick="closeModal('modal-social')" style="display:inline-flex">
         Teklif Al →
@@ -1251,15 +1414,15 @@
       <button class="svc-modal-close" onclick="closeModal('modal-ads')">✕</button>
     </div>
     <div class="svc-modal-body">
-      <p class="tr">Facebook ve Instagram reklamlarında maksimum ROI için hedef kitle analizi, kreatif üretim ve sürekli optimizasyon yapıyoruz.</p>
-      <p class="en">We do audience analysis, creative production and continuous optimization for maximum ROI on Facebook and Instagram ads.</p>
+      <p>Facebook ve Instagram reklamlarında maksimum ROI için hedef kitle analizi, kreatif üretim ve sürekli optimizasyon yapıyoruz.</p>
+      <p>We do audience analysis, creative production and continuous optimization for maximum ROI on Facebook and Instagram ads.</p>
       <ul class="svc-feature-list">
-        <li class="tr">Hedef kitle analizi</li><li class="en">Audience analysis</li>
-        <li class="tr">Reklam kreatif üretimi</li><li class="en">Ad creative production</li>
-        <li class="tr">A/B test optimizasyonu</li><li class="en">A/B test optimization</li>
-        <li class="tr">Retargeting kampanyaları</li><li class="en">Retargeting campaigns</li>
-        <li class="tr">Haftalık performans raporu</li><li class="en">Weekly performance report</li>
-        <li class="tr">Bütçe optimizasyonu</li><li class="en">Budget optimization</li>
+        <li>Hedef kitle analizi</li><li>Audience analysis</li>
+        <li>Reklam kreatif üretimi</li><li>Ad creative production</li>
+        <li>A/B test optimizasyonu</li><li>A/B test optimization</li>
+        <li>Retargeting kampanyaları</li><li>Retargeting campaigns</li>
+        <li>Haftalık performans raporu</li><li>Weekly performance report</li>
+        <li>Bütçe optimizasyonu</li><li>Budget optimization</li>
       </ul>
       <a href="#contact" class="btn-primary" onclick="closeModal('modal-ads')" style="display:inline-flex">
         Kampanya Başlat →
@@ -1281,15 +1444,15 @@
       <button class="svc-modal-close" onclick="closeModal('modal-ai')">✕</button>
     </div>
     <div class="svc-modal-body">
-      <p class="tr">İş süreçlerinizi yapay zeka ve otomasyon ile hızlandırın. Tekrarlayan görevleri otomatikleştirin, veri analizini AI ile güçlendirin.</p>
-      <p class="en">Accelerate your business processes with AI and automation. Automate repetitive tasks, power data analysis with AI.</p>
+      <p>İş süreçlerinizi yapay zeka ve otomasyon ile hızlandırın. Tekrarlayan görevleri otomatikleştirin, veri analizini AI ile güçlendirin.</p>
+      <p>Accelerate your business processes with AI and automation. Automate repetitive tasks, power data analysis with AI.</p>
       <ul class="svc-feature-list">
-        <li class="tr">Claude / GPT entegrasyonu</li><li class="en">Claude / GPT integration</li>
-        <li class="tr">İş akışı otomasyonu</li><li class="en">Workflow automation</li>
-        <li class="tr">Veri analizi & raporlama</li><li class="en">Data analysis & reporting</li>
-        <li class="tr">Chatbot geliştirme</li><li class="en">Chatbot development</li>
-        <li class="tr">API entegrasyonu</li><li class="en">API integration</li>
-        <li class="tr">Özel AI çözümleri</li><li class="en">Custom AI solutions</li>
+        <li>Claude / GPT entegrasyonu</li><li>Claude / GPT integration</li>
+        <li>İş akışı otomasyonu</li><li>Workflow automation</li>
+        <li>Veri analizi & raporlama</li><li>Data analysis & reporting</li>
+        <li>Chatbot geliştirme</li><li>Chatbot development</li>
+        <li>API entegrasyonu</li><li>API integration</li>
+        <li>Özel AI çözümleri</li><li>Custom AI solutions</li>
       </ul>
       <a href="#contact" class="btn-primary" onclick="closeModal('modal-ai')" style="display:inline-flex">
         Demo İste →
@@ -1311,15 +1474,15 @@
       <button class="svc-modal-close" onclick="closeModal('modal-consult')">✕</button>
     </div>
     <div class="svc-modal-body">
-      <p class="tr">Dijital dönüşüm yolculuğunuzda yanınızdayız. Doğru teknoloji seçimi, mimari tasarım ve uzun vadeli strateji için danışmanlık hizmetleri.</p>
-      <p class="en">We're with you on your digital transformation journey. Consulting services for the right technology selection, architectural design and long-term strategy.</p>
+      <p>Dijital dönüşüm yolculuğunuzda yanınızdayız. Doğru teknoloji seçimi, mimari tasarım ve uzun vadeli strateji için danışmanlık hizmetleri.</p>
+      <p>We're with you on your digital transformation journey. Consulting services for the right technology selection, architectural design and long-term strategy.</p>
       <ul class="svc-feature-list">
-        <li class="tr">Teknoloji seçimi</li><li class="en">Technology selection</li>
-        <li class="tr">Yazılım mimarisi</li><li class="en">Software architecture</li>
-        <li class="tr">Dijital dönüşüm planı</li><li class="en">Digital transformation plan</li>
-        <li class="tr">Güvenlik danışmanlığı</li><li class="en">Security consulting</li>
-        <li class="tr">Bulut migrasyonu</li><li class="en">Cloud migration</li>
-        <li class="tr">Performans optimizasyonu</li><li class="en">Performance optimization</li>
+        <li>Teknoloji seçimi</li><li>Technology selection</li>
+        <li>Yazılım mimarisi</li><li>Software architecture</li>
+        <li>Dijital dönüşüm planı</li><li>Digital transformation plan</li>
+        <li>Güvenlik danışmanlığı</li><li>Security consulting</li>
+        <li>Bulut migrasyonu</li><li>Cloud migration</li>
+        <li>Performans optimizasyonu</li><li>Performance optimization</li>
       </ul>
       <a href="#contact" class="btn-primary" onclick="closeModal('modal-consult')" style="display:inline-flex">
         Görüşme Ayarla →
@@ -1349,10 +1512,31 @@
 
     <!-- LOGO -->
     <a href="#" style="display:flex;align-items:center;gap:11px;text-decoration:none;flex-shrink:0;" aria-label="gSoftwares.dev">
-      <svg width="40" height="40" viewBox="0 0 42 42" fill="none" aria-hidden="true">
-        <rect width="42" height="42" rx="12" fill="url(#navLg)"/>
-        <text x="21" y="27" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-weight="800" font-size="15" fill="#000">gS</text>
-        <defs><linearGradient id="navLg" x1="0" y1="0" x2="42" y2="42"><stop offset="0%" stop-color="#6366F1"/><stop offset="100%" stop-color="#8B5CF6"/></linearGradient></defs>
+      <svg width="42" height="42" viewBox="0 0 42 42" fill="none" aria-hidden="true" style="filter:drop-shadow(0 0 8px rgba(99,102,241,0.4));">
+        <rect width="42" height="42" rx="13" fill="#0B0F19"/>
+        <rect x="0.5" y="0.5" width="41" height="41" rx="12.5" stroke="url(#navBorder)" stroke-opacity="0.6"/>
+        <!-- G harf - köşeli premium -->
+        <path d="M10 14 C10 10 13 8 18 8 L26 8 L26 12 L18 12 C16 12 14 13 14 15 L14 27 C14 29 16 30 18 30 L24 30 L24 23 L20 23 L20 19 L28 19 L28 34 L18 34 C13 34 10 32 10 28 Z" fill="url(#navG)"/>
+        <!-- S harf -->
+        <path d="M30 8 L22 8 C19 8 17.5 9.5 17.5 12 C17.5 13.5 18.5 15 20 15.5 L26 17.5 C28 18.2 29 19.5 29 21.5 C29 24 27.5 25.5 25 25.5 L17 25.5 L17 29.5 L25.5 29.5 C29.5 29.5 33 27 33 22.5 C33 19.5 31.5 17.5 29 16.5 L23.5 14.5 C22.5 14.1 22 13.3 22 12.3 C22 11 23 10.5 24.5 10.5 L32 10.5 Z" fill="url(#navS)"/>
+        <defs>
+          <linearGradient id="navLg" x1="0" y1="0" x2="42" y2="42">
+            <stop offset="0%" stop-color="#6366F1"/>
+            <stop offset="100%" stop-color="#8B5CF6"/>
+          </linearGradient>
+          <linearGradient id="navG" x1="0" y1="0" x2="42" y2="42">
+            <stop offset="0%" stop-color="#818CF8"/>
+            <stop offset="100%" stop-color="#6366F1"/>
+          </linearGradient>
+          <linearGradient id="navS" x1="42" y1="0" x2="0" y2="42">
+            <stop offset="0%" stop-color="#A5B4FC"/>
+            <stop offset="100%" stop-color="#8B5CF6"/>
+          </linearGradient>
+          <linearGradient id="navBorder" x1="0" y1="0" x2="42" y2="42">
+            <stop offset="0%" stop-color="#818CF8"/>
+            <stop offset="100%" stop-color="#4F46E5"/>
+          </linearGradient>
+        </defs>
       </svg>
       <div>
         <div style="font-family:var(--font-display);font-weight:800;font-size:18px;letter-spacing:-.02em;line-height:1;">
@@ -1370,6 +1554,12 @@
       <a href="blog.html" class="nav-item page-link">Blog</a>
       <a href="#contact" class="nav-item">İletişim</a>
     </nav>
+
+    <!-- SAAT -->
+    <div id="live-clock" style="display:flex;flex-direction:column;align-items:center;padding:6px 14px;background:var(--bg3);border:1px solid var(--border2);border-radius:10px;min-width:72px;flex-shrink:0;cursor:default;" title="Türkiye Saati">
+      <span id="clock-time" style="font-family:var(--font-mono);font-size:14px;font-weight:700;color:var(--text);letter-spacing:0.05em;line-height:1.2;">00:00</span>
+      <span id="clock-date" style="font-family:var(--font-mono);font-size:9px;color:var(--text3);letter-spacing:0.08em;margin-top:1px;">--/--</span>
+    </div>
 
     <!-- ACTIONS -->
     <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
@@ -1399,12 +1589,18 @@
 
 <!-- NAV ITEM CSS -->
 <style>
-.nav-item{padding:7px 14px;border-radius:9px;font-size:13px;font-weight:500;color:var(--text2);text-decoration:none;transition:color .15s,background .15s;white-space:nowrap;}
+.nav-item{padding:7px 12px;border-radius:9px;font-size:12px;font-weight:500;color:var(--text2);text-decoration:none;transition:color .15s,background .15s;white-space:nowrap;}
 .nav-item:hover{color:var(--text);background:rgba(255,255,255,.06);}
-@media(max-width:768px){
+#live-clock { display:flex; }
+@media(max-width:900px){
   #desktop-nav{display:none!important;}
   #nav-cta{display:none!important;}
   #hamburger{display:flex!important;}
+  #live-clock{display:none!important;}
+}
+@media(min-width:901px) and (max-width:1100px) {
+  .nav-item { padding:6px 8px; font-size:11px; }
+  #live-clock { display:none; }
 }
 </style>
 
@@ -1489,8 +1685,8 @@
 <section id="services">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-label tr">Hizmetlerimiz</div>
-      <div class="section-label en">Our Services</div>
+      <div class="section-label">Hizmetlerimiz</div>
+      <div class="section-label" style="display:none">Our Services</div>
       <h2 class="section-title tr">Uzmanlık Alanlarımız</h2>
       <h2 class="section-title en">What We Do</h2>
       <p class="section-sub tr">Yüzeysel değil, derinlemesine. Her alanda uzmanlık odaklı çalışıyoruz — detaylar için ilgili başlığa tıklayın.</p>
@@ -1499,10 +1695,10 @@
     <div class="services-grid">
       <div class="service-card reveal" onclick="openModal('modal-web')">
         <div class="service-icon-wrap" style="background:rgba(0,229,160,.1)">💻</div>
-        <h3 class="tr">Web Geliştirme</h3>
-        <h3 class="en">Web Development</h3>
-        <p class="tr">Yavaş yüklenen bir site, potansiyel müşterinizi rakibinize yönlendirir. Biz; Core Web Vitals'ı baz alarak, gerçek zamanlı Firebase mimarisi ve ölçeklenebilir kod yapısıyla iş hedefinize özel sistemler inşa ediyoruz.</p>
-        <p class="en">A slow-loading site sends your potential client straight to your competitor. We build business-specific systems grounded in Core Web Vitals, real-time Firebase architecture, and scalable code.</p>
+        <h3>Web Geliştirme</h3>
+        <h3>Web Development</h3>
+        <p>Yavaş yüklenen bir site, potansiyel müşterinizi rakibinize yönlendirir. Biz; Core Web Vitals'ı baz alarak, gerçek zamanlı Firebase mimarisi ve ölçeklenebilir kod yapısıyla iş hedefinize özel sistemler inşa ediyoruz.</p>
+        <p>A slow-loading site sends your potential client straight to your competitor. We build business-specific systems grounded in Core Web Vitals, real-time Firebase architecture, and scalable code.</p>
         <div class="service-tags">
           <span class="stag">JavaScript</span><span class="stag">Firebase</span><span class="stag">React</span>
         </div>
@@ -1511,10 +1707,10 @@
       </div>
       <div class="service-card reveal reveal-delay1" onclick="openModal('modal-design')">
         <div class="service-icon-wrap" style="background:rgba(59,130,246,.1)">🎨</div>
-        <h3 class="tr">Web Tasarım & UI/UX</h3>
-        <h3 class="en">Web Design & UI/UX</h3>
-        <p class="tr">Güzel görünen ama dönüşüm sağlamayan tasarımlar sermaye kaybıdır. Kullanıcı davranışına dayalı, marka kimliğinizi güçlendiren ve ziyaretçiyi aksiyona yönlendiren arayüzler tasarlıyoruz.</p>
-        <p class="en">Beautiful design that doesn't convert is wasted capital. We design interfaces grounded in user behavior — reinforcing your brand while guiding visitors to take action.</p>
+        <h3>Web Tasarım & UI/UX</h3>
+        <h3>Web Design & UI/UX</h3>
+        <p>Güzel görünen ama dönüşüm sağlamayan tasarımlar sermaye kaybıdır. Kullanıcı davranışına dayalı, marka kimliğinizi güçlendiren ve ziyaretçiyi aksiyona yönlendiren arayüzler tasarlıyoruz.</p>
+        <p>Beautiful design that doesn't convert is wasted capital. We design interfaces grounded in user behavior — reinforcing your brand while guiding visitors to take action.</p>
         <div class="service-tags">
           <span class="stag">Figma</span><span class="stag">UI/UX</span><span class="stag">Branding</span>
         </div>
@@ -1523,10 +1719,10 @@
       </div>
       <div class="service-card reveal reveal-delay2" onclick="openModal('modal-social')">
         <div class="service-icon-wrap" style="background:rgba(139,92,246,.1)">📱</div>
-        <h3 class="tr">Sosyal Medya Yönetimi</h3>
-        <h3 class="en">Social Media Management</h3>
-        <p class="tr">Takipçi sayısı değil, nitelikli etkileşim kazandırıyoruz. Hedef kitlenizin dilini konuşan, algoritmanın önceliklendirdiği içeriklerle organik büyüme sağlıyoruz.</p>
-        <p class="en">We don't chase follower counts — we earn quality engagement. We drive organic growth with content that speaks your audience's language and that algorithms prioritize.</p>
+        <h3>Sosyal Medya Yönetimi</h3>
+        <h3>Social Media Management</h3>
+        <p>Takipçi sayısı değil, nitelikli etkileşim kazandırıyoruz. Hedef kitlenizin dilini konuşan, algoritmanın önceliklendirdiği içeriklerle organik büyüme sağlıyoruz.</p>
+        <p>We don't chase follower counts — we earn quality engagement. We drive organic growth with content that speaks your audience's language and that algorithms prioritize.</p>
         <div class="service-tags">
           <span class="stag">Instagram</span><span class="stag">Facebook</span><span class="stag">LinkedIn</span>
         </div>
@@ -1535,10 +1731,10 @@
       </div>
       <div class="service-card reveal" onclick="openModal('modal-ads')">
         <div class="service-icon-wrap" style="background:rgba(245,158,11,.1)">📊</div>
-        <h3 class="tr">Meta Reklam Yönetimi</h3>
-        <h3 class="en">Meta Ads Management</h3>
-        <p class="tr">Bütçenizin her kuruşunu doğru kitleye harcatıyoruz. Davranışsal segmentasyon, yaratıcı A/B testleri ve sürekli optimizasyon ile reklam harcama getirinizi (ROAS) maksimize ediyoruz.</p>
-        <p class="en">We make every cent of your budget work for the right audience. Behavioral segmentation, creative A/B testing, and continuous optimization to maximize your return on ad spend (ROAS).</p>
+        <h3>Meta Reklam Yönetimi</h3>
+        <h3>Meta Ads Management</h3>
+        <p>Bütçenizin her kuruşunu doğru kitleye harcatıyoruz. Davranışsal segmentasyon, yaratıcı A/B testleri ve sürekli optimizasyon ile reklam harcama getirinizi (ROAS) maksimize ediyoruz.</p>
+        <p>We make every cent of your budget work for the right audience. Behavioral segmentation, creative A/B testing, and continuous optimization to maximize your return on ad spend (ROAS).</p>
         <div class="service-tags">
           <span class="stag">Meta Ads</span><span class="stag">ROI</span><span class="stag">Analytics</span>
         </div>
@@ -1547,10 +1743,10 @@
       </div>
       <div class="service-card reveal reveal-delay1" onclick="openModal('modal-ai')">
         <div class="service-icon-wrap" style="background:rgba(0,229,160,.1)">🤖</div>
-        <h3 class="tr">Otomasyon & AI</h3>
-        <h3 class="en">Automation & AI</h3>
-        <p class="tr">Tekrar eden işlemler için insan kaynağı harcamak rekabet avantajını törpüler. İş akışlarınızı analiz eder, doğru yapay zeka ve otomasyon araçlarını entegre ederek operasyonel verimliliğinizi artırıyoruz.</p>
-        <p class="en">Spending human resources on repetitive tasks erodes your competitive edge. We analyze your workflows and integrate the right AI and automation tools to boost operational efficiency.</p>
+        <h3>Otomasyon & AI</h3>
+        <h3>Automation & AI</h3>
+        <p>Tekrar eden işlemler için insan kaynağı harcamak rekabet avantajını törpüler. İş akışlarınızı analiz eder, doğru yapay zeka ve otomasyon araçlarını entegre ederek operasyonel verimliliğinizi artırıyoruz.</p>
+        <p>Spending human resources on repetitive tasks erodes your competitive edge. We analyze your workflows and integrate the right AI and automation tools to boost operational efficiency.</p>
         <div class="service-tags">
           <span class="stag">Claude AI</span><span class="stag">API</span><span class="stag">Automation</span>
         </div>
@@ -1559,10 +1755,10 @@
       </div>
       <div class="service-card reveal reveal-delay2" onclick="openModal('modal-consult')">
         <div class="service-icon-wrap" style="background:rgba(59,130,246,.1)">🛡️</div>
-        <h3 class="tr">IT Danışmanlık</h3>
-        <h3 class="en">IT Consulting</h3>
-        <p class="tr">Yanlış teknoloji seçimi, ilerleyen süreçte katlanarak artan maliyetler doğurur. Mevcut altyapınızı değerlendiriyor, ölçeklenebilirlik ve güvenliği temel alarak sizin için doğru yol haritasını çiziyoruz.</p>
-        <p class="en">Wrong technology choices compound into exponentially growing costs. We assess your current infrastructure and chart the right roadmap for you — scalability and security as the foundation.</p>
+        <h3>IT Danışmanlık</h3>
+        <h3>IT Consulting</h3>
+        <p>Yanlış teknoloji seçimi, ilerleyen süreçte katlanarak artan maliyetler doğurur. Mevcut altyapınızı değerlendiriyor, ölçeklenebilirlik ve güvenliği temel alarak sizin için doğru yol haritasını çiziyoruz.</p>
+        <p>Wrong technology choices compound into exponentially growing costs. We assess your current infrastructure and chart the right roadmap for you — scalability and security as the foundation.</p>
         <div class="service-tags">
           <span class="stag">Strategy</span><span class="stag">Architecture</span><span class="stag">Cloud</span>
         </div>
@@ -1579,8 +1775,8 @@
 <section id="projects">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-label tr">Projelerimiz</div>
-      <div class="section-label en">Our Projects</div>
+      <div class="section-label">Projelerimiz</div>
+      <div class="section-label" style="display:none">Our Projects</div>
       <h2 class="section-title tr">Referans Çalışmalar</h2>
       <h2 class="section-title en">What We've Built</h2>
       <p class="section-sub tr">Söylediğimizi değil, yaptığımızı değerlendirin. Her proje, bir problemi çözmek için doğmuştur.</p>
@@ -1609,8 +1805,8 @@
         </div>
         <div class="project-body">
           <h3>FleetVision 2026 PRO</h3>
-          <p class="tr">47 araçlık filoyu Excel'de yöneten bir arkadaşın "daha iyi bir çözüm yok mu?" sorusuyla doğdu. Bugün: 30+ modül, gerçek zamanlı Firebase mimarisi, Türk İş Kanunu'na uygun izin takibi ve tek dosyada çalışan tam ölçekli bir platform.</p>
-          <p class="en">Started when I saw a friend managing a 47-vehicle fleet in Excel. Today it's a full fleet management platform with 30+ modules, Firebase integration, and Labor Law leave calculation.</p>
+          <p>47 araçlık filoyu Excel'de yöneten bir arkadaşın "daha iyi bir çözüm yok mu?" sorusuyla doğdu. Bugün: 30+ modül, gerçek zamanlı Firebase mimarisi, Türk İş Kanunu'na uygun izin takibi ve tek dosyada çalışan tam ölçekli bir platform.</p>
+          <p>Started when I saw a friend managing a 47-vehicle fleet in Excel. Today it's a full fleet management platform with 30+ modules, Firebase integration, and Labor Law leave calculation.</p>
           <div class="project-tech">
             <span class="tech-tag">Vanilla JS</span>
             <span class="tech-tag">Firebase</span>
@@ -1619,7 +1815,7 @@
           </div>
           <div class="project-footer">
             <span class="project-status-badge status-live">● LIVE</span>
-            <a href="https://fleetvision.online" target="_blank" class="project-link">fleetvision.online ↗</a>
+            <a href="works-detail.html" class="page-link project-link">fleetvision.online ↗</a>
           </div>
         </div>
       </div>
@@ -1644,10 +1840,10 @@
           </div>
         </div>
         <div class="project-body">
-          <h3 class="tr">Müşteri Projeleri</h3>
-          <h3 class="en">Client Projects</h3>
-          <p class="tr">Web tasarım, kurumsal yazılım, sosyal medya ve dijital pazarlama projeleriniz için buradayız. Her ölçekte, her sektörde.</p>
-          <p class="en">We're here for your web design, enterprise software, social media and digital marketing projects. Every scale, every sector.</p>
+          <h3>Müşteri Projeleri</h3>
+          <h3>Client Projects</h3>
+          <p>Web tasarım, kurumsal yazılım, sosyal medya ve dijital pazarlama projeleriniz için buradayız. Her ölçekte, her sektörde.</p>
+          <p>We're here for your web design, enterprise software, social media and digital marketing projects. Every scale, every sector.</p>
           <div class="project-tech">
             <span class="tech-tag">Web Design</span>
             <span class="tech-tag">Software</span>
@@ -1671,8 +1867,8 @@
 <section id="team">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-label tr">Ekibimiz</div>
-      <div class="section-label en">Our Team</div>
+      <div class="section-label">Ekibimiz</div>
+      <div class="section-label" style="display:none">Our Team</div>
       <h2 class="section-title tr">Ekibin Vizyonu</h2>
       <h2 class="section-title en">The People Behind It</h2>
       <p class="section-sub tr">Bir yazılım mühendisi ve bir dijital pazarlama stratejisti. Farklı disiplinler, ortak bir standart: çalışan şeyin değil, çalışan şeyin en iyisinin peşinde.</p>
@@ -1736,8 +1932,8 @@
   <div class="container">
     <div class="contact-grid">
       <div class="reveal">
-        <div class="section-label tr">İletişim</div>
-        <div class="section-label en">Contact</div>
+        <div class="section-label">İletişim</div>
+        <div class="section-label" style="display:none">Contact</div>
         <h2 class="contact-info" style="font-family:var(--font-display);font-size:36px;font-weight:800;letter-spacing:-1px;margin-bottom:16px;line-height:1.1">
           Projenizi<br><span style="background:var(--grad1);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Değerlendirelim</span>
           </span>
@@ -1806,8 +2002,8 @@
       </div>
       <div class="reveal reveal-delay1">
         <div class="contact-form-wrap">
-          <h3 class="tr">Bize Ulaşın</h3>
-          <h3 class="en">Send Project Request</h3>
+          <h3>Bize Ulaşın</h3>
+          <h3>Send Project Request</h3>
           <p class="sub tr">48 saat içinde değerlendirme notunuz hazır olur.</p>
           <p class="sub en">Your assessment note will be ready within 48 hours.</p>
           <form id="contactForm" onsubmit="formGonder(event)">
@@ -1832,22 +2028,22 @@
               <label class="form-label tr">İLGİLENDİĞİNİZ HİZMET</label>
               <label class="form-label en">SERVICE INTERESTED IN</label>
               <select class="form-select form-input" id="f-service">
-                <option value="" class="tr">Seçin...</option>
-                <option value="" class="en">Select...</option>
-                <option class="tr">Web Geliştirme</option>
-                <option class="en">Web Development</option>
-                <option class="tr">Web Tasarım & UI/UX</option>
-                <option class="en">Web Design & UI/UX</option>
-                <option class="tr">Sosyal Medya Yönetimi</option>
-                <option class="en">Social Media Management</option>
-                <option class="tr">Meta Reklam Yönetimi</option>
-                <option class="en">Meta Ads Management</option>
-                <option class="tr">Otomasyon & AI</option>
-                <option class="en">Automation & AI</option>
-                <option class="tr">IT Danışmanlık</option>
-                <option class="en">IT Consulting</option>
-                <option class="tr">Birden Fazla Hizmet</option>
-                <option class="en">Multiple Services</option>
+                <option value="">Seçin...</option>
+                <option value="">Select...</option>
+                <option>Web Geliştirme</option>
+                <option>Web Development</option>
+                <option>Web Tasarım & UI/UX</option>
+                <option>Web Design & UI/UX</option>
+                <option>Sosyal Medya Yönetimi</option>
+                <option>Social Media Management</option>
+                <option>Meta Reklam Yönetimi</option>
+                <option>Meta Ads Management</option>
+                <option>Otomasyon & AI</option>
+                <option>Automation & AI</option>
+                <option>IT Danışmanlık</option>
+                <option>IT Consulting</option>
+                <option>Birden Fazla Hizmet</option>
+                <option>Multiple Services</option>
               </select>
             </div>
             <div class="form-group">
@@ -1860,7 +2056,7 @@
               
             </button>
           </form>
-          <div class="form-success" id="formSuccess">
+          <div class="form-success" id="formSuccess" style="display:none;">
             ✓ Talebiniz alındı. 48 saat içinde projenize ait değerlendirme notunu size iletiyoruz.
             
           </div>
@@ -1881,13 +2077,10 @@
       <div class="footer-copy">© 2026 gSoftwares.dev — Hamza Gökçe & Taner Aydoğan</div>
     </div>
     <div class="footer-links">
-      <a href="#services" class="tr">Hizmetler</a>
-      <a href="#services" class="en">Services</a>
-      <a href="#projects" class="tr">Projeler</a>
-      <a href="#projects" class="en">Projects</a>
-      <a href="about.html" class="page-link tr">Hakkımızda</a>
-      <a href="about.html" class="page-link en">About</a>
-      <a href="blog.html" class="page-link tr">Blog</a>
+      <a href="#services">Hizmetler</a>
+      <a href="#projects">Projeler</a>
+      <a href="about.html" class="page-link">Hakkımızda</a>
+      <a href="blog.html" class="page-link">Blog</a>
       <a href="blog.html" class="page-link en">Blog</a>
       <a href="legal.html" class="page-link tr">Gizlilik</a>
       <a href="legal.html" class="page-link en">Legal</a>
@@ -2158,6 +2351,26 @@
   }
 
   loadSpaceBg();
+
+  // ═══════════════════════════════════════════════════════
+  // CANLI SAAT
+  // ═══════════════════════════════════════════════════════
+  function updateClock() {
+    const now = new Date();
+    const pad = n => String(n).padStart(2,'0');
+    const h = pad(now.getHours());
+    const m = pad(now.getMinutes());
+    const s = pad(now.getSeconds());
+    const d = pad(now.getDate());
+    const mo = pad(now.getMonth()+1);
+
+    const timeEl = document.getElementById('clock-time');
+    const dateEl = document.getElementById('clock-date');
+    if (timeEl) timeEl.textContent = `${h}:${m}:${s}`;
+    if (dateEl) dateEl.textContent = `${d}/${mo}`;
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
 
   // ============================================================
   // MOBİL MENÜ
