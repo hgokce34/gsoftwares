@@ -1088,12 +1088,27 @@
     .service-card:nth-child(5) { transition-delay: 0.24s; }
     .service-card:nth-child(6) { transition-delay: 0.30s; }
 
-    /* Logo glow animasyonu */
-    @keyframes logoGlow {
-      0%, 100% { filter: drop-shadow(0 0 6px rgba(99,102,241,0.35)); }
-      50% { filter: drop-shadow(0 0 14px rgba(99,102,241,0.7)); }
-    }
-    #site-header svg:first-of-type { animation: logoGlow 3s ease-in-out infinite; }
+    /* HEADER */
+    #site-header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(11,15,25,0.85);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6);border-bottom:1px solid rgba(255,255,255,0.07);transition:background .3s;}
+    .nav-wrap{max-width:1140px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+    .nav-logo{display:flex;align-items:center;gap:2px;text-decoration:none;flex-shrink:0;}
+    .nav-logo-g{font-family:var(--font-display);font-weight:900;font-size:21px;color:#6366F1;letter-spacing:-.03em;}
+    .nav-logo-name{font-family:var(--font-display);font-weight:700;font-size:18px;color:#C7D2FE;letter-spacing:-.02em;}
+    .nav-links{display:flex;align-items:center;gap:2px;}
+    .nav-link{padding:8px 15px;border-radius:9px;font-size:14px;font-weight:500;color:rgba(199,210,254,.75);text-decoration:none;transition:color .15s,background .15s;white-space:nowrap;letter-spacing:-.01em;}
+    .nav-link:hover{color:#E0E7FF;background:rgba(99,102,241,.10);}
+    .nav-actions{display:flex;align-items:center;gap:8px;flex-shrink:0;}
+    .nav-theme-btn{width:36px;height:36px;border-radius:9px;border:1px solid var(--border2);background:var(--bg3);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .2s;}
+    .nav-theme-btn:hover{border-color:var(--accent);}
+    .nav-cta{display:inline-flex;align-items:center;background:linear-gradient(135deg,#6366F1,#8B5CF6);color:#fff;font-family:var(--font-display);font-weight:700;font-size:13px;padding:9px 22px;border-radius:10px;text-decoration:none;white-space:nowrap;letter-spacing:-.01em;box-shadow:0 4px 16px rgba(99,102,241,.3);transition:opacity .2s,transform .15s;}
+    .nav-cta:hover{opacity:.92;transform:translateY(-1px);}
+    .nav-hamburger{display:none;flex-direction:column;gap:5px;width:36px;height:36px;border-radius:9px;border:1px solid var(--border2);background:var(--bg3);cursor:pointer;align-items:center;justify-content:center;flex-shrink:0;}
+    .nav-hamburger span{display:block;width:18px;height:1.5px;background:var(--text2);border-radius:2px;transition:all .3s;}
+    .nav-mob{display:none;background:rgba(11,15,25,0.97);border-top:1px solid var(--border);padding:12px 16px;}
+    .nav-mob a{display:block;padding:11px 16px;border-radius:10px;color:var(--text2);text-decoration:none;font-size:14px;font-weight:500;margin-bottom:3px;transition:background .15s,color .15s;}
+    .nav-mob a:hover{background:var(--bg3);color:var(--text);}
+    .nav-mob-cta{background:linear-gradient(135deg,#6366F1,#8B5CF6)!important;color:#fff!important;font-weight:700!important;text-align:center;margin-top:8px;}
+    @media(max-width:860px){.nav-links{display:none!important;}.nav-cta{display:none!important;}.nav-hamburger{display:flex!important;}}
 
     /* Saat widget pulse */
     @keyframes clockPulse {
@@ -1526,117 +1541,34 @@
   - ARIA: aria-label, aria-current, aria-expanded
 ============================================================ -->
 <!-- NAVBAR -->
-<header id="site-header" role="banner" style="
-  position:fixed;top:0;left:0;right:0;z-index:1000;
-  background:rgba(11,15,25,0.80);
-  backdrop-filter:blur(24px) saturate(1.8);
-  -webkit-backdrop-filter:blur(24px) saturate(1.8);
-  border-bottom:1px solid rgba(255,255,255,0.07);
-  transition:background .3s, box-shadow .3s;
-">
-  <div style="max-width:1140px;margin:0 auto;padding:0 20px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:10px;">
-
-    <!-- LOGO -->
-    <a href="#" style="display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;" aria-label="gSoftwares.dev">
-      <!-- Logo ikonu -->
-      <svg width="38" height="38" viewBox="0 0 42 42" fill="none" aria-hidden="true" style="flex-shrink:0;filter:drop-shadow(0 0 6px rgba(99,102,241,0.4));">
-        <rect width="42" height="42" rx="11" fill="#12163A"/>
-        <rect x="1" y="1" width="40" height="40" rx="10" stroke="url(#lgBrd)" stroke-width="1.5"/>
-        <text x="21" y="27" text-anchor="middle"
-          font-family="Space Grotesk,system-ui,sans-serif"
-          font-weight="900" font-size="17" letter-spacing="-1"
-          fill="url(#lgTxt)">gS</text>
-        <defs>
-          <linearGradient id="lgBrd" x1="0" y1="0" x2="42" y2="42">
-            <stop offset="0%" stop-color="#818CF8" stop-opacity="0.8"/>
-            <stop offset="100%" stop-color="#4F46E5" stop-opacity="0.4"/>
-          </linearGradient>
-          <linearGradient id="lgTxt" x1="0" y1="8" x2="42" y2="34">
-            <stop offset="0%" stop-color="#E0E7FF"/>
-            <stop offset="100%" stop-color="#818CF8"/>
-          </linearGradient>
-        </defs>
-      </svg>
-      <!-- Marka adı — tek satırda -->
-      <div style="display:flex;flex-direction:column;line-height:1;">
-        <span style="font-family:var(--font-display);font-weight:800;font-size:17px;letter-spacing:-.025em;white-space:nowrap;">
-          <span style="color:#818CF8">g</span><span style="color:#C7D2FE">Softwares</span><span style="color:var(--accent2);font-size:13px;font-weight:600;">.dev</span>
-        </span>
-      </div>
+<header id="site-header" role="banner">
+  <div class="nav-wrap">
+    <a href="#" class="nav-logo" aria-label="gSoftwares.dev">
+      <span class="nav-logo-g">g</span><span class="nav-logo-name">Softwares</span>
     </a>
-
-    <!-- DESKTOP NAV -->
-    <nav id="desktop-nav" style="display:flex;gap:2px;" aria-label="Ana navigasyon">
-      <a href="#" class="nav-item">Ana Sayfa</a>
-      <a href="#services" class="nav-item">Hizmetler</a>
-      <a href="about.html" class="nav-item page-link">Hakkımızda</a>
-      <a href="blog.html" class="nav-item page-link">Blog</a>
-      <a href="works-detail.html" class="nav-item page-link">Projeler</a>
+    <nav class="nav-links" aria-label="Ana navigasyon">
+      <a href="about.html" class="nav-link page-link">Hakkımızda</a>
+      <a href="#services" class="nav-link">Hizmetler</a>
+      <a href="works-detail.html" class="nav-link page-link">Projeler</a>
+      <a href="blog.html" class="nav-link page-link">Blog</a>
     </nav>
-
-    <!-- SAAT -->
-    <div id="live-clock" style="display:flex;flex-direction:column;align-items:center;padding:6px 14px;background:var(--bg3);border:1px solid var(--border2);border-radius:10px;min-width:72px;flex-shrink:0;cursor:default;" title="Türkiye Saati">
-      <span id="clock-time" style="font-family:var(--font-mono);font-size:14px;font-weight:700;color:var(--text);letter-spacing:0.05em;line-height:1.2;">00:00</span>
-      <span id="clock-date" style="font-family:var(--font-mono);font-size:9px;color:var(--text3);letter-spacing:0.08em;margin-top:1px;">--/--</span>
-    </div>
-
-    <!-- ACTIONS -->
-    <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
-      <button id="langBtn" onclick="toggleLang()" aria-label="Dil" style="font-family:var(--font-mono);font-size:10px;font-weight:700;padding:5px 9px;border-radius:8px;border:1px solid var(--border2);background:var(--bg3);color:var(--text2);cursor:pointer;flex-shrink:0;transition:all .2s;white-space:nowrap;">TR/EN</button>
-      <button id="themeBtn" onclick="toggleTheme()" aria-label="Tema" style="width:32px;height:32px;border-radius:8px;border:1px solid var(--border2);background:var(--bg3);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;">🌙</button>
-      <a href="#contact" id="nav-cta" style="display:inline-flex;align-items:center;gap:5px;background:linear-gradient(135deg,#6366F1,#8B5CF6);color:#fff;font-weight:800;font-size:11px;padding:7px 13px;border-radius:9px;text-decoration:none;white-space:nowrap;flex-shrink:0;">
-        Proje Başlat →
-      </a>
-      <!-- Hamburger -->
-      <button id="hamburger" onclick="toggleMob()" aria-label="Menü" style="display:none;flex-direction:column;gap:5px;width:36px;height:36px;border-radius:9px;border:1px solid var(--border2);background:var(--bg3);cursor:pointer;align-items:center;justify-content:center;flex-shrink:0;">
-        <span style="width:18px;height:1.5px;background:var(--text2);border-radius:2px;display:block;transition:all .3s;" id="hb1"></span>
-        <span style="width:18px;height:1.5px;background:var(--text2);border-radius:2px;display:block;transition:all .3s;" id="hb2"></span>
-        <span style="width:18px;height:1.5px;background:var(--text2);border-radius:2px;display:block;transition:all .3s;" id="hb3"></span>
+    <div class="nav-actions">
+      <button class="nav-theme-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Tema">🌙</button>
+      <a href="#contact" class="nav-cta">İletişime Geç</a>
+      <button class="nav-hamburger" id="hamburger" onclick="toggleMob()" aria-label="Menü">
+        <span id="hb1"></span><span id="hb2"></span><span id="hb3"></span>
       </button>
     </div>
   </div>
-
-  <!-- MOBİL MENÜ -->
-  <div id="mob-menu" style="display:none;background:rgba(11,15,25,0.97);border-top:1px solid var(--border);padding:12px 16px;">
-    <a href="#" onclick="toggleMob()" style="display:block;padding:11px 16px;border-radius:10px;color:var(--text2);text-decoration:none;font-size:14px;font-weight:500;margin-bottom:3px;">Ana Sayfa</a>
-    <a href="#services" onclick="toggleMob()" style="display:block;padding:11px 16px;border-radius:10px;color:var(--text2);text-decoration:none;font-size:14px;font-weight:500;margin-bottom:3px;">Hizmetler</a>
-    <a href="about.html" onclick="toggleMob()" class="page-link" style="display:block;padding:11px 16px;border-radius:10px;color:var(--text2);text-decoration:none;font-size:14px;font-weight:500;margin-bottom:3px;">Hakkımızda</a>
-    <a href="blog.html" onclick="toggleMob()" class="page-link" style="display:block;padding:11px 16px;border-radius:10px;color:var(--text2);text-decoration:none;font-size:14px;font-weight:500;margin-bottom:3px;">Blog</a>
-    <a href="works-detail.html" onclick="toggleMob()" class="page-link" style="display:block;padding:11px 16px;border-radius:10px;color:var(--text2);text-decoration:none;font-size:14px;font-weight:500;margin-bottom:3px;">Projeler</a>
-    <a href="#contact" onclick="toggleMob()" style="display:block;padding:12px 16px;border-radius:10px;background:linear-gradient(135deg,#6366F1,#8B5CF6);color:#fff;text-decoration:none;font-size:14px;font-weight:800;text-align:center;margin-top:8px;">Proje Başlat →</a>
+  <div class="nav-mob" id="mob-menu">
+    <a href="about.html" onclick="toggleMob()" class="page-link">Hakkımızda</a>
+    <a href="#services" onclick="toggleMob()">Hizmetler</a>
+    <a href="works-detail.html" onclick="toggleMob()" class="page-link">Projeler</a>
+    <a href="blog.html" onclick="toggleMob()" class="page-link">Blog</a>
+    <a href="#contact" onclick="toggleMob()" class="nav-mob-cta">İletişime Geç</a>
   </div>
 </header>
 
-<!-- NAV ITEM CSS -->
-<style>
-.nav-item{
-  padding:6px 11px;border-radius:9px;font-size:12px;font-weight:500;
-  color:var(--text2);text-decoration:none;
-  transition:color .15s,background .15s;white-space:nowrap;
-}
-.nav-item:hover{color:var(--text);background:rgba(255,255,255,.06);}
-
-/* Desktop tam — nav + saat + butonlar görünür */
-#desktop-nav { display:flex; }
-#nav-cta    { display:inline-flex; }
-#hamburger  { display:none; }
-#live-clock { display:flex; }
-
-/* 1100px altı — saat gizle, nav kalsın */
-@media(max-width:1100px){
-  #live-clock { display:none !important; }
-  .nav-item { padding:5px 8px; font-size:11px; }
-  #nav-cta { font-size:11px !important; padding:7px 12px !important; }
-}
-
-/* 768px altı — hamburger */
-@media(max-width:860px){
-  #desktop-nav { display:none !important; }
-  #nav-cta     { display:none !important; }
-  #hamburger   { display:flex !important; }
-  #live-clock  { display:none !important; }
-}
-</style>
 
 
 <!-- HERO -->
