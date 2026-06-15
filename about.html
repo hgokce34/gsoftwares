@@ -195,16 +195,7 @@
       transition: left .1s, top .1s;
     }
 
-    /* NAVBAR */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      padding: 0 40px; height: 68px;
-      display: flex; align-items: center; justify-content: space-between;
-      background: rgba(5,8,16,0.8);
-      backdrop-filter: blur(24px);
-      border-bottom: 1px solid var(--border);
-    }
-    [data-theme="light"] nav { background: rgba(240,244,255,0.85); }
+    /* NAVBAR — #gs-header handles fixed positioning */
 
     /* LOGO */
     .nav-logo {
@@ -625,10 +616,8 @@
     .reveal-delay2 { transition-delay: .2s; }
     .reveal-delay3 { transition-delay: .3s; }
 
-    /* MOBILE NAV */
+    /* MOBILE */
     @media(max-width:768px) {
-      nav { padding: 0 20px; }
-      .nav-links { display: none; }
       section { padding: 80px 20px; }
     }
 
