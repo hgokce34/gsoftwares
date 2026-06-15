@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr" data-theme="dark" data-lang="tr">
+<html lang="tr" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -634,11 +634,11 @@
 
     /* TR/EN */
     .en { display: none; }
-    [data-lang="en"] .tr { display: none; }
-    [data-lang="en"] .en { display: block; }
+    
+    
     span.en { display: none; }
-    [data-lang="en"] span.tr { display: none; }
-    [data-lang="en"] span.en { display: inline; }
+    
+    
   
     /* ═══════════════════════════════════════
        PREMIUM MICRO-INTERACTIONS
@@ -1066,8 +1066,8 @@
     .gs-mob-menu a{display:block;padding:11px 16px;border-radius:10px;font-size:14px;font-weight:500;color:var(--text2);text-decoration:none;margin-bottom:3px;}
     .gs-mob-menu a:hover{background:var(--bg3);color:var(--text);}
     .gs-footer{border-top:1px solid var(--border);padding:32px 40px;position:relative;z-index:2;}
-    .en{display:none;}[data-lang="en"] .tr{display:none;}[data-lang="en"] .en{display:block;}
-    span.en{display:none;}[data-lang="en"] span.tr{display:none;}[data-lang="en"] span.en{display:inline;}
+    
+    span
     ::-webkit-scrollbar{width:6px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:99px;}
     ::selection{background:rgba(99,102,241,.25);color:var(--text);}
     @media(max-width:768px){.gs-hamburger{display:flex!important;}.gs-nav-desktop{display:none!important;}.gs-cta-desktop{display:none!important;}.gs-footer{padding:24px 20px;}}
@@ -1082,10 +1082,12 @@
     .bento-main{
       display:grid;
       grid-template-columns:2fr 1fr;
-      grid-template-rows:auto auto;
       gap:16px;
     }
-    @media(max-width:900px){.bento-main{grid-template-columns:1fr;}}
+    @media(max-width:768px){
+      .bento-main{grid-template-columns:1fr;}
+      #moreCards{grid-template-columns:1fr!important;}
+    }
 
     /* BLOG KART */
     .bc{
@@ -1329,24 +1331,24 @@
       </div>
     </a>
     <nav class="gs-nav-desktop" style="display:flex;gap:2px;" aria-label="Ana navigasyon">
-      <a href="index.html" class="gs-nav-link page-link"><span class="tr">Ana Sayfa</span><span class="en">Home</span></a>
-      <a href="index.html#services" class="gs-nav-link"><span class="tr">Hizmetler</span><span class="en">Services</span></a>
-      <a href="about.html" class="gs-nav-link page-link"><span class="tr">Hakkımızda</span><span class="en">About</span></a>
+      <a href="index.html" class="gs-nav-link page-link">Ana Sayfa</a>
+      <a href="index.html#services" class="gs-nav-link">Hizmetler</a>
+      <a href="about.html" class="gs-nav-link page-link">Hakkımızda</a>
       <a href="blog.html" class="gs-nav-link active" aria-current="page">Blog</a>
-      <a href="works-detail.html" class="gs-nav-link page-link"><span class="tr">Projeler</span><span class="en">Works</span></a>
+      <a href="works-detail.html" class="gs-nav-link page-link">Projeler</a>
     </nav>
     <div style="display:flex;align-items:center;gap:8px;">
       <button id="langBtn" onclick="toggleLang()" style="font-family:var(--font-mono);font-size:11px;font-weight:700;padding:6px 12px;border-radius:9px;border:1px solid var(--border2);background:var(--bg3);color:var(--text2);cursor:pointer;">EN</button>
       <button id="themeBtn" onclick="toggleTheme()" style="width:36px;height:36px;border-radius:9px;border:1px solid var(--border2);background:var(--bg3);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;">🌙</button>
-      <a href="index.html#contact" class="gs-btn gs-cta-desktop page-link" style="font-size:12px;padding:8px 16px;"><span class="tr">Proje Başlat</span><span class="en">Start Project</span> →</a>
+      <a href="index.html#contact" class="gs-btn gs-cta-desktop page-link" style="font-size:12px;padding:8px 16px;">Proje Başlat →</a>
       <button id="gs-hbtn" class="gs-hamburger" aria-label="Menü"><span></span><span></span><span></span></button>
     </div>
   </div>
   <div id="gs-mmenu" class="gs-mob-menu">
-    <a href="index.html" class="page-link"><span class="tr">Ana Sayfa</span><span class="en">Home</span></a>
-    <a href="about.html" class="page-link"><span class="tr">Hakkımızda</span><span class="en">About</span></a>
-    <a href="works-detail.html" class="page-link"><span class="tr">Projeler</span><span class="en">Works</span></a>
-    <a href="index.html#contact" class="page-link" style="background:linear-gradient(135deg,#6366F1,#8B5CF6);color:#fff;font-weight:800;margin-top:8px;border-radius:10px;text-align:center;"><span class="tr">Proje Başlat →</span><span class="en">Start Project →</span></a>
+    <a href="index.html" class="page-link">Ana Sayfa</a>
+    <a href="about.html" class="page-link">Hakkımızda</a>
+    <a href="works-detail.html" class="page-link">Projeler</a>
+    <a href="index.html#contact" class="page-link" style="background:linear-gradient(135deg,#6366F1,#8B5CF6);color:#fff;font-weight:800;margin-top:8px;border-radius:10px;text-align:center;">Proje Başlat →</a>
   </div>
 </header>
 
@@ -1358,8 +1360,8 @@
 <!-- PANEL — içerik JS ile doldurulur -->
 <aside class="article-panel" id="articlePanel" role="dialog" aria-modal="true" aria-label="Makale">
   <div class="panel-header">
-    <div style="font-family:var(--font-mono);font-size:11px;color:var(--text3);font-weight:600;" class="tr">MAKALE</div>
-    <div style="font-family:var(--font-mono);font-size:11px;color:var(--text3);font-weight:600;" class="en">ARTICLE</div>
+    <div style="font-family:var(--font-mono);font-size:11px;color:var(--text3);font-weight:600;">MAKALE</div>
+    <div style="font-family:var(--font-mono);font-size:11px;color:var(--text3);font-weight:600;">ARTICLE</div>
     <button class="panel-close" onclick="closePanel()" aria-label="Kapat">✕</button>
   </div>
   <div class="panel-content" id="panelContent"></div>
@@ -1374,21 +1376,21 @@
   <section style="padding:120px 0 60px;">
     <div class="blog-wrap">
       <div class="gs-reveal" style="max-width:720px;">
-        <div class="gs-label tr">Teknik Yazılar & Fikirler</div>
-        <div class="gs-label en">Technical Articles & Insights</div>
+        <div class="gs-label">Teknik Yazılar & Fikirler</div>
+        <div class="gs-label" style="display:none">Technical Articles & Insights</div>
         <h1 style="font-family:var(--font-display);font-size:clamp(38px,6vw,68px);font-weight:800;letter-spacing:-.04em;line-height:1.05;margin-bottom:20px;">
-          <span class="tr">Yazdığımız kod kadar,<br><span class="gs-grad">yazdığımız söz de önemlidir.</span></span>
-          <span class="en">The words we write matter<br><span class="gs-grad">as much as the code we ship.</span></span>
+          Yazdığımız kod kadar,<br><span class="gs-grad">yazdığımız söz de önemlidir.</span>
+          </span>
         </h1>
         <p style="font-size:17px;color:var(--text2);line-height:1.8;max-width:560px;margin-bottom:36px;">
-          <span class="tr">Modern yazılım geliştirme, yapay zeka araçları, gerçek zamanlı sistemler ve kullanıcı deneyimi üzerine derinlemesine, pratik yazılar.</span>
-          <span class="en">In-depth, practical articles on modern software development, AI tools, real-time systems and user experience.</span>
+          Modern yazılım geliştirme, yapay zeka araçları, gerçek zamanlı sistemler ve kullanıcı deneyimi üzerine derinlemesine, pratik yazılar.
+          
         </p>
         <div class="filter-bar gs-reveal d1">
-          <button class="ftab active" onclick="filterPosts(this,'all')"><span class="tr">Tümü</span><span class="en">All</span></button>
+          <button class="ftab active" onclick="filterPosts(this,'all')">Tümü</button>
           <button class="ftab" onclick="filterPosts(this,'ai')">AI & Geliştirme</button>
           <button class="ftab" onclick="filterPosts(this,'backend')">Backend & Data</button>
-          <button class="ftab" onclick="filterPosts(this,'design')"><span class="tr">Tasarım</span><span class="en">Design</span></button>
+          <button class="ftab" onclick="filterPosts(this,'design')">Tasarım</button>
         </div>
       </div>
     </div>
@@ -1404,7 +1406,7 @@
         <!-- FEATURED — Vibe Coding -->
         <div class="bc" data-tag="ai" onclick="openArticle('vibe')" style="grid-row:span 2;">
           <div class="bc-thumb bc-thumb-featured bc-thumb-code" style="height:280px;">
-            <div class="featured-badge">★ <span class="tr">Öne Çıkan</span><span class="en">Featured</span></div>
+            <div class="featured-badge">★ Öne Çıkan</div>
             <span class="code-line"><span class="code-comment">// Vibe Coding ile proje geliştirme</span></span>
             <span class="code-line"><span class="code-keyword">const</span> project = <span class="code-keyword">await</span> <span class="code-fn">aiAssist</span>&#40;&#123;</span>
             <span class="code-line">  model: <span class="code-string">'claude-sonnet'</span>,</span>
@@ -1421,7 +1423,7 @@
           </div>
           <div class="bc-body">
             <div class="bc-tag" style="background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.2);color:var(--accent2);">
-              <span>🤖</span> AI & <span class="tr">Geliştirme</span><span class="en">Development</span>
+              <span>🤖</span> AI & Geliştirme
             </div>
             <div class="bc-title bc-title-lg tr">Vibe Coding Nedir? Yapay Zeka Destekli Yazılım Geliştirme Çağı</div>
             <div class="bc-title bc-title-lg en">What is Vibe Coding? The Age of AI-Assisted Software Development</div>
@@ -1431,12 +1433,12 @@
               <div style="display:flex;align-items:center;gap:12px;">
                 <span style="color:var(--text2);font-weight:600;">Hamza Gökçe</span>
                 <span class="art-meta-dot"></span>
-                <span class="tr">Haz 2026</span><span class="en">Jun 2026</span>
+                Haz 2026
               </div>
               <div style="display:flex;align-items:center;gap:12px;">
-                <span class="read-badge">⏱ <span class="tr">10 dk okuma</span><span class="en">10 min read</span></span>
+                <span class="read-badge">⏱ 10 dk okuma</span>
                 <span class="bc-read-more">
-                  <span class="tr">Oku</span><span class="en">Read</span> →
+                  Oku →
                 </span>
               </div>
             </div>
@@ -1461,12 +1463,12 @@
             <div class="bc-tag" style="background:rgba(255,165,0,.08);border:1px solid rgba(255,165,0,.2);color:#FFA500;">
               🔥 Backend & Data
             </div>
-            <div class="bc-title" style="font-size:16px;" class="tr">Firebase ile Gerçek Zamanlı Veri Yönetimi</div>
-            <div class="bc-title" style="font-size:16px;" class="en">Real-Time Data Management with Firebase</div>
+            <div class="bc-title" style="font-size:16px;">Firebase ile Gerçek Zamanlı Veri Yönetimi</div>
+            <div class="bc-title" style="font-size:16px;">Real-Time Data Management with Firebase</div>
             <div class="bc-meta" style="margin-top:12px;">
-              <span style="font-size:10px;color:var(--text3);" class="tr">Haz 2026 · 8 dk</span>
-              <span style="font-size:10px;color:var(--text3);" class="en">Jun 2026 · 8 min</span>
-              <span class="bc-read-more"><span class="tr">Oku</span><span class="en">Read</span> →</span>
+              <span style="font-size:10px;color:var(--text3);">Haz 2026 · 8 dk</span>
+              <span style="font-size:10px;color:var(--text3);">Jun 2026 · 8 min</span>
+              <span class="bc-read-more">Oku →</span>
             </div>
           </div>
         </div>
@@ -1495,14 +1497,14 @@
           </div>
           <div class="bc-body" style="padding:20px 24px 24px;">
             <div class="bc-tag" style="background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.2);color:var(--purple);">
-              🎨 <span class="tr">Tasarım</span><span class="en">Design</span>
+              🎨 Tasarım
             </div>
-            <div class="bc-title" style="font-size:16px;" class="tr">UI/UX'te Dönüşüm Odaklılık</div>
-            <div class="bc-title" style="font-size:16px;" class="en">Conversion-Focused UI/UX Design</div>
+            <div class="bc-title" style="font-size:16px;">UI/UX'te Dönüşüm Odaklılık</div>
+            <div class="bc-title" style="font-size:16px;">Conversion-Focused UI/UX Design</div>
             <div class="bc-meta" style="margin-top:12px;">
-              <span style="font-size:10px;color:var(--text3);" class="tr">Haz 2026 · 7 dk</span>
-              <span style="font-size:10px;color:var(--text3);" class="en">Jun 2026 · 7 min</span>
-              <span class="bc-read-more"><span class="tr">Oku</span><span class="en">Read</span> →</span>
+              <span style="font-size:10px;color:var(--text3);">Haz 2026 · 7 dk</span>
+              <span style="font-size:10px;color:var(--text3);">Jun 2026 · 7 min</span>
+              <span class="bc-read-more">Oku →</span>
             </div>
           </div>
         </div>
@@ -1523,14 +1525,14 @@
           </div>
           <div class="bc-body" style="padding:18px 20px 20px;">
             <div class="bc-tag" style="background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2);color:#F59E0B;font-size:9px;">
-              📊 <span class="tr">Pazarlama</span><span class="en">Marketing</span>
+              📊 Pazarlama
             </div>
-            <div class="bc-title" style="font-size:14px;" class="tr">Meta Reklamda ROAS Optimizasyonu</div>
-            <div class="bc-title" style="font-size:14px;" class="en">ROAS Optimization in Meta Ads</div>
+            <div class="bc-title" style="font-size:14px;">Meta Reklamda ROAS Optimizasyonu</div>
+            <div class="bc-title" style="font-size:14px;">ROAS Optimization in Meta Ads</div>
             <div class="bc-meta" style="margin-top:10px;">
-              <span style="font-size:10px;color:var(--text3);" class="tr">7 dk</span>
-              <span style="font-size:10px;color:var(--text3);" class="en">7 min</span>
-              <span class="bc-read-more" style="font-size:11px;"><span class="tr">Oku</span><span class="en">Read</span> →</span>
+              <span style="font-size:10px;color:var(--text3);">7 dk</span>
+              <span style="font-size:10px;color:var(--text3);">7 min</span>
+              <span class="bc-read-more" style="font-size:11px;">Oku →</span>
             </div>
           </div>
         </div>
@@ -1549,14 +1551,14 @@
           </div>
           <div class="bc-body" style="padding:18px 20px 20px;">
             <div class="bc-tag" style="background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.2);color:var(--accent2);font-size:9px;">
-              ✨ <span class="tr">Tasarım</span><span class="en">Design</span>
+              ✨ Tasarım
             </div>
-            <div class="bc-title" style="font-size:14px;" class="tr">Glassmorphism & Dark UI Kılavuzu</div>
-            <div class="bc-title" style="font-size:14px;" class="en">Glassmorphism & Dark UI Guide</div>
+            <div class="bc-title" style="font-size:14px;">Glassmorphism & Dark UI Kılavuzu</div>
+            <div class="bc-title" style="font-size:14px;">Glassmorphism & Dark UI Guide</div>
             <div class="bc-meta" style="margin-top:10px;">
-              <span style="font-size:10px;color:var(--text3);" class="tr">5 dk</span>
-              <span style="font-size:10px;color:var(--text3);" class="en">5 min</span>
-              <span class="bc-read-more" style="font-size:11px;"><span class="tr">Oku</span><span class="en">Read</span> →</span>
+              <span style="font-size:10px;color:var(--text3);">5 dk</span>
+              <span style="font-size:10px;color:var(--text3);">5 min</span>
+              <span class="bc-read-more" style="font-size:11px;">Oku →</span>
             </div>
           </div>
         </div>
@@ -1575,12 +1577,12 @@
             <div class="bc-tag" style="background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);color:var(--blue);font-size:9px;">
               ☁️ Backend
             </div>
-            <div class="bc-title" style="font-size:14px;" class="tr">Serverless Mimari: Neden ve Nasıl?</div>
-            <div class="bc-title" style="font-size:14px;" class="en">Serverless Architecture: Why and How?</div>
+            <div class="bc-title" style="font-size:14px;">Serverless Mimari: Neden ve Nasıl?</div>
+            <div class="bc-title" style="font-size:14px;">Serverless Architecture: Why and How?</div>
             <div class="bc-meta" style="margin-top:10px;">
-              <span style="font-size:10px;color:var(--text3);" class="tr">6 dk</span>
-              <span style="font-size:10px;color:var(--text3);" class="en">6 min</span>
-              <span class="bc-read-more" style="font-size:11px;"><span class="tr">Oku</span><span class="en">Read</span> →</span>
+              <span style="font-size:10px;color:var(--text3);">6 dk</span>
+              <span style="font-size:10px;color:var(--text3);">6 min</span>
+              <span class="bc-read-more" style="font-size:11px;">Oku →</span>
             </div>
           </div>
         </div>
@@ -1600,10 +1602,10 @@
         <div style="font-size:12px;color:var(--text3);">© 2026 gSoftwares.dev</div>
       </div>
       <nav style="display:flex;gap:20px;flex-wrap:wrap;">
-        <a href="index.html" class="page-link" style="font-size:13px;color:var(--text3);text-decoration:none;" onmouseover="this.style.color='var(--accent2)'" onmouseout="this.style.color='var(--text3)'"><span class="tr">Ana Sayfa</span><span class="en">Home</span></a>
-        <a href="about.html" class="page-link" style="font-size:13px;color:var(--text3);text-decoration:none;" onmouseover="this.style.color='var(--accent2)'" onmouseout="this.style.color='var(--text3)'"><span class="tr">Hakkımızda</span><span class="en">About</span></a>
-        <a href="works-detail.html" class="page-link" style="font-size:13px;color:var(--text3);text-decoration:none;" onmouseover="this.style.color='var(--accent2)'" onmouseout="this.style.color='var(--text3)'"><span class="tr">Projeler</span><span class="en">Works</span></a>
-        <a href="legal.html" class="page-link" style="font-size:13px;color:var(--text3);text-decoration:none;" onmouseover="this.style.color='var(--accent2)'" onmouseout="this.style.color='var(--text3)'"><span class="tr">Gizlilik</span><span class="en">Legal</span></a>
+        <a href="index.html" class="page-link" style="font-size:13px;color:var(--text3);text-decoration:none;" onmouseover="this.style.color='var(--accent2)'" onmouseout="this.style.color='var(--text3)'">Ana Sayfa</a>
+        <a href="about.html" class="page-link" style="font-size:13px;color:var(--text3);text-decoration:none;" onmouseover="this.style.color='var(--accent2)'" onmouseout="this.style.color='var(--text3)'">Hakkımızda</a>
+        <a href="works-detail.html" class="page-link" style="font-size:13px;color:var(--text3);text-decoration:none;" onmouseover="this.style.color='var(--accent2)'" onmouseout="this.style.color='var(--text3)'">Projeler</a>
+        <a href="legal.html" class="page-link" style="font-size:13px;color:var(--text3);text-decoration:none;" onmouseover="this.style.color='var(--accent2)'" onmouseout="this.style.color='var(--text3)'">Gizlilik</a>
       </nav>
     </div>
   </footer>
@@ -2190,29 +2192,29 @@ function openArticle(id) {
 
   content.innerHTML = `
     <div class="art-tag" style="background:${a.tag.color};border:1px solid ${a.tag.border};color:${a.tag.textColor};">
-      ${a.tag.icon} <span class="tr">${a.tag.label_tr}</span><span class="en">${a.tag.label_en}</span>
+      ${a.tag.icon} ${a.tag.label_tr}
     </div>
     <h1 class="art-h1 tr">${a.title_tr}</h1>
     <h1 class="art-h1 en">${a.title_en}</h1>
     <div class="art-meta">
       <span>${a.author}</span>
       <span class="art-meta-dot"></span>
-      <span class="tr">${a.date_tr}</span><span class="en">${a.date_en}</span>
+      ${a.date_tr}
       <span class="art-meta-dot"></span>
-      <span>⏱ <span class="tr">${a.read_tr}</span><span class="en">${a.read_en}</span></span>
+      <span>⏱ ${a.read_tr}</span>
     </div>
     <p class="art-lead tr">${a.lead_tr}</p>
     <p class="art-lead en">${a.lead_en}</p>
     <div class="art-divider"></div>
-    <div class="tr">${a.body_tr}</div>
-    <div class="en">${a.body_en}</div>
+    <div>${a.body_tr}</div>
+    
     <div class="art-cta">
-      <p style="font-family:var(--font-display);font-size:18px;font-weight:700;margin-bottom:10px;" class="tr">Bu konularda bir projeniz mi var?</p>
-      <p style="font-family:var(--font-display);font-size:18px;font-weight:700;margin-bottom:10px;" class="en">Do you have a project on these topics?</p>
-      <p style="font-size:13px;color:var(--text2);margin-bottom:18px;" class="tr">İlk görüşme taahhütsüz ve ücretsizdir.</p>
-      <p style="font-size:13px;color:var(--text2);margin-bottom:18px;" class="en">The first meeting is commitment-free.</p>
+      <p style="font-family:var(--font-display);font-size:18px;font-weight:700;margin-bottom:10px;">Bu konularda bir projeniz mi var?</p>
+      <p style="font-family:var(--font-display);font-size:18px;font-weight:700;margin-bottom:10px;">Do you have a project on these topics?</p>
+      <p style="font-size:13px;color:var(--text2);margin-bottom:18px;">İlk görüşme taahhütsüz ve ücretsizdir.</p>
+      <p style="font-size:13px;color:var(--text2);margin-bottom:18px;">The first meeting is commitment-free.</p>
       <a href="index.html#contact" class="gs-btn page-link" style="font-size:13px;">
-        <span class="tr">Projenizi Konuşalım →</span><span class="en">Let's Discuss →</span>
+        Projenizi Konuşalım →
       </a>
     </div>
   `;
