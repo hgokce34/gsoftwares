@@ -569,116 +569,138 @@
 
     /* ═══════════════════════════════════════
        FOOTER — 3 sütun, premium
+       Yüksek specificity + !important: cache/override koruması
     ═══════════════════════════════════════ */
     footer {
-      border-top: 1px solid var(--border);
-      padding: 56px 0 0;
-      position: relative;
-      z-index: 2;
-      background: var(--bg);
+      border-top: 1px solid var(--border) !important;
+      padding: 56px 0 0 !important;
+      position: relative !important;
+      z-index: 2 !important;
+      background: var(--bg) !important;
+      display: block !important;
     }
-    .footer-inner {
-      max-width: 1140px;
-      margin: 0 auto;
-      padding: 0 24px;
-      display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr;
-      gap: 48px;
-      align-items: start;
+    footer .footer-inner {
+      max-width: 1140px !important;
+      margin: 0 auto !important;
+      padding: 0 24px !important;
+      display: grid !important;
+      grid-template-columns: 1.4fr 1fr 1fr !important;
+      gap: 48px !important;
+      align-items: start !important;
     }
 
     /* KOLON 1: Marka */
-    .footer-brand { display: flex; flex-direction: column; gap: 14px; }
-    .footer-brand-row { display: flex; align-items: center; gap: 10px; }
-    .footer-brand-name {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 16px;
-      letter-spacing: -.02em;
+    footer .footer-brand {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 14px !important;
     }
-    .footer-tagline {
-      font-size: 13px;
-      color: var(--text2);
-      line-height: 1.6;
-      max-width: 320px;
-      margin: 0;
+    footer .footer-brand-row {
+      display: flex !important;
+      align-items: center !important;
+      gap: 10px !important;
     }
-    .footer-copy {
-      font-size: 11px;
-      color: var(--text3);
-      line-height: 1.6;
-      letter-spacing: 0.02em;
+    footer .footer-brand-name {
+      font-family: var(--font-display) !important;
+      font-weight: 700 !important;
+      font-size: 16px !important;
+      letter-spacing: -.02em !important;
+      line-height: 1 !important;
+    }
+    footer .footer-tagline {
+      font-size: 13px !important;
+      color: var(--text2) !important;
+      line-height: 1.6 !important;
+      max-width: 320px !important;
+      margin: 0 !important;
+    }
+    footer .footer-copy {
+      font-size: 11px !important;
+      color: var(--text3) !important;
+      line-height: 1.6 !important;
+      letter-spacing: 0.02em !important;
+      margin-top: 0 !important;
     }
 
     /* KOLON 2 & 3: Linkler */
-    .footer-col { display: flex; flex-direction: column; gap: 14px; }
-    .footer-heading {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text3);
-      margin: 0;
+    footer .footer-col {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 14px !important;
     }
-    .footer-links {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+    footer .footer-heading {
+      font-family: var(--font-mono) !important;
+      font-size: 10px !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.14em !important;
+      text-transform: uppercase !important;
+      color: var(--text3) !important;
+      margin: 0 !important;
+      padding: 0 !important;
     }
-    .footer-links a {
-      font-size: 13px;
-      color: var(--text2);
-      text-decoration: none;
-      padding: 0;
-      border: none;
-      transition: color var(--duration-fast), transform var(--duration-fast);
-      width: fit-content;
+    footer nav.footer-links,
+    footer .footer-links {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 10px !important;
+      align-items: flex-start !important;
+      flex-wrap: nowrap !important;
     }
-    .footer-links a:hover {
-      color: var(--accent2);
-      transform: translateX(2px);
+    footer .footer-links a {
+      display: inline-block !important;
+      font-size: 13px !important;
+      color: var(--text2) !important;
+      text-decoration: none !important;
+      padding: 0 !important;
+      border: none !important;
+      border-right: none !important;
+      transition: color var(--duration-fast), transform var(--duration-fast) !important;
+      width: fit-content !important;
+    }
+    footer .footer-links a:hover {
+      color: var(--accent2) !important;
+      transform: translateX(2px) !important;
     }
 
     /* ALT BAR */
-    .footer-bottom {
-      max-width: 1140px;
-      margin: 48px auto 0;
-      padding: 18px 24px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 11px;
-      color: var(--text3);
-      letter-spacing: 0.04em;
+    footer .footer-bottom {
+      max-width: 1140px !important;
+      margin: 48px auto 0 !important;
+      padding: 18px 24px !important;
+      border-top: 1px solid var(--border) !important;
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      font-size: 11px !important;
+      color: var(--text3) !important;
+      letter-spacing: 0.04em !important;
     }
-    .footer-bottom-meta {
-      font-family: var(--font-mono);
+    footer .footer-bottom-meta {
+      font-family: var(--font-mono) !important;
     }
 
     /* RESPONSIVE — tablet */
     @media (max-width: 860px) {
-      .footer-inner {
-        grid-template-columns: 1fr 1fr;
-        gap: 36px;
+      footer .footer-inner {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 36px !important;
       }
-      .footer-brand { grid-column: 1 / -1; }
+      footer .footer-brand { grid-column: 1 / -1 !important; }
     }
 
     /* RESPONSIVE — mobil */
     @media (max-width: 560px) {
-      footer { padding: 40px 0 0; }
-      .footer-inner {
-        grid-template-columns: 1fr;
-        gap: 32px;
+      footer { padding: 40px 0 0 !important; }
+      footer .footer-inner {
+        grid-template-columns: 1fr !important;
+        gap: 32px !important;
       }
-      .footer-brand { grid-column: auto; }
-      .footer-bottom {
-        flex-direction: column;
-        gap: 8px;
-        text-align: center;
-        margin-top: 32px;
+      footer .footer-brand { grid-column: auto !important; }
+      footer .footer-bottom {
+        flex-direction: column !important;
+        gap: 8px !important;
+        text-align: center !important;
+        margin-top: 32px !important;
       }
     }
 
