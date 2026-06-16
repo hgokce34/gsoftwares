@@ -195,65 +195,16 @@
       transition: left .1s, top .1s;
     }
 
-    /* NAVBAR */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      padding: 0 40px; height: 68px;
-      display: flex; align-items: center; justify-content: space-between;
-      background: rgba(5,8,16,0.8);
-      backdrop-filter: blur(24px);
-      border-bottom: 1px solid var(--border);
+    /* ═══════════════════════════════════════
+       NAVBAR — tek kaynak (header #site-header)
+       Yapı: header > div > [logo | nav | clock | actions]
+       Tüm stiller header bloğunun altında (~satır 1602)
+       NOT: body padding-top eklemiyoruz — hero min-height:100vh
+       fixed header'ı overlay olarak kullanıyor (tasarım gereği)
+    ═══════════════════════════════════════ */
+    [data-theme="light"] #site-header {
+      background: rgba(240,244,255,0.85) !important;
     }
-    [data-theme="light"] nav { background: rgba(240,244,255,0.85); }
-
-    /* LOGO */
-    .nav-logo {
-      display: flex; align-items: center; gap: 12px;
-      text-decoration: none; color: var(--text);
-    }
-    .logo-mark {
-      position: relative; width: 42px; height: 42px;
-    }
-    .logo-mark svg { width: 42px; height: 42px; }
-    .logo-text { display: flex; flex-direction: column; }
-    .logo-name {
-      font-family: var(--font-display);
-      font-size: 18px; font-weight: 800;
-      letter-spacing: -0.5px; line-height: 1;
-    }
-    .logo-name .g { color: var(--accent2); }
-    .logo-name .s { color: var(--blue); }
-    .logo-domain {
-      font-family: var(--font-mono);
-      font-size: 9px; color: var(--text3);
-      letter-spacing: .1em; margin-top: 2px;
-    }
-
-    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
-    .nav-links a {
-      text-decoration: none; color: var(--text2);
-      font-size: 13px; font-weight: 500;
-      padding: 7px 16px; border-radius: 10px;
-      transition: all .2s;
-    }
-    .nav-links a:hover { color: var(--text); background: var(--bg3); }
-
-    .nav-actions { display: flex; align-items: center; gap: 10px; }
-    .lang-btn, .theme-btn {
-      background: var(--bg3); border: 1px solid var(--border2);
-      border-radius: 10px; cursor: pointer;
-      font-family: var(--font-mono); font-size: 11px; font-weight: 700;
-      color: var(--text2); padding: 7px 12px; transition: all .2s;
-    }
-    .theme-btn { width: 38px; height: 38px; padding: 0; display: flex; align-items: center; justify-content: center; font-size: 16px; }
-    .lang-btn:hover, .theme-btn:hover { color: var(--text); border-color: var(--accent2); }
-    .nav-cta {
-      background: var(--grad1); border: none; color: #000;
-      font-size: 13px; font-weight: 800; padding: 9px 20px;
-      border-radius: 10px; cursor: pointer; transition: opacity .2s, transform .2s;
-      text-decoration: none; letter-spacing: -.2px;
-    }
-    .nav-cta:hover { opacity: .85; transform: translateY(-1px); }
 
     /* HERO */
     .hero {
@@ -616,29 +567,119 @@
       color: var(--accent2); font-weight: 700; font-size: 16px;
     }
 
-    /* FOOTER */
-    footer { padding: 40px; border-top: 1px solid var(--border); position: relative; z-index: 2; }
-    .footer-inner {
-      max-width: 1140px; margin: 0 auto; padding: 0 24px;
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 20px;
+    /* ═══════════════════════════════════════
+       FOOTER — 3 sütun, premium
+    ═══════════════════════════════════════ */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 56px 0 0;
+      position: relative;
+      z-index: 2;
+      background: var(--bg);
     }
-    .footer-copy { font-size: 12px; color: var(--text3); margin-top: 4px; }
+    .footer-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    /* KOLON 1: Marka */
+    .footer-brand { display: flex; flex-direction: column; gap: 14px; }
+    .footer-brand-row { display: flex; align-items: center; gap: 10px; }
+    .footer-brand-name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: -.02em;
+    }
+    .footer-tagline {
+      font-size: 13px;
+      color: var(--text2);
+      line-height: 1.6;
+      max-width: 320px;
+      margin: 0;
+    }
+    .footer-copy {
+      font-size: 11px;
+      color: var(--text3);
+      line-height: 1.6;
+      letter-spacing: 0.02em;
+    }
+
+    /* KOLON 2 & 3: Linkler */
+    .footer-col { display: flex; flex-direction: column; gap: 14px; }
+    .footer-heading {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text3);
+      margin: 0;
+    }
     .footer-links {
-      display: flex; gap: 0; flex-wrap: wrap; align-items: center;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
     .footer-links a {
-      font-size: 13px; color: var(--text3); text-decoration: none;
-      transition: color .2s; padding: 4px 14px;
-      border-right: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text2);
+      text-decoration: none;
+      padding: 0;
+      border: none;
+      transition: color var(--duration-fast), transform var(--duration-fast);
+      width: fit-content;
     }
-    .footer-links a:last-child { border-right: none; }
-    .footer-links a:hover { color: var(--accent2); }
-    footer { border-top: 1px solid var(--border); padding: 28px 0; }
-    @media(max-width: 640px) {
-      .footer-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
-      .footer-links { gap: 0; }
-      .footer-links a { padding: 6px 12px; font-size: 12px; }
+    .footer-links a:hover {
+      color: var(--accent2);
+      transform: translateX(2px);
+    }
+
+    /* ALT BAR */
+    .footer-bottom {
+      max-width: 1140px;
+      margin: 48px auto 0;
+      padding: 18px 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--text3);
+      letter-spacing: 0.04em;
+    }
+    .footer-bottom-meta {
+      font-family: var(--font-mono);
+    }
+
+    /* RESPONSIVE — tablet */
+    @media (max-width: 860px) {
+      .footer-inner {
+        grid-template-columns: 1fr 1fr;
+        gap: 36px;
+      }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+
+    /* RESPONSIVE — mobil */
+    @media (max-width: 560px) {
+      footer { padding: 40px 0 0; }
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .footer-brand { grid-column: auto; }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+        margin-top: 32px;
+      }
     }
 
     /* DIVIDER */
@@ -653,10 +694,8 @@
     .reveal-delay2 { transition-delay: .2s; }
     .reveal-delay3 { transition-delay: .3s; }
 
-    /* MOBILE NAV */
+    /* MOBILE — sadece section padding (header kendi media query'sinde) */
     @media(max-width:768px) {
-      nav { padding: 0 20px; }
-      .nav-links { display: none; }
       section { padding: 80px 20px; }
     }
 
@@ -766,34 +805,36 @@
     }
     .social-link:active { transform: scale(0.95) !important; }
 
-    /* NAV LINKS */
-    .nav-links a {
-      transition:
-        color var(--duration-fast),
-        background var(--duration-fast) !important;
+    /* NAV ITEM hover (yeni .nav-item için underline animasyonu — header bloğunda tanımlı) */
+    .nav-item {
       position: relative;
     }
-    .nav-links a::after {
+    .nav-item::after {
       content: '';
-      position: absolute; bottom: -2px; left: 16px; right: 16px;
-      height: 1px; background: var(--accent2);
-      transform: scaleX(0); transition: transform var(--duration-base) var(--ease-spring);
+      position: absolute;
+      bottom: -2px;
+      left: 11px;
+      right: 11px;
+      height: 1px;
+      background: var(--accent2);
+      transform: scaleX(0);
+      transition: transform var(--duration-base) var(--ease-spring);
     }
-    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-item:hover::after { transform: scaleX(1); }
 
-    /* CTA BUTTON */
-    .nav-cta {
+    /* NAV CTA — modern hover */
+    #nav-cta {
       transition:
         opacity var(--duration-fast),
         transform var(--duration-base) var(--ease-spring),
         box-shadow var(--duration-base) !important;
     }
-    .nav-cta:hover {
+    #nav-cta:hover {
       opacity: 1 !important;
       transform: translateY(-1px) !important;
       box-shadow: 0 8px 24px rgba(99,102,241,0.30) !important;
     }
-    .nav-cta:active { transform: translateY(0) scale(0.98) !important; }
+    #nav-cta:active { transform: translateY(0) scale(0.98) !important; }
 
     /* FORM INPUTS — premium focus */
     .form-input, .form-textarea, .form-select {
@@ -846,17 +887,15 @@
     }
     .service-card:hover .service-arrow { gap: 10px !important; color: var(--accent2) !important; }
 
-    /* LOGO HOVER */
-    .nav-logo {
-      transition: opacity var(--duration-fast) !important;
+    /* LOGO HOVER — site-header içindeki ilk anchor (logo) */
+    #site-header > div > a:first-of-type {
+      transition: opacity var(--duration-fast);
     }
-    .nav-logo:hover { opacity: 0.85; }
-
-    /* LOGO MARK GLOW */
-    .logo-mark svg {
-      transition: filter var(--duration-base) !important;
+    #site-header > div > a:first-of-type:hover { opacity: 0.85; }
+    #site-header > div > a:first-of-type svg {
+      transition: filter var(--duration-base);
     }
-    .nav-logo:hover .logo-mark svg {
+    #site-header > div > a:first-of-type:hover svg {
       filter: drop-shadow(0 0 12px rgba(99,102,241,0.5));
     }
 
@@ -902,16 +941,16 @@
     }
     .stat-item:hover { transform: scale(1.04) !important; }
 
-    /* THEME & LANG BUTTONS */
-    .theme-btn, .lang-btn {
-      transition: all var(--duration-base) var(--ease-spring) !important;
+    /* THEME & LANG BUTTONS — header'daki tema ve dil değiştirici */
+    #themeBtn, #langBtn {
+      transition: all var(--duration-base) var(--ease-spring);
     }
-    .theme-btn:hover, .lang-btn:hover {
-      transform: scale(1.05) !important;
+    #themeBtn:hover, #langBtn:hover {
+      transform: scale(1.05);
       border-color: var(--accent) !important;
       color: var(--accent2) !important;
     }
-    .theme-btn:active, .lang-btn:active { transform: scale(0.95) !important; }
+    #themeBtn:active, #langBtn:active { transform: scale(0.95); }
 
     /* SCROLLBAR — premium */
     ::-webkit-scrollbar { width: 6px; }
@@ -966,12 +1005,7 @@
       background: linear-gradient(to bottom, transparent 60%, var(--bg2));
     }
 
-    /* FOOTER LINKS */
-    .footer-links a {
-      transition: color var(--duration-fast) !important;
-      position: relative;
-    }
-    .footer-links a:hover { color: var(--accent2) !important; }
+    /* (footer-links CSS yukarıda ana footer bloğunda tanımlı) */
 
 
     /* ═══════════════════════════════════════
@@ -1509,28 +1543,16 @@
 </div>
 
 <!-- ============================================================
-  HEADER / NAVIGATION
-  - Semantic: <header> + <nav> + <ul> landmark rolleri
-  - Glassmorphism: backdrop-blur + yarı saydam bg
-  - Sticky: fixed top-0 z-[--z-modal]
-  - Responsive: mobile hamburger + desktop links
-  - ARIA: aria-label, aria-current, aria-expanded
+  HEADER / NAVIGATION — gSoftwares.dev v2.0
+  Yapı: header > container > [logo | nav | clock | actions]
+  Glassmorphism + Sticky + Responsive (1100px / 860px breakpoints)
 ============================================================ -->
-<!-- NAVBAR -->
-<header id="site-header" role="banner" style="
-  position:fixed;top:0;left:0;right:0;z-index:1000;
-  background:rgba(11,15,25,0.80);
-  backdrop-filter:blur(24px) saturate(1.8);
-  -webkit-backdrop-filter:blur(24px) saturate(1.8);
-  border-bottom:1px solid rgba(255,255,255,0.07);
-  transition:background .3s, box-shadow .3s;
-">
-  <div style="max-width:1140px;margin:0 auto;padding:0 20px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:10px;">
+<header id="site-header" role="banner">
+  <div class="header-inner">
 
     <!-- LOGO -->
-    <a href="#" style="display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;" aria-label="gSoftwares.dev">
-      <!-- Logo ikonu -->
-      <svg width="38" height="38" viewBox="0 0 42 42" fill="none" aria-hidden="true" style="flex-shrink:0;filter:drop-shadow(0 0 6px rgba(99,102,241,0.4));">
+    <a href="#" class="header-logo" aria-label="gSoftwares.dev">
+      <svg width="38" height="38" viewBox="0 0 42 42" fill="none" aria-hidden="true" class="header-logo-mark">
         <rect width="42" height="42" rx="11" fill="#12163A"/>
         <rect x="1" y="1" width="40" height="40" rx="10" stroke="url(#lgBrd)" stroke-width="1.5"/>
         <text x="21" y="27" text-anchor="middle"
@@ -1548,16 +1570,13 @@
           </linearGradient>
         </defs>
       </svg>
-      <!-- Marka adı — tek satırda -->
-      <div style="display:flex;flex-direction:column;line-height:1;">
-        <span style="font-family:var(--font-display);font-weight:800;font-size:17px;letter-spacing:-.025em;white-space:nowrap;">
-          <span style="color:#818CF8">g</span><span style="color:#C7D2FE">Softwares</span><span style="color:var(--accent2);font-size:13px;font-weight:600;">.dev</span>
-        </span>
-      </div>
+      <span class="header-logo-text">
+        <span style="color:#818CF8">g</span><span style="color:#C7D2FE">Softwares</span><span class="header-logo-tld">.dev</span>
+      </span>
     </a>
 
     <!-- DESKTOP NAV -->
-    <nav id="desktop-nav" style="display:flex;gap:2px;" aria-label="Ana navigasyon">
+    <nav id="desktop-nav" aria-label="Ana navigasyon">
       <a href="#" class="nav-item">Ana Sayfa</a>
       <a href="#services" class="nav-item">Hizmetler</a>
       <a href="about.html" class="nav-item page-link">Hakkımızda</a>
@@ -1566,67 +1585,212 @@
     </nav>
 
     <!-- SAAT -->
-    <div id="live-clock" style="display:flex;flex-direction:column;align-items:center;padding:6px 14px;background:var(--bg3);border:1px solid var(--border2);border-radius:10px;min-width:72px;flex-shrink:0;cursor:default;" title="Türkiye Saati">
-      <span id="clock-time" style="font-family:var(--font-mono);font-size:14px;font-weight:700;color:var(--text);letter-spacing:0.05em;line-height:1.2;">00:00</span>
-      <span id="clock-date" style="font-family:var(--font-mono);font-size:9px;color:var(--text3);letter-spacing:0.08em;margin-top:1px;">--/--</span>
+    <div id="live-clock" title="Türkiye Saati">
+      <span id="clock-time">00:00</span>
+      <span id="clock-date">--/--</span>
     </div>
 
     <!-- ACTIONS -->
-    <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
-      <button id="langBtn" onclick="toggleLang()" aria-label="Dil" style="font-family:var(--font-mono);font-size:10px;font-weight:700;padding:5px 9px;border-radius:8px;border:1px solid var(--border2);background:var(--bg3);color:var(--text2);cursor:pointer;flex-shrink:0;transition:all .2s;white-space:nowrap;">TR/EN</button>
-      <button id="themeBtn" onclick="toggleTheme()" aria-label="Tema" style="width:32px;height:32px;border-radius:8px;border:1px solid var(--border2);background:var(--bg3);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;">🌙</button>
-      <a href="#contact" id="nav-cta" style="display:inline-flex;align-items:center;gap:5px;background:linear-gradient(135deg,#6366F1,#8B5CF6);color:#fff;font-weight:800;font-size:11px;padding:7px 13px;border-radius:9px;text-decoration:none;white-space:nowrap;flex-shrink:0;">
-        Proje Başlat →
-      </a>
-      <!-- Hamburger -->
-      <button id="hamburger" onclick="toggleMob()" aria-label="Menü" style="display:none;flex-direction:column;gap:5px;width:36px;height:36px;border-radius:9px;border:1px solid var(--border2);background:var(--bg3);cursor:pointer;align-items:center;justify-content:center;flex-shrink:0;">
-        <span style="width:18px;height:1.5px;background:var(--text2);border-radius:2px;display:block;transition:all .3s;" id="hb1"></span>
-        <span style="width:18px;height:1.5px;background:var(--text2);border-radius:2px;display:block;transition:all .3s;" id="hb2"></span>
-        <span style="width:18px;height:1.5px;background:var(--text2);border-radius:2px;display:block;transition:all .3s;" id="hb3"></span>
+    <div class="header-actions">
+      <button id="langBtn" onclick="toggleLang()" aria-label="Dil değiştir">TR/EN</button>
+      <button id="themeBtn" onclick="toggleTheme()" aria-label="Tema değiştir">🌙</button>
+      <a href="#contact" id="nav-cta">Proje Başlat →</a>
+      <button id="hamburger" onclick="toggleMob()" aria-label="Menü">
+        <span id="hb1"></span><span id="hb2"></span><span id="hb3"></span>
       </button>
     </div>
   </div>
 
   <!-- MOBİL MENÜ -->
-  <div id="mob-menu" style="display:none;background:rgba(11,15,25,0.97);border-top:1px solid var(--border);padding:12px 16px;">
-    <a href="#" onclick="toggleMob()" style="display:block;padding:11px 16px;border-radius:10px;color:var(--text2);text-decoration:none;font-size:14px;font-weight:500;margin-bottom:3px;">Ana Sayfa</a>
-    <a href="#services" onclick="toggleMob()" style="display:block;padding:11px 16px;border-radius:10px;color:var(--text2);text-decoration:none;font-size:14px;font-weight:500;margin-bottom:3px;">Hizmetler</a>
-    <a href="about.html" onclick="toggleMob()" class="page-link" style="display:block;padding:11px 16px;border-radius:10px;color:var(--text2);text-decoration:none;font-size:14px;font-weight:500;margin-bottom:3px;">Hakkımızda</a>
-    <a href="blog.html" onclick="toggleMob()" class="page-link" style="display:block;padding:11px 16px;border-radius:10px;color:var(--text2);text-decoration:none;font-size:14px;font-weight:500;margin-bottom:3px;">Blog</a>
-    <a href="works-detail.html" onclick="toggleMob()" class="page-link" style="display:block;padding:11px 16px;border-radius:10px;color:var(--text2);text-decoration:none;font-size:14px;font-weight:500;margin-bottom:3px;">Projeler</a>
-    <a href="#contact" onclick="toggleMob()" style="display:block;padding:12px 16px;border-radius:10px;background:linear-gradient(135deg,#6366F1,#8B5CF6);color:#fff;text-decoration:none;font-size:14px;font-weight:800;text-align:center;margin-top:8px;">Proje Başlat →</a>
+  <div id="mob-menu">
+    <a href="#" onclick="toggleMob()">Ana Sayfa</a>
+    <a href="#services" onclick="toggleMob()">Hizmetler</a>
+    <a href="about.html" onclick="toggleMob()" class="page-link">Hakkımızda</a>
+    <a href="blog.html" onclick="toggleMob()" class="page-link">Blog</a>
+    <a href="works-detail.html" onclick="toggleMob()" class="page-link">Projeler</a>
+    <a href="#contact" onclick="toggleMob()" class="mob-cta">Proje Başlat →</a>
   </div>
 </header>
 
-<!-- NAV ITEM CSS -->
+<!-- HEADER STYLES — tek blok, çakışmasız -->
 <style>
-.nav-item{
-  padding:6px 11px;border-radius:9px;font-size:12px;font-weight:500;
-  color:var(--text2);text-decoration:none;
-  transition:color .15s,background .15s;white-space:nowrap;
-}
-.nav-item:hover{color:var(--text);background:rgba(255,255,255,.06);}
+  /* HEADER container */
+  #site-header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(11,15,25,0.80);
+    backdrop-filter: blur(24px) saturate(1.8);
+    -webkit-backdrop-filter: blur(24px) saturate(1.8);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    transition: background .3s, box-shadow .3s;
+  }
+  .header-inner {
+    max-width: 1140px; margin: 0 auto; padding: 0 20px;
+    height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 10px;
+  }
 
-/* Desktop tam — nav + saat + butonlar görünür */
-#desktop-nav { display:flex; }
-#nav-cta    { display:inline-flex; }
-#hamburger  { display:none; }
-#live-clock { display:flex; }
+  /* LOGO */
+  .header-logo {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none; flex-shrink: 0;
+  }
+  .header-logo-mark {
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 6px rgba(99,102,241,0.4));
+  }
+  .header-logo-text {
+    font-family: var(--font-display);
+    font-weight: 800; font-size: 17px;
+    letter-spacing: -.025em; white-space: nowrap;
+    line-height: 1;
+  }
+  .header-logo-tld {
+    color: var(--accent2);
+    font-size: 13px; font-weight: 600;
+  }
 
-/* 1100px altı — saat gizle, nav kalsın */
-@media(max-width:1100px){
-  #live-clock { display:none !important; }
-  .nav-item { padding:5px 8px; font-size:11px; }
-  #nav-cta { font-size:11px !important; padding:7px 12px !important; }
-}
+  /* NAV ITEMS */
+  #desktop-nav { display: flex; gap: 2px; }
+  .nav-item {
+    padding: 6px 11px; border-radius: 9px;
+    font-size: 12px; font-weight: 500;
+    color: var(--text2); text-decoration: none;
+    white-space: nowrap;
+    transition: color .15s, background .15s;
+  }
+  .nav-item:hover {
+    color: var(--text);
+    background: rgba(255,255,255,.06);
+  }
 
-/* 768px altı — hamburger */
-@media(max-width:860px){
-  #desktop-nav { display:none !important; }
-  #nav-cta     { display:none !important; }
-  #hamburger   { display:flex !important; }
-  #live-clock  { display:none !important; }
-}
+  /* SAAT */
+  #live-clock {
+    display: flex; flex-direction: column; align-items: center;
+    padding: 6px 14px;
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    border-radius: 10px;
+    min-width: 72px;
+    flex-shrink: 0;
+    cursor: default;
+  }
+  #clock-time {
+    font-family: var(--font-mono);
+    font-size: 14px; font-weight: 700;
+    color: var(--text);
+    letter-spacing: 0.05em; line-height: 1.2;
+  }
+  #clock-date {
+    font-family: var(--font-mono);
+    font-size: 9px; color: var(--text3);
+    letter-spacing: 0.08em; margin-top: 1px;
+  }
+
+  /* ACTIONS */
+  .header-actions {
+    display: flex; align-items: center; gap: 8px;
+    flex-shrink: 0;
+  }
+  #langBtn {
+    font-family: var(--font-mono);
+    font-size: 10px; font-weight: 700;
+    padding: 5px 9px; border-radius: 8px;
+    border: 1px solid var(--border2);
+    background: var(--bg3); color: var(--text2);
+    cursor: pointer; white-space: nowrap;
+    flex-shrink: 0;
+    transition: all .2s;
+  }
+  #langBtn:hover {
+    color: var(--text);
+    border-color: var(--accent2);
+  }
+  #themeBtn {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    border: 1px solid var(--border2);
+    background: var(--bg3);
+    font-size: 14px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: all .2s;
+  }
+  #themeBtn:hover {
+    border-color: var(--accent2);
+  }
+  #nav-cta {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: linear-gradient(135deg, #6366F1, #8B5CF6);
+    color: #fff; font-weight: 800; font-size: 11px;
+    padding: 7px 13px; border-radius: 9px;
+    text-decoration: none; white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* HAMBURGER */
+  #hamburger {
+    display: none;
+    flex-direction: column; gap: 5px;
+    width: 36px; height: 36px;
+    border-radius: 9px;
+    border: 1px solid var(--border2);
+    background: var(--bg3);
+    cursor: pointer;
+    align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  #hamburger span {
+    width: 18px; height: 1.5px;
+    background: var(--text2);
+    border-radius: 2px;
+    display: block;
+    transition: all .3s;
+  }
+
+  /* MOBİL MENÜ */
+  #mob-menu {
+    display: none;
+    background: rgba(11,15,25,0.97);
+    border-top: 1px solid var(--border);
+    padding: 12px 16px;
+  }
+  #mob-menu a {
+    display: block;
+    padding: 11px 16px;
+    border-radius: 10px;
+    color: var(--text2);
+    text-decoration: none;
+    font-size: 14px; font-weight: 500;
+    margin-bottom: 3px;
+    transition: background .15s, color .15s;
+  }
+  #mob-menu a:hover {
+    color: var(--text);
+    background: rgba(255,255,255,.06);
+  }
+  #mob-menu .mob-cta {
+    background: linear-gradient(135deg, #6366F1, #8B5CF6);
+    color: #fff !important;
+    font-weight: 800;
+    text-align: center;
+    margin-top: 8px;
+  }
+
+  /* RESPONSIVE — 1100px altı: saat gizle */
+  @media (max-width: 1100px) {
+    #live-clock { display: none !important; }
+    .nav-item { padding: 5px 8px; font-size: 11px; }
+    #nav-cta { font-size: 11px; padding: 7px 12px; }
+  }
+
+  /* RESPONSIVE — 860px altı: hamburger devreye girer */
+  @media (max-width: 860px) {
+    #desktop-nav { display: none !important; }
+    #nav-cta { display: none !important; }
+    #live-clock { display: none !important; }
+    #hamburger { display: flex !important; }
+  }
 </style>
 
 
@@ -2091,13 +2255,16 @@
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ============================================================
+  FOOTER — 3 sütun: Brand | Sayfalar | İletişim & Sosyal
+============================================================ -->
 <footer>
   <div class="footer-inner">
-    <!-- Sol: Logo + telif -->
-    <div style="display:flex;flex-direction:column;gap:4px;">
-      <div style="display:flex;align-items:center;gap:9px;">
-        <svg width="28" height="28" viewBox="0 0 42 42" fill="none">
+
+    <!-- KOLON 1: Marka -->
+    <div class="footer-brand">
+      <div class="footer-brand-row">
+        <svg width="32" height="32" viewBox="0 0 42 42" fill="none" aria-hidden="true">
           <rect width="42" height="42" rx="11" fill="url(#fLg2)"/>
           <rect x="0.75" y="0.75" width="40.5" height="40.5" rx="10.25" stroke="rgba(129,140,248,0.5)" stroke-width="1.5"/>
           <text x="21" y="26" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-weight="800" font-size="14" fill="url(#fTxt2)">gS</text>
@@ -2106,24 +2273,43 @@
             <linearGradient id="fTxt2" x1="0" y1="0" x2="42" y2="42"><stop offset="0%" stop-color="#C7D2FE"/><stop offset="100%" stop-color="#818CF8"/></linearGradient>
           </defs>
         </svg>
-        <span style="font-family:var(--font-display);font-weight:700;font-size:15px;">
+        <span class="footer-brand-name">
           <span style="color:#A5B4FC">gSoftwares</span><span style="color:var(--accent2)">.dev</span>
         </span>
       </div>
-      <div class="footer-copy">© 2026 gSoftwares.dev — Hamza Gökçe & Taner Aydoğan</div>
+      <p class="footer-tagline">Yazılım, tasarım ve dijital çözümler. Markanızı bir adım öne taşıyoruz.</p>
+      <div class="footer-copy">© 2026 gSoftwares.dev<br>Hamza Gökçe & Taner Aydoğan</div>
     </div>
-    <!-- Sağ: Linkler -->
-    <nav class="footer-links" aria-label="Footer navigasyon">
-      <a href="#services">Hizmetler</a>
-      <a href="#team">Ekip</a>
-      <a href="#contact">İletişim</a>
-      <a href="about.html" class="page-link">Hakkımızda</a>
-      <a href="blog.html" class="page-link">Blog</a>
-      <a href="works-detail.html" class="page-link">Projeler</a>
-      <a href="legal.html" class="page-link">Gizlilik</a>
-      <a href="https://fleetvision.online" target="_blank">FleetVision</a>
-      <a href="https://github.com/hgokce34" target="_blank">GitHub</a>
-    </nav>
+
+    <!-- KOLON 2: Sayfalar -->
+    <div class="footer-col">
+      <h4 class="footer-heading">Sayfalar</h4>
+      <nav class="footer-links" aria-label="Sayfa linkleri">
+        <a href="#services">Hizmetler</a>
+        <a href="#team">Ekip</a>
+        <a href="about.html" class="page-link">Hakkımızda</a>
+        <a href="blog.html" class="page-link">Blog</a>
+        <a href="works-detail.html" class="page-link">Projeler</a>
+        <a href="legal.html" class="page-link">Gizlilik & KVKK</a>
+      </nav>
+    </div>
+
+    <!-- KOLON 3: İletişim & Sosyal -->
+    <div class="footer-col">
+      <h4 class="footer-heading">İletişim</h4>
+      <nav class="footer-links" aria-label="İletişim linkleri">
+        <a href="#contact">Proje başlat</a>
+        <a href="https://fleetvision.online" target="_blank" rel="noopener">FleetVision</a>
+        <a href="https://github.com/hgokce34" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+
+  </div>
+
+  <!-- Alt satır: ince ayraç + telif tek satır (desktop'ta) -->
+  <div class="footer-bottom">
+    <span>Bursa, Türkiye · Hizmet veriyoruz</span>
+    <span class="footer-bottom-meta">Built with ♥ in 2026</span>
   </div>
 </footer>
 
