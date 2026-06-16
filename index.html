@@ -569,17 +569,18 @@
 
     /* ═══════════════════════════════════════
        FOOTER — 3 sütun, premium
-       Yüksek specificity + !important: cache/override koruması
+       ID-based selector + !important: max specificity
     ═══════════════════════════════════════ */
-    footer {
+    #site-footer {
       border-top: 1px solid var(--border) !important;
       padding: 56px 0 0 !important;
       position: relative !important;
       z-index: 2 !important;
       background: var(--bg) !important;
       display: block !important;
+      width: 100% !important;
     }
-    footer .footer-inner {
+    #site-footer .footer-inner {
       max-width: 1140px !important;
       margin: 0 auto !important;
       padding: 0 24px !important;
@@ -590,45 +591,47 @@
     }
 
     /* KOLON 1: Marka */
-    footer .footer-brand {
+    #site-footer .footer-brand {
       display: flex !important;
       flex-direction: column !important;
       gap: 14px !important;
     }
-    footer .footer-brand-row {
+    #site-footer .footer-brand-row {
       display: flex !important;
+      flex-direction: row !important;
       align-items: center !important;
       gap: 10px !important;
     }
-    footer .footer-brand-name {
+    #site-footer .footer-brand-name {
       font-family: var(--font-display) !important;
       font-weight: 700 !important;
       font-size: 16px !important;
       letter-spacing: -.02em !important;
       line-height: 1 !important;
+      display: inline-block !important;
     }
-    footer .footer-tagline {
+    #site-footer .footer-tagline {
       font-size: 13px !important;
       color: var(--text2) !important;
       line-height: 1.6 !important;
       max-width: 320px !important;
       margin: 0 !important;
     }
-    footer .footer-copy {
+    #site-footer .footer-copy {
       font-size: 11px !important;
       color: var(--text3) !important;
       line-height: 1.6 !important;
       letter-spacing: 0.02em !important;
-      margin-top: 0 !important;
+      margin: 0 !important;
     }
 
     /* KOLON 2 & 3: Linkler */
-    footer .footer-col {
+    #site-footer .footer-col {
       display: flex !important;
       flex-direction: column !important;
       gap: 14px !important;
     }
-    footer .footer-heading {
+    #site-footer .footer-heading {
       font-family: var(--font-mono) !important;
       font-size: 10px !important;
       font-weight: 700 !important;
@@ -637,33 +640,36 @@
       color: var(--text3) !important;
       margin: 0 !important;
       padding: 0 !important;
+      line-height: 1 !important;
     }
-    footer nav.footer-links,
-    footer .footer-links {
+    #site-footer .footer-links {
       display: flex !important;
       flex-direction: column !important;
       gap: 10px !important;
       align-items: flex-start !important;
       flex-wrap: nowrap !important;
+      margin: 0 !important;
+      padding: 0 !important;
     }
-    footer .footer-links a {
-      display: inline-block !important;
+    #site-footer .footer-links a {
+      display: block !important;
       font-size: 13px !important;
       color: var(--text2) !important;
       text-decoration: none !important;
       padding: 0 !important;
+      margin: 0 !important;
       border: none !important;
       border-right: none !important;
       transition: color var(--duration-fast), transform var(--duration-fast) !important;
       width: fit-content !important;
     }
-    footer .footer-links a:hover {
+    #site-footer .footer-links a:hover {
       color: var(--accent2) !important;
       transform: translateX(2px) !important;
     }
 
     /* ALT BAR */
-    footer .footer-bottom {
+    #site-footer .footer-bottom {
       max-width: 1140px !important;
       margin: 48px auto 0 !important;
       padding: 18px 24px !important;
@@ -675,28 +681,28 @@
       color: var(--text3) !important;
       letter-spacing: 0.04em !important;
     }
-    footer .footer-bottom-meta {
+    #site-footer .footer-bottom-meta {
       font-family: var(--font-mono) !important;
     }
 
     /* RESPONSIVE — tablet */
     @media (max-width: 860px) {
-      footer .footer-inner {
+      #site-footer .footer-inner {
         grid-template-columns: 1fr 1fr !important;
         gap: 36px !important;
       }
-      footer .footer-brand { grid-column: 1 / -1 !important; }
+      #site-footer .footer-brand { grid-column: 1 / -1 !important; }
     }
 
     /* RESPONSIVE — mobil */
     @media (max-width: 560px) {
-      footer { padding: 40px 0 0 !important; }
-      footer .footer-inner {
+      #site-footer { padding: 40px 0 0 !important; }
+      #site-footer .footer-inner {
         grid-template-columns: 1fr !important;
         gap: 32px !important;
       }
-      footer .footer-brand { grid-column: auto !important; }
-      footer .footer-bottom {
+      #site-footer .footer-brand { grid-column: auto !important; }
+      #site-footer .footer-bottom {
         flex-direction: column !important;
         gap: 8px !important;
         text-align: center !important;
@@ -2279,14 +2285,16 @@
 
 <!-- ============================================================
   FOOTER — 3 sütun: Brand | Sayfalar | İletişim & Sosyal
+  Tüm stiller INLINE — cache/conflict immune
 ============================================================ -->
-<footer>
-  <div class="footer-inner">
+<footer id="site-footer" style="border-top:1px solid rgba(255,255,255,0.055);padding:56px 0 0;position:relative;z-index:2;background:#0B0F19;display:block;width:100%;">
+
+  <div style="max-width:1140px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px;align-items:start;" class="footer-grid">
 
     <!-- KOLON 1: Marka -->
-    <div class="footer-brand">
-      <div class="footer-brand-row">
-        <svg width="32" height="32" viewBox="0 0 42 42" fill="none" aria-hidden="true">
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div style="display:flex;flex-direction:row;align-items:center;gap:10px;">
+        <svg width="32" height="32" viewBox="0 0 42 42" fill="none" aria-hidden="true" style="flex-shrink:0;">
           <rect width="42" height="42" rx="11" fill="url(#fLg2)"/>
           <rect x="0.75" y="0.75" width="40.5" height="40.5" rx="10.25" stroke="rgba(129,140,248,0.5)" stroke-width="1.5"/>
           <text x="21" y="26" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-weight="800" font-size="14" fill="url(#fTxt2)">gS</text>
@@ -2295,45 +2303,69 @@
             <linearGradient id="fTxt2" x1="0" y1="0" x2="42" y2="42"><stop offset="0%" stop-color="#C7D2FE"/><stop offset="100%" stop-color="#818CF8"/></linearGradient>
           </defs>
         </svg>
-        <span class="footer-brand-name">
-          <span style="color:#A5B4FC">gSoftwares</span><span style="color:var(--accent2)">.dev</span>
+        <span style="font-family:'Space Grotesk',Inter,sans-serif;font-weight:700;font-size:16px;letter-spacing:-.02em;line-height:1;display:inline-block;white-space:nowrap;">
+          <span style="color:#A5B4FC;">gSoftwares</span><span style="color:#818CF8;">.dev</span>
         </span>
       </div>
-      <p class="footer-tagline">Yazılım, tasarım ve dijital çözümler. Markanızı bir adım öne taşıyoruz.</p>
-      <div class="footer-copy">© 2026 gSoftwares.dev<br>Hamza Gökçe & Taner Aydoğan</div>
+      <p style="font-size:13px;color:#8892A4;line-height:1.6;max-width:320px;margin:0;">Yazılım, tasarım ve dijital çözümler. Markanızı bir adım öne taşıyoruz.</p>
+      <div style="font-size:11px;color:#4A5568;line-height:1.6;letter-spacing:0.02em;margin:0;">© 2026 gSoftwares.dev<br>Hamza Gökçe &amp; Taner Aydoğan</div>
     </div>
 
     <!-- KOLON 2: Sayfalar -->
-    <div class="footer-col">
-      <h4 class="footer-heading">Sayfalar</h4>
-      <nav class="footer-links" aria-label="Sayfa linkleri">
-        <a href="#services">Hizmetler</a>
-        <a href="#team">Ekip</a>
-        <a href="about.html" class="page-link">Hakkımızda</a>
-        <a href="blog.html" class="page-link">Blog</a>
-        <a href="works-detail.html" class="page-link">Projeler</a>
-        <a href="legal.html" class="page-link">Gizlilik & KVKK</a>
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <h4 style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#4A5568;margin:0;padding:0;line-height:1;">Sayfalar</h4>
+      <nav style="display:flex;flex-direction:column;gap:10px;align-items:flex-start;margin:0;padding:0;" aria-label="Sayfa linkleri">
+        <a href="#services" class="ft-link" style="display:block;font-size:13px;color:#8892A4;text-decoration:none;padding:0;margin:0;border:none;width:fit-content;">Hizmetler</a>
+        <a href="#team" class="ft-link" style="display:block;font-size:13px;color:#8892A4;text-decoration:none;padding:0;margin:0;border:none;width:fit-content;">Ekip</a>
+        <a href="about.html" class="ft-link page-link" style="display:block;font-size:13px;color:#8892A4;text-decoration:none;padding:0;margin:0;border:none;width:fit-content;">Hakkımızda</a>
+        <a href="blog.html" class="ft-link page-link" style="display:block;font-size:13px;color:#8892A4;text-decoration:none;padding:0;margin:0;border:none;width:fit-content;">Blog</a>
+        <a href="works-detail.html" class="ft-link page-link" style="display:block;font-size:13px;color:#8892A4;text-decoration:none;padding:0;margin:0;border:none;width:fit-content;">Projeler</a>
+        <a href="legal.html" class="ft-link page-link" style="display:block;font-size:13px;color:#8892A4;text-decoration:none;padding:0;margin:0;border:none;width:fit-content;">Gizlilik &amp; KVKK</a>
       </nav>
     </div>
 
-    <!-- KOLON 3: İletişim & Sosyal -->
-    <div class="footer-col">
-      <h4 class="footer-heading">İletişim</h4>
-      <nav class="footer-links" aria-label="İletişim linkleri">
-        <a href="#contact">Proje başlat</a>
-        <a href="https://fleetvision.online" target="_blank" rel="noopener">FleetVision</a>
-        <a href="https://github.com/hgokce34" target="_blank" rel="noopener">GitHub</a>
+    <!-- KOLON 3: İletişim -->
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <h4 style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#4A5568;margin:0;padding:0;line-height:1;">İletişim</h4>
+      <nav style="display:flex;flex-direction:column;gap:10px;align-items:flex-start;margin:0;padding:0;" aria-label="İletişim linkleri">
+        <a href="#contact" class="ft-link" style="display:block;font-size:13px;color:#8892A4;text-decoration:none;padding:0;margin:0;border:none;width:fit-content;">Proje başlat</a>
+        <a href="https://fleetvision.online" target="_blank" rel="noopener" class="ft-link" style="display:block;font-size:13px;color:#8892A4;text-decoration:none;padding:0;margin:0;border:none;width:fit-content;">FleetVision</a>
+        <a href="https://github.com/hgokce34" target="_blank" rel="noopener" class="ft-link" style="display:block;font-size:13px;color:#8892A4;text-decoration:none;padding:0;margin:0;border:none;width:fit-content;">GitHub</a>
       </nav>
     </div>
 
   </div>
 
-  <!-- Alt satır: ince ayraç + telif tek satır (desktop'ta) -->
-  <div class="footer-bottom">
+  <!-- Alt bar -->
+  <div style="max-width:1140px;margin:48px auto 0;padding:18px 24px;border-top:1px solid rgba(255,255,255,0.055);display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#4A5568;letter-spacing:0.04em;flex-wrap:wrap;gap:8px;" class="footer-bottom-row">
     <span>Bursa, Türkiye · Hizmet veriyoruz</span>
-    <span class="footer-bottom-meta">Built with ♥ in 2026</span>
+    <span style="font-family:'JetBrains Mono',monospace;">Built with ♥ in 2026</span>
   </div>
 </footer>
+
+<!-- Footer responsive + hover (inline'da yapamadığımız tek şey) -->
+<style>
+  #site-footer .ft-link:hover { color: #818CF8 !important; transform: translateX(2px); transition: color .15s, transform .15s; }
+  @media (max-width: 860px) {
+    #site-footer .footer-grid {
+      grid-template-columns: 1fr 1fr !important;
+      gap: 36px !important;
+    }
+    #site-footer .footer-grid > div:first-child { grid-column: 1 / -1 !important; }
+  }
+  @media (max-width: 560px) {
+    #site-footer { padding: 40px 0 0 !important; }
+    #site-footer .footer-grid {
+      grid-template-columns: 1fr !important;
+      gap: 32px !important;
+    }
+    #site-footer .footer-bottom-row {
+      flex-direction: column !important;
+      text-align: center !important;
+      margin-top: 32px !important;
+    }
+  }
+</style>
 
 </main>
 
