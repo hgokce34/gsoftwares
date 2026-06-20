@@ -1,13 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>gSoftwares.dev — Yazılım & Dijital Çözümler</title>
-  <meta name="description" content="Hamza Gökçe & Taner Aydoğan — Web geliştirme, tasarım, sosyal medya ve yazılım çözümleri.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>gSoftwares.dev — Yazılım &amp; Dijital Çözümler</title>
+<meta content="Hamza Gökçe &amp; Taner Aydoğan — Web geliştirme, tasarım, sosyal medya ve yazılım çözümleri." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;family=Space+Grotesk:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<style>
     :root {
       /* ═══════════════════════════════════════
          PREMIUM DARK DESIGN SYSTEM
@@ -1140,6 +1141,9 @@
     .service-card:nth-child(4) { transition-delay: 0.18s; }
     .service-card:nth-child(5) { transition-delay: 0.24s; }
     .service-card:nth-child(6) { transition-delay: 0.30s; }
+    .service-card:nth-child(7) { transition-delay: 0.36s; }
+    .service-card:nth-child(8) { transition-delay: 0.42s; }
+    .service-card:nth-child(9) { transition-delay: 0.48s; }
 
     /* Logo glow animasyonu */
     @keyframes logoGlow {
@@ -1274,11 +1278,10 @@
       0%, 70%, 100% { left: -60%; opacity: 0; }
       40% { left: 130%; opacity: 1; }
     }
-
-  </style>
-  <!-- Tailwind CSS CDN - utility-first styling -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
+</style>
+<!-- Tailwind CSS CDN - utility-first styling -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
     // Tailwind custom config - design system tokens
     tailwind.config = {
       darkMode: 'class',
@@ -1348,298 +1351,356 @@
       }
     }
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script>emailjs.init("Seg3jenh_LMiacX_z");</script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init("Seg3jenh_LMiacX_z");</script>
 </head>
-<body data-theme="dark" data-lang="tr">
-
+<body data-lang="tr" data-theme="dark">
 <!-- ============================================================
   PAGE TRANSITION ELEMENTLERI
   - #page-curtain: koyu perde (aşağıdan yukarı açılır/kapanır)
   - #page-progress: ince yükleme progress bar
   - #page-content: tüm sayfa içeriği wrapper
 ============================================================ -->
-
 <!-- Progress bar: sayfa geçişinde üstte ince çizgi -->
-<div id="page-progress" role="progressbar" aria-hidden="true"></div>
-
+<div aria-hidden="true" id="page-progress" role="progressbar"></div>
 <!-- Curtain overlay: Linear.app stili perde efekti -->
-<div id="page-curtain" aria-hidden="true"></div>
-
+<div aria-hidden="true" id="page-curtain"></div>
 <!-- CURSOR GLOW -->
 <div class="cursor-glow" id="cursorGlow"></div>
-
 <!-- PARTICLES -->
 <div id="particles"></div>
-
 <!-- ============================================================
   PAGE CONTENT WRAPPER
   - id="page-content": Router bu elementi günceller
   - Tüm görünür sayfa içeriği burada
 ============================================================ -->
 <main id="page-content" role="main">
-
 <!-- SERVICE MODALS -->
 <div class="svc-modal-overlay" id="modal-web">
-  <div class="svc-modal">
-    <div class="svc-modal-header">
-      <div style="display:flex;align-items:center;gap:14px">
-        <div style="width:52px;height:52px;border-radius:14px;background:rgba(0,229,160,.12);display:flex;align-items:center;justify-content:center;font-size:24px">💻</div>
-        <div>
-          <div style="font-size:11px;color:var(--text3);font-family:var(--font-mono);font-weight:700;letter-spacing:.1em;margin-bottom:4px">HİZMET DETAYI</div>
-          <div style="font-family:var(--font-display);font-size:20px;font-weight:800">Web Geliştirme</div>
-        </div>
-      </div>
-      <button class="svc-modal-close" onclick="closeModal('modal-web')">✕</button>
-    </div>
-    <div class="svc-modal-body">
-      <p>Modern, hızlı ve ölçeklenebilir web uygulamaları geliştiriyoruz. Firebase ile gerçek zamanlı veri, Cloudinary ile medya yönetimi ve tam mobil uyumlu tasarım. FleetVision 2026 PRO bunun en iyi örneği — 30+ modül, tek HTML dosyası.</p>
-      <p>We build modern, fast and scalable web applications. Real-time data with Firebase, media management with Cloudinary, and fully responsive design. FleetVision 2026 PRO is the best example — 30+ modules, single HTML file.</p>
-      <ul class="svc-feature-list">
-        <li>Gerçek zamanlı veritabanı</li><li>Real-time database</li>
-        <li>Mobil uyumlu tasarım</li><li>Mobile-responsive design</li>
-        <li>Firebase entegrasyonu</li><li>Firebase integration</li>
-        <li>Dosya & medya yönetimi</li><li>File & media management</li>
-        <li>Kullanıcı yönetimi</li><li>User management</li>
-        <li>Excel/PDF export</li><li>Excel/PDF export</li>
-        <li>Özel panel & raporlar</li><li>Custom dashboard & reports</li>
-        <li>API entegrasyonu</li><li>API integration</li>
-      </ul>
-      <div class="svc-process">
-        <h4>ÇALIŞMA SÜRECİMİZ</h4>
-        <h4>OUR PROCESS</h4>
-        <div class="svc-process-step"><div class="svc-step-num">01</div><div class="svc-step-text tr">Keşif toplantısı — ihtiyaçlarınızı ve hedeflerinizi anlıyoruz</div><div class="svc-step-text en">Discovery meeting — understanding your needs and goals</div></div>
-        <div class="svc-process-step"><div class="svc-step-num">02</div><div class="svc-step-text tr">Prototip & tasarım — görsel wireframe ve UI tasarımı</div><div class="svc-step-text en">Prototype & design — visual wireframe and UI design</div></div>
-        <div class="svc-process-step"><div class="svc-step-num">03</div><div class="svc-step-text tr">Geliştirme — iteratif, şeffaf süreç</div><div class="svc-step-text en">Development — iterative, transparent process</div></div>
-        <div class="svc-process-step"><div class="svc-step-num">04</div><div class="svc-step-text tr">Test & teslim — kapsamlı test, eğitim ve destek</div><div class="svc-step-text en">Test & delivery — comprehensive testing, training and support</div></div>
-      </div>
-      <a href="#contact" class="btn-primary" onclick="closeModal('modal-web')" style="display:inline-flex">
+<div class="svc-modal">
+<div class="svc-modal-header">
+<div style="display:flex;align-items:center;gap:14px">
+<div style="width:52px;height:52px;border-radius:14px;background:rgba(0,229,160,.12);display:flex;align-items:center;justify-content:center;font-size:24px">💻</div>
+<div>
+<div style="font-size:11px;color:var(--text3);font-family:var(--font-mono);font-weight:700;letter-spacing:.1em;margin-bottom:4px">HİZMET DETAYI</div>
+<div style="font-family:var(--font-display);font-size:20px;font-weight:800">Web Geliştirme</div>
+</div>
+</div>
+<button class="svc-modal-close" onclick="closeModal('modal-web')">✕</button>
+</div>
+<div class="svc-modal-body">
+<p data-i18n="modals.web.desc">Modern, hızlı ve ölçeklenebilir web uygulamaları geliştiriyoruz. Firebase ile gerçek zamanlı veri, Cloudinary ile medya yönetimi ve tam mobil uyumlu tasarım. FleetVision 2026 PRO bunun en iyi örneği — 30+ modül, tek HTML dosyası.</p>
+<ul class="svc-feature-list">
+<li data-i18n="modals.web.features.f">Gerçek zamanlı veritabanı</li>
+<li data-i18n="modals.web.features.f_2">Mobil uyumlu tasarım</li>
+<li data-i18n="modals.web.features.f_3">Firebase entegrasyonu</li>
+<li data-i18n="modals.web.features.f_4">Dosya &amp; medya yönetimi</li>
+<li data-i18n="modals.web.features.f_5">Kullanıcı yönetimi</li>
+<li data-i18n="modals.web.features.f_6">Excel/PDF export</li>
+<li data-i18n="modals.web.features.f_7">Özel panel &amp; raporlar</li>
+<li data-i18n="modals.web.features.f_8">API entegrasyonu</li>
+</ul>
+<div class="svc-process">
+<h4 data-i18n="modals.web.process.heading">ÇALIŞMA SÜRECİMİZ</h4>
+<div class="svc-process-step"><div class="svc-step-num">01</div><div class="svc-step-text" data-i18n="modals.web.process.step">Keşif toplantısı — ihtiyaçlarınızı ve hedeflerinizi anlıyoruz</div></div>
+<div class="svc-process-step"><div class="svc-step-num">02</div><div class="svc-step-text" data-i18n="modals.web.process.step_2">Prototip &amp; tasarım — görsel wireframe ve UI tasarımı</div></div>
+<div class="svc-process-step"><div class="svc-step-num">03</div><div class="svc-step-text" data-i18n="modals.web.process.step_3">Geliştirme — iteratif, şeffaf süreç</div></div>
+<div class="svc-process-step"><div class="svc-step-num">04</div><div class="svc-step-text" data-i18n="modals.web.process.step_4">Test &amp; teslim — kapsamlı test, eğitim ve destek</div></div>
+</div>
+<a class="btn-primary" href="#contact" onclick="closeModal('modal-web')" style="display:inline-flex">
         Proje Başlat →
       </a>
-    </div>
-  </div>
 </div>
-
+</div>
+</div>
 <div class="svc-modal-overlay" id="modal-design">
-  <div class="svc-modal">
-    <div class="svc-modal-header">
-      <div style="display:flex;align-items:center;gap:14px">
-        <div style="width:52px;height:52px;border-radius:14px;background:rgba(59,130,246,.12);display:flex;align-items:center;justify-content:center;font-size:24px">🎨</div>
-        <div>
-          <div style="font-size:11px;color:var(--text3);font-family:var(--font-mono);font-weight:700;letter-spacing:.1em;margin-bottom:4px">HİZMET DETAYI</div>
-          <div style="font-family:var(--font-display);font-size:20px;font-weight:800">Web Tasarım & UI/UX</div>
-        </div>
-      </div>
-      <button class="svc-modal-close" onclick="closeModal('modal-design')">✕</button>
-    </div>
-    <div class="svc-modal-body">
-      <p>Kullanıcı deneyimini ön planda tutan, markanıza özgü profesyonel web tasarımı. Figma'dan koda, piksel mükemmelliğinde çıktılar üretiyoruz.</p>
-      <p>Professional web design tailored to your brand with user experience at the forefront. From Figma to code, pixel-perfect outputs.</p>
-      <ul class="svc-feature-list">
-        <li>Figma prototip tasarımı</li><li>Figma prototype design</li>
-        <li>Marka kimliği & logo</li><li>Brand identity & logo</li>
-        <li>Landing page tasarımı</li><li>Landing page design</li>
-        <li>E-ticaret UI/UX</li><li>E-commerce UI/UX</li>
-        <li>Animasyon & micro-interaction</li><li>Animation & micro-interaction</li>
-        <li>Dark/Light tema</li><li>Dark/Light theme</li>
-      </ul>
-      <a href="#contact" class="btn-primary" onclick="closeModal('modal-design')" style="display:inline-flex">
+<div class="svc-modal">
+<div class="svc-modal-header">
+<div style="display:flex;align-items:center;gap:14px">
+<div style="width:52px;height:52px;border-radius:14px;background:rgba(59,130,246,.12);display:flex;align-items:center;justify-content:center;font-size:24px">🎨</div>
+<div>
+<div style="font-size:11px;color:var(--text3);font-family:var(--font-mono);font-weight:700;letter-spacing:.1em;margin-bottom:4px">HİZMET DETAYI</div>
+<div style="font-family:var(--font-display);font-size:20px;font-weight:800">Web Tasarım &amp; UI/UX</div>
+</div>
+</div>
+<button class="svc-modal-close" onclick="closeModal('modal-design')">✕</button>
+</div>
+<div class="svc-modal-body">
+<p data-i18n="modals.design.desc">Kullanıcı deneyimini ön planda tutan, markanıza özgü profesyonel web tasarımı. Figma'dan koda, piksel mükemmelliğinde çıktılar üretiyoruz.</p>
+<ul class="svc-feature-list">
+<li data-i18n="modals.design.features.f">Figma prototip tasarımı</li>
+<li data-i18n="modals.design.features.f_2">Marka kimliği &amp; logo</li>
+<li data-i18n="modals.design.features.f_3">Landing page tasarımı</li>
+<li data-i18n="modals.design.features.f_4">E-ticaret UI/UX</li>
+<li data-i18n="modals.design.features.f_5">Animasyon &amp; micro-interaction</li>
+<li data-i18n="modals.design.features.f_6">Dark/Light tema</li>
+</ul>
+<a class="btn-primary" href="#contact" onclick="closeModal('modal-design')" style="display:inline-flex">
         Teklif Al →
       </a>
-    </div>
-  </div>
 </div>
-
+</div>
+</div>
 <div class="svc-modal-overlay" id="modal-social">
-  <div class="svc-modal">
-    <div class="svc-modal-header">
-      <div style="display:flex;align-items:center;gap:14px">
-        <div style="width:52px;height:52px;border-radius:14px;background:rgba(139,92,246,.12);display:flex;align-items:center;justify-content:center;font-size:24px">📱</div>
-        <div>
-          <div style="font-size:11px;color:var(--text3);font-family:var(--font-mono);font-weight:700;letter-spacing:.1em;margin-bottom:4px">HİZMET DETAYI</div>
-          <div style="font-family:var(--font-display);font-size:20px;font-weight:800">Sosyal Medya Yönetimi</div>
-        </div>
-      </div>
-      <button class="svc-modal-close" onclick="closeModal('modal-social')">✕</button>
-    </div>
-    <div class="svc-modal-body">
-      <p>Instagram, Facebook ve LinkedIn için strateji odaklı içerik üretimi ve hesap yönetimi. Organik büyüme, etkileşim artışı ve marka bilinirliği.</p>
-      <p>Strategy-focused content creation and account management for Instagram, Facebook and LinkedIn. Organic growth, engagement increase and brand awareness.</p>
-      <ul class="svc-feature-list">
-        <li>Aylık içerik planı</li><li>Monthly content plan</li>
-        <li>Görsel & video üretimi</li><li>Visual & video production</li>
-        <li>Hashtag stratejisi</li><li>Hashtag strategy</li>
-        <li>Topluluk yönetimi</li><li>Community management</li>
-        <li>Analitik raporlama</li><li>Analytics reporting</li>
-        <li>Influencer iş birlikleri</li><li>Influencer partnerships</li>
-      </ul>
-      <a href="#contact" class="btn-primary" onclick="closeModal('modal-social')" style="display:inline-flex">
+<div class="svc-modal">
+<div class="svc-modal-header">
+<div style="display:flex;align-items:center;gap:14px">
+<div style="width:52px;height:52px;border-radius:14px;background:rgba(139,92,246,.12);display:flex;align-items:center;justify-content:center;font-size:24px">📱</div>
+<div>
+<div style="font-size:11px;color:var(--text3);font-family:var(--font-mono);font-weight:700;letter-spacing:.1em;margin-bottom:4px">HİZMET DETAYI</div>
+<div style="font-family:var(--font-display);font-size:20px;font-weight:800">Sosyal Medya Yönetimi</div>
+</div>
+</div>
+<button class="svc-modal-close" onclick="closeModal('modal-social')">✕</button>
+</div>
+<div class="svc-modal-body">
+<p data-i18n="modals.social.desc">Instagram, Facebook ve LinkedIn için strateji odaklı içerik üretimi ve hesap yönetimi. Organik büyüme, etkileşim artışı ve marka bilinirliği.</p>
+<ul class="svc-feature-list">
+<li data-i18n="modals.social.features.f">Aylık içerik planı</li>
+<li data-i18n="modals.social.features.f_2">Görsel &amp; video üretimi</li>
+<li data-i18n="modals.social.features.f_3">Hashtag stratejisi</li>
+<li data-i18n="modals.social.features.f_4">Topluluk yönetimi</li>
+<li data-i18n="modals.social.features.f_5">Analitik raporlama</li>
+<li data-i18n="modals.social.features.f_6">Influencer iş birlikleri</li>
+</ul>
+<a class="btn-primary" href="#contact" onclick="closeModal('modal-social')" style="display:inline-flex">
         Teklif Al →
       </a>
-    </div>
-  </div>
 </div>
-
+</div>
+</div>
 <div class="svc-modal-overlay" id="modal-ads">
-  <div class="svc-modal">
-    <div class="svc-modal-header">
-      <div style="display:flex;align-items:center;gap:14px">
-        <div style="width:52px;height:52px;border-radius:14px;background:rgba(245,158,11,.12);display:flex;align-items:center;justify-content:center;font-size:24px">📊</div>
-        <div>
-          <div style="font-size:11px;color:var(--text3);font-family:var(--font-mono);font-weight:700;letter-spacing:.1em;margin-bottom:4px">HİZMET DETAYI</div>
-          <div style="font-family:var(--font-display);font-size:20px;font-weight:800">Meta Reklam Yönetimi</div>
-        </div>
-      </div>
-      <button class="svc-modal-close" onclick="closeModal('modal-ads')">✕</button>
-    </div>
-    <div class="svc-modal-body">
-      <p>Facebook ve Instagram reklamlarında maksimum ROI için hedef kitle analizi, kreatif üretim ve sürekli optimizasyon yapıyoruz.</p>
-      <p>We do audience analysis, creative production and continuous optimization for maximum ROI on Facebook and Instagram ads.</p>
-      <ul class="svc-feature-list">
-        <li>Hedef kitle analizi</li><li>Audience analysis</li>
-        <li>Reklam kreatif üretimi</li><li>Ad creative production</li>
-        <li>A/B test optimizasyonu</li><li>A/B test optimization</li>
-        <li>Retargeting kampanyaları</li><li>Retargeting campaigns</li>
-        <li>Haftalık performans raporu</li><li>Weekly performance report</li>
-        <li>Bütçe optimizasyonu</li><li>Budget optimization</li>
-      </ul>
-      <a href="#contact" class="btn-primary" onclick="closeModal('modal-ads')" style="display:inline-flex">
+<div class="svc-modal">
+<div class="svc-modal-header">
+<div style="display:flex;align-items:center;gap:14px">
+<div style="width:52px;height:52px;border-radius:14px;background:rgba(245,158,11,.12);display:flex;align-items:center;justify-content:center;font-size:24px">📊</div>
+<div>
+<div style="font-size:11px;color:var(--text3);font-family:var(--font-mono);font-weight:700;letter-spacing:.1em;margin-bottom:4px">HİZMET DETAYI</div>
+<div style="font-family:var(--font-display);font-size:20px;font-weight:800">Meta Reklam Yönetimi</div>
+</div>
+</div>
+<button class="svc-modal-close" onclick="closeModal('modal-ads')">✕</button>
+</div>
+<div class="svc-modal-body">
+<p data-i18n="modals.ads.desc">Facebook ve Instagram reklamlarında maksimum ROI için hedef kitle analizi, kreatif üretim ve sürekli optimizasyon yapıyoruz.</p>
+<ul class="svc-feature-list">
+<li data-i18n="modals.ads.features.f">Hedef kitle analizi</li>
+<li data-i18n="modals.ads.features.f_2">Reklam kreatif üretimi</li>
+<li data-i18n="modals.ads.features.f_3">A/B test optimizasyonu</li>
+<li data-i18n="modals.ads.features.f_4">Retargeting kampanyaları</li>
+<li data-i18n="modals.ads.features.f_5">Haftalık performans raporu</li>
+<li data-i18n="modals.ads.features.f_6">Bütçe optimizasyonu</li>
+</ul>
+<a class="btn-primary" href="#contact" onclick="closeModal('modal-ads')" style="display:inline-flex">
         Kampanya Başlat →
       </a>
-    </div>
-  </div>
 </div>
-
+</div>
+</div>
 <div class="svc-modal-overlay" id="modal-ai">
-  <div class="svc-modal">
-    <div class="svc-modal-header">
-      <div style="display:flex;align-items:center;gap:14px">
-        <div style="width:52px;height:52px;border-radius:14px;background:rgba(0,229,160,.12);display:flex;align-items:center;justify-content:center;font-size:24px">🤖</div>
-        <div>
-          <div style="font-size:11px;color:var(--text3);font-family:var(--font-mono);font-weight:700;letter-spacing:.1em;margin-bottom:4px">HİZMET DETAYI</div>
-          <div style="font-family:var(--font-display);font-size:20px;font-weight:800">Otomasyon & AI Entegrasyonu</div>
-        </div>
-      </div>
-      <button class="svc-modal-close" onclick="closeModal('modal-ai')">✕</button>
-    </div>
-    <div class="svc-modal-body">
-      <p>İş süreçlerinizi yapay zeka ve otomasyon ile hızlandırın. Tekrarlayan görevleri otomatikleştirin, veri analizini AI ile güçlendirin.</p>
-      <p>Accelerate your business processes with AI and automation. Automate repetitive tasks, power data analysis with AI.</p>
-      <ul class="svc-feature-list">
-        <li>Claude / GPT entegrasyonu</li><li>Claude / GPT integration</li>
-        <li>İş akışı otomasyonu</li><li>Workflow automation</li>
-        <li>Veri analizi & raporlama</li><li>Data analysis & reporting</li>
-        <li>Chatbot geliştirme</li><li>Chatbot development</li>
-        <li>API entegrasyonu</li><li>API integration</li>
-        <li>Özel AI çözümleri</li><li>Custom AI solutions</li>
-      </ul>
-      <a href="#contact" class="btn-primary" onclick="closeModal('modal-ai')" style="display:inline-flex">
+<div class="svc-modal">
+<div class="svc-modal-header">
+<div style="display:flex;align-items:center;gap:14px">
+<div style="width:52px;height:52px;border-radius:14px;background:rgba(0,229,160,.12);display:flex;align-items:center;justify-content:center;font-size:24px">🤖</div>
+<div>
+<div style="font-size:11px;color:var(--text3);font-family:var(--font-mono);font-weight:700;letter-spacing:.1em;margin-bottom:4px">HİZMET DETAYI</div>
+<div style="font-family:var(--font-display);font-size:20px;font-weight:800">Otomasyon &amp; AI Entegrasyonu</div>
+</div>
+</div>
+<button class="svc-modal-close" onclick="closeModal('modal-ai')">✕</button>
+</div>
+<div class="svc-modal-body">
+<p data-i18n="modals.ai.desc">İş süreçlerinizi yapay zeka ve otomasyon ile hızlandırın. Tekrarlayan görevleri otomatikleştirin, veri analizini AI ile güçlendirin.</p>
+<ul class="svc-feature-list">
+<li data-i18n="modals.ai.features.f">Claude / GPT entegrasyonu</li>
+<li data-i18n="modals.ai.features.f_2">İş akışı otomasyonu</li>
+<li data-i18n="modals.ai.features.f_3">Veri analizi &amp; raporlama</li>
+<li data-i18n="modals.ai.features.f_4">Chatbot geliştirme</li>
+<li data-i18n="modals.ai.features.f_5">API entegrasyonu</li>
+<li data-i18n="modals.ai.features.f_6">Özel AI çözümleri</li>
+</ul>
+<a class="btn-primary" href="#contact" onclick="closeModal('modal-ai')" style="display:inline-flex">
         Demo İste →
       </a>
-    </div>
-  </div>
 </div>
-
+</div>
+</div>
 <div class="svc-modal-overlay" id="modal-consult">
-  <div class="svc-modal">
-    <div class="svc-modal-header">
-      <div style="display:flex;align-items:center;gap:14px">
-        <div style="width:52px;height:52px;border-radius:14px;background:rgba(59,130,246,.12);display:flex;align-items:center;justify-content:center;font-size:24px">🛡️</div>
-        <div>
-          <div style="font-size:11px;color:var(--text3);font-family:var(--font-mono);font-weight:700;letter-spacing:.1em;margin-bottom:4px">HİZMET DETAYI</div>
-          <div style="font-family:var(--font-display);font-size:20px;font-weight:800">IT Danışmanlık</div>
-        </div>
-      </div>
-      <button class="svc-modal-close" onclick="closeModal('modal-consult')">✕</button>
-    </div>
-    <div class="svc-modal-body">
-      <p>Dijital dönüşüm yolculuğunuzda yanınızdayız. Doğru teknoloji seçimi, mimari tasarım ve uzun vadeli strateji için danışmanlık hizmetleri.</p>
-      <p>We're with you on your digital transformation journey. Consulting services for the right technology selection, architectural design and long-term strategy.</p>
-      <ul class="svc-feature-list">
-        <li>Teknoloji seçimi</li><li>Technology selection</li>
-        <li>Yazılım mimarisi</li><li>Software architecture</li>
-        <li>Dijital dönüşüm planı</li><li>Digital transformation plan</li>
-        <li>Güvenlik danışmanlığı</li><li>Security consulting</li>
-        <li>Bulut migrasyonu</li><li>Cloud migration</li>
-        <li>Performans optimizasyonu</li><li>Performance optimization</li>
-      </ul>
-      <a href="#contact" class="btn-primary" onclick="closeModal('modal-consult')" style="display:inline-flex">
+<div class="svc-modal">
+<div class="svc-modal-header">
+<div style="display:flex;align-items:center;gap:14px">
+<div style="width:52px;height:52px;border-radius:14px;background:rgba(59,130,246,.12);display:flex;align-items:center;justify-content:center;font-size:24px">🛡️</div>
+<div>
+<div style="font-size:11px;color:var(--text3);font-family:var(--font-mono);font-weight:700;letter-spacing:.1em;margin-bottom:4px">HİZMET DETAYI</div>
+<div style="font-family:var(--font-display);font-size:20px;font-weight:800">IT Danışmanlık</div>
+</div>
+</div>
+<button class="svc-modal-close" onclick="closeModal('modal-consult')">✕</button>
+</div>
+<div class="svc-modal-body">
+<p data-i18n="modals.consult.desc">Dijital dönüşüm yolculuğunuzda yanınızdayız. Doğru teknoloji seçimi, mimari tasarım ve uzun vadeli strateji için danışmanlık hizmetleri.</p>
+<ul class="svc-feature-list">
+<li data-i18n="modals.consult.features.f">Teknoloji seçimi</li>
+<li data-i18n="modals.consult.features.f_2">Yazılım mimarisi</li>
+<li data-i18n="modals.consult.features.f_3">Dijital dönüşüm planı</li>
+<li data-i18n="modals.consult.features.f_4">Güvenlik danışmanlığı</li>
+<li data-i18n="modals.consult.features.f_5">Bulut migrasyonu</li>
+<li data-i18n="modals.consult.features.f_6">Performans optimizasyonu</li>
+</ul>
+<a class="btn-primary" href="#contact" onclick="closeModal('modal-consult')" style="display:inline-flex">
         Görüşme Ayarla →
       </a>
-    </div>
-  </div>
 </div>
-
+</div>
+</div>
+<!-- MODAL: MOBİL PROGRAMLAMA -->
+<div class="svc-modal-overlay" id="modal-mobile">
+<div class="svc-modal">
+<div class="svc-modal-header">
+<div style="display:flex;align-items:center;gap:14px">
+<div style="width:52px;height:52px;border-radius:14px;background:rgba(139,92,246,.12);display:flex;align-items:center;justify-content:center;font-size:24px">📲</div>
+<div>
+<div style="font-size:11px;color:var(--text3);font-family:var(--font-mono);font-weight:700;letter-spacing:.1em;margin-bottom:4px">HİZMET DETAYI</div>
+<div style="font-family:var(--font-display);font-size:20px;font-weight:800">Mobil Programlama</div>
+</div>
+</div>
+<button class="svc-modal-close" onclick="closeModal('modal-mobile')">✕</button>
+</div>
+<div class="svc-modal-body">
+<p data-i18n="modals.mobile.desc">iOS ve Android için tek kod tabanından çalışan, native hisli mobil uygulamalar geliştiriyoruz. Fikirden App Store ve Play Store yayınına kadar tüm süreci yönetiyoruz — tasarım, push bildirimleri, offline destek ve store onayları dahil.</p>
+<ul class="svc-feature-list">
+<li data-i18n="modals.mobile.features.f">iOS + Android tek kod tabanı</li>
+<li data-i18n="modals.mobile.features.f_2">Push bildirim entegrasyonu</li>
+<li data-i18n="modals.mobile.features.f_3">Offline-first çalışma desteği</li>
+<li data-i18n="modals.mobile.features.f_4">App Store ve Play Store yayını</li>
+<li data-i18n="modals.mobile.features.f_5">In-app satın alma &amp; abonelik</li>
+<li data-i18n="modals.mobile.features.f_6">OTA güncellemeler</li>
+</ul>
+<a class="btn-primary" href="#contact" onclick="closeModal('modal-mobile')" style="display:inline-flex">
+        Görüşme Ayarla →
+      </a>
+</div>
+</div>
+</div>
+<!-- MODAL: WEB SİTESİ TEST -->
+<div class="svc-modal-overlay" id="modal-webtest">
+<div class="svc-modal">
+<div class="svc-modal-header">
+<div style="display:flex;align-items:center;gap:14px">
+<div style="width:52px;height:52px;border-radius:14px;background:rgba(245,158,11,.12);display:flex;align-items:center;justify-content:center;font-size:24px">🔍</div>
+<div>
+<div style="font-size:11px;color:var(--text3);font-family:var(--font-mono);font-weight:700;letter-spacing:.1em;margin-bottom:4px">HİZMET DETAYI</div>
+<div style="font-family:var(--font-display);font-size:20px;font-weight:800">Web Sitesi Test Etme</div>
+</div>
+</div>
+<button class="svc-modal-close" onclick="closeModal('modal-webtest')">✕</button>
+</div>
+<div class="svc-modal-body">
+<p data-i18n="modals.webtest.desc">Mevcut sitenizi gerçek kullanıcı koşullarında test ediyoruz. Performans, erişilebilirlik, mobil uyum, güvenlik açıkları ve SEO faktörlerini tek tek inceler; somut puan tablosu ve önceliklendirilmiş iyileştirme listesi sunarız.</p>
+<ul class="svc-feature-list">
+<li data-i18n="modals.webtest.features.f">Lighthouse performans denetimi</li>
+<li data-i18n="modals.webtest.features.f_2">WCAG erişilebilirlik testi</li>
+<li data-i18n="modals.webtest.features.f_3">Mobil ve cross-browser uyum testi</li>
+<li data-i18n="modals.webtest.features.f_4">Güvenlik taraması (OWASP Top 10)</li>
+<li data-i18n="modals.webtest.features.f_5">SEO ve Core Web Vitals analizi</li>
+<li data-i18n="modals.webtest.features.f_6">Detaylı PDF raporu</li>
+</ul>
+<a class="btn-primary" href="#contact" onclick="closeModal('modal-webtest')" style="display:inline-flex">
+        Test Talebi Gönder →
+      </a>
+</div>
+</div>
+</div>
+<!-- MODAL: QA AUTOMATION -->
+<div class="svc-modal-overlay" id="modal-qa">
+<div class="svc-modal">
+<div class="svc-modal-header">
+<div style="display:flex;align-items:center;gap:14px">
+<div style="width:52px;height:52px;border-radius:14px;background:rgba(0,229,160,.12);display:flex;align-items:center;justify-content:center;font-size:24px">🧪</div>
+<div>
+<div style="font-size:11px;color:var(--text3);font-family:var(--font-mono);font-weight:700;letter-spacing:.1em;margin-bottom:4px">HİZMET DETAYI</div>
+<div style="font-family:var(--font-display);font-size:20px;font-weight:800">QA Automation</div>
+</div>
+</div>
+<button class="svc-modal-close" onclick="closeModal('modal-qa')">✕</button>
+</div>
+<div class="svc-modal-body">
+<p data-i18n="modals.qa.desc">Manuel test, ekip büyüdükçe sürdürülebilir olmaktan çıkar. Playwright ve Cypress ile uçtan uca test otomasyonu kurar, GitHub Actions veya GitLab CI hatlarınıza entegre ederiz — her commit kritik akışlarda regresyon yapmıyor mu otomatik kontrol edilir.</p>
+<ul class="svc-feature-list">
+<li data-i18n="modals.qa.features.f">E2E test suite kurulumu</li>
+<li data-i18n="modals.qa.features.f_2">API ve integration testleri</li>
+<li data-i18n="modals.qa.features.f_3">Visual regression testing</li>
+<li data-i18n="modals.qa.features.f_4">CI/CD entegrasyonu (GitHub Actions / GitLab)</li>
+<li data-i18n="modals.qa.features.f_5">Test coverage raporları</li>
+<li data-i18n="modals.qa.features.f_6">Ekibe eğitim ve dökümantasyon</li>
+</ul>
+<a class="btn-primary" href="#contact" onclick="closeModal('modal-qa')" style="display:inline-flex">
+        Görüşme Ayarla →
+      </a>
+</div>
+</div>
+</div>
 <!-- ============================================================
   HEADER / NAVIGATION — gSoftwares.dev v2.0
   Yapı: header > container > [logo | nav | clock | actions]
   Glassmorphism + Sticky + Responsive (1100px / 860px breakpoints)
 ============================================================ -->
 <header id="site-header" role="banner">
-  <div class="header-inner">
-
-    <!-- LOGO -->
-    <a href="#" class="header-logo" aria-label="gSoftwares.dev">
-      <svg width="38" height="38" viewBox="0 0 42 42" fill="none" aria-hidden="true" class="header-logo-mark">
-        <rect width="42" height="42" rx="11" fill="#12163A"/>
-        <rect x="1" y="1" width="40" height="40" rx="10" stroke="url(#lgBrd)" stroke-width="1.5"/>
-        <text x="21" y="27" text-anchor="middle"
-          font-family="Space Grotesk,system-ui,sans-serif"
-          font-weight="900" font-size="17" letter-spacing="-1"
-          fill="url(#lgTxt)">gS</text>
-        <defs>
-          <linearGradient id="lgBrd" x1="0" y1="0" x2="42" y2="42">
-            <stop offset="0%" stop-color="#818CF8" stop-opacity="0.8"/>
-            <stop offset="100%" stop-color="#4F46E5" stop-opacity="0.4"/>
-          </linearGradient>
-          <linearGradient id="lgTxt" x1="0" y1="8" x2="42" y2="34">
-            <stop offset="0%" stop-color="#E0E7FF"/>
-            <stop offset="100%" stop-color="#818CF8"/>
-          </linearGradient>
-        </defs>
-      </svg>
-      <span class="header-logo-text">
-        <span style="color:#818CF8">g</span><span style="color:#C7D2FE">Softwares</span><span class="header-logo-tld">.dev</span>
-      </span>
-    </a>
-
-    <!-- DESKTOP NAV -->
-    <nav id="desktop-nav" aria-label="Ana navigasyon">
-      <a href="#" class="nav-item">Ana Sayfa</a>
-      <a href="#services" class="nav-item">Hizmetler</a>
-      <a href="about.html" class="nav-item page-link">Hakkımızda</a>
-      <a href="blog.html" class="nav-item page-link">Blog</a>
-      <a href="works-detail.html" class="nav-item page-link">Projeler</a>
-    </nav>
-
-    <!-- SAAT -->
-    <div id="live-clock" title="Türkiye Saati">
-      <span id="clock-time">00:00</span>
-      <span id="clock-date">--/--</span>
-    </div>
-
-    <!-- ACTIONS -->
-    <div class="header-actions">
-      <button id="langBtn" onclick="toggleLang()" aria-label="Dil değiştir">TR/EN</button>
-      <button id="themeBtn" onclick="toggleTheme()" aria-label="Tema değiştir">🌙</button>
-      <a href="#contact" id="nav-cta">Proje Başlat →</a>
-      <button id="hamburger" onclick="toggleMob()" aria-label="Menü">
-        <span id="hb1"></span><span id="hb2"></span><span id="hb3"></span>
-      </button>
-    </div>
-  </div>
-
-  <!-- MOBİL MENÜ -->
-  <div id="mob-menu">
-    <a href="#" onclick="toggleMob()">Ana Sayfa</a>
-    <a href="#services" onclick="toggleMob()">Hizmetler</a>
-    <a href="about.html" onclick="toggleMob()" class="page-link">Hakkımızda</a>
-    <a href="blog.html" onclick="toggleMob()" class="page-link">Blog</a>
-    <a href="works-detail.html" onclick="toggleMob()" class="page-link">Projeler</a>
-    <a href="#contact" onclick="toggleMob()" class="mob-cta">Proje Başlat →</a>
-  </div>
+<div class="header-inner">
+<!-- LOGO -->
+<a aria-label="gSoftwares.dev" class="header-logo" href="#">
+<svg aria-hidden="true" class="header-logo-mark" fill="none" height="38" viewbox="0 0 42 42" width="38">
+<rect fill="#12163A" height="42" rx="11" width="42"></rect>
+<rect height="40" rx="10" stroke="url(#lgBrd)" stroke-width="1.5" width="40" x="1" y="1"></rect>
+<text fill="url(#lgTxt)" font-family="Space Grotesk,system-ui,sans-serif" font-size="17" font-weight="900" letter-spacing="-1" text-anchor="middle" x="21" y="27">gS</text>
+<defs>
+<lineargradient id="lgBrd" x1="0" x2="42" y1="0" y2="42">
+<stop offset="0%" stop-color="#818CF8" stop-opacity="0.8"></stop>
+<stop offset="100%" stop-color="#4F46E5" stop-opacity="0.4"></stop>
+</lineargradient>
+<lineargradient id="lgTxt" x1="0" x2="42" y1="8" y2="34">
+<stop offset="0%" stop-color="#E0E7FF"></stop>
+<stop offset="100%" stop-color="#818CF8"></stop>
+</lineargradient>
+</defs>
+</svg>
+<span class="header-logo-text">
+<span style="color:#818CF8">g</span><span style="color:#C7D2FE">Softwares</span><span class="header-logo-tld">.dev</span>
+</span>
+</a>
+<!-- DESKTOP NAV -->
+<nav aria-label="Ana navigasyon" id="desktop-nav">
+<a class="nav-item" data-i18n="nav.home" href="#">Ana Sayfa</a>
+<a class="nav-item" data-i18n="nav.services" href="#services">Hizmetler</a>
+<a class="nav-item page-link" data-i18n="nav.about" href="about.html">Hakkımızda</a>
+<a class="nav-item page-link" data-i18n="nav.blog" href="blog.html">Blog</a>
+<a class="nav-item page-link" data-i18n="nav.projects" href="works-detail.html">Projeler</a>
+</nav>
+<!-- SAAT -->
+<div id="live-clock" title="Türkiye Saati">
+<span id="clock-time">00:00</span>
+<span id="clock-date">--/--</span>
+</div>
+<!-- ACTIONS -->
+<div class="header-actions">
+<button aria-label="Dil değiştir" data-i18n-aria="aria.langToggle" id="langBtn" onclick="toggleLang()">TR/EN</button>
+<button aria-label="Tema değiştir" data-i18n-aria="aria.themeToggle" id="themeBtn" onclick="toggleTheme()">🌙</button>
+<a data-i18n="nav.cta" href="#contact" id="nav-cta">Proje Başlat →</a>
+<button aria-label="Menü" data-i18n-aria="aria.menuToggle" id="hamburger" onclick="toggleMob()">
+<span id="hb1"></span><span id="hb2"></span><span id="hb3"></span>
+</button>
+</div>
+</div>
+<!-- MOBİL MENÜ -->
+<div id="mob-menu">
+<a data-i18n="nav.home" href="#" onclick="toggleMob()">Ana Sayfa</a>
+<a data-i18n="nav.services" href="#services" onclick="toggleMob()">Hizmetler</a>
+<a class="page-link" data-i18n="nav.about" href="about.html" onclick="toggleMob()">Hakkımızda</a>
+<a class="page-link" data-i18n="nav.blog" href="blog.html" onclick="toggleMob()">Blog</a>
+<a class="page-link" data-i18n="nav.projects" href="works-detail.html" onclick="toggleMob()">Projeler</a>
+<a class="mob-cta" data-i18n="nav.cta" href="#contact" onclick="toggleMob()">Proje Başlat →</a>
+</div>
 </header>
-
 <!-- HEADER STYLES — tek blok, çakışmasız -->
 <style>
   /* HEADER container */
@@ -1820,529 +1881,471 @@
     #hamburger { display: flex !important; }
   }
 </style>
-
-
 <!-- HERO -->
 <section class="hero">
-  <!-- NASA APOD uzay arka planı -->
-  <div id="space-bg" aria-hidden="true"></div>
-  <div class="hero-bg-grid"></div>
-  <div class="hero-glow1"></div>
-  <div class="hero-glow2"></div>
-  <div class="hero-content">
-    <div class="hero-eyebrow">
-      <div class="hero-eyebrow-dot"></div>
+<!-- NASA APOD uzay arka planı -->
+<div aria-hidden="true" id="space-bg"></div>
+<div class="hero-bg-grid"></div>
+<div class="hero-glow1"></div>
+<div class="hero-glow2"></div>
+<div class="hero-content">
+<div class="hero-eyebrow">
+<div class="hero-eyebrow-dot"></div>
       Seçili Projeler Kabul Ediliyor
       
     </div>
-    <h1 class="hero-title">
-      <span class="line1 tr">Kod Yazan Değil,</span>
-      <span class="line1 en">Not Just Developers.</span>
-      <span class="grad-text tr"> Sonuç Üreten Ekip.</span>
-      <span class="grad-text en"> Result Builders.</span>
-    </h1>
-    <p class="hero-sub">
+<h1 class="hero-title">
+<span class="line1" data-i18n="misc.span">Kod Yazan Değil,</span>
+<span class="grad-text" data-i18n="misc.span_2"> Sonuç Üreten Ekip.</span>
+</h1>
+<p class="hero-sub">
       Ürününüzün pazardaki ilk izlenimini biz kuruyoruz. Performans odaklı yazılım, dönüşüm optimize edilmiş tasarım ve hedef kitleye ulaşan dijital pazarlama — tek çatı altında.
       
     </p>
-    <div class="hero-btns">
-      <a href="#services" class="btn-primary">
-        Neler Yapıyoruz?
-        
-        →
-      </a>
-      <a href="#contact" class="btn-secondary">
-        Projenizi Değerlendirelim
-        
-      </a>
-    </div>
-    <div class="stats-bar">
-      <div class="stat-item">
-        <div class="stat-num">30+</div>
-        <div class="stat-label tr">YAZILIM MODÜLÜ</div>
-        <div class="stat-label en">SOFTWARE MODULES</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">2</div>
-        <div class="stat-label tr">UZMAN</div>
-        <div class="stat-label en">EXPERTS</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">100%</div>
-        <div class="stat-label tr">MÜŞTERİ MEMNUNİYETİ</div>
-        <div class="stat-label en">CLIENT SATISFACTION</div>
-      </div>
-    </div>
-  </div>
+<div class="hero-btns">
+<a class="btn-primary" data-i18n="hero.cta.primary" href="#services">Neler Yapıyoruz? →</a>
+<a class="btn-secondary" data-i18n="hero.cta.secondary" href="#contact">Projenizi Değerlendirelim</a>
+</div>
+<div class="stats-bar">
+<div class="stat-item">
+<div class="stat-num">30+</div>
+<div class="stat-label" data-i18n="hero.stat.modules">YAZILIM MODÜLÜ</div>
+</div>
+<div class="stat-item">
+<div class="stat-num">2</div>
+<div class="stat-label" data-i18n="hero.stat.experts">UZMAN</div>
+</div>
+<div class="stat-item">
+<div class="stat-num">100%</div>
+<div class="stat-label" data-i18n="misc.div_3">MÜŞTERİ MEMNUNİYETİ</div>
+</div>
+</div>
+</div>
 </section>
-
 <!-- MARQUEE -->
 <div class="marquee-wrap">
-  <div class="marquee">
-    <span class="marquee-item"><span class="marquee-dot"></span>Web Geliştirme</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>UI/UX Tasarım</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Meta Ads</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Sosyal Medya</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Firebase</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>AI Entegrasyonu</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>IT Danışmanlık</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Otomasyon</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Web Geliştirme</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>UI/UX Tasarım</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Meta Ads</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Sosyal Medya</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Firebase</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>AI Entegrasyonu</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>IT Danışmanlık</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Otomasyon</span>
-  </div>
+<div class="marquee">
+<span class="marquee-item"><span class="marquee-dot"></span>Web Geliştirme</span>
+<span class="marquee-item"><span class="marquee-dot"></span>UI/UX Tasarım</span>
+<span class="marquee-item"><span class="marquee-dot"></span>Meta Ads</span>
+<span class="marquee-item"><span class="marquee-dot"></span>Sosyal Medya</span>
+<span class="marquee-item"><span class="marquee-dot"></span>Firebase</span>
+<span class="marquee-item"><span class="marquee-dot"></span>AI Entegrasyonu</span>
+<span class="marquee-item"><span class="marquee-dot"></span>IT Danışmanlık</span>
+<span class="marquee-item"><span class="marquee-dot"></span>Otomasyon</span>
+<span class="marquee-item"><span class="marquee-dot"></span>Web Geliştirme</span>
+<span class="marquee-item"><span class="marquee-dot"></span>UI/UX Tasarım</span>
+<span class="marquee-item"><span class="marquee-dot"></span>Meta Ads</span>
+<span class="marquee-item"><span class="marquee-dot"></span>Sosyal Medya</span>
+<span class="marquee-item"><span class="marquee-dot"></span>Firebase</span>
+<span class="marquee-item"><span class="marquee-dot"></span>AI Entegrasyonu</span>
+<span class="marquee-item"><span class="marquee-dot"></span>IT Danışmanlık</span>
+<span class="marquee-item"><span class="marquee-dot"></span>Otomasyon</span>
 </div>
-
+</div>
 <!-- SERVICES -->
 <section id="services">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-label">Hizmetlerimiz</div>
-      <div class="section-label" style="display:none">Our Services</div>
-      <h2 class="section-title tr">Uzmanlık Alanlarımız</h2>
-      <h2 class="section-title en">What We Do</h2>
-      <p class="section-sub tr">Yüzeysel değil, derinlemesine. Her alanda uzmanlık odaklı çalışıyoruz — detaylar için ilgili başlığa tıklayın.</p>
-      <p class="section-sub en">Click on each service to get detailed information.</p>
-    </div>
-    <div class="services-grid">
-      <div class="service-card reveal" onclick="openModal('modal-web')">
-        <div class="service-icon-wrap" style="background:rgba(0,229,160,.1)">💻</div>
-        <h3>Web Geliştirme</h3>
-        <h3>Web Development</h3>
-        <p>Yavaş yüklenen bir site, potansiyel müşterinizi rakibinize yönlendirir. Biz; Core Web Vitals'ı baz alarak, gerçek zamanlı Firebase mimarisi ve ölçeklenebilir kod yapısıyla iş hedefinize özel sistemler inşa ediyoruz.</p>
-        <p>A slow-loading site sends your potential client straight to your competitor. We build business-specific systems grounded in Core Web Vitals, real-time Firebase architecture, and scalable code.</p>
-        <div class="service-tags">
-          <span class="stag">JavaScript</span><span class="stag">Firebase</span><span class="stag">React</span>
-        </div>
-        <div class="service-arrow tr">Detayları Gör →</div>
-        <div class="service-arrow en">See Details →</div>
-      </div>
-      <div class="service-card reveal reveal-delay1" onclick="openModal('modal-design')">
-        <div class="service-icon-wrap" style="background:rgba(59,130,246,.1)">🎨</div>
-        <h3>Web Tasarım & UI/UX</h3>
-        <h3>Web Design & UI/UX</h3>
-        <p>Güzel görünen ama dönüşüm sağlamayan tasarımlar sermaye kaybıdır. Kullanıcı davranışına dayalı, marka kimliğinizi güçlendiren ve ziyaretçiyi aksiyona yönlendiren arayüzler tasarlıyoruz.</p>
-        <p>Beautiful design that doesn't convert is wasted capital. We design interfaces grounded in user behavior — reinforcing your brand while guiding visitors to take action.</p>
-        <div class="service-tags">
-          <span class="stag">Figma</span><span class="stag">UI/UX</span><span class="stag">Branding</span>
-        </div>
-        <div class="service-arrow tr">Detayları Gör →</div>
-        <div class="service-arrow en">See Details →</div>
-      </div>
-      <div class="service-card reveal reveal-delay2" onclick="openModal('modal-social')">
-        <div class="service-icon-wrap" style="background:rgba(139,92,246,.1)">📱</div>
-        <h3>Sosyal Medya Yönetimi</h3>
-        <h3>Social Media Management</h3>
-        <p>Takipçi sayısı değil, nitelikli etkileşim kazandırıyoruz. Hedef kitlenizin dilini konuşan, algoritmanın önceliklendirdiği içeriklerle organik büyüme sağlıyoruz.</p>
-        <p>We don't chase follower counts — we earn quality engagement. We drive organic growth with content that speaks your audience's language and that algorithms prioritize.</p>
-        <div class="service-tags">
-          <span class="stag">Instagram</span><span class="stag">Facebook</span><span class="stag">LinkedIn</span>
-        </div>
-        <div class="service-arrow tr">Detayları Gör →</div>
-        <div class="service-arrow en">See Details →</div>
-      </div>
-      <div class="service-card reveal" onclick="openModal('modal-ads')">
-        <div class="service-icon-wrap" style="background:rgba(245,158,11,.1)">📊</div>
-        <h3>Meta Reklam Yönetimi</h3>
-        <h3>Meta Ads Management</h3>
-        <p>Bütçenizin her kuruşunu doğru kitleye harcatıyoruz. Davranışsal segmentasyon, yaratıcı A/B testleri ve sürekli optimizasyon ile reklam harcama getirinizi (ROAS) maksimize ediyoruz.</p>
-        <p>We make every cent of your budget work for the right audience. Behavioral segmentation, creative A/B testing, and continuous optimization to maximize your return on ad spend (ROAS).</p>
-        <div class="service-tags">
-          <span class="stag">Meta Ads</span><span class="stag">ROI</span><span class="stag">Analytics</span>
-        </div>
-        <div class="service-arrow tr">Detayları Gör →</div>
-        <div class="service-arrow en">See Details →</div>
-      </div>
-      <div class="service-card reveal reveal-delay1" onclick="openModal('modal-ai')">
-        <div class="service-icon-wrap" style="background:rgba(0,229,160,.1)">🤖</div>
-        <h3>Otomasyon & AI</h3>
-        <h3>Automation & AI</h3>
-        <p>Tekrar eden işlemler için insan kaynağı harcamak rekabet avantajını törpüler. İş akışlarınızı analiz eder, doğru yapay zeka ve otomasyon araçlarını entegre ederek operasyonel verimliliğinizi artırıyoruz.</p>
-        <p>Spending human resources on repetitive tasks erodes your competitive edge. We analyze your workflows and integrate the right AI and automation tools to boost operational efficiency.</p>
-        <div class="service-tags">
-          <span class="stag">Claude AI</span><span class="stag">API</span><span class="stag">Automation</span>
-        </div>
-        <div class="service-arrow tr">Detayları Gör →</div>
-        <div class="service-arrow en">See Details →</div>
-      </div>
-      <div class="service-card reveal reveal-delay2" onclick="openModal('modal-consult')">
-        <div class="service-icon-wrap" style="background:rgba(59,130,246,.1)">🛡️</div>
-        <h3>IT Danışmanlık</h3>
-        <h3>IT Consulting</h3>
-        <p>Yanlış teknoloji seçimi, ilerleyen süreçte katlanarak artan maliyetler doğurur. Mevcut altyapınızı değerlendiriyor, ölçeklenebilirlik ve güvenliği temel alarak sizin için doğru yol haritasını çiziyoruz.</p>
-        <p>Wrong technology choices compound into exponentially growing costs. We assess your current infrastructure and chart the right roadmap for you — scalability and security as the foundation.</p>
-        <div class="service-tags">
-          <span class="stag">Strategy</span><span class="stag">Architecture</span><span class="stag">Cloud</span>
-        </div>
-        <div class="service-arrow tr">Detayları Gör →</div>
-        <div class="service-arrow en">See Details →</div>
-      </div>
-    </div>
-  </div>
+<div class="container">
+<div class="section-header reveal">
+<div class="section-label" data-i18n="sections.services.label">Hizmetlerimiz</div>
+<h2 class="section-title" data-i18n="sections.services.title">Uzmanlık Alanlarımız</h2>
+<p class="section-sub" data-i18n="sections.services.sub">Yüzeysel değil, derinlemesine. Her alanda uzmanlık odaklı çalışıyoruz — detaylar için ilgili başlığa tıklayın.</p>
+</div>
+<div class="services-grid">
+<div class="service-card reveal" onclick="openModal('modal-web')">
+<div class="service-icon-wrap" style="background:rgba(0,229,160,.1)">💻</div>
+<h3 data-i18n="services.web.title">Web Geliştirme</h3>
+<p data-i18n="services.web.desc">Yavaş yüklenen bir site, potansiyel müşterinizi rakibinize yönlendirir. Biz; Core Web Vitals'ı baz alarak, gerçek zamanlı Firebase mimarisi ve ölçeklenebilir kod yapısıyla iş hedefinize özel sistemler inşa ediyoruz.</p>
+<div class="service-tags">
+<span class="stag">JavaScript</span><span class="stag">Firebase</span><span class="stag">React</span>
+</div>
+<div class="service-arrow" data-i18n="services.web.cta">Detayları Gör →</div>
+</div>
+<div class="service-card reveal reveal-delay1" onclick="openModal('modal-design')">
+<div class="service-icon-wrap" style="background:rgba(59,130,246,.1)">🎨</div>
+<h3 data-i18n="services.design.title">Web Tasarım &amp; UI/UX</h3>
+<p data-i18n="services.design.desc">Güzel görünen ama dönüşüm sağlamayan tasarımlar sermaye kaybıdır. Kullanıcı davranışına dayalı, marka kimliğinizi güçlendiren ve ziyaretçiyi aksiyona yönlendiren arayüzler tasarlıyoruz.</p>
+<div class="service-tags">
+<span class="stag">Figma</span><span class="stag">UI/UX</span><span class="stag">Branding</span>
+</div>
+<div class="service-arrow" data-i18n="services.design.cta">Detayları Gör →</div>
+</div>
+<div class="service-card reveal reveal-delay2" onclick="openModal('modal-social')">
+<div class="service-icon-wrap" style="background:rgba(139,92,246,.1)">📱</div>
+<h3 data-i18n="services.social.title">Sosyal Medya Yönetimi</h3>
+<p data-i18n="services.social.desc">Takipçi sayısı değil, nitelikli etkileşim kazandırıyoruz. Hedef kitlenizin dilini konuşan, algoritmanın önceliklendirdiği içeriklerle organik büyüme sağlıyoruz.</p>
+<div class="service-tags">
+<span class="stag">Instagram</span><span class="stag">Facebook</span><span class="stag">LinkedIn</span>
+</div>
+<div class="service-arrow" data-i18n="services.social.cta">Detayları Gör →</div>
+</div>
+<div class="service-card reveal" onclick="openModal('modal-ads')">
+<div class="service-icon-wrap" style="background:rgba(245,158,11,.1)">📊</div>
+<h3 data-i18n="services.ads.title">Meta Reklam Yönetimi</h3>
+<p data-i18n="services.ads.desc">Bütçenizin her kuruşunu doğru kitleye harcatıyoruz. Davranışsal segmentasyon, yaratıcı A/B testleri ve sürekli optimizasyon ile reklam harcama getirinizi (ROAS) maksimize ediyoruz.</p>
+<div class="service-tags">
+<span class="stag">Meta Ads</span><span class="stag">ROI</span><span class="stag">Analytics</span>
+</div>
+<div class="service-arrow" data-i18n="services.ads.cta">Detayları Gör →</div>
+</div>
+<div class="service-card reveal reveal-delay1" onclick="openModal('modal-ai')">
+<div class="service-icon-wrap" style="background:rgba(0,229,160,.1)">🤖</div>
+<h3 data-i18n="services.ai.title">Otomasyon &amp; AI</h3>
+<p data-i18n="services.ai.desc">Tekrar eden işlemler için insan kaynağı harcamak rekabet avantajını törpüler. İş akışlarınızı analiz eder, doğru yapay zeka ve otomasyon araçlarını entegre ederek operasyonel verimliliğinizi artırıyoruz.</p>
+<div class="service-tags">
+<span class="stag">Claude AI</span><span class="stag">API</span><span class="stag">Automation</span>
+</div>
+<div class="service-arrow" data-i18n="services.ai.cta">Detayları Gör →</div>
+</div>
+<div class="service-card reveal reveal-delay2" onclick="openModal('modal-consult')">
+<div class="service-icon-wrap" style="background:rgba(59,130,246,.1)">🛡️</div>
+<h3 data-i18n="services.consult.title">IT Danışmanlık</h3>
+<p data-i18n="services.consult.desc">Yanlış teknoloji seçimi, ilerleyen süreçte katlanarak artan maliyetler doğurur. Mevcut altyapınızı değerlendiriyor, ölçeklenebilirlik ve güvenliği temel alarak sizin için doğru yol haritasını çiziyoruz.</p>
+<div class="service-tags">
+<span class="stag">Strategy</span><span class="stag">Architecture</span><span class="stag">Cloud</span>
+</div>
+<div class="service-arrow" data-i18n="services.consult.cta">Detayları Gör →</div>
+</div>
+<div class="service-card reveal" onclick="openModal('modal-mobile')">
+<div class="service-icon-wrap" style="background:rgba(139,92,246,.1)">📲</div>
+<h3 data-i18n="services.mobile.title">Mobil Programlama</h3>
+<p data-i18n="services.mobile.desc">Web'in en güçlü olduğu yerde bile, kullanıcıların yarısı telefondan giriyor. iOS ve Android için sıfırdan native hisli, tek kod tabanında çalışan modern mobil uygulamalar geliştiriyoruz — App Store ve Play Store yayına hazır.</p>
+<div class="service-tags">
+<span class="stag">React Native</span><span class="stag">Expo</span><span class="stag">Flutter</span>
+</div>
+<div class="service-arrow" data-i18n="services.mobile.cta">Detayları Gör →</div>
+</div>
+<div class="service-card reveal reveal-delay1" onclick="openModal('modal-webtest')">
+<div class="service-icon-wrap" style="background:rgba(245,158,11,.1)">🔍</div>
+<h3 data-i18n="services.webtest.title">Web Sitesi Test Etme</h3>
+<p data-i18n="services.webtest.desc">Lansmanın ilk gününde patlayan bir hata, aylarca süren itibar zararı demektir. Mevcut sitenizi performans, erişilebilirlik, mobil uyum, güvenlik ve SEO açısından adım adım inceler; somut iyileştirme raporu sunarız.</p>
+<div class="service-tags">
+<span class="stag">Lighthouse</span><span class="stag">A11y</span><span class="stag">SEO Audit</span>
+</div>
+<div class="service-arrow" data-i18n="services.webtest.cta">Detayları Gör →</div>
+</div>
+<div class="service-card reveal reveal-delay2" onclick="openModal('modal-qa')">
+<div class="service-icon-wrap" style="background:rgba(0,229,160,.1)">🧪</div>
+<h3 data-i18n="services.qa.title">QA Automation</h3>
+<p data-i18n="services.qa.desc">Her yeni özellik, eski özelliği bozma riski demektir. Playwright ve Cypress ile uçtan uca test otomasyonu kurar, CI/CD hattınıza entegre eder; her commit'te kritik akışların çalıştığından emin oluruz.</p>
+<div class="service-tags">
+<span class="stag">Playwright</span><span class="stag">Cypress</span><span class="stag">CI/CD</span>
+</div>
+<div class="service-arrow" data-i18n="services.qa.cta">Detayları Gör →</div>
+</div>
+</div>
+</div>
 </section>
-
 <div class="divider"></div>
-
 <!-- PROJECTS -->
 <section id="projects">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-label">Projelerimiz</div>
-      <div class="section-label" style="display:none">Our Projects</div>
-      <h2 class="section-title tr">Referans Çalışmalar</h2>
-      <h2 class="section-title en">What We've Built</h2>
-      <p class="section-sub tr">Söylediğimizi değil, yaptığımızı değerlendirin. Her proje, bir problemi çözmek için doğmuştur.</p>
-      <p class="section-sub en">Real solutions to real problems. The story behind the code.</p>
-    </div>
-    <div class="projects-grid">
-      <div class="project-card reveal">
-        <div class="project-mockup" style="background:linear-gradient(135deg,#050810,#0a1220)">
-          <div class="project-mockup-inner">
-            <div class="mock-bar" style="background:linear-gradient(90deg,#00e5a0,#3b82f6);width:60%"></div>
-            <div class="mock-row">
-              <div class="mock-col" style="background:rgba(0,229,160,.3)"></div>
-              <div class="mock-col" style="background:rgba(59,130,246,.3)"></div>
-              <div class="mock-col" style="background:rgba(139,92,246,.3)"></div>
-            </div>
-            <div class="mock-row">
-              <div class="mock-col" style="background:rgba(255,255,255,.06);flex:2"></div>
-              <div class="mock-col" style="background:rgba(255,255,255,.04)"></div>
-            </div>
-            <div class="mock-row">
-              <div class="mock-col" style="background:rgba(255,255,255,.04)"></div>
-              <div class="mock-col" style="background:rgba(99,102,241,.12);flex:2"></div>
-            </div>
-            <div style="margin-top:8px;font-size:8px;color:rgba(0,229,160,.6)">FleetVision 2026 PRO — Filo Yönetim Sistemi</div>
-          </div>
-        </div>
-        <div class="project-body">
-          <h3>FleetVision 2026 PRO</h3>
-          <p>47 araçlık filoyu Excel'de yöneten bir arkadaşın "daha iyi bir çözüm yok mu?" sorusuyla doğdu. Bugün: 30+ modül, gerçek zamanlı Firebase mimarisi, Türk İş Kanunu'na uygun izin takibi ve tek dosyada çalışan tam ölçekli bir platform.</p>
-          <p>Started when I saw a friend managing a 47-vehicle fleet in Excel. Today it's a full fleet management platform with 30+ modules, Firebase integration, and Labor Law leave calculation.</p>
-          <div class="project-tech">
-            <span class="tech-tag">Vanilla JS</span>
-            <span class="tech-tag">Firebase</span>
-            <span class="tech-tag">Cloudinary</span>
-            <span class="tech-tag">SheetJS</span>
-          </div>
-          <div class="project-footer">
-            <span class="project-status-badge status-live">● LIVE</span>
-            <a href="works-detail.html" class="page-link project-link">fleetvision.online ↗</a>
-          </div>
-        </div>
-      </div>
-      <div class="project-card reveal reveal-delay1">
-        <div class="project-mockup" style="background:linear-gradient(135deg,#0a0f1e,#141d35)">
-          <div class="project-mockup-inner">
-            <div class="mock-bar" style="background:linear-gradient(90deg,#8b5cf6,#3b82f6);width:80%"></div>
-            <div style="margin:8px 0;display:flex;gap:4px">
-              <div style="width:8px;height:8px;border-radius:50%;background:rgba(139,92,246,.5)"></div>
-              <div style="width:8px;height:8px;border-radius:50%;background:rgba(59,130,246,.5)"></div>
-              <div style="width:8px;height:8px;border-radius:50%;background:rgba(0,229,160,.5)"></div>
-            </div>
-            <div class="mock-row">
-              <div class="mock-col" style="background:rgba(139,92,246,.2);flex:3"></div>
-              <div class="mock-col" style="background:rgba(59,130,246,.15)"></div>
-            </div>
-            <div class="mock-row">
-              <div class="mock-col" style="background:rgba(255,255,255,.05)"></div>
-              <div class="mock-col" style="background:rgba(255,255,255,.05);flex:2"></div>
-            </div>
-            <div style="margin-top:8px;font-size:8px;color:rgba(139,92,246,.6)">gSoftwares.dev — Yeni Projeler</div>
-          </div>
-        </div>
-        <div class="project-body">
-          <h3>Müşteri Projeleri</h3>
-          <h3>Client Projects</h3>
-          <p>Web tasarım, kurumsal yazılım, sosyal medya ve dijital pazarlama projeleriniz için buradayız. Her ölçekte, her sektörde.</p>
-          <p>We're here for your web design, enterprise software, social media and digital marketing projects. Every scale, every sector.</p>
-          <div class="project-tech">
-            <span class="tech-tag">Web Design</span>
-            <span class="tech-tag">Software</span>
-            <span class="tech-tag">Marketing</span>
-            <span class="tech-tag">Meta Ads</span>
-          </div>
-          <div class="project-footer">
-            <span class="project-status-badge status-dev">⚙ UPCOMING</span>
-            <a href="#contact" class="project-link tr">Proje Başlat →</a>
-            <a href="#contact" class="project-link en">Start Project →</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="container">
+<div class="section-header reveal">
+<div class="section-label" data-i18n="sections.projects.label">Projelerimiz</div>
+<h2 class="section-title" data-i18n="sections.projects.title">Referans Çalışmalar</h2>
+<p class="section-sub" data-i18n="sections.projects.sub">Söylediğimizi değil, yaptığımızı değerlendirin. Her proje, bir problemi çözmek için doğmuştur.</p>
+</div>
+<div class="projects-grid">
+<div class="project-card reveal">
+<div class="project-mockup" style="background:linear-gradient(135deg,#050810,#0a1220)">
+<div class="project-mockup-inner">
+<div class="mock-bar" style="background:linear-gradient(90deg,#00e5a0,#3b82f6);width:60%"></div>
+<div class="mock-row">
+<div class="mock-col" style="background:rgba(0,229,160,.3)"></div>
+<div class="mock-col" style="background:rgba(59,130,246,.3)"></div>
+<div class="mock-col" style="background:rgba(139,92,246,.3)"></div>
+</div>
+<div class="mock-row">
+<div class="mock-col" style="background:rgba(255,255,255,.06);flex:2"></div>
+<div class="mock-col" style="background:rgba(255,255,255,.04)"></div>
+</div>
+<div class="mock-row">
+<div class="mock-col" style="background:rgba(255,255,255,.04)"></div>
+<div class="mock-col" style="background:rgba(99,102,241,.12);flex:2"></div>
+</div>
+<div style="margin-top:8px;font-size:8px;color:rgba(0,229,160,.6)">FleetVision 2026 PRO — Filo Yönetim Sistemi</div>
+</div>
+</div>
+<div class="project-body">
+<h3>FleetVision 2026 PRO</h3>
+<p data-i18n="projects.p">47 araçlık filoyu Excel'de yöneten bir arkadaşın "daha iyi bir çözüm yok mu?" sorusuyla doğdu. Bugün: 30+ modül, gerçek zamanlı Firebase mimarisi, Türk İş Kanunu'na uygun izin takibi ve tek dosyada çalışan tam ölçekli bir platform.</p>
+<div class="project-tech">
+<span class="tech-tag">Vanilla JS</span>
+<span class="tech-tag">Firebase</span>
+<span class="tech-tag">Cloudinary</span>
+<span class="tech-tag">SheetJS</span>
+</div>
+<div class="project-footer">
+<span class="project-status-badge status-live">● LIVE</span>
+<a class="page-link project-link" href="works-detail.html">fleetvision.online ↗</a>
+</div>
+</div>
+</div>
+<div class="project-card reveal reveal-delay1">
+<div class="project-mockup" style="background:linear-gradient(135deg,#0a0f1e,#141d35)">
+<div class="project-mockup-inner">
+<div class="mock-bar" style="background:linear-gradient(90deg,#8b5cf6,#3b82f6);width:80%"></div>
+<div style="margin:8px 0;display:flex;gap:4px">
+<div style="width:8px;height:8px;border-radius:50%;background:rgba(139,92,246,.5)"></div>
+<div style="width:8px;height:8px;border-radius:50%;background:rgba(59,130,246,.5)"></div>
+<div style="width:8px;height:8px;border-radius:50%;background:rgba(0,229,160,.5)"></div>
+</div>
+<div class="mock-row">
+<div class="mock-col" style="background:rgba(139,92,246,.2);flex:3"></div>
+<div class="mock-col" style="background:rgba(59,130,246,.15)"></div>
+</div>
+<div class="mock-row">
+<div class="mock-col" style="background:rgba(255,255,255,.05)"></div>
+<div class="mock-col" style="background:rgba(255,255,255,.05);flex:2"></div>
+</div>
+<div style="margin-top:8px;font-size:8px;color:rgba(139,92,246,.6)">gSoftwares.dev — Yeni Projeler</div>
+</div>
+</div>
+<div class="project-body">
+<h3 data-i18n="projects.h3">Müşteri Projeleri</h3>
+<p data-i18n="projects.p_2">Web tasarım, kurumsal yazılım, sosyal medya ve dijital pazarlama projeleriniz için buradayız. Her ölçekte, her sektörde.</p>
+<div class="project-tech">
+<span class="tech-tag">Web Design</span>
+<span class="tech-tag">Software</span>
+<span class="tech-tag">Marketing</span>
+<span class="tech-tag">Meta Ads</span>
+</div>
+<div class="project-footer">
+<span class="project-status-badge status-dev">⚙ UPCOMING</span>
+<a class="project-link" data-i18n="projects.link" href="#contact">Proje Başlat →</a>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
-
 <div class="divider"></div>
-
 <!-- TEAM -->
 <section id="team">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-label">Ekibimiz</div>
-      <div class="section-label" style="display:none">Our Team</div>
-      <h2 class="section-title tr">Ekibin Vizyonu</h2>
-      <h2 class="section-title en">The People Behind It</h2>
-      <p class="section-sub tr">Bir yazılım mühendisi ve bir dijital pazarlama stratejisti. Farklı disiplinler, ortak bir standart: çalışan şeyin değil, çalışan şeyin en iyisinin peşinde.</p>
-      <p class="section-sub en">Two different expertises, one goal — putting you ahead in the digital world.</p>
-    </div>
-    <div class="team-grid">
-      <div class="team-card hamza reveal">
-        <div class="team-avatar-wrap">
-          <div class="team-avatar hg">HG</div>
-          <div class="team-info">
-            <h3>Hamza Gökçe</h3>
-            <div class="team-role tr">Yazılım Geliştirici & Kurucu</div>
-            <div class="team-role en">Software Developer & Co-Founder</div>
-          </div>
-        </div>
-        <p class="team-bio tr">Teknolojiyi araç olarak görür, çözümü ürün olarak sunar. 30+ modüllü FleetVision 2026 PRO'nun mimarı. Yazılımda "nasıl çalışır"dan önce "neden gerekir" sorusunu sorar; bu yüzden ürettiği sistemler sürece değer katar, yük olmaz.</p>
-        <p class="team-bio en">Treats technology as a tool, delivers solutions as products. Architect of FleetVision 2026 PRO with 30+ modules. In software, he asks "why is it needed" before "how does it work" — that's why the systems he builds add value to the process, not burden.</p>
-        <div class="team-skills">
-          <span class="skill-tag">JavaScript</span>
-          <span class="skill-tag">Firebase</span>
-          <span class="skill-tag">AI/ML</span>
-          <span class="skill-tag">API Integration</span>
-          <span class="skill-tag">Automation</span>
-          <span class="skill-tag">Node.js</span>
-        </div>
-        <div class="team-contact">
+<div class="container">
+<div class="section-header reveal">
+<div class="section-label" data-i18n="sections.team.label">Ekibimiz</div>
+<h2 class="section-title" data-i18n="sections.team.title">Ekibin Vizyonu</h2>
+<p class="section-sub" data-i18n="sections.team.sub">Bir yazılım mühendisi ve bir dijital pazarlama stratejisti. Farklı disiplinler, ortak bir standart: çalışan şeyin değil, çalışan şeyin en iyisinin peşinde.</p>
+</div>
+<div class="team-grid">
+<div class="team-card hamza reveal">
+<div class="team-avatar-wrap">
+<div class="team-avatar hg">HG</div>
+<div class="team-info">
+<h3>Hamza Gökçe</h3>
+<div class="team-role" data-i18n="team.role">Yazılım Geliştirici &amp; Kurucu</div>
+</div>
+</div>
+<p class="team-bio" data-i18n="team.bio">Teknolojiyi araç olarak görür, çözümü ürün olarak sunar. 30+ modüllü FleetVision 2026 PRO'nun mimarı. Yazılımda "nasıl çalışır"dan önce "neden gerekir" sorusunu sorar; bu yüzden ürettiği sistemler sürece değer katar, yük olmaz.</p>
+<div class="team-skills">
+<span class="skill-tag">JavaScript</span>
+<span class="skill-tag">Firebase</span>
+<span class="skill-tag">AI/ML</span>
+<span class="skill-tag">API Integration</span>
+<span class="skill-tag">Automation</span>
+<span class="skill-tag">Node.js</span>
+</div>
+<div class="team-contact">
           📞 <a href="tel:+905441994540">0544 199 45 40</a>
-        </div>
-      </div>
-      <div class="team-card taner reveal reveal-delay1">
-        <div class="team-avatar-wrap">
-          <div class="team-avatar ta">TA</div>
-          <div class="team-info">
-            <h3>Taner Aydoğan</h3>
-            <div class="team-role tr">Tasarımcı & Dijital Pazarlama Uzmanı</div>
-            <div class="team-role en">Designer & Digital Marketing Expert</div>
-          </div>
-        </div>
-        <p class="team-bio tr">Tasarımın estetik değil stratejik bir araç olduğuna inanır. Markaların dijital kimliğini inşa eder; her görselin, her başlığın ve her kampanyanın arkasında ölçülmüş bir niyet vardır. Meta reklamlarında hissi değil, veriyi takip eder.</p>
-        <p class="team-bio en">Believes design is a strategic tool, not merely aesthetic. He builds brands' digital identities — every visual, headline and campaign is backed by measured intent. In Meta ads, he follows data, not instinct.</p>
-        <div class="team-skills">
-          <span class="skill-tag">Web Design</span>
-          <span class="skill-tag">Meta Ads</span>
-          <span class="skill-tag">Social Media</span>
-          <span class="skill-tag">UI/UX</span>
-          <span class="skill-tag">Branding</span>
-          <span class="skill-tag">Figma</span>
-        </div>
-        <div class="team-contact">
+</div>
+</div>
+<div class="team-card taner reveal reveal-delay1">
+<div class="team-avatar-wrap">
+<div class="team-avatar ta">TA</div>
+<div class="team-info">
+<h3>Taner Aydoğan</h3>
+<div class="team-role" data-i18n="team.role_2">Tasarımcı &amp; Dijital Pazarlama Uzmanı</div>
+</div>
+</div>
+<p class="team-bio" data-i18n="team.bio_2">Tasarımın estetik değil stratejik bir araç olduğuna inanır. Markaların dijital kimliğini inşa eder; her görselin, her başlığın ve her kampanyanın arkasında ölçülmüş bir niyet vardır. Meta reklamlarında hissi değil, veriyi takip eder.</p>
+<div class="team-skills">
+<span class="skill-tag">Web Design</span>
+<span class="skill-tag">Meta Ads</span>
+<span class="skill-tag">Social Media</span>
+<span class="skill-tag">UI/UX</span>
+<span class="skill-tag">Branding</span>
+<span class="skill-tag">Figma</span>
+</div>
+<div class="team-contact">
           📞 <a href="tel:+905334603374">0533 460 33 74</a>
-        </div>
-      </div>
-    </div>
-  </div>
+</div>
+</div>
+</div>
+</div>
 </section>
-
 <div class="divider"></div>
-
 <!-- CONTACT -->
-<section id="contact" class="contact-section">
-  <div class="container">
-    <div class="contact-grid">
-      <div class="reveal">
-        <div class="section-label">İletişim</div>
-        <div class="section-label" style="display:none">Contact</div>
-        <h2 class="contact-info" style="font-family:var(--font-display);font-size:36px;font-weight:800;letter-spacing:-1px;margin-bottom:16px;line-height:1.1">
-          Projenizi<br><span style="background:var(--grad1);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Değerlendirelim</span>
-          </span>
-        </h2>
-        <p style="font-size:15px;color:var(--text2);line-height:1.8;margin-bottom:32px">
-          Kapsam ne olursa olsun, ilk görüşme taahhütsüz ve ücretsizdir. Projenizi dinliyor, uygulanabilirliğini değerlendiriyor ve size dürüst bir yol haritası sunuyoruz.
-          
-        </p>
-        <div class="contact-channels">
-          <div class="contact-channel">
-            <div class="contact-channel-icon" style="background:rgba(0,229,160,.1)">📞</div>
-            <div class="contact-channel-info">
-              <div class="contact-channel-label">HAMZA GÖKÇE</div>
-              <div class="contact-channel-value"><a href="tel:+905441994540">0544 199 45 40</a></div>
-            </div>
-          </div>
-          <div class="contact-channel">
-            <div class="contact-channel-icon" style="background:rgba(139,92,246,.1)">📞</div>
-            <div class="contact-channel-info">
-              <div class="contact-channel-label">TANER AYDOĞAN</div>
-              <div class="contact-channel-value"><a href="tel:+905334603374">0533 460 33 74</a></div>
-            </div>
-          </div>
-          <div class="contact-channel">
-            <div class="contact-channel-icon" style="background:rgba(59,130,246,.1)">✉️</div>
-            <div class="contact-channel-info">
-              <div class="contact-channel-label">E-POSTA</div>
-              <div class="contact-channel-value"><a href="mailto:gokcehamza2934@gmail.com">gokcehamza2934@gmail.com</a></div>
-            </div>
-          </div>
-          <div class="contact-channel">
-            <div class="contact-channel-icon" style="background:rgba(37,211,102,.1)">💬</div>
-            <div class="contact-channel-info">
-              <div class="contact-channel-label">WHATSAPP</div>
-              <div class="contact-channel-value"><a href="https://wa.me/905441994540" target="_blank">WhatsApp'tan Yaz</a></div>
-            </div>
-          </div>
-          <div class="contact-channel">
-            <div class="contact-channel-icon" style="background:rgba(59,130,246,.1)">🌐</div>
-            <div class="contact-channel-info">
-              <div class="contact-channel-label">FLEETVISION</div>
-              <div class="contact-channel-value"><a href="https://fleetvision.online" target="_blank">fleetvision.online</a></div>
-            </div>
-          </div>
-        </div>
-        <div class="social-links">
-          <a href="https://www.linkedin.com/in/hamza-gokce-1997b81b2/" target="_blank" class="social-link" title="LinkedIn">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </a>
-          <a href="https://github.com/hgokce34" target="_blank" class="social-link" title="GitHub">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-          </a>
-          <a href="https://instagram.com" target="_blank" class="social-link" title="Instagram">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-          </a>
-          <a href="https://facebook.com" target="_blank" class="social-link" title="Facebook">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-          </a>
-          <a href="https://twitter.com" target="_blank" class="social-link" title="Twitter / X">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          </a>
-          <a href="https://wa.me/905441994540" target="_blank" class="social-link" title="WhatsApp">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          </a>
-        </div>
-      </div>
-      <div class="reveal reveal-delay1">
-        <div class="contact-form-wrap">
-          <h3>Bize Ulaşın</h3>
-          <h3>Send Project Request</h3>
-          <p class="sub tr">48 saat içinde değerlendirme notunuz hazır olur.</p>
-          <p class="sub en">Your assessment note will be ready within 48 hours.</p>
-          <form id="contactForm" onsubmit="formGonder(event)">
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label tr">ADI SOYADI</label>
-                <label class="form-label en">FULL NAME</label>
-                <input type="text" class="form-input" id="f-name" placeholder="Adınız Soyadınız" required>
-              </div>
-              <div class="form-group">
-                <label class="form-label tr">E-POSTA</label>
-                <label class="form-label en">EMAIL</label>
-                <input type="email" class="form-input" id="f-email" placeholder="email@domain.com" required>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="form-label tr">TELEFON</label>
-              <label class="form-label en">PHONE</label>
-              <input type="tel" class="form-input" id="f-phone" placeholder="0XXX XXX XX XX">
-            </div>
-            <div class="form-group">
-              <label class="form-label tr">İLGİLENDİĞİNİZ HİZMET</label>
-              <label class="form-label en">SERVICE INTERESTED IN</label>
-              <select class="form-select form-input" id="f-service">
-                <option value="">Seçin...</option>
-                <option value="">Select...</option>
-                <option>Web Geliştirme</option>
-                <option>Web Development</option>
-                <option>Web Tasarım & UI/UX</option>
-                <option>Web Design & UI/UX</option>
-                <option>Sosyal Medya Yönetimi</option>
-                <option>Social Media Management</option>
-                <option>Meta Reklam Yönetimi</option>
-                <option>Meta Ads Management</option>
-                <option>Otomasyon & AI</option>
-                <option>Automation & AI</option>
-                <option>IT Danışmanlık</option>
-                <option>IT Consulting</option>
-                <option>Birden Fazla Hizmet</option>
-                <option>Multiple Services</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label class="form-label tr">MESAJINIZ</label>
-              <label class="form-label en">YOUR MESSAGE</label>
-              <textarea class="form-textarea" id="f-message" placeholder="Projenizi anlatın, bütçenizden ve zaman çizelgenizden bahsedin..." required></textarea>
-            </div>
-            <button type="submit" class="form-submit">
-              Değerlendirme Talebi Gönder →
-              
-            </button>
-          </form>
-          <div class="form-success" id="formSuccess" style="display:none;">
-            ✓ Talebiniz alındı. 48 saat içinde projenize ait değerlendirme notunu size iletiyoruz.
-            
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<section class="contact-section" id="contact">
+<div class="container">
+<div class="contact-grid">
+<div class="reveal">
+<div class="section-label" data-i18n="contact.div">İletişim</div>
+<h2 class="contact-info" style="font-family:var(--font-display);font-size:36px;font-weight:800;letter-spacing:-1px;margin-bottom:16px;line-height:1.1"><span data-i18n="contact.title.line1">Projenizi</span><br/><span data-i18n="contact.title.line2" style="background:var(--grad1);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Değerlendirelim</span></h2>
+<p data-i18n="contact.intro" style="font-size:15px;color:var(--text2);line-height:1.8;margin-bottom:32px">Kapsam ne olursa olsun, ilk görüşme taahhütsüz ve ücretsizdir. Projenizi dinliyor, uygulanabilirliğini değerlendiriyor ve size dürüst bir yol haritası sunuyoruz.</p>
+<div class="contact-channels">
+<div class="contact-channel">
+<div class="contact-channel-icon" style="background:rgba(0,229,160,.1)">📞</div>
+<div class="contact-channel-info">
+<div class="contact-channel-label">HAMZA GÖKÇE</div>
+<div class="contact-channel-value"><a href="tel:+905441994540">0544 199 45 40</a></div>
+</div>
+</div>
+<div class="contact-channel">
+<div class="contact-channel-icon" style="background:rgba(139,92,246,.1)">📞</div>
+<div class="contact-channel-info">
+<div class="contact-channel-label">TANER AYDOĞAN</div>
+<div class="contact-channel-value"><a href="tel:+905334603374">0533 460 33 74</a></div>
+</div>
+</div>
+<div class="contact-channel">
+<div class="contact-channel-icon" style="background:rgba(59,130,246,.1)">✉️</div>
+<div class="contact-channel-info">
+<div class="contact-channel-label" data-i18n="contact.channels.email">E-POSTA</div>
+<div class="contact-channel-value"><a href="mailto:gokcehamza2934@gmail.com">gokcehamza2934@gmail.com</a></div>
+</div>
+</div>
+<div class="contact-channel">
+<div class="contact-channel-icon" style="background:rgba(37,211,102,.1)">💬</div>
+<div class="contact-channel-info">
+<div class="contact-channel-label">WHATSAPP</div>
+<div class="contact-channel-value"><a data-i18n="contact.channels.whatsapp.cta" href="https://wa.me/905441994540" target="_blank">WhatsApp'tan Yaz</a></div>
+</div>
+</div>
+<div class="contact-channel">
+<div class="contact-channel-icon" style="background:rgba(59,130,246,.1)">🌐</div>
+<div class="contact-channel-info">
+<div class="contact-channel-label">FLEETVISION</div>
+<div class="contact-channel-value"><a href="https://fleetvision.online" target="_blank">fleetvision.online</a></div>
+</div>
+</div>
+</div>
+<div class="social-links">
+<a class="social-link" href="https://www.linkedin.com/in/hamza-gokce-1997b81b2/" target="_blank" title="LinkedIn">
+<svg fill="currentColor" height="18" viewbox="0 0 24 24" width="18"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
+</a>
+<a class="social-link" href="https://github.com/hgokce34" target="_blank" title="GitHub">
+<svg fill="currentColor" height="18" viewbox="0 0 24 24" width="18"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"></path></svg>
+</a>
+<a class="social-link" href="https://instagram.com" target="_blank" title="Instagram">
+<svg fill="currentColor" height="18" viewbox="0 0 24 24" width="18"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"></path></svg>
+</a>
+<a class="social-link" href="https://facebook.com" target="_blank" title="Facebook">
+<svg fill="currentColor" height="18" viewbox="0 0 24 24" width="18"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
+</a>
+<a class="social-link" href="https://twitter.com" target="_blank" title="Twitter / X">
+<svg fill="currentColor" height="18" viewbox="0 0 24 24" width="18"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+</a>
+<a class="social-link" href="https://wa.me/905441994540" target="_blank" title="WhatsApp">
+<svg fill="currentColor" height="18" viewbox="0 0 24 24" width="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+</a>
+</div>
+</div>
+<div class="reveal reveal-delay1">
+<div class="contact-form-wrap">
+<h3 data-i18n="contact.form.title">Bize Ulaşın</h3>
+<p class="sub" data-i18n="contact.form.subtitle">48 saat içinde değerlendirme notunuz hazır olur.</p>
+<form id="contactForm" onsubmit="formGonder(event)">
+<div class="form-row">
+<div class="form-group">
+<label class="form-label" data-i18n="contact.form.name.label">ADI SOYADI</label>
+<input class="form-input" data-i18n-placeholder="contact.form.name.placeholder" id="f-name" placeholder="Adınız Soyadınız" required="" type="text"/>
+</div>
+<div class="form-group">
+<label class="form-label" data-i18n="contact.form.email.label">E-POSTA</label>
+<input class="form-input" data-i18n-placeholder="contact.form.email.placeholder" id="f-email" placeholder="email@domain.com" required="" type="email"/>
+</div>
+</div>
+<div class="form-group">
+<label class="form-label" data-i18n="contact.form.phone.label">TELEFON</label>
+<input class="form-input" data-i18n-placeholder="contact.form.phone.placeholder" id="f-phone" placeholder="0XXX XXX XX XX" type="tel"/>
+</div>
+<div class="form-group">
+<label class="form-label" data-i18n="contact.form.service.label">İLGİLENDİĞİNİZ HİZMET</label>
+<select class="form-select form-input" data-i18n-placeholder="contact.form.service.placeholder" id="f-service">
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<option data-i18n="contact.form.service.placeholder" value="">Seçin...</option><option data-i18n="contact.form.service.opt.web">Web Geliştirme</option><option data-i18n="contact.form.service.opt.design">Web Tasarım &amp; UI/UX</option><option data-i18n="contact.form.service.opt.social">Sosyal Medya Yönetimi</option><option data-i18n="contact.form.service.opt.ads">Meta Reklam Yönetimi</option><option data-i18n="contact.form.service.opt.ai">Otomasyon &amp; AI</option><option data-i18n="contact.form.service.opt.consult">IT Danışmanlık</option><option data-i18n="contact.form.service.opt.mobile">Mobil Programlama</option><option data-i18n="contact.form.service.opt.webtest">Web Sitesi Test Etme</option><option data-i18n="contact.form.service.opt.qa">QA Automation</option><option data-i18n="contact.form.service.opt.multi">Birden Fazla Hizmet</option></select>
+</div>
+<div class="form-group">
+<label class="form-label" data-i18n="contact.form.message.label">MESAJINIZ</label>
+<textarea class="form-textarea" data-i18n-placeholder="contact.form.message.placeholder" id="f-message" placeholder="Projenizi anlatın, bütçenizden ve zaman çizelgenizden bahsedin..." required=""></textarea>
+</div>
+<button class="form-submit" data-i18n="contact.form.submit" type="submit">Değerlendirme Talebi Gönder →</button>
+</form>
+<div class="form-success" data-i18n="contact.form.success" id="formSuccess" style="display:none;">✓ Talebiniz alındı. 48 saat içinde projenize ait değerlendirme notunu size iletiyoruz.</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 <!-- ============================================================
   FOOTER — 3 sütun: Brand | Sayfalar | İletişim & Sosyal
   Tüm stiller INLINE — cache/conflict immune
 ============================================================ -->
 <footer id="site-footer" style="border-top:1px solid rgba(255,255,255,0.055);padding:56px 0 0;position:relative;z-index:2;background:#0B0F19;display:block;width:100%;">
-
-  <div style="max-width:1140px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px;align-items:start;" class="footer-grid">
-
-    <!-- KOLON 1: Marka -->
-    <div style="display:flex;flex-direction:column;gap:14px;">
-      <div style="display:flex;flex-direction:row;align-items:center;gap:10px;">
-        <svg width="32" height="32" viewBox="0 0 42 42" fill="none" aria-hidden="true" style="flex-shrink:0;">
-          <rect width="42" height="42" rx="11" fill="url(#fLg2)"/>
-          <rect x="0.75" y="0.75" width="40.5" height="40.5" rx="10.25" stroke="rgba(129,140,248,0.5)" stroke-width="1.5"/>
-          <text x="21" y="26" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-weight="800" font-size="14" fill="url(#fTxt2)">gS</text>
-          <defs>
-            <linearGradient id="fLg2" x1="0" y1="0" x2="42" y2="42"><stop offset="0%" stop-color="#1a1f35"/><stop offset="100%" stop-color="#0d1128"/></linearGradient>
-            <linearGradient id="fTxt2" x1="0" y1="0" x2="42" y2="42"><stop offset="0%" stop-color="#C7D2FE"/><stop offset="100%" stop-color="#818CF8"/></linearGradient>
-          </defs>
-        </svg>
-        <span style="font-family:'Space Grotesk',Inter,sans-serif;font-weight:700;font-size:16px;letter-spacing:-.02em;line-height:1;display:inline-block;white-space:nowrap;">
-          <span style="color:#A5B4FC;">gSoftwares</span><span style="color:#818CF8;">.dev</span>
-        </span>
-      </div>
-      <p style="font-size:13px;color:#8892A4;line-height:1.6;max-width:320px;margin:0;">Yazılım, tasarım ve dijital çözümler. Markanızı bir adım öne taşıyoruz.</p>
-      <div style="font-size:11px;color:#4A5568;line-height:1.6;letter-spacing:0.02em;margin:0;">© 2026 gSoftwares.dev<br>Hamza Gökçe &amp; Taner Aydoğan</div>
-    </div>
-
-    <!-- KOLON 2: Sayfalar -->
-    <div style="display:flex;flex-direction:column;gap:14px;">
-      <h4 style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#4A5568;margin:0;padding:0;line-height:1;">Sayfalar</h4>
-      <nav style="display:flex;flex-direction:column;gap:10px;align-items:flex-start;margin:0;padding:0;" aria-label="Sayfa linkleri">
-        <a href="#services" class="ft-link" style="display:block;font-size:13px;color:#8892A4;text-decoration:none;padding:0;margin:0;border:none;width:fit-content;">Hizmetler</a>
-        <a href="#team" class="ft-link" style="display:block;font-size:13px;color:#8892A4;text-decoration:none;padding:0;margin:0;border:none;width:fit-content;">Ekip</a>
-        <a href="about.html" class="ft-link page-link" style="display:block;font-size:13px;color:#8892A4;text-decoration:none;padding:0;margin:0;border:none;width:fit-content;">Hakkımızda</a>
-        <a href="blog.html" class="ft-link page-link" style="display:block;font-size:13px;color:#8892A4;text-decoration:none;padding:0;margin:0;border:none;width:fit-content;">Blog</a>
-        <a href="works-detail.html" class="ft-link page-link" style="display:block;font-size:13px;color:#8892A4;text-decoration:none;padding:0;margin:0;border:none;width:fit-content;">Projeler</a>
-        <a href="legal.html" class="ft-link page-link" style="display:block;font-size:13px;color:#8892A4;text-decoration:none;padding:0;margin:0;border:none;width:fit-content;">Gizlilik &amp; KVKK</a>
-      </nav>
-    </div>
-
-    <!-- KOLON 3: İletişim -->
-    <div style="display:flex;flex-direction:column;gap:14px;">
-      <h4 style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#4A5568;margin:0;padding:0;line-height:1;">İletişim</h4>
-      <nav style="display:flex;flex-direction:column;gap:10px;align-items:flex-start;margin:0;padding:0;" aria-label="İletişim linkleri">
-        <a href="#contact" class="ft-link" style="display:block;font-size:13px;color:#8892A4;text-decoration:none;padding:0;margin:0;border:none;width:fit-content;">Proje başlat</a>
-        <a href="https://fleetvision.online" target="_blank" rel="noopener" class="ft-link" style="display:block;font-size:13px;color:#8892A4;text-decoration:none;padding:0;margin:0;border:none;width:fit-content;">FleetVision</a>
-        <a href="https://github.com/hgokce34" target="_blank" rel="noopener" class="ft-link" style="display:block;font-size:13px;color:#8892A4;text-decoration:none;padding:0;margin:0;border:none;width:fit-content;">GitHub</a>
-      </nav>
-    </div>
-
-  </div>
-
-  <!-- Alt bar -->
-  <div style="max-width:1140px;margin:48px auto 0;padding:18px 24px;border-top:1px solid rgba(255,255,255,0.055);display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#4A5568;letter-spacing:0.04em;flex-wrap:wrap;gap:8px;" class="footer-bottom-row">
-    <span>Bursa, Türkiye · Hizmet veriyoruz</span>
-    <span style="font-family:'JetBrains Mono',monospace;">Built with ♥ in 2026</span>
-  </div>
+<div class="footer-grid" style="max-width:1140px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px;align-items:start;">
+<!-- KOLON 1: Marka -->
+<div style="display:flex;flex-direction:column;gap:14px;">
+<div style="display:flex;flex-direction:row;align-items:center;gap:10px;">
+<svg aria-hidden="true" fill="none" height="32" style="flex-shrink:0;" viewbox="0 0 42 42" width="32">
+<rect fill="url(#fLg2)" height="42" rx="11" width="42"></rect>
+<rect height="40.5" rx="10.25" stroke="rgba(129,140,248,0.5)" stroke-width="1.5" width="40.5" x="0.75" y="0.75"></rect>
+<text fill="url(#fTxt2)" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="800" text-anchor="middle" x="21" y="26">gS</text>
+<defs>
+<lineargradient id="fLg2" x1="0" x2="42" y1="0" y2="42"><stop offset="0%" stop-color="#1a1f35"></stop><stop offset="100%" stop-color="#0d1128"></stop></lineargradient>
+<lineargradient id="fTxt2" x1="0" x2="42" y1="0" y2="42"><stop offset="0%" stop-color="#C7D2FE"></stop><stop offset="100%" stop-color="#818CF8"></stop></lineargradient>
+</defs>
+</svg>
+<span style="font-family:'Space Grotesk',Inter,sans-serif;font-weight:700;font-size:16px;letter-spacing:-.02em;line-height:1;display:inline-block;white-space:nowrap;">
+<span style="color:#A5B4FC;">gSoftwares</span><span style="color:#818CF8;">.dev</span>
+</span>
+</div>
+<p data-i18n="footer.tagline" style="font-size:13px;color:#8892A4;line-height:1.6;max-width:320px;margin:0;">Yazılım, tasarım ve dijital çözümler. Markanızı bir adım öne taşıyoruz.</p>
+<div style="font-size:11px;color:#4A5568;line-height:1.6;letter-spacing:0.02em;margin:0;">© 2026 gSoftwares.dev<br/>Hamza Gökçe &amp; Taner Aydoğan</div>
+</div>
+<!-- KOLON 2: Sayfalar -->
+<div style="display:flex;flex-direction:column;gap:14px;">
+<h4 data-i18n="footer.col.pages" style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#4A5568;margin:0;padding:0;line-height:1;">Sayfalar</h4>
+<nav aria-label="Sayfa linkleri" style="display:flex;flex-direction:column;gap:10px;align-items:flex-start;margin:0;padding:0;">
+<a class="ft-link" data-i18n="footer.pages.services" href="#services" style="display:block;font-size:13px;color:#8892A4;text-decoration:none;padding:0;margin:0;border:none;width:fit-content;">Hizmetler</a>
+<a class="ft-link" data-i18n="footer.pages.team" href="#team" style="display:block;font-size:13px;color:#8892A4;text-decoration:none;padding:0;margin:0;border:none;width:fit-content;">Ekip</a>
+<a class="ft-link page-link" data-i18n="footer.pages.about" href="about.html" style="display:block;font-size:13px;color:#8892A4;text-decoration:none;padding:0;margin:0;border:none;width:fit-content;">Hakkımızda</a>
+<a class="ft-link page-link" data-i18n="footer.pages.blog" href="blog.html" style="display:block;font-size:13px;color:#8892A4;text-decoration:none;padding:0;margin:0;border:none;width:fit-content;">Blog</a>
+<a class="ft-link page-link" data-i18n="footer.pages.works" href="works-detail.html" style="display:block;font-size:13px;color:#8892A4;text-decoration:none;padding:0;margin:0;border:none;width:fit-content;">Projeler</a>
+<a class="ft-link page-link" data-i18n="footer.pages.legal" href="legal.html" style="display:block;font-size:13px;color:#8892A4;text-decoration:none;padding:0;margin:0;border:none;width:fit-content;">Gizlilik &amp; KVKK</a>
+</nav>
+</div>
+<!-- KOLON 3: İletişim -->
+<div style="display:flex;flex-direction:column;gap:14px;">
+<h4 data-i18n="footer.col.contact" style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#4A5568;margin:0;padding:0;line-height:1;">İletişim</h4>
+<nav aria-label="İletişim linkleri" style="display:flex;flex-direction:column;gap:10px;align-items:flex-start;margin:0;padding:0;">
+<a class="ft-link" data-i18n="footer.contact.start" href="#contact" style="display:block;font-size:13px;color:#8892A4;text-decoration:none;padding:0;margin:0;border:none;width:fit-content;">Proje başlat</a>
+<a class="ft-link" href="https://fleetvision.online" rel="noopener" style="display:block;font-size:13px;color:#8892A4;text-decoration:none;padding:0;margin:0;border:none;width:fit-content;" target="_blank">FleetVision</a>
+<a class="ft-link" href="https://github.com/hgokce34" rel="noopener" style="display:block;font-size:13px;color:#8892A4;text-decoration:none;padding:0;margin:0;border:none;width:fit-content;" target="_blank">GitHub</a>
+</nav>
+</div>
+</div>
+<!-- Alt bar -->
+<div class="footer-bottom-row" style="max-width:1140px;margin:48px auto 0;padding:18px 24px;border-top:1px solid rgba(255,255,255,0.055);display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#4A5568;letter-spacing:0.04em;flex-wrap:wrap;gap:8px;">
+<span data-i18n="footer.bottom.location">Bursa, Türkiye · Hizmet veriyoruz</span>
+<span data-i18n="footer.bottom.built" style="font-family:'JetBrains Mono',monospace;">Built with ♥ in 2026</span>
+</div>
 </footer>
-
 <!-- Footer responsive + hover (inline'da yapamadığımız tek şey) -->
 <style>
   #site-footer .ft-link:hover { color: #818CF8 !important; transform: translateX(2px); transition: color .15s, transform .15s; }
@@ -2366,9 +2369,7 @@
     }
   }
 </style>
-
 </main>
-
 <script>
   // Particles
   function createParticles(){
@@ -2785,15 +2786,6 @@
     if(body.dataset.theme==='dark'){body.dataset.theme='light';btn.textContent='☀️';}
     else{body.dataset.theme='dark';btn.textContent='🌙';}
   }
-
-  // Language
-  function toggleLang(){
-    const body=document.body;
-    const btn=document.getElementById('langBtn');
-    if(body.dataset.lang==='tr'){body.dataset.lang='en';btn.textContent='TR';}
-    else{body.dataset.lang='tr';btn.textContent='EN';}
-  }
-
   // Modals
   function openModal(id){
     document.getElementById(id).classList.add('open');
@@ -2848,15 +2840,15 @@
           form.style.display='block';
           success.style.display='none';
           form.reset();
-          btn.innerHTML='Değerlendirme Talebi Gönder →';
+          btn.innerHTML=window.i18n.t('contact.form.submit');
           btn.disabled=false;
         },5000);
       })
       .catch(err=>{
         console.error('EmailJS hata:',err);
-        btn.innerHTML='Değerlendirme Talebi Gönder →';
+        btn.innerHTML=window.i18n.t('contact.form.submit');
         btn.disabled=false;
-        alert('Mail gönderilemedi. Lütfen doğrudan gokcehamza2934@gmail.com adresine yazın.');
+        alert(window.i18n.t('contact.form.error'));
       });
   }
 
@@ -2938,6 +2930,529 @@
     document.querySelectorAll('.reveal:not(.visible)').forEach(el => obs.observe(el));
   }
   _initReveal();
+</script>
+<!-- ═══════════════════════════════════════════════════════════════
+     i18n RUNTIME — gSoftwares.com
+     Key-based translation system with:
+     - localStorage persistence
+     - Browser language auto-detection
+     - SEO (html lang, title, meta description) updates
+     - Missing key warnings
+     - data-i18n / data-i18n-aria / data-i18n-placeholder / data-i18n-title attribute support
+═══════════════════════════════════════════════════════════════ -->
+<script>
+(function() {
+  'use strict';
+
+  // ───────────────────────────────────────────
+  // 1) Translations registry — embedded
+  // ───────────────────────────────────────────
+  const TRANSLATIONS = {
+  "tr": {
+    "modals.web.desc": "Modern, hızlı ve ölçeklenebilir web uygulamaları geliştiriyoruz. Firebase ile gerçek zamanlı veri, Cloudinary ile medya yönetimi ve tam mobil uyumlu tasarım. FleetVision 2026 PRO bunun en iyi örneği — 30+ modül, tek HTML dosyası.",
+    "modals.web.features.f": "Gerçek zamanlı veritabanı",
+    "modals.web.features.f_2": "Mobil uyumlu tasarım",
+    "modals.web.features.f_3": "Firebase entegrasyonu",
+    "modals.web.features.f_4": "Dosya &amp; medya yönetimi",
+    "modals.web.features.f_5": "Kullanıcı yönetimi",
+    "modals.web.features.f_6": "Excel/PDF export",
+    "modals.web.features.f_7": "Özel panel &amp; raporlar",
+    "modals.web.features.f_8": "API entegrasyonu",
+    "modals.web.process.heading": "ÇALIŞMA SÜRECİMİZ",
+    "modals.web.process.step": "Keşif toplantısı — ihtiyaçlarınızı ve hedeflerinizi anlıyoruz",
+    "modals.web.process.step_2": "Prototip &amp; tasarım — görsel wireframe ve UI tasarımı",
+    "modals.web.process.step_3": "Geliştirme — iteratif, şeffaf süreç",
+    "modals.web.process.step_4": "Test &amp; teslim — kapsamlı test, eğitim ve destek",
+    "modals.design.desc": "Kullanıcı deneyimini ön planda tutan, markanıza özgü profesyonel web tasarımı. Figma'dan koda, piksel mükemmelliğinde çıktılar üretiyoruz.",
+    "modals.design.features.f": "Figma prototip tasarımı",
+    "modals.design.features.f_2": "Marka kimliği &amp; logo",
+    "modals.design.features.f_3": "Landing page tasarımı",
+    "modals.design.features.f_4": "E-ticaret UI/UX",
+    "modals.design.features.f_5": "Animasyon &amp; micro-interaction",
+    "modals.design.features.f_6": "Dark/Light tema",
+    "modals.social.desc": "Instagram, Facebook ve LinkedIn için strateji odaklı içerik üretimi ve hesap yönetimi. Organik büyüme, etkileşim artışı ve marka bilinirliği.",
+    "modals.social.features.f": "Aylık içerik planı",
+    "modals.social.features.f_2": "Görsel &amp; video üretimi",
+    "modals.social.features.f_3": "Hashtag stratejisi",
+    "modals.social.features.f_4": "Topluluk yönetimi",
+    "modals.social.features.f_5": "Analitik raporlama",
+    "modals.social.features.f_6": "Influencer iş birlikleri",
+    "modals.ads.desc": "Facebook ve Instagram reklamlarında maksimum ROI için hedef kitle analizi, kreatif üretim ve sürekli optimizasyon yapıyoruz.",
+    "modals.ads.features.f": "Hedef kitle analizi",
+    "modals.ads.features.f_2": "Reklam kreatif üretimi",
+    "modals.ads.features.f_3": "A/B test optimizasyonu",
+    "modals.ads.features.f_4": "Retargeting kampanyaları",
+    "modals.ads.features.f_5": "Haftalık performans raporu",
+    "modals.ads.features.f_6": "Bütçe optimizasyonu",
+    "modals.ai.desc": "İş süreçlerinizi yapay zeka ve otomasyon ile hızlandırın. Tekrarlayan görevleri otomatikleştirin, veri analizini AI ile güçlendirin.",
+    "modals.ai.features.f": "Claude / GPT entegrasyonu",
+    "modals.ai.features.f_2": "İş akışı otomasyonu",
+    "modals.ai.features.f_3": "Veri analizi &amp; raporlama",
+    "modals.ai.features.f_4": "Chatbot geliştirme",
+    "modals.ai.features.f_5": "API entegrasyonu",
+    "modals.ai.features.f_6": "Özel AI çözümleri",
+    "modals.consult.desc": "Dijital dönüşüm yolculuğunuzda yanınızdayız. Doğru teknoloji seçimi, mimari tasarım ve uzun vadeli strateji için danışmanlık hizmetleri.",
+    "modals.consult.features.f": "Teknoloji seçimi",
+    "modals.consult.features.f_2": "Yazılım mimarisi",
+    "modals.consult.features.f_3": "Dijital dönüşüm planı",
+    "modals.consult.features.f_4": "Güvenlik danışmanlığı",
+    "modals.consult.features.f_5": "Bulut migrasyonu",
+    "modals.consult.features.f_6": "Performans optimizasyonu",
+    "modals.mobile.desc": "iOS ve Android için tek kod tabanından çalışan, native hisli mobil uygulamalar geliştiriyoruz. Fikirden App Store ve Play Store yayınına kadar tüm süreci yönetiyoruz — tasarım, push bildirimleri, offline destek ve store onayları dahil.",
+    "modals.mobile.features.f": "iOS + Android tek kod tabanı",
+    "modals.mobile.features.f_2": "Push bildirim entegrasyonu",
+    "modals.mobile.features.f_3": "Offline-first çalışma desteği",
+    "modals.mobile.features.f_4": "App Store ve Play Store yayını",
+    "modals.mobile.features.f_5": "In-app satın alma &amp; abonelik",
+    "modals.mobile.features.f_6": "OTA güncellemeler",
+    "modals.webtest.desc": "Mevcut sitenizi gerçek kullanıcı koşullarında test ediyoruz. Performans, erişilebilirlik, mobil uyum, güvenlik açıkları ve SEO faktörlerini tek tek inceler; somut puan tablosu ve önceliklendirilmiş iyileştirme listesi sunarız.",
+    "modals.webtest.features.f": "Lighthouse performans denetimi",
+    "modals.webtest.features.f_2": "WCAG erişilebilirlik testi",
+    "modals.webtest.features.f_3": "Mobil ve cross-browser uyum testi",
+    "modals.webtest.features.f_4": "Güvenlik taraması (OWASP Top 10)",
+    "modals.webtest.features.f_5": "SEO ve Core Web Vitals analizi",
+    "modals.webtest.features.f_6": "Detaylı PDF raporu",
+    "modals.qa.desc": "Manuel test, ekip büyüdükçe sürdürülebilir olmaktan çıkar. Playwright ve Cypress ile uçtan uca test otomasyonu kurar, GitHub Actions veya GitLab CI hatlarınıza entegre ederiz — her commit kritik akışlarda regresyon yapmıyor mu otomatik kontrol edilir.",
+    "modals.qa.features.f": "E2E test suite kurulumu",
+    "modals.qa.features.f_2": "API ve integration testleri",
+    "modals.qa.features.f_3": "Visual regression testing",
+    "modals.qa.features.f_4": "CI/CD entegrasyonu (GitHub Actions / GitLab)",
+    "modals.qa.features.f_5": "Test coverage raporları",
+    "modals.qa.features.f_6": "Ekibe eğitim ve dökümantasyon",
+    "misc.span": "Kod Yazan Değil,",
+    "misc.span_2": "Sonuç Üreten Ekip.",
+    "misc.div": "YAZILIM MODÜLÜ",
+    "misc.div_2": "UZMAN",
+    "misc.div_3": "MÜŞTERİ MEMNUNİYETİ",
+    "sections.services.label": "Hizmetlerimiz",
+    "sections.services.title": "Uzmanlık Alanlarımız",
+    "sections.services.sub": "Yüzeysel değil, derinlemesine. Her alanda uzmanlık odaklı çalışıyoruz — detaylar için ilgili başlığa tıklayın.",
+    "services.web.title": "Web Geliştirme",
+    "services.web.desc": "Yavaş yüklenen bir site, potansiyel müşterinizi rakibinize yönlendirir. Biz; Core Web Vitals'ı baz alarak, gerçek zamanlı Firebase mimarisi ve ölçeklenebilir kod yapısıyla iş hedefinize özel sistemler inşa ediyoruz.",
+    "services.web.cta": "Detayları Gör →",
+    "services.design.title": "Web Tasarım &amp; UI/UX",
+    "services.design.desc": "Güzel görünen ama dönüşüm sağlamayan tasarımlar sermaye kaybıdır. Kullanıcı davranışına dayalı, marka kimliğinizi güçlendiren ve ziyaretçiyi aksiyona yönlendiren arayüzler tasarlıyoruz.",
+    "services.design.cta": "Detayları Gör →",
+    "services.social.title": "Sosyal Medya Yönetimi",
+    "services.social.desc": "Takipçi sayısı değil, nitelikli etkileşim kazandırıyoruz. Hedef kitlenizin dilini konuşan, algoritmanın önceliklendirdiği içeriklerle organik büyüme sağlıyoruz.",
+    "services.social.cta": "Detayları Gör →",
+    "services.ads.title": "Meta Reklam Yönetimi",
+    "services.ads.desc": "Bütçenizin her kuruşunu doğru kitleye harcatıyoruz. Davranışsal segmentasyon, yaratıcı A/B testleri ve sürekli optimizasyon ile reklam harcama getirinizi (ROAS) maksimize ediyoruz.",
+    "services.ads.cta": "Detayları Gör →",
+    "services.ai.title": "Otomasyon &amp; AI",
+    "services.ai.desc": "Tekrar eden işlemler için insan kaynağı harcamak rekabet avantajını törpüler. İş akışlarınızı analiz eder, doğru yapay zeka ve otomasyon araçlarını entegre ederek operasyonel verimliliğinizi artırıyoruz.",
+    "services.ai.cta": "Detayları Gör →",
+    "services.consult.title": "IT Danışmanlık",
+    "services.consult.desc": "Yanlış teknoloji seçimi, ilerleyen süreçte katlanarak artan maliyetler doğurur. Mevcut altyapınızı değerlendiriyor, ölçeklenebilirlik ve güvenliği temel alarak sizin için doğru yol haritasını çiziyoruz.",
+    "services.consult.cta": "Detayları Gör →",
+    "services.mobile.title": "Mobil Programlama",
+    "services.mobile.desc": "Web'in en güçlü olduğu yerde bile, kullanıcıların yarısı telefondan giriyor. iOS ve Android için sıfırdan native hisli, tek kod tabanında çalışan modern mobil uygulamalar geliştiriyoruz — App Store ve Play Store yayına hazır.",
+    "services.mobile.cta": "Detayları Gör →",
+    "services.webtest.title": "Web Sitesi Test Etme",
+    "services.webtest.desc": "Lansmanın ilk gününde patlayan bir hata, aylarca süren itibar zararı demektir. Mevcut sitenizi performans, erişilebilirlik, mobil uyum, güvenlik ve SEO açısından adım adım inceler; somut iyileştirme raporu sunarız.",
+    "services.webtest.cta": "Detayları Gör →",
+    "services.qa.title": "QA Automation",
+    "services.qa.desc": "Her yeni özellik, eski özelliği bozma riski demektir. Playwright ve Cypress ile uçtan uca test otomasyonu kurar, CI/CD hattınıza entegre eder; her commit'te kritik akışların çalıştığından emin oluruz.",
+    "services.qa.cta": "Detayları Gör →",
+    "sections.projects.label": "Projelerimiz",
+    "sections.projects.title": "Referans Çalışmalar",
+    "sections.projects.sub": "Söylediğimizi değil, yaptığımızı değerlendirin. Her proje, bir problemi çözmek için doğmuştur.",
+    "projects.p": "47 araçlık filoyu Excel'de yöneten bir arkadaşın \"daha iyi bir çözüm yok mu?\" sorusuyla doğdu. Bugün: 30+ modül, gerçek zamanlı Firebase mimarisi, Türk İş Kanunu'na uygun izin takibi ve tek dosyada çalışan tam ölçekli bir platform.",
+    "projects.h3": "Müşteri Projeleri",
+    "projects.p_2": "Web tasarım, kurumsal yazılım, sosyal medya ve dijital pazarlama projeleriniz için buradayız. Her ölçekte, her sektörde.",
+    "projects.link": "Proje Başlat →",
+    "sections.team.label": "Ekibimiz",
+    "sections.team.title": "Ekibin Vizyonu",
+    "sections.team.sub": "Bir yazılım mühendisi ve bir dijital pazarlama stratejisti. Farklı disiplinler, ortak bir standart: çalışan şeyin değil, çalışan şeyin en iyisinin peşinde.",
+    "team.role": "Yazılım Geliştirici &amp; Kurucu",
+    "team.bio": "Teknolojiyi araç olarak görür, çözümü ürün olarak sunar. 30+ modüllü FleetVision 2026 PRO'nun mimarı. Yazılımda \"nasıl çalışır\"dan önce \"neden gerekir\" sorusunu sorar; bu yüzden ürettiği sistemler sürece değer katar, yük olmaz.",
+    "team.role_2": "Tasarımcı &amp; Dijital Pazarlama Uzmanı",
+    "team.bio_2": "Tasarımın estetik değil stratejik bir araç olduğuna inanır. Markaların dijital kimliğini inşa eder; her görselin, her başlığın ve her kampanyanın arkasında ölçülmüş bir niyet vardır. Meta reklamlarında hissi değil, veriyi takip eder.",
+    "contact.div": "İletişim",
+    "contact.h3": "Bize Ulaşın",
+    "contact.p": "48 saat içinde değerlendirme notunuz hazır olur.",
+    "contact.form.label": "ADI SOYADI",
+    "contact.form.label_2": "E-POSTA",
+    "contact.form.label_3": "TELEFON",
+    "contact.form.label_4": "İLGİLENDİĞİNİZ HİZMET",
+    "contact.form.label_5": "MESAJINIZ",
+    "nav.home": "Ana Sayfa",
+    "nav.services": "Hizmetler",
+    "nav.about": "Hakkımızda",
+    "nav.blog": "Blog",
+    "nav.projects": "Projeler",
+    "nav.cta": "Proje Başlat →",
+    "aria.langToggle": "Dil değiştir",
+    "aria.themeToggle": "Tema değiştir",
+    "aria.menuToggle": "Menü",
+    "meta.title": "gSoftwares | Yazılım, Tasarım, Dijital Çözümler",
+    "meta.description": "Modern web platformları, mobil uygulamalar ve AI destekli iş otomasyonu. Bursa merkezli geliştirici stüdyo.",
+    "hero.cta.primary": "Neler Yapıyoruz? →",
+    "hero.cta.secondary": "Projenizi Değerlendirelim",
+    "hero.stat.modules": "YAZILIM MODÜLÜ",
+    "hero.stat.experts": "UZMAN",
+    "contact.title.line1": "Projenizi",
+    "contact.title.line2": "Değerlendirelim",
+    "contact.intro": "Kapsam ne olursa olsun, ilk görüşme taahhütsüz ve ücretsizdir. Projenizi dinliyor, uygulanabilirliğini değerlendiriyor ve size dürüst bir yol haritası sunuyoruz.",
+    "contact.channels.email": "E-POSTA",
+    "contact.channels.whatsapp.cta": "WhatsApp'tan Yaz",
+    "contact.form.title": "Bize Ulaşın",
+    "contact.form.subtitle": "48 saat içinde değerlendirme notunuz hazır olur.",
+    "contact.form.name.label": "ADI SOYADI",
+    "contact.form.name.placeholder": "Adınız Soyadınız",
+    "contact.form.email.label": "E-POSTA",
+    "contact.form.email.placeholder": "email@domain.com",
+    "contact.form.phone.label": "TELEFON",
+    "contact.form.phone.placeholder": "0XXX XXX XX XX",
+    "contact.form.service.label": "İLGİLENDİĞİNİZ HİZMET",
+    "contact.form.service.placeholder": "Seçin...",
+    "contact.form.message.label": "MESAJINIZ",
+    "contact.form.message.placeholder": "Projenizi anlatın, bütçenizden ve zaman çizelgenizden bahsedin...",
+    "contact.form.submit": "Değerlendirme Talebi Gönder →",
+    "contact.form.submitting": "Gönderiliyor...",
+    "contact.form.success": "✓ Talebiniz alındı. 48 saat içinde projenize ait değerlendirme notunu size iletiyoruz.",
+    "contact.form.error": "Mail gönderilemedi. Lütfen doğrudan gokcehamza2934@gmail.com adresine yazın.",
+    "contact.form.service.opt.web": "Web Geliştirme",
+    "contact.form.service.opt.design": "Web Tasarım & UI/UX",
+    "contact.form.service.opt.social": "Sosyal Medya Yönetimi",
+    "contact.form.service.opt.ads": "Meta Reklam Yönetimi",
+    "contact.form.service.opt.ai": "Otomasyon & AI",
+    "contact.form.service.opt.consult": "IT Danışmanlık",
+    "contact.form.service.opt.mobile": "Mobil Programlama",
+    "contact.form.service.opt.webtest": "Web Sitesi Test Etme",
+    "contact.form.service.opt.qa": "QA Automation",
+    "contact.form.service.opt.multi": "Birden Fazla Hizmet",
+    "footer.tagline": "Yazılım, tasarım ve dijital çözümler. Markanızı bir adım öne taşıyoruz.",
+    "footer.col.pages": "Sayfalar",
+    "footer.col.contact": "İletişim",
+    "footer.pages.services": "Hizmetler",
+    "footer.pages.team": "Ekip",
+    "footer.pages.about": "Hakkımızda",
+    "footer.pages.blog": "Blog",
+    "footer.pages.works": "Projeler",
+    "footer.pages.legal": "Gizlilik & KVKK",
+    "footer.contact.start": "Proje başlat",
+    "footer.bottom.location": "Bursa, Türkiye · Hizmet veriyoruz",
+    "footer.bottom.built": "Built with ♥ in 2026"
+  },
+  "en": {
+    "modals.web.desc": "We build modern, fast and scalable web applications. Real-time data with Firebase, media management with Cloudinary, and fully responsive design. FleetVision 2026 PRO is the best example — 30+ modules, single HTML file.",
+    "modals.web.features.f": "Real-time database",
+    "modals.web.features.f_2": "Mobile-responsive design",
+    "modals.web.features.f_3": "Firebase integration",
+    "modals.web.features.f_4": "File &amp; media management",
+    "modals.web.features.f_5": "User management",
+    "modals.web.features.f_6": "Excel/PDF export",
+    "modals.web.features.f_7": "Custom dashboard &amp; reports",
+    "modals.web.features.f_8": "API integration",
+    "modals.web.process.heading": "OUR PROCESS",
+    "modals.web.process.step": "Discovery meeting — understanding your needs and goals",
+    "modals.web.process.step_2": "Prototype &amp; design — visual wireframe and UI design",
+    "modals.web.process.step_3": "Development — iterative, transparent process",
+    "modals.web.process.step_4": "Test &amp; delivery — comprehensive testing, training and support",
+    "modals.design.desc": "Professional web design tailored to your brand with user experience at the forefront. From Figma to code, pixel-perfect outputs.",
+    "modals.design.features.f": "Figma prototype design",
+    "modals.design.features.f_2": "Brand identity &amp; logo",
+    "modals.design.features.f_3": "Landing page design",
+    "modals.design.features.f_4": "E-commerce UI/UX",
+    "modals.design.features.f_5": "Animation &amp; micro-interaction",
+    "modals.design.features.f_6": "Dark/Light theme",
+    "modals.social.desc": "Strategy-focused content creation and account management for Instagram, Facebook and LinkedIn. Organic growth, engagement increase and brand awareness.",
+    "modals.social.features.f": "Monthly content plan",
+    "modals.social.features.f_2": "Visual &amp; video production",
+    "modals.social.features.f_3": "Hashtag strategy",
+    "modals.social.features.f_4": "Community management",
+    "modals.social.features.f_5": "Analytics reporting",
+    "modals.social.features.f_6": "Influencer partnerships",
+    "modals.ads.desc": "We do audience analysis, creative production and continuous optimization for maximum ROI on Facebook and Instagram ads.",
+    "modals.ads.features.f": "Audience analysis",
+    "modals.ads.features.f_2": "Ad creative production",
+    "modals.ads.features.f_3": "A/B test optimization",
+    "modals.ads.features.f_4": "Retargeting campaigns",
+    "modals.ads.features.f_5": "Weekly performance report",
+    "modals.ads.features.f_6": "Budget optimization",
+    "modals.ai.desc": "Accelerate your business processes with AI and automation. Automate repetitive tasks, power data analysis with AI.",
+    "modals.ai.features.f": "Claude / GPT integration",
+    "modals.ai.features.f_2": "Workflow automation",
+    "modals.ai.features.f_3": "Data analysis &amp; reporting",
+    "modals.ai.features.f_4": "Chatbot development",
+    "modals.ai.features.f_5": "API integration",
+    "modals.ai.features.f_6": "Custom AI solutions",
+    "modals.consult.desc": "We're with you on your digital transformation journey. Consulting services for the right technology selection, architectural design and long-term strategy.",
+    "modals.consult.features.f": "Technology selection",
+    "modals.consult.features.f_2": "Software architecture",
+    "modals.consult.features.f_3": "Digital transformation plan",
+    "modals.consult.features.f_4": "Security consulting",
+    "modals.consult.features.f_5": "Cloud migration",
+    "modals.consult.features.f_6": "Performance optimization",
+    "modals.mobile.desc": "We build native-feeling mobile apps for iOS and Android from a single codebase. We manage the entire flow from idea to App Store and Play Store release — design, push notifications, offline support, and store approvals included.",
+    "modals.mobile.features.f": "iOS + Android single codebase",
+    "modals.mobile.features.f_2": "Push notification integration",
+    "modals.mobile.features.f_3": "Offline-first capability",
+    "modals.mobile.features.f_4": "App Store and Play Store publishing",
+    "modals.mobile.features.f_5": "In-app purchase &amp; subscription",
+    "modals.mobile.features.f_6": "OTA updates",
+    "modals.webtest.desc": "We test your existing site under real user conditions. We audit performance, accessibility, mobile responsiveness, security vulnerabilities, and SEO factors — delivering a concrete scorecard and prioritized improvement list.",
+    "modals.webtest.features.f": "Lighthouse performance audit",
+    "modals.webtest.features.f_2": "WCAG accessibility testing",
+    "modals.webtest.features.f_3": "Mobile and cross-browser testing",
+    "modals.webtest.features.f_4": "Security scan (OWASP Top 10)",
+    "modals.webtest.features.f_5": "SEO and Core Web Vitals analysis",
+    "modals.webtest.features.f_6": "Detailed PDF report",
+    "modals.qa.desc": "Manual testing stops scaling as the team grows. We build end-to-end test automation with Playwright and Cypress, integrate it into your GitHub Actions or GitLab CI — automatically checking every commit for regressions in critical flows.",
+    "modals.qa.features.f": "End-to-end test suite setup",
+    "modals.qa.features.f_2": "API and integration tests",
+    "modals.qa.features.f_3": "Visual regression testing",
+    "modals.qa.features.f_4": "CI/CD integration (GitHub Actions / GitLab)",
+    "modals.qa.features.f_5": "Test coverage reports",
+    "modals.qa.features.f_6": "Team training and documentation",
+    "misc.span": "Not Just Developers.",
+    "misc.span_2": "Result Builders.",
+    "misc.div": "SOFTWARE MODULES",
+    "misc.div_2": "EXPERTS",
+    "misc.div_3": "CLIENT SATISFACTION",
+    "sections.services.label": "Our Services",
+    "sections.services.title": "What We Do",
+    "sections.services.sub": "Click on each service to get detailed information.",
+    "services.web.title": "Web Development",
+    "services.web.desc": "A slow-loading site sends your potential client straight to your competitor. We build business-specific systems grounded in Core Web Vitals, real-time Firebase architecture, and scalable code.",
+    "services.web.cta": "See Details →",
+    "services.design.title": "Web Design &amp; UI/UX",
+    "services.design.desc": "Beautiful design that doesn't convert is wasted capital. We design interfaces grounded in user behavior — reinforcing your brand while guiding visitors to take action.",
+    "services.design.cta": "See Details →",
+    "services.social.title": "Social Media Management",
+    "services.social.desc": "We don't chase follower counts — we earn quality engagement. We drive organic growth with content that speaks your audience's language and that algorithms prioritize.",
+    "services.social.cta": "See Details →",
+    "services.ads.title": "Meta Ads Management",
+    "services.ads.desc": "We make every cent of your budget work for the right audience. Behavioral segmentation, creative A/B testing, and continuous optimization to maximize your return on ad spend (ROAS).",
+    "services.ads.cta": "See Details →",
+    "services.ai.title": "Automation &amp; AI",
+    "services.ai.desc": "Spending human resources on repetitive tasks erodes your competitive edge. We analyze your workflows and integrate the right AI and automation tools to boost operational efficiency.",
+    "services.ai.cta": "See Details →",
+    "services.consult.title": "IT Consulting",
+    "services.consult.desc": "Wrong technology choices compound into exponentially growing costs. We assess your current infrastructure and chart the right roadmap for you — scalability and security as the foundation.",
+    "services.consult.cta": "See Details →",
+    "services.mobile.title": "Mobile Development",
+    "services.mobile.desc": "Even where web is strongest, half of users come from phones. We build modern, native-feeling mobile apps from scratch on a single codebase for iOS and Android — App Store and Play Store ready.",
+    "services.mobile.cta": "See Details →",
+    "services.webtest.title": "Web Site Testing",
+    "services.webtest.desc": "A bug that surfaces on launch day means months of reputation damage. We audit your existing site for performance, accessibility, mobile responsiveness, security, and SEO — and deliver a concrete improvement report.",
+    "services.webtest.cta": "See Details →",
+    "services.qa.title": "QA Automation",
+    "services.qa.desc": "Every new feature carries the risk of breaking an old one. We set up end-to-end test automation with Playwright and Cypress, integrate it into your CI/CD pipeline, and ensure critical flows work on every commit.",
+    "services.qa.cta": "See Details →",
+    "sections.projects.label": "Our Projects",
+    "sections.projects.title": "What We've Built",
+    "sections.projects.sub": "Real solutions to real problems. The story behind the code.",
+    "projects.p": "Started when I saw a friend managing a 47-vehicle fleet in Excel. Today it's a full fleet management platform with 30+ modules, Firebase integration, and Labor Law leave calculation.",
+    "projects.h3": "Client Projects",
+    "projects.p_2": "We're here for your web design, enterprise software, social media and digital marketing projects. Every scale, every sector.",
+    "projects.link": "Start Project →",
+    "sections.team.label": "Our Team",
+    "sections.team.title": "The People Behind It",
+    "sections.team.sub": "Two different expertises, one goal — putting you ahead in the digital world.",
+    "team.role": "Software Developer &amp; Co-Founder",
+    "team.bio": "Treats technology as a tool, delivers solutions as products. Architect of FleetVision 2026 PRO with 30+ modules. In software, he asks \"why is it needed\" before \"how does it work\" — that's why the systems he builds add value to the process, not burden.",
+    "team.role_2": "Designer &amp; Digital Marketing Expert",
+    "team.bio_2": "Believes design is a strategic tool, not merely aesthetic. He builds brands' digital identities — every visual, headline and campaign is backed by measured intent. In Meta ads, he follows data, not instinct.",
+    "contact.div": "Contact",
+    "contact.h3": "Send Project Request",
+    "contact.p": "Your assessment note will be ready within 48 hours.",
+    "contact.form.label": "FULL NAME",
+    "contact.form.label_2": "EMAIL",
+    "contact.form.label_3": "PHONE",
+    "contact.form.label_4": "SERVICE INTERESTED IN",
+    "contact.form.label_5": "YOUR MESSAGE",
+    "nav.home": "Home",
+    "nav.services": "Services",
+    "nav.about": "About",
+    "nav.blog": "Blog",
+    "nav.projects": "Work",
+    "nav.cta": "Start a project →",
+    "aria.langToggle": "Toggle language",
+    "aria.themeToggle": "Toggle theme",
+    "aria.menuToggle": "Menu",
+    "meta.title": "gSoftwares | Software, Design, Digital Solutions",
+    "meta.description": "Modern web platforms, mobile apps, and AI-powered business automation. Bursa-based developer studio.",
+    "hero.cta.primary": "What We Do? →",
+    "hero.cta.secondary": "Let's Review Your Project",
+    "hero.stat.modules": "SOFTWARE MODULES",
+    "hero.stat.experts": "EXPERTS",
+    "contact.title.line1": "Let's Review",
+    "contact.title.line2": "Your Project",
+    "contact.intro": "Whatever the scope, the first call is commitment-free and on us. We listen to your project, evaluate its feasibility, and give you an honest roadmap.",
+    "contact.channels.email": "EMAIL",
+    "contact.channels.whatsapp.cta": "Message on WhatsApp",
+    "contact.form.title": "Get in Touch",
+    "contact.form.subtitle": "Your evaluation note will be ready within 48 hours.",
+    "contact.form.name.label": "FULL NAME",
+    "contact.form.name.placeholder": "Your full name",
+    "contact.form.email.label": "EMAIL",
+    "contact.form.email.placeholder": "email@domain.com",
+    "contact.form.phone.label": "PHONE",
+    "contact.form.phone.placeholder": "+1 XXX XXX XXXX",
+    "contact.form.service.label": "INTERESTED SERVICE",
+    "contact.form.service.placeholder": "Select...",
+    "contact.form.message.label": "YOUR MESSAGE",
+    "contact.form.message.placeholder": "Describe your project, mention your budget and timeline...",
+    "contact.form.submit": "Send Evaluation Request →",
+    "contact.form.submitting": "Sending...",
+    "contact.form.success": "✓ Request received. We will send you the evaluation note for your project within 48 hours.",
+    "contact.form.error": "Could not send. Please write directly to gokcehamza2934@gmail.com",
+    "contact.form.service.opt.web": "Web Development",
+    "contact.form.service.opt.design": "Web Design & UI/UX",
+    "contact.form.service.opt.social": "Social Media Management",
+    "contact.form.service.opt.ads": "Meta Ads Management",
+    "contact.form.service.opt.ai": "Automation & AI",
+    "contact.form.service.opt.consult": "IT Consulting",
+    "contact.form.service.opt.mobile": "Mobile Development",
+    "contact.form.service.opt.webtest": "Web Site Testing",
+    "contact.form.service.opt.qa": "QA Automation",
+    "contact.form.service.opt.multi": "Multiple Services",
+    "footer.tagline": "Software, design and digital solutions. We move your brand one step ahead.",
+    "footer.col.pages": "Pages",
+    "footer.col.contact": "Contact",
+    "footer.pages.services": "Services",
+    "footer.pages.team": "Team",
+    "footer.pages.about": "About",
+    "footer.pages.blog": "Blog",
+    "footer.pages.works": "Work",
+    "footer.pages.legal": "Privacy & GDPR",
+    "footer.contact.start": "Start a project",
+    "footer.bottom.location": "Bursa, Turkey · We serve worldwide",
+    "footer.bottom.built": "Built with ♥ in 2026"
+  }
+};
+
+  const DEFAULT_LANG = 'tr';
+  const SUPPORTED_LANGS = ['tr', 'en'];
+  const STORAGE_KEY = 'gsoftwares_lang';
+  const missingKeys = new Set();
+
+  // ───────────────────────────────────────────
+  // 2) t() — key path lookup, hata güvenli
+  // ───────────────────────────────────────────
+  function t(key, lang) {
+    lang = lang || document.body.dataset.lang || DEFAULT_LANG;
+    const dict = TRANSLATIONS[lang] || TRANSLATIONS[DEFAULT_LANG];
+    if (dict && Object.prototype.hasOwnProperty.call(dict, key)) {
+      return dict[key];
+    }
+    // Fallback'e bak (TR'ye fallback)
+    if (lang !== DEFAULT_LANG) {
+      const fb = TRANSLATIONS[DEFAULT_LANG];
+      if (fb && Object.prototype.hasOwnProperty.call(fb, key)) {
+        return fb[key];
+      }
+    }
+    // Eksik key — bir kez uyar
+    if (!missingKeys.has(key)) {
+      missingKeys.add(key);
+      console.warn('[i18n] Missing translation key:', key, '(' + lang + ')');
+    }
+    return key;
+  }
+
+  // window'a aç (debug ve gerekirse 3rd party için)
+  window.i18n = { t: t, getMissing: () => Array.from(missingKeys) };
+
+  // ───────────────────────────────────────────
+  // 3) applyTranslations — tüm data-i18n* attribute'larını uygula
+  // ───────────────────────────────────────────
+  function applyTranslations(lang) {
+    // 3a) Body / html lang attribute (SEO)
+    document.body.dataset.lang = lang;
+    document.documentElement.lang = lang;
+
+    // 3b) Page title + meta description
+    document.title = t('meta.title', lang);
+    const descMeta = document.querySelector('meta[name="description"]');
+    if (descMeta) descMeta.setAttribute('content', t('meta.description', lang));
+
+    // 3c) Tüm görünür metinler — data-i18n
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      el.innerHTML = t(el.dataset.i18n, lang);
+    });
+
+    // 3d) ARIA labels — data-i18n-aria
+    document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+      el.setAttribute('aria-label', t(el.dataset.i18nAria, lang));
+    });
+
+    // 3e) Placeholder — data-i18n-placeholder (input, textarea)
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      el.setAttribute('placeholder', t(el.dataset.i18nPlaceholder, lang));
+    });
+
+    // 3f) Title attribute — data-i18n-title (tooltip)
+    document.querySelectorAll('[data-i18n-title]').forEach(el => {
+      el.setAttribute('title', t(el.dataset.i18nTitle, lang));
+    });
+
+    // 3g) Lang toggle butonu metni — aktif dilin tersini gösterir
+    const langBtn = document.getElementById('langBtn');
+    if (langBtn) langBtn.textContent = lang === 'tr' ? 'EN' : 'TR';
+  }
+
+  // ───────────────────────────────────────────
+  // 4) Toggle ve init
+  // ───────────────────────────────────────────
+  function toggleLang() {
+    const current = document.body.dataset.lang || DEFAULT_LANG;
+    const next = current === 'tr' ? 'en' : 'tr';
+    setLang(next);
+  }
+
+  function setLang(lang) {
+    if (!SUPPORTED_LANGS.includes(lang)) lang = DEFAULT_LANG;
+    applyTranslations(lang);
+    try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) {}
+  }
+
+  function detectInitialLang() {
+    // 1. localStorage öncelikli
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (SUPPORTED_LANGS.includes(saved)) return saved;
+    } catch (e) {}
+    // 2. Tarayıcı dili
+    const navLang = (navigator.language || navigator.userLanguage || '').toLowerCase().split('-')[0];
+    if (SUPPORTED_LANGS.includes(navLang)) return navLang;
+    // 3. Varsayılan
+    return DEFAULT_LANG;
+  }
+
+  // Global olarak window'a aç (HTML onclick="toggleLang()" için)
+  window.toggleLang = toggleLang;
+  window.setLang = setLang;
+
+  // ───────────────────────────────────────────
+  // 5) Page load — uygula
+  // ───────────────────────────────────────────
+  function init() {
+    const lang = detectInitialLang();
+    applyTranslations(lang);
+    try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) {}
+
+    // Eksik key raporu
+    setTimeout(() => {
+      const total = Object.keys(TRANSLATIONS.tr || {}).length;
+      console.info('[i18n] Loaded ' + total + ' translation keys × 2 languages');
+      const missing = Array.from(missingKeys);
+      if (missing.length) {
+        console.warn('[i18n] ' + missing.length + ' missing keys detected:', missing);
+      } else {
+        console.info('[i18n] No missing keys ✓');
+      }
+    }, 0);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
 </script>
 </body>
 </html>
